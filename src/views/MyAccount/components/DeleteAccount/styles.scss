@@ -1,0 +1,28 @@
+.del_account {
+    &_content {
+        &_bottom {
+            margin: 24px 0px 0px 24px;
+            display: flex;
+            justify-content: space-between;
+            //checked
+            .ant-checkbox-checked .ant-checkbox-inner {
+                background-color: #418143;
+                border-color: #418143;
+                border-radius: 6px;
+                width: 20px;
+            }
+            .btn_del {
+                padding: 8px 10px;
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 700;
+                background-color: #da2419;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: none;
+            }
+        }
+    }
+}

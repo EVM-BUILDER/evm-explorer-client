@@ -1,0 +1,32 @@
+.card_base {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  height: 100%;
+
+  .card_base_header {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+
+    @include media-up(lg) {
+      padding: 16px 24px;
+    }
+
+    .card_base_header_title {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 21px;
+    }
+  }
+  .card_base_content {
+    width: 100%;
+    padding: 12px;
+
+    @include media-up(lg) {
+      padding: 16px 24px;
+    }
+  }
+}

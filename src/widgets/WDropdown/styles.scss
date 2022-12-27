@@ -1,0 +1,20 @@
+@import 'assets/css/variables.scss';
+.wOverlay {
+  padding-top: 6px;
+  .ant-dropdown-menu {
+    background: #069cc9;
+    border-radius: 5px 5px 5px 6px;
+    padding: 10px 0;
+    position: relative;
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: -6px;
+    //   right: 15px;
+    //   border-bottom: 10px solid #069cc9;
+    //   border-left: 7px solid transparent;
+    //   border-right: 7px solid transparent;
+    //   z-index: 111;
+    // }
+  }
+}

@@ -1,0 +1,83 @@
+@import 'assets/css/variables.scss';
+
+.card_token_overview {
+  height: 100%;
+  .card_token_overview_title_small {
+    color: var(--text-span);
+    font-size: 12px;
+  }
+  .card_token_overview_item {
+    font-size: 14px;
+    line-height: normal;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+
+    @include media-up(md) {
+      font-size: 16px;
+      padding: 16px 0;
+    }
+
+    &:first-child {
+      padding: 0 0 10px;
+      @include media-up(md) {
+        font-size: 16px;
+        padding: 0 0 16px;
+      }
+    }
+
+    .text-small {
+      font-size: 14px;
+
+      @include media-up(md) {
+        font-size: 16px;
+      }
+    }
+
+    .content-subtitle {
+      font-size: 14px;
+      > span:nth-child(1) {
+        color: var(--text);
+        font-weight: 600;
+      }
+      > span:nth-child(2) {
+        color: var(--text-span);
+      }
+      > span:nth-child(3) {
+        color: #da2419;
+      }
+    }
+
+    .content-desc {
+      .icon {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+      }
+
+      .volume {
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 16px;
+        background-color: $tertiary;
+        text-align: center;
+      }
+    }
+  }
+
+  .card_token_overview_item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .right-node-overview {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 66px;
+    height: 16px;
+    text-align: center;
+
+    > a {
+      color: var(--text);
+    }
+  }
+}

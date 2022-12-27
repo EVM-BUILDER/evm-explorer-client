@@ -1,0 +1,85 @@
+.verify-page {
+  min-height: 80vh;
+  padding: 32px 0 24px;
+
+  &_header {
+    text-align: center;
+
+    h1 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 31.13px;
+      color: #418143;
+    }
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20.75px;
+      color: #3c3a3a;
+    }
+  }
+
+  .form_header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > .verify-page_form_item {
+      width: 50%;
+      &:first-child {
+        padding-right: 24px;
+      }
+      &:last-child {
+        padding-left: 24px;
+      }
+    }
+  }
+
+  &_form {
+    width: 100%;
+    max-width: 600px;
+    margin: 32px auto;
+    padding: 0 15px;
+
+    .ant-form-item-control-input {
+      min-height: 34px;
+    }
+
+    &_item {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20.75px;
+      color: #3c3a3a;
+      max-width: 600px;
+    }
+
+    .btn_verify {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 21px;
+      color: #ffffff;
+      border-radius: 4px;
+      background-color: #418143;
+      padding: 8px 10px;
+      width: 156px;
+      height: 37px;
+      margin-bottom: 32px;
+      border: none;
+    }
+
+    .question {
+      text-align: center;
+
+      p {
+        color: #3c3a3a;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.16px;
+      }
+
+      a {
+        color: #418143;
+      }
+    }
+  }
+}

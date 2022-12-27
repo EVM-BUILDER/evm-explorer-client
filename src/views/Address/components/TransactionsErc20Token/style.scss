@@ -1,0 +1,211 @@
+@import 'assets/css/variables.scss';
+
+.accounts_txs_erc20 {
+  .card-content-text {
+    color: $text;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      margin-left: 4px;
+    }
+
+    .card-content-right {
+    }
+  }
+
+  .card-content-table {
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+
+    .data-txnHash {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      & > div {
+        color: $black-color;
+        width: 22px;
+        height: 22px;
+        background: $background-color-badge;
+        border-color: transparent;
+        margin-right: 4px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      a {
+        display: inline-block;
+        color: $primary;
+        width: 170px;
+        overflow: hidden;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .data-method {
+      text-align: center;
+      font-size: 10.5px;
+      padding: 6px 10px;
+      color: $black-color;
+      background: $background-color-padding-light;
+      border-color: transparent;
+      border-radius: 4px;
+    }
+
+    .data-block {
+      color: $primary;
+    }
+
+    .data-age {
+      width: 90px;
+    }
+
+    .data-address {
+      display: flex;
+      align-items: center;
+      .data-address-value {
+        max-width: 200px;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      span.data-address-value {
+        color: var(--text);
+      }
+      a.data-address-value {
+        color: var(--primary);
+      }
+    }
+
+    .data-token {
+      display: flex;
+      align-items: center;
+      img {
+        width: 16px;
+        margin-right: 4px;
+      }
+      & > span {
+        max-width: 90px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .card-content-footer {
+    .content-footer-text {
+      text-align: right;
+      margin: 15px;
+
+      .content-footer-text-right {
+        font-size: 11.2px;
+
+        a {
+          color: $primary;
+          margin-left: 4px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .card-content-text-event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $text;
+
+    .card-content-text-event-text-span {
+      font-size: 11px;
+      color: $text;
+
+      a {
+        color: $primary;
+      }
+    }
+  }
+
+  .card-content-right-event {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 4px;
+    background: $primary;
+    position: relative;
+
+    svg {
+      position: absolute;
+      width: 12px;
+      font-weight: bold;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      path {
+        fill: $secondary;
+      }
+    }
+  }
+}
+
+// dropdown account
+.accounts_dropdown_txs_menu {
+  width: 220px !important;
+  padding: 10px;
+  .ant-dropdown-menu-item {
+    border: none !important;
+    a {
+      color: $text;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      sup {
+        margin-left: 4px;
+        color: $secondary;
+        background: $text;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+
+      svg {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px !important;
+
+        path {
+          fill: $text;
+        }
+      }
+
+      &:hover {
+        color: $primary;
+
+        svg {
+          width: 12px;
+          height: 12px;
+          margin-right: 4px !important;
+
+          path {
+            fill: $primary;
+          }
+        }
+      }
+    }
+
+    input {
+      box-shadow: 0 0 25px rgb(130 71 229 / 10%);
+      border-color: rgba(130, 71, 229, 0.5);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import 'assets/css/variables.scss';
+
+.token-card-trades {
+  .card-content {
+    .card-content-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      @include media-down(sm) {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .text {
+        font-weight: 500;
+      }
+
+      .base_pagination {
+        width: auto;
+      }
+    }
+  }
+}

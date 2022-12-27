@@ -1,0 +1,80 @@
+@import 'assets/css/variables.scss';
+
+.token-heading {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+
+  margin-top: 16px;
+  padding-bottom: 8px;
+
+  @include media-up(lg) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .heading-left {
+    display: flex;
+    flex-direction: column;
+
+    .token {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 31px;
+
+      .token-image {
+        width: 24px;
+        height: 24px;
+      }
+
+      .token-symbol {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: normal;
+      }
+
+      .token-name {
+        font-size: 16px;
+        line-height: normal;
+      }
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+
+      > div {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: normal;
+
+        border-radius: 4px;
+        padding: 4px 16px;
+        background-color: $tertiary;
+      }
+    }
+  }
+
+  .heading-right {
+    display: flex;
+    row-gap: 8px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+
+    > a {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: normal;
+      text-align: center;
+      color: var(--text);
+
+      min-width: 100px;
+      border-radius: 4px;
+      padding: 4px 16px;
+      background-color: $tertiary;
+    }
+  }
+}

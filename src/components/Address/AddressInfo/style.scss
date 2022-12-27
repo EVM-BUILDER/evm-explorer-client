@@ -1,0 +1,87 @@
+@import 'assets/css/variables.scss';
+
+.card_address_info {
+  height: 100%;
+  .card_address_info_item {
+    font-size: 14px;
+    line-height: normal;
+    padding: 7px 0;
+    border-bottom: 1px solid $text;
+
+    @include media-up(md) {
+      font-size: 16px;
+      padding: 16px 0;
+    }
+
+    .text-small {
+      font-size: 12px;
+
+      @include media-up(md) {
+        font-size: 16px;
+      }
+    }
+
+    .title {
+      font-weight: 500;
+    }
+
+    .content {
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .contract-creator {
+      display: flex;
+      align-items: center;
+      a:last-child {
+        max-width: 200px;
+        display: inline-block;
+        vertical-align: bottom;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        &.valid {
+          max-width: 60px;
+        }
+      }
+    }
+
+    .token-tracker {
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .card_address_info_item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .card_address_info_item:first-child {
+    padding-top: 0;
+  }
+
+  .right-node-address {
+    font-size: 12px;
+    font-weight: 500;
+
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    > a:last-child {
+      min-width: 80px;
+      padding: 2px 6px;
+      background-color: $primary;
+      border-radius: 4px;
+      text-align: center;
+
+      > a {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import 'assets/css/variables.scss';
+
+.token-card-holders {
+  .card-content {
+    .card-content-header {
+      display: flex;
+      flex-direction: column;
+
+      .content-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        row-gap: 10px;
+        margin-bottom: 16px;
+
+        @include media-down(md) {
+          margin-bottom: 10px;
+          justify-content: flex-start;
+        }
+
+        @media screen and (max-width: 320px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        a {
+          min-width: 165px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+
+          padding: 4px 8px;
+          background-color: $tertiary;
+          border-radius: 4px;
+
+          @include media-down(md) {
+            margin-right: 8px;
+          }
+        }
+
+        span {
+          font-weight: 500;
+
+          @include media-down(sm) {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .content-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        @include media-down(sm) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        span {
+          font-size: 16px;
+        }
+
+        .base_pagination {
+          @include media-up(md) {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .card-content-table {
+      .data-percentage {
+        max-width: 130px;
+        display: flex;
+        flex-direction: column;
+
+        .ant-progress-success-bg,
+        .ant-progress-bg {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+}

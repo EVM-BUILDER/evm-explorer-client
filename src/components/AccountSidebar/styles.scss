@@ -1,0 +1,124 @@
+@import 'assets/css/variables.scss';
+
+.sidebar-wrapper {
+    width: 300px;
+
+    .toogle-menu-wrapper {
+        text-align: right;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+
+        .show-account-menu {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+    }
+
+    .sidebar-inner {
+        padding: 32px 38px 25px;
+        border: 0.5px solid var(--secondary);
+        border-radius: 12px;
+        background-color: var(--white);
+    }
+
+    @include media-down(lg) {
+        width: 100%;
+
+        .toogle-menu-wrapper {
+            opacity: 1;
+            visibility: visible;
+            margin-bottom: 10px;
+            height: auto;
+        }
+
+        .sidebar-inner {
+            padding: 0 20px;
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            transition: all .3s;
+
+            &.show-menu {
+                padding: 32px 20px 25px;
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    @include media-down(sm) {
+        .sidebar-inner {
+            padding: 0 15px;
+
+            &.show-menu {
+                padding: 25px 15px 20px;
+            }
+        }
+    }
+
+    .group-menu {
+        margin-bottom: 32px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .group-title {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 26px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .menu-list {
+            margin: 0;
+            padding: 0;
+
+            .menu-item {
+                margin: 0 0 8px;
+                padding: 0;
+
+                &:hover,
+                &.active {
+                    a {
+                        background: #EEEEEE;
+                        color: var(--primary);
+                        font-weight: 700;
+                    }
+                }
+
+                a {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 21px;
+                    display: block;
+                    padding: 8px 10px 8px 16px;
+                    border-radius: 4px;
+                    transition: all .3s;
+                    color: var(--text);
+
+                    .menu-icon {
+                        display: inline-block;
+                        margin-right: 18px;
+                        max-height: 22px;
+                        max-width: 22px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

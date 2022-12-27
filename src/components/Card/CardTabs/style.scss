@@ -1,0 +1,81 @@
+.card-tabs.ant-tabs {
+  width: 100%;
+  border: 1px solid #c1c1c1;
+  border-radius: 12px;
+  overflow: hidden;
+
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+
+  & > .ant-tabs-nav {
+    padding: 14px 24px;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    @include media-down(sm) {
+      padding: 10px 12px;
+    }
+
+    .ant-tabs-nav-wrap {
+      &::after {
+        display: none;
+      }
+    }
+
+    .ant-tabs-nav-list {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .ant-tabs-tab {
+      padding: 0;
+      min-height: 26px;
+      margin: 0 32px 0 0;
+      @include media-down(sm) {
+        min-height: 30px;
+        margin: 0 24px 0 0;
+      }
+    }
+    .ant-tabs-extra-content {
+      display: inline-flex;
+      min-height: 26px;
+      @include media-down(sm) {
+        min-height: 30px;
+      }
+    }
+
+    // left
+    .ant-tabs-tab .ant-tabs-tab-btn {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21px;
+      @include media-down(sm) {
+        font-size: 14px;
+      }
+      &:hover {
+        color: var(--primary);
+      }
+    }
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: var(--primary);
+      // font-weight: 400;
+    }
+
+    .ant-tabs-nav-operations {
+      display: none;
+    }
+  }
+
+  & > .ant-tabs-nav::before {
+    border-bottom: 1px solid #c1c1c1;
+  }
+
+  .card-tabs-content {
+    padding: 16px 24px;
+    @include media-down(sm) {
+      padding: 12px;
+    }
+  }
+}

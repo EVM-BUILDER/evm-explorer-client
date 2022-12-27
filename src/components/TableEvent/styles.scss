@@ -1,0 +1,66 @@
+@import 'assets/css/variables.scss';
+
+.data-txnHash-event {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    max-width: 171px;
+    display: inline-block;
+    vertical-align: bottom;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $primary;
+  }
+
+  .data-txtHash-div {
+    .data-txtHash-div-a {
+      margin-right: 4px;
+    }
+    a:last-child {
+      color: $text;
+    }
+  }
+  span:last-child {
+    span {
+      color: $text-span;
+      background-color: $background-color-badge;
+      font-size: 10px;
+      padding: 4px 8px;
+      margin-top: 4px;
+    }
+  }
+}
+.data-method-event {
+  .data-method-event-hash {
+    display: block;
+    padding: 4px 8px;
+    background: $background-span;
+    border-radius: 8px;
+    font-size: 11px;
+  }
+  .data-method-event-string {
+    display: grid;
+  }
+}
+.data-logs-event {
+  color: $black-color;
+  .text-success {
+    color: $green-stick;
+  }
+  .text-danger {
+    color: $red;
+    margin: 0 4px;
+  }
+  .data-logs-event-lastChild {
+    color: $text;
+    a {
+      color: $text;
+      margin: 0 4px;
+    }
+    table {
+      margin-top: 4px;
+    }
+  }
+}

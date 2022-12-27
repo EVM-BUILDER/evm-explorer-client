@@ -1,0 +1,15 @@
+/////////////////////// input
+
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:focus,
+.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input-focused {
+  box-shadow: unset !important;
+}
+
+//////////////////// btn
+.ant-btn:hover,
+.ant-btn:focus {
+  color: var(--text);
+  border-color: var(--border-color);
+}

@@ -1,0 +1,101 @@
+.pagination-wrapper {
+  display: flex;
+  width: 100%;
+
+  .show-record {
+    width: 210px;
+    font-size: 14px;
+    line-height: 26px;
+
+    span.show {
+      margin-right: 24px;
+    }
+
+    span.records {
+      margin-left: 24px;
+    }
+
+    .ant-select-single .ant-select-selector {
+      border-color: var(--tertiary);
+      height: 26px;
+    }
+
+    .ant-select-single .ant-select-selection-item {
+      line-height: 24px;
+    }
+  }
+
+  .pagination {
+    width: 100%;
+    justify-content: end;
+    display: flex;
+
+    &.have-show-records {
+      width: calc(100% - 210px);
+    }
+
+    div,
+    button {
+      background-color: #eeeeee;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      height: 26px;
+      font-size: 14px;
+      line-height: 18px;
+      color: var(--text);
+      padding: 4px 10px;
+    }
+
+    .first {
+      width: 46px;
+      cursor: pointer;
+    }
+
+    .previous {
+      width: 26px;
+      margin: 0 8px;
+      cursor: pointer;
+    }
+
+    .number {
+      width: auto;
+    }
+
+    .next {
+      width: 26px;
+      margin: 0 8px;
+      cursor: pointer;
+    }
+
+    .last {
+      width: 46px;
+      cursor: pointer;
+    }
+  }
+
+  @include media-down(md) {
+    display: block;
+
+    .show-record {
+      text-align: left;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .pagination {
+      justify-content: left;
+
+      &.have-show-records {
+        width: 100%;
+      }
+
+      div,
+      button {
+        padding: 4px 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  height: 26px;
+
+  button {
+    cursor: pointer;
+    border: none;
+  }
+
+  div {
+    background-color: #eeeeee;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .first {
+    width: 46px;
+  }
+
+  .previous {
+    width: 26px;
+    margin: 0 8px;
+  }
+
+  .number {
+    width: 122px;
+  }
+
+  .next {
+    width: 26px;
+    margin: 0 8px;
+  }
+
+  .last {
+    width: 46px;
+  }
+}

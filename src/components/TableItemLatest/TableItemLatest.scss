@@ -1,0 +1,194 @@
+@import 'assets/css/variables.scss';
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+
+  @include media-up(sm) {
+    flex-wrap: nowrap;
+  }
+
+  @include media-down(sm) {
+    display: block !important;
+  }
+
+  .col-sm-4 {
+    // display: none;
+    @include media-up(sm) {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
+    }
+
+    max-width: 100%;
+
+    .col-sm-4-content {
+      margin-right: 20px;
+      display: flex;
+
+      .display-none {
+        // margin-right: 4px;
+        display: flex;
+
+        .non-outside {
+          position: relative;
+          font-size: 0.875rem;
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          color: var(--text);
+          background: var(--background-color-badge);
+          border-color: transparent;
+          border-radius: 4px;
+          display: none;
+
+          @include media-up(sm) {
+            display: block;
+          }
+
+          .non-inside {
+            position: absolute;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--black-color);
+          }
+        }
+      }
+
+      .display-block {
+        flex: 1;
+
+        display: flex;
+
+        @include media-up(sm) {
+          display: block;
+        }
+
+        .col-sm-4-content-block {
+          display: block;
+          color: var(--black-color);
+
+          @include media-up(sm) {
+            display: none;
+          }
+        }
+
+        a {
+          color: var(--primary);
+          margin-left: 18px;
+        }
+
+        .block-small {
+          font-size: 11.2px;
+          line-height: 2;
+          margin: 0 0 0 18px;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+      }
+    }
+  }
+
+  .col-sm-8 {
+    @include media-up(sm) {
+      display: flex;
+      justify-content: space-between;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+      white-space: nowrap;
+    }
+
+    .content {
+      background: none;
+
+      // display: flex;
+      .show-content {
+        span {
+          display: flex;
+          white-space: nowrap;
+
+          &:first-child {
+            color: var(--black-color);
+          }
+        }
+
+        .content-hasktag {
+          margin-left: 4px;
+          color: var(--primary);
+          max-width: 171px;
+          display: inline-block;
+          vertical-align: bottom;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          @include media-down(sm) {
+            max-width: 100%;
+          }
+        }
+
+        a {
+          color: var(--primary);
+        }
+
+        div {
+          display: flex;
+
+          span {
+            color: var(--text);
+            font-size: 11px;
+            line-height: 2;
+            margin-left: 4px;
+          }
+
+          .show-content-hide {
+            display: inline-block;
+
+            @include media-up(sm) {
+              display: none;
+            }
+
+            .content-text {
+              position: relative;
+              margin: 1px;
+              overflow: hidden;
+              color: var(--text);
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 18px;
+              background: var(--tertiary);
+              padding: 3px 20px;
+              border-radius: 4px;
+
+              @include media-down(sm) {
+                margin-left: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .hide-content {
+      display: none;
+
+      @include media-up(sm) {
+        display: inline-block;
+      }
+
+      .content-text {
+        position: relative;
+        margin: 1px;
+        overflow: hidden;
+        color: var(--text);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        background: var(--tertiary);
+        padding: 3px 20px;
+        border-radius: 4px;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import 'assets/css/variables.scss';
+
+.table-txs-body {
+  padding: 10px;
+  position: relative;
+  overflow: visible;
+
+  @include media-down(md) {
+    padding: 6px;
+  }
+
+  .table-body-left {
+    padding: 10px;
+    max-width: 100%;
+    position: relative;
+    outline: none;
+
+    height: 100%;
+    max-height: 530px;
+    min-height: 530px;
+    overflow: hidden auto;
+
+    @include media-down(md) {
+      max-height: 400px;
+      min-height: 400px;
+    }
+
+    .table-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card-body {
+      .row:last-child {
+        border-bottom: none;
+      }
+
+      .card-body-outside {
+        overflow: hidden;
+        width: auto;
+        height: auto;
+        position: relative;
+        top: 0px;
+        left: 0px;
+      }
+    }
+  }
+}

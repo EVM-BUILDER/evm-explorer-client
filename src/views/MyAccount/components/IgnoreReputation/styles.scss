@@ -1,0 +1,71 @@
+.ignore_reputation {
+    &_title {
+        display: flex;
+        justify-content: space-between;
+
+        .btn_add {
+            width: 100px;
+            padding: 0 24px;
+            color: #ffffff;
+
+            font-size: 16px;
+            font-weight: 700;
+            background-color: #418143;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+            img {
+                width: 16px;
+            }
+        }
+    }
+    p {
+        margin-left: 0px !important;
+    }
+    &_content {
+        &_top {
+            // margin-bottom: 24px;
+
+            &_username {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 24px;
+                p {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+                .btn_upgrade {
+                    color: #ffffff;
+                    font-size: 16px;
+                    font-weight: 700;
+                    background-color: #418143;
+                    border-radius: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border: none;
+                    img {
+                        width: 16px;
+                    }
+                }
+                .ant-checkbox-checked .ant-checkbox-inner {
+                    background-color: #418143;
+                    border-color: #418143;
+                    border-radius: 6px;
+                    width: 20px;
+                }
+                span.ant-checkbox-inner {
+                    border-color: #418143;
+                }
+                .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+                .ant-checkbox:hover .ant-checkbox-inner,
+                .ant-checkbox-input:focus + .ant-checkbox-inner {
+                    border-color: #418143;
+                }
+            }
+        }
+    }
+}

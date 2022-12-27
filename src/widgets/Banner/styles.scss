@@ -1,0 +1,9 @@
+@import 'assets/css/variables.scss';
+
+.banner-container {
+  position: relative;
+
+  .qr-code {
+    max-width: 460px;
+  }
+}

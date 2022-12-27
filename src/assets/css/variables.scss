@@ -1,0 +1,53 @@
+@import './mixins/class';
+@import './mixins/mixins';
+@import './mixins/breakpoints';
+
+$MENU-HEIGHT: 54px;
+
+$red: #de4437;
+$green: green;
+$orange: #b47d00;
+$orange-bg: #db9a0433;
+$green-stick: #00c9a7;
+$border-color: #c9c9c9;
+$border-table-color: #3c3a3a;
+$border-color-hover: #414768;
+$border-color-footer: 0.2px solid #e7eaf324;
+$border-dark: #1e004f;
+$primary: #418143;
+$primary-bg-hover: #651fda;
+$primary-border-hover: #601dcf;
+$secondary: #fff;
+$tertiary: #eeeeee;
+
+$text: #3c3a3a;
+$text-header: #4a4f55;
+$text-span: #77838f;
+
+$background-color: #3c3a3a;
+$background-wrapper: #f8f9fa;
+$background-color-dark: rgba(47, 50, 65, 0.5);
+$background-button-dard: rgba(119, 131, 143, 0.1);
+$background-card: #1e1f25;
+$background-color-badge: rgba(119, 131, 143, 0.1);
+$background-color-padding: rgba(130, 71, 229, 0.1);
+$background-color-padding-light: #3498db1a;
+$background-rgba: rgba(248, 249, 250, 0.4);
+$background-span: #77838f1a;
+$background-slogan: #77838f0d;
+$background-button-dark: hsla(0, 0%, 100%, 0.2);
+$background-item: rgba(52, 152, 219, 0.1);
+$background-item-hover: #3498db;
+
+$white-color: white;
+$black-color: #1e2022;
+$color-header-fill: rgba(93, 101, 136, 1);
+$color-padding: #3498db;
+$success: #31d0aa;
+$failure: #ed4b9e;
+$warning: #ff4d4f;
+
+$color-shadow: rgba(189, 197, 209, 20%);
+$color-shadow2: 0 4px 11px rgba(248, 249, 250, 35%);
+$color-shadow-account: 0 4px 11px rgba(130, 71, 229, 35%);
+$color-shadow-header-li: 0 8px 20px rgba(130, 71, 229, 8%);

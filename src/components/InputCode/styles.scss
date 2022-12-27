@@ -1,0 +1,41 @@
+@import 'assets/css/variables.scss';
+
+.input-code-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  input {
+    color: $secondary;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+
+    flex: 1 1 auto;
+    width: 100%;
+    height: 71px;
+    text-align: center;
+    background: $background-color-dark;
+    border: 1px solid $border-dark;
+    border-radius: 5px;
+
+    &:valid {
+      outline: unset;
+    }
+    &:focus,
+    &:hover {
+      border: 1px solid $border-color-hover;
+      outline: unset;
+    }
+
+    &:not(:first-child) {
+      margin-left: 8px;
+      @include media-up(sm) {
+        margin-left: 20px;
+      }
+    }
+
+    &.error {
+      border: 1px solid $warning;
+    }
+  }
+}

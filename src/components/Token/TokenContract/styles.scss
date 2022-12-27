@@ -1,0 +1,80 @@
+@import 'assets/css/variables.scss';
+
+.card_token_contract {
+  height: 100%;
+
+  .card_token_contract_item {
+    font-size: 14px;
+    line-height: normal;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+
+    @include media-up(md) {
+      font-size: 16px;
+      padding: 16px 0;
+    }
+
+    .content-desc {
+      display: flex;
+      .icon {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .content-desc.truncate {
+      display: block;
+      max-width: 360px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .content-desc.link {
+      & > a {
+        color: $primary;
+        display: flex;
+        align-items: center;
+        > span {
+          margin-left: 6px;
+        }
+      }
+    }
+    .content-desc.socials {
+      & > a {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .card_token_contract_item:first-child {
+    padding-top: 0;
+  }
+
+  .card_token_contract_item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .right-node-contract {
+    font-size: 12px;
+    font-weight: 500;
+
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    > a:last-child {
+      min-width: 80px;
+      padding: 2px 6px;
+      background-color: var(--primary);
+      border-radius: 4px;
+      text-align: center;
+
+      > a {
+        color: #fff;
+      }
+    }
+  }
+}

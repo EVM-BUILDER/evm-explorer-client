@@ -1,0 +1,60 @@
+.password {
+  .item {
+    display: flex;
+    align-items: center;
+    &.left {
+      img {
+        width: 18px;
+        margin-right: 8px;
+      }
+    }
+  }
+  &_content {
+    &_top {
+      margin-bottom: 24px;
+
+      &_username {
+        border-bottom: 1px solid var(--border-color);
+        padding: 24px 0px;
+        span {
+          font-size: 16px;
+        }
+        input {
+          color: var(--text);
+          font-weight: 700;
+          border: 1px solid var(--border-color);
+          border-radius: 4px;
+        }
+      }
+    }
+    &_bottom {
+      display: flex;
+      justify-content: flex-end !important;
+      .flex-end {
+        display: flex;
+        .btn_cancel {
+          border-radius: 4px;
+          border: none;
+          &:hover {
+            color: #3c3a3a;
+            background-color: #eeeeee;
+          }
+        }
+        .btn_save {
+          // width: 100px;
+          padding: 8px 10px;
+          color: #ffffff;
+
+          font-size: 16px;
+          font-weight: 700;
+          background-color: #418143;
+          border-radius: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border: none;
+        }
+      }
+    }
+  }
+}

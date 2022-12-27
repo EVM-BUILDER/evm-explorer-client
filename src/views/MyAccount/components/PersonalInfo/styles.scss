@@ -1,0 +1,41 @@
+.personal_info {
+  &_content {
+    margin: 0px 24px;
+
+    &_username {
+      padding: 24px 0px;
+      border-bottom: 1px solid var(--border-color);
+      .ant-row {
+        img {
+          width: 21px;
+          margin-right: 8px;
+        }
+        span,
+        h3 {
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      .btn_overview {
+        background-color: #eeeeee;
+        border-radius: 4px;
+        width: 100px;
+        line-height: 15.56px;
+        border: none;
+        span {
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        &:hover {
+          border: none;
+          color: #3c3a3a;
+        }
+      }
+    }
+  }
+}

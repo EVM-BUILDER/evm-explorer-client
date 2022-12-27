@@ -1,0 +1,69 @@
+@import 'assets/css/variables.scss';
+
+.UserSetting {
+  .ant-checkbox-wrapper {
+    align-items: flex-start;
+
+    .ant-checkbox {
+      .ant-checkbox-input {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: var(--primary);
+          border-color: var(--primary);
+        }
+      }
+    }
+  }
+
+  .block-content {
+    p {
+      margin-bottom: 10px;
+    }
+
+    .info-item {
+      .confirm-delete {
+        padding-left: 20px;
+
+        @include media-down(sm) {
+          padding-left: 0;
+        }
+      }
+
+      .ant-input {
+        border-radius: 4px;
+        border: 1px solid var(--secondary);
+        line-height: 28px;
+        padding: 0 16px;
+      }
+
+      .ant-btn {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+        color: var(--text);
+        height: auto;
+        border-radius: 4px;
+        padding: 8px 10px;
+        border: none;
+      }
+
+      .btn-cancel {
+        background-color: transparent;
+      }
+
+      .btn-save {
+        color: var(--white);
+        background-color: var(--primary);
+      }
+
+      .btn-delete {
+        color: var(--white);
+        background-color: #da2419;
+      }
+    }
+  }
+}
