@@ -12,3 +12,16 @@ export const verifyContractSuccess = (params, data, error) => ({
   data,
   error,
 })
+
+export const GET_CONTRACTS_VERIFIED_START = 'GET_CONTRACTS_VERIFIED_START'
+export const GET_CONTRACTS_VERIFIED_SUCCESS = 'GET_CONTRACTS_VERIFIED_SUCCESS'
+
+export const getListContractsVerified = (params) => ({
+  type: GET_CONTRACTS_VERIFIED_START,
+  params,
+})
+
+export const getListContractsVerifiedSuccess = (data) => ({
+  type: GET_CONTRACTS_VERIFIED_SUCCESS,
+  data,
+})

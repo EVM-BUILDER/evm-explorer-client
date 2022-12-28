@@ -1,6 +1,6 @@
 @import 'assets/css/variables.scss';
 
-.txs-wrapper {
+.contracts-verified-wrapper {
   width: 100%;
   padding-bottom: 55px;
   min-height: calc(100vh - 150px - var(--menu-height));
@@ -11,7 +11,7 @@
     padding-bottom: 40px;
   }
 
-  .txs-heading {
+  .contracts-verified-heading {
     padding: 16px 0 8px;
     display: flex;
     align-items: center;
@@ -19,6 +19,11 @@
     flex-wrap: wrap;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 16px;
+
+    .small {
+      font-size: 80%;
+      font-weight: 400;
+    }
 
     h1 {
       color: var(--text);
@@ -48,14 +53,31 @@
     }
   }
 
-  .txs-desc {
+  .contracts-verified-desc {
     font-weight: 700;
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 24px;
   }
 
-  .txs-bottom {
+  .data-token {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 16px;
+      margin-right: 4px;
+    }
+
+    &>span {
+      max-width: 90px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  .contracts-verified-bottom {
     max-width: 100%;
     background: var(--white);
     background-clip: border-box;
@@ -63,7 +85,39 @@
     border-radius: 12px;
     overflow: hidden;
 
-    .txs-card {
+    .fiter-contracts {
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+
+      .ant-space {
+        .ant-space-item {
+          &:first-child {
+            padding-right: 5px;
+            border-right: 1px solid var(--border-color);
+          }
+        }
+      }
+
+      &::after {
+        content: "";
+        border-bottom: 1px solid var(--border-color);
+        width: calc(100% + 40px);
+        position: absolute;
+        bottom: 0;
+        left: -20px
+      }
+
+      .ant-space-horizontal {
+        padding: 5px 10px;
+        font-size: 12px;
+        color: var(--text);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+      }
+    }
+
+    .contracts-verified-card {
       padding: 20px;
 
       @include media-down(md) {
@@ -73,7 +127,7 @@
       .card-body-header {
         margin-bottom: 20px;
 
-        .txs-info {
+        .contracts-verified-info {
           font-weight: 500;
         }
 
@@ -142,6 +196,22 @@
             }
           }
 
+          .data-setting {
+            .anticon {
+              background: rgba(119, 131, 143, .1);
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              line-height: 20px;
+              margin-right: 10px;
+              color: #77838f;
+
+              svg {
+                vertical-align: middle;
+              }
+            }
+          }
+
           .data-block {
             color: var(--primary);
           }
@@ -152,7 +222,7 @@
           }
 
           .data-method {
-            font-weight: 400;
+            font-weight: 500;
             font-size: 14px;
             line-height: 18px;
             text-align: center;
