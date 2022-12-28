@@ -1,6 +1,6 @@
-import Input from 'components/Input'
 import React from 'react'
 import styled from 'styled-components'
+import { InputText } from 'components/Input'
 
 const FormItemStyled = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const FormItem = ({ name, label, rightLabel, ...props }) => {
           {rightLabel && <div className="form_item_label_right">{rightLabel}</div>}
         </div>
       )}
-      <Input type="text" id={name} name={label} {...props} />
+      <InputText type="text" id={name} name={label} {...props} />
     </FormItemStyled>
   )
 }
