@@ -6,6 +6,7 @@ const withFonts = require('next-fonts')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 
 const ENV = process.env.APP_ENV || 'local'
+const ROOT_API = process.env.ROOT_API
 const dotEnvResult = require('dotenv').config({ path: `./bin/${ENV}.env` })
 if (dotEnvResult.error) {
   console.error(dotEnvResult.error)
@@ -45,7 +46,7 @@ const nextConfig = {
     ]
   },
   webpack5: false,
-  publicRuntimeConfig: Object.assign(dotEnvResult.parsed || {}, { ENV }),
+  publicRuntimeConfig: Object.assign(dotEnvResult.parsed || {}, { ENV, ROOT_API }),
 }
 
 // fix: prevents error when .css files are required by node
