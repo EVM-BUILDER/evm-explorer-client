@@ -192,11 +192,11 @@
       "child": [
         {
           "title": "PN20 Top Tokens",
-          "url": "/PN20token"
+          "url": "/tokens"
         },
         {
           "title": "View PN20 Transfers",
-          "url": "/PN20token-transfers",
+          "url": "/tokens-transfers",
           "showBorder": true
         },
         {

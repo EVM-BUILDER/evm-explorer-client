@@ -35,7 +35,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
       render: (text) => <div className="data-method">{text}</div>,
     },
     {
-      title: <p style={{ color: '#418143' }}>Age</p>,
+      title: <p>Age</p>,
       dataIndex: 'ti',
       render: (ti) => (
         <div className="data-age">

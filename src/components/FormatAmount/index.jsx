@@ -1,5 +1,5 @@
 import CurrencyFormat from 'react-currency-format'
-import { isNumber } from 'library/helpers/Number'
+import { isNumber, withNoExponents } from 'library/helpers/Number'
 
 const FormatAmount = ({ value, nullValue, prefix, suffix, ...props }) => {
   if (!isNumber(value)) {
@@ -12,6 +12,14 @@ const FormatAmount = ({ value, nullValue, prefix, suffix, ...props }) => {
     )
   }
 
+  if (value < 1)
+    return (
+      <>
+        {prefix}
+        {withNoExponents(value)}
+        {suffix}
+      </>
+    )
   return (
     <CurrencyFormat
       value={value}

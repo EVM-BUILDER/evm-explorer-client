@@ -32,11 +32,11 @@ const config = () => [
     items: [
       {
         label: 'PN20 Top Tokens',
-        href: '/PN20token',
+        href: '/tokens',
       },
       {
         label: 'View PN20 Transfers',
-        href: '/PN20token-transfers',
+        href: '/tokens-transfers',
         showBorder: true,
       },
       {

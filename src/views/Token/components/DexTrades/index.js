@@ -1,9 +1,4 @@
 import React from 'react'
-import { Table } from 'antd'
-import { DownloadOutlined, PieChartFilled } from '@ant-design/icons'
-import Link from 'components/Link/Link'
-import Pagination from 'components/Table/Pagination'
-import TableBase from 'components/Table/TableBase'
 
 const columns = [
   {
@@ -12,7 +7,7 @@ const columns = [
     render: (text) => <></>,
   },
   {
-    title: <p style={{ color: '#418143' }}>Age</p>,
+    title: <p>Age</p>,
     dataIndex: 'age',
     render: () => <></>,
   },

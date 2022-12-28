@@ -56,7 +56,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
                   </Col>
                   <Col xs={24} xl={24} className="content-subtitle">
                     <span>${tokenPrice ? tokenPrice.toFixed(2) : '--'}</span>
-                    <span>{withNativePriceUsd.newPrice ? ` @ ${withNativePriceUsd.newPrice} ${chain.chain.symbol} ` : ''}</span>
+                    <span>{withNativePriceUsd.newPrice ? ` @ ${withNativePriceUsd.newPrice} ${chain.native.symbol} ` : ''}</span>
                     {withNativePriceUsd.perChange && <span>({withNativePriceUsd.perChange}%)</span>}
                   </Col>
                 </Row>

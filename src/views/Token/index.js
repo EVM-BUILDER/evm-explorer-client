@@ -72,7 +72,6 @@ const TokenPage = () => {
   const { addressDetail } = useAddressDetail(token)
   const { txsErc20, paramsTxsErc20, setParamsTxsErc20 } = useFetchTxsErc20(token)
 
-  console.log('addressDetail', addressDetail)
   // console.log('statistics', statistics)
   // console.log('addressDetail', addressDetail)
 
