@@ -2,7 +2,7 @@ import { all, takeLatest, put, call } from 'redux-saga/effects'
 import fetchHelper from 'library/helpers/FetchHelper'
 import * as qs from 'query-string'
 import * as actions from './actions'
-import { ROOT_API_URL } from 'config/constants'
+import siteConfig from 'config/site.config'
 
 /* Get holder by token */
 function verifyContractFromApi(payload) {
@@ -12,7 +12,7 @@ function verifyContractFromApi(payload) {
   formData.append('sources', payload.sources)
   fetchHelper.removeDefaultHeader('Content-Type')
   const response = fetchHelper
-    .fetch(`${ROOT_API_URL}/auth/contract/submit`, {
+    .fetch(`${siteConfig.apiUrl}/auth/contract/submit`, {
       method: 'POST',
       body: formData,
     })
@@ -44,9 +44,9 @@ function* verifyContract({ params, cbs, cbe }) {
 
 function getListContractsVerifiedFromApi(params) {
   const str = qs.stringify(params || {})
-
+  console.log(`${siteConfig.apiUrl}/contract/verified?${str}`)
   return fetchHelper
-    .fetch(`${ROOT_API_URL}/block?${str}`, {
+    .fetch(`${siteConfig.apiUrl}/contract/verified?${str}`, {
       method: 'GET',
     })
     .then(([data, status]) => {

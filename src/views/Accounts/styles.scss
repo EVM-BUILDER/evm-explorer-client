@@ -1,6 +1,6 @@
 @import 'assets/css/variables.scss';
 
-.Accounts {
+.accounts-wrapper {
   width: 100%;
   min-height: calc(100vh - 150px - $MENU-HEIGHT);
   position: relative;
@@ -68,7 +68,6 @@
         }
 
         .card-body-center {
-          overflow: auto;
 
           &::-webkit-scrollbar-track {
             border-radius: 10px;
@@ -96,7 +95,6 @@
 
           .ant-table-thead {
             .ant-table-cell {
-              font-weight: 500;
               padding: 16px 10px;
               border-bottom: 1px solid var(--border-color);
               white-space: nowrap;

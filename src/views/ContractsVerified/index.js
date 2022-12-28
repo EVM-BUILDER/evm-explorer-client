@@ -79,12 +79,12 @@ const ContractsVerifiedModule = () => {
   const columns = [
     {
       title: 'Address',
-      dataIndex: 'h',
+      dataIndex: 'a',
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
           <img src="/images/icon/eye.svg" alt="" />
-          <Link href={`/tx/${text}`}>{formatCode(text, 13, 0)}</Link>
+          <Link href={`/address/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),
     },
@@ -96,13 +96,13 @@ const ContractsVerifiedModule = () => {
     },
     {
       title: 'Compiler',
-      dataIndex: 'co',
+      dataIndex: 'com',
       with: 150,
       render: (text) => text || '-',
     },
     {
       title: 'Version',
-      dataIndex: 'vs',
+      dataIndex: 'ver',
       with: 100,
       render: (text) => text || '-',
     },
@@ -112,10 +112,10 @@ const ContractsVerifiedModule = () => {
       with: 180,
       render: (v) => (
         <div className="data-value">
-          {(v / 1e18).toLocaleString('en-GB', {
+          {v ? (v / 1e18).toLocaleString('en-GB', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 5,
-          }) || 0}
+          }) : '-'}
         </div>
       ),
     },
@@ -141,7 +141,7 @@ const ContractsVerifiedModule = () => {
     },
     {
       title: 'Verified',
-      dataIndex: 'vf',
+      dataIndex: 'time',
       with: 120,
       render: (text) => text || '-',
     },

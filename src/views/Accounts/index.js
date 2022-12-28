@@ -88,7 +88,7 @@ const AccountModule = () => {
   ]
 
   return (
-    <div className="Accounts">
+    <div className="accounts-wrapper">
       <div className="container">
         <div className="account__heading">
           <h1>Top Accounts by {settings?.chain?.native?.symbol || ''} Balance</h1>
