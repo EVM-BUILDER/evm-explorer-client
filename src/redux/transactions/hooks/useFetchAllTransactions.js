@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListTransactions } from '../actions'
 
-function useFetchAllTxs(page, page_size) {
+function useFetchAllTransactions(page, page_size) {
   const dispatch = useDispatch()
   const { transactions, page: rPage, total, rPage_size } = useSelector((state) => state.Transactions)
 
@@ -10,7 +10,7 @@ function useFetchAllTxs(page, page_size) {
     page: page || 1,
     page_size: page_size || 10,
     a: '',
-    bn: '',
+    block_number: '',
   })
 
   const fetchAllTxs = useCallback(() => {
@@ -29,4 +29,4 @@ function useFetchAllTxs(page, page_size) {
   }
 }
 
-export default useFetchAllTxs
+export default useFetchAllTransactions

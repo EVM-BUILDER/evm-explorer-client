@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { Button, Checkbox, Row, Col } from 'antd'
+import { useDispatch } from 'react-redux'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import styled from 'styled-components'
 import CardOverview from '../CardOverview'
-import InputOverview from 'components/InputOverview'
-import { useDispatch } from 'react-redux'
 import { TAB_ACCOUNT_LINK } from 'views/MyAccount/accountConfig'
+import { InputWrapper, InputPassword } from 'components/Input'
+import { useForm } from 'components/Form/useForm'
 
 const PasswordTitle = styled.div`
   margin-top: 24px;
@@ -14,45 +17,64 @@ const PasswordTitle = styled.div`
 `
 const Password = ({ userInfo, onChangeTab }) => {
   const dispatch = useDispatch()
-  const [errorMess, setErrorMess] = useState('')
-
-  const [oldPassword, setOldPassword] = useState({
-    value: '',
-    message: '',
-  })
-  const [newPassword, setNewPassword] = useState({
-    value: '',
-    message: '',
-  })
-  const [rePassword, setRePassword] = useState({
-    value: '',
-    message: '',
-  })
-
   const [submitSuccessMess, setSubmitSuccessMess] = useState({
     status: null,
     message: '',
   })
 
-  const handleChangePassword = () => {
-    setSubmitSuccessMess({ status: '', message: '' })
+  const { handleSubmit, getInputProps, isSubmitting } = useForm({
+    structure: [
+      {
+        name: 'oldPassword',
+        validate: Yup.string().required('Required'),
+      },
+      {
+        name: 'newPassword',
+        validate: Yup.string()
+          .required('Required')
+          .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, 'Minimum 8 characters, at least 1 UPPER CASE, at least 1 number'),
+      },
+      {
+        name: 'confirmNewPassword',
+        validate: Yup.string()
+          .required('Required')
+          .test({
+            message: 'The two passwords that you entered do not match!',
+            test: function (value) {
+              const password = this.resolve(Yup.ref('newPassword'))
+              if (password && value && value !== password) return false
+              return true
+            },
+          }),
+      },
+      // {
+      //   name: 'agreement',
+      //   validate: Yup.boolean().oneOf([true], translate('must-be-agree')),
+      //   defaultValue: false,
+      // },
+    ],
+    onSubmit: async (values) => {
+      setSubmitSuccessMess({ status: '', message: '' })
+      if (values.newPassword !== values.confirmNewPassword) return
+      dispatch(
+        updateProfile(
+          {
+            oldPassword: values.oldPassword,
+            newPassword: values.newPassword,
+          },
+          () => {
+            dispatch(getProfile())
+            setSubmitSuccessMess({ status: true, message: 'Profile updated successfully' })
+            onChangeTab(TAB_ACCOUNT_LINK.overview)
+          },
+          (error) => {
+            setSubmitSuccessMess({ status: false, message: error?.message || 'Profile updated successfully' })
+          },
+        ),
+      )
+    },
+  })
 
-    if (errorMess) return
-
-    setErrorMess('')
-    // dispatch(
-    //   updateProfile(
-    //     formUser,
-    //     () => {
-    //       dispatch(getProfile())
-    //       setSubmitSuccessMess({ status: true, message: 'Profile updated successfully' })
-    //     },
-    //     (error) => {
-    //       setSubmitSuccessMess({ status: false, message: error?.message || 'Profile updated successfully' })
-    //     },
-    //   ),
-    // )
-  }
   return (
     <CardOverview className="password" title={'Password'} status={submitSuccessMess.status} message={submitSuccessMess.message}>
       <PasswordTitle>Edit the fields below to update your password.</PasswordTitle>
@@ -67,19 +89,9 @@ const Password = ({ userInfo, onChangeTab }) => {
                 </div>
               </Col>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                <InputOverview
-                  value={oldPassword.value}
-                  placeholder={'Password'}
-                  status={oldPassword.message ? 'error' : ''}
-                  onChange={(e) => {
-                    let errorMess = ''
-                    if (!e.target.value) errorMess = 'Please enter your valid email address'
-                    setOldPassword((prev) => ({
-                      ...prev,
-                      value: e.target.value,
-                      message: errorMess,
-                    }))
-                  }}
+                <InputWrapper
+                  inputProps={getInputProps('oldPassword')}
+                  renderInput={(props) => <InputPassword {...props} placeholder={`Old Password`} />}
                 />
               </Col>
             </Row>
@@ -93,19 +105,9 @@ const Password = ({ userInfo, onChangeTab }) => {
                 </div>
               </Col>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                <InputOverview
-                  value={newPassword.value}
-                  placeholder={'Password'}
-                  status={newPassword.message ? 'error' : ''}
-                  onChange={(e) => {
-                    let errorMess = ''
-                    if (!e.target.value) errorMess = 'Please enter your valid email address'
-                    setNewPassword((prev) => ({
-                      ...prev,
-                      value: e.target.value,
-                      message: errorMess,
-                    }))
-                  }}
+                <InputWrapper
+                  inputProps={getInputProps('newPassword')}
+                  renderInput={(props) => <InputPassword {...props} placeholder={`New Password`} />}
                 />
               </Col>
             </Row>
@@ -119,22 +121,9 @@ const Password = ({ userInfo, onChangeTab }) => {
                 </div>
               </Col>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                <InputOverview
-                  value={rePassword.value}
-                  placeholder={'Confirm Password'}
-                  status={rePassword.message ? 'error' : ''}
-                  onChange={(e) => {
-                    let errorMess = ''
-                    if (!e.target.value) errorMess = 'Please enter your valid email address'
-                    else if (newPassword.value !== rePassword.value)
-                      errorMess = 'The two passwords that you entered do not match!'
-
-                    setRePassword((prev) => ({
-                      ...prev,
-                      value: e.target.value,
-                      message: errorMess,
-                    }))
-                  }}
+                <InputWrapper
+                  inputProps={getInputProps('confirmNewPassword')}
+                  renderInput={(props) => <InputPassword {...props} placeholder={`Confirm Password`} />}
                 />
               </Col>
             </Row>
@@ -147,7 +136,7 @@ const Password = ({ userInfo, onChangeTab }) => {
               Cancel
             </Button>
             &ensp;
-            <Button className="btn_save" onClick={handleChangePassword}>
+            <Button className="btn_save" onClick={handleSubmit}>
               Save Changes
             </Button>
           </div>

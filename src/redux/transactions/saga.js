@@ -17,7 +17,6 @@ function getListTransactionFromApi({ params }) {
       }
     })
 }
-
 function* getListTransactionsRequest({ payload }) {
   try {
     const { status, data } = yield call(getListTransactionFromApi, payload)
@@ -41,7 +40,6 @@ function getTransactionDetailFromApi(txHash) {
       }
     })
 }
-
 function* geTransactionDetailRequest({ payload }) {
   try {
     const { status, data } = yield call(getTransactionDetailFromApi, payload?.txHash)
@@ -54,25 +52,10 @@ function* geTransactionDetailRequest({ payload }) {
   }
 }
 
-// txs by address
-
 /* Get holder by token */
-function getTxsByAddressFromApi(payload) {
-  const str = qs.stringify(payload || {})
-  return fetchHelper
-    .fetch(`${siteConfig.apiUrl}/transaction?${str}`, {
-      method: 'GET',
-    })
-    .then(([data, status]) => {
-      return {
-        data,
-        status,
-      }
-    })
-}
 function* getTxsByAddress({ params }) {
   try {
-    const { status, data } = yield call(getTxsByAddressFromApi, params)
+    const { status, data } = yield call(getListTransactionFromApi, params)
     if (status === 200) {
       yield put(actions.getTxsByAddressSuccess(params, data))
     } else {

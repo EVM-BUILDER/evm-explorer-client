@@ -23,14 +23,14 @@ const TransactionsModule = () => {
   const [paramsListBlock, setParamsListBlock] = useState({
     page: query?.page || 1,
     page_size: query?.page_size || DEFAULT_LIMIT,
-    bn: query.block,
+    block_number: query.block,
     a: query.a,
     status_url: true, // for check is handle url done will fetch api
   })
   useEffect(() => {
     setParamsListBlock((prev) => ({
       ...prev,
-      bn: query.block,
+      block_number: query.block,
       a: query.a,
       status_url: '',
     }))
