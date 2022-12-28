@@ -187,10 +187,11 @@ MyApp.getInitialProps = async () => {
   try {
     const response = await getSettings()
     if (response && response?.data?.length > 0) {
-      settings = Object.entries(settings).reduce((memo, [_, item]) => {
+      settings = Object.entries(response.data).reduce((memo, [_, item]) => {
         memo[item.key] = item?.value
         return memo
       }, {})
+      console.log(settings)
     } else {
       settings = defaultSettings
     }
