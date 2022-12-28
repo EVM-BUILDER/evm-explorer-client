@@ -12,7 +12,7 @@ export const isDev = getEnv('ENV') === 'local' || getEnv('ENV') === 'development
 
 // ======================= ENV ===========================
 const siteConfig = {
-  apiUrl: getEnv('ROOT_API'), // 'https://pulsescan-testnet.evmbuilder.com/api/v1'
+  apiUrl: process.env.NEXT_PUBLIC_ROOT_API, // 'https://pscscan-testnet.evmbuilder.com/api/v1'
 }
 
 export default siteConfig

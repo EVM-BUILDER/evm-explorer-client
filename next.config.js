@@ -1,17 +1,19 @@
-const path = require('path')
+// const path = require('path')
 const withPlugins = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')([])
 const withOptimizedImages = require('next-optimized-images')
 const withFonts = require('next-fonts')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 
-const ENV = process.env.APP_ENV || 'local'
-const ROOT_API = process.env.ROOT_API
-const dotEnvResult = require('dotenv').config({ path: `./bin/${ENV}.env` })
-if (dotEnvResult.error) {
-  console.error(dotEnvResult.error)
-  process.exit(1)
+const ENV = process.env.APP_ENV
+if (!ENV) {
+  console.error('Get Env Error')
 }
+// const dotEnvResult = require('dotenv').config({ path: `./bin/${ENV}.env` })
+// if (dotEnvResult.error) {
+//   console.error(dotEnvResult.error)
+//   process.exit(1)
+// }
 
 // next.js custom configuration goes here
 const nextConfig = {
@@ -46,7 +48,8 @@ const nextConfig = {
     ]
   },
   webpack5: false,
-  publicRuntimeConfig: Object.assign(dotEnvResult.parsed || {}, { ENV, ROOT_API }),
+  // publicRuntimeConfig: Object.assign(dotEnvResult.parsed || {}, { ENV }),
+  publicRuntimeConfig: { ENV },
 }
 
 // fix: prevents error when .css files are required by node
