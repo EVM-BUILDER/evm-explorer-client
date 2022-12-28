@@ -14,21 +14,35 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
     const [parentMenuId, setParentMenuId] = useState(null)
     const [currentMenuItem, setCurrentMenuItem] = useState(null)
 
-    useEffect(() => {
-        let newListMenuItems = [...listMenuItems];
+    const generateIDChild = (items, parentMenuId) => {
+        let newListMenuItems = [...items]
         newListMenuItems = newListMenuItems?.map((item) => ({
             ...item,
             id: item?.id || generateUUID(),
+            parentMenuId: parentMenuId,
         }))
-        setListMenu(newListMenuItems);
+        return newListMenuItems;
+    }
+
+    useEffect(() => {
+        let newListMenuItems = [...listMenuItems]
+        newListMenuItems = newListMenuItems?.map((item) => {
+            const itemid = item.id || generateUUID();
+            return ({
+                ...item,
+                id: itemid,
+                child: generateIDChild(item?.child, itemid),
+            });
+        })
+        setListMenu(newListMenuItems)
     }, [listMenuItems])
 
     const handleUpdateMenu = (data, isUpdate) => {
         if (data?.parentMenuId) {
             const menuItemParent = listMenu?.find((it) => it?.id === data?.parentMenuId)
             if (menuItemParent) {
-                let newListChildMenu = [];
-                const menuChild = menuItemParent?.child || [];
+                let newListChildMenu = []
+                const menuChild = menuItemParent?.child || []
                 if (isUpdate) {
                     const listChildMenuOld = menuChild?.filter((it) => it?.id !== data?.id)
                     newListChildMenu = [
@@ -49,10 +63,10 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
                         child: [...newListChildMenu]
                     }
                 ]
-                setListMenu(newListMenu);
+                setListMenu(newListMenu)
             }
         } else {
-            let newListMenu = [];
+            let newListMenu = []
             if (isUpdate) {
                 const listMenuOld = listMenu?.filter((it) => it?.id !== data?.id)
                 newListMenu = [
@@ -65,7 +79,7 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
                     data,
                 ]
             }
-            setListMenu(newListMenu);
+            setListMenu(newListMenu)
         }
     }
 
@@ -78,8 +92,8 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
     const onShowModal = () => {
         setCurrentMenuItem(null)
         setParentMenuId(null)
-        setOpenModalMenu(true);
-    };
+        setOpenModalMenu(true)
+    }
 
     const handleEditMenu = (item) => {
         setCurrentMenuItem(item)
@@ -103,7 +117,7 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
             setListMenu(newListMenu)
         } else {
             const newListMenu = listMenu?.filter((it) => it?.id !== id)
-            setListMenu(newListMenu);
+            setListMenu(newListMenu)
         }
     }
 
@@ -116,7 +130,7 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
         dispatch(setSettings({
             ...settings,
             [menuName]: listMenu,
-        }));
+        }))
     }
 
     return (
@@ -129,7 +143,7 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
             <ul className="listMenu">
                 {
                     listMenu?.sort((a, b) => {
-                        return (a?.order || 0) - (b?.order || 0);
+                        return (a?.order || 0) - (b?.order || 0)
                     })?.map((item) => {
                         return (
                             <MenuItem key={item?.id} item={item} handleEditMenu={handleEditMenu} handleDeleteMenu={handleDeleteMenu} handleAddSubmenu={handleAddSubmenu} noActions={noSubmenu} />

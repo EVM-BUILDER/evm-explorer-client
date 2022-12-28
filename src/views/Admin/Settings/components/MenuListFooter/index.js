@@ -2,12 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import ModalMenuItem from '../ModalMenuItem'
 import MenuItem from '../MenuList/components/MenuItem'
+import generateUUID from 'utils/generateUUID'
 
 const MenuListFooter = ({ menuName, listMenuItems, noSubmenu, updateListMenu, haveImage }) => {
     const [openModalMenu, setOpenModalMenu] = useState(false)
-    const [listMenu, setListMenu] = useState([...listMenuItems])
+    const [listMenu, setListMenu] = useState([])
     const [parentMenuId, setParentMenuId] = useState(null)
     const [currentMenuItem, setCurrentMenuItem] = useState(null)
+
+    useEffect(() => {
+        let newListMenuItems = [...listMenuItems]
+        newListMenuItems = newListMenuItems?.map((item) => {
+            const itemid = item.id || generateUUID();
+            return ({
+                ...item,
+                id: itemid,
+            });
+        })
+        setListMenu(newListMenuItems)
+    }, [listMenuItems])
 
     const handleUpdateMenu = (data, isUpdate) => {
         if (data?.parentMenuId) {

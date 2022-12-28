@@ -21,7 +21,7 @@ const MenuItem = ({ item, noActions, handleEditMenu, handleDeleteMenu, handleAdd
     };
 
     return (
-        <li className='menu-item'>
+        <li id={item?.id} className='menu-item'>
             <div className='menu-content'>
                 {item?.image && <img src={item?.image} alt="" />}
                 <a href={item?.href || ''} target={item?.target || ''}>{item?.title || ''}</a>
