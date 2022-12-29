@@ -26,10 +26,10 @@ const VerifiedAddresses = () => {
       >
         <VerifiedTitle>
           <p>
-            The Verify Address Ownership process involves verifying the ownership of an PULSE address used to create an PULSESCAN
+            {/* The Verify Address Ownership process involves verifying the ownership of an PULSE address used to create an PULSESCAN
             smart contract. This verification will be linked to an PULSESCAN account. Once a user has claimed ownership of an
             address, the user will be able to update token information and address name tags without needing to sign a new message
-            each time. Find out more about verify address ownership.
+            each time. Find out more about verify address ownership. */}
           </p>
         </VerifiedTitle>
         <div className="overview_info_content verified_addresses_content">

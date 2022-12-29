@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Row, Table } from 'antd'
+import { AiFillEye } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
@@ -87,7 +88,7 @@ const TokenTransfersModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <img src="/images/icon/eye.svg" alt="" />
+          <AiFillEye />
           <Link href={`/tx/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),

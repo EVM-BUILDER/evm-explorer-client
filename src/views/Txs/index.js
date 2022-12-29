@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row, Table } from 'antd'
 import { useRouter } from 'next/router'
+import { FaEye } from 'react-icons/fa'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
@@ -95,7 +96,7 @@ const TransactionsModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <img src="/images/icon/eye.svg" alt="" />
+          <FaEye />
           <Link href={`/tx/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),

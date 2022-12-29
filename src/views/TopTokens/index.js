@@ -9,6 +9,7 @@ import TablePagination from 'components/TablePagination/TablePagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListAddress } from 'redux/address/actions'
 import { useAds } from 'redux/statistics/hooks'
+import FormatAmount from 'components/FormatAmount'
 
 const DEFAULT_LIMIT = 25
 
@@ -127,13 +128,13 @@ const TopTokensModule = () => {
       title: 'Circulating Market Cap ',
       dataIndex: 'pro',
       with: 120,
-      render: (pro) => (!isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-'),
+      render: (pro) => <FormatAmount value={pro?.tsu ?? 0} />,
     },
     {
       title: 'On-Chain Market Cap ',
       dataIndex: 'pro',
       with: 120,
-      render: (pro) => (!isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-'),
+      render: (pro) => <FormatAmount value={pro?.tsu ?? 0} />,
     },
     {
       title: 'Holders',

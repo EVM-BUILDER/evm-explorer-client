@@ -40,8 +40,7 @@ const Holders = ({ addressDetail }) => {
       dataIndex: 'v',
       render: (text, record) => (
         <div className="data-quantity">
-          {/* <FormatAmount value={roundNumber(text, { decimals: record?.a?.pro?.de })} /> */}
-          {formatBigNumber(text, { decimals: -record?.a?.pro?.de, noExpo: true })}
+          <FormatAmount value={text ?? 0} />
         </div>
       ),
     },

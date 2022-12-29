@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Dropdown, Col, Row, Table, Space, Tooltip } from 'antd'
-import { DownOutlined, UnlockOutlined, FileTextOutlined, ThunderboltOutlined, ToolOutlined } from '@ant-design/icons';
+import { AiFillEye } from 'react-icons/fa'
+import { DownOutlined, UnlockOutlined, FileTextOutlined, ThunderboltOutlined, ToolOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/router'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
@@ -83,7 +84,7 @@ const ContractsVerifiedModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <img src="/images/icon/eye.svg" alt="" />
+          <AiFillEye />
           <Link href={`/address/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),
@@ -112,10 +113,12 @@ const ContractsVerifiedModule = () => {
       with: 180,
       render: (v) => (
         <div className="data-value">
-          {v ? (v / 1e18).toLocaleString('en-GB', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 5,
-          }) : '-'}
+          {v
+            ? (v / 1e18).toLocaleString('en-GB', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 5,
+              })
+            : '-'}
         </div>
       ),
     },
@@ -146,17 +149,25 @@ const ContractsVerifiedModule = () => {
       render: (text) => text || '-',
     },
     {
-      title: <>Audited <img src="/images/icon/info-circle.svg" alt="" /></>,
+      title: (
+        <>
+          Audited <img src="/images/icon/info-circle.svg" alt="" />
+        </>
+      ),
       dataIndex: 'au',
       with: 120,
       render: (text) => text || '-',
     },
     {
-      title: <>License <img src="/images/icon/info-circle.svg" alt="" /></>,
+      title: (
+        <>
+          License <img src="/images/icon/info-circle.svg" alt="" />
+        </>
+      ),
       dataIndex: 'lc',
       with: 120,
       render: (text) => text || '-',
-    }
+    },
   ]
 
   const items = [
@@ -169,31 +180,63 @@ const ContractsVerifiedModule = () => {
       type: 'divider',
     },
     {
-      label: <Link href={`/contractsVerified?filter=opensourcelicense`}><UnlockOutlined /> Open Source License</Link>,
-      text: <><UnlockOutlined /> Open Source License</>,
+      label: (
+        <Link href={`/contractsVerified?filter=opensourcelicense`}>
+          <UnlockOutlined /> Open Source License
+        </Link>
+      ),
+      text: (
+        <>
+          <UnlockOutlined /> Open Source License
+        </>
+      ),
       key: 'opensourcelicense',
     },
     {
       type: 'divider',
     },
     {
-      label: <Link href={`/contractsVerified?filter=solc`}><img src="/images/logo/solidity.png?v=0.0.2" alt="" width="13" /> Solidity Compiler</Link>,
-      text: <><img src="/images/logo/solidity.png?v=0.0.2" alt="" width="13" /> Solidity Compiler</>,
+      label: (
+        <Link href={`/contractsVerified?filter=solc`}>
+          <img src="/images/logo/solidity.png?v=0.0.2" alt="" width="13" /> Solidity Compiler
+        </Link>
+      ),
+      text: (
+        <>
+          <img src="/images/logo/solidity.png?v=0.0.2" alt="" width="13" /> Solidity Compiler
+        </>
+      ),
       key: 'solc',
     },
     {
-      label: <Link href={`/contractsVerified?filter=vyper`}><img src="/images/logo/vyper.webp?v=0.0.2" alt="" width="13" /> Vyper Compiler</Link>,
-      text: <><img src="/images/logo/vyper.webp?v=0.0.2" alt="" width="13" /> Vyper Compiler</>,
+      label: (
+        <Link href={`/contractsVerified?filter=vyper`}>
+          <img src="/images/logo/vyper.webp?v=0.0.2" alt="" width="13" /> Vyper Compiler
+        </Link>
+      ),
+      text: (
+        <>
+          <img src="/images/logo/vyper.webp?v=0.0.2" alt="" width="13" /> Vyper Compiler
+        </>
+      ),
       key: 'vyper',
     },
     {
-      label: <Link href={`/contractsVerified?filter=audit`}><FileTextOutlined /> Contract Security Audit</Link>,
-      text: <><FileTextOutlined /> Contract Security Audit</>,
+      label: (
+        <Link href={`/contractsVerified?filter=audit`}>
+          <FileTextOutlined /> Contract Security Audit
+        </Link>
+      ),
+      text: (
+        <>
+          <FileTextOutlined /> Contract Security Audit
+        </>
+      ),
       key: 'audit',
     },
   ]
 
-  let currentFilter = "Latest 500 Contracts Verified"
+  let currentFilter = 'Latest 500 Contracts Verified'
 
   if (query?.filter) {
     currentFilter = items?.find((it) => it?.key === query?.filter)?.text
@@ -213,10 +256,7 @@ const ContractsVerifiedModule = () => {
             <div className="contracts-verified-card-body">
               <div className="card-body-header">
                 <div className="fiter-contracts">
-                  <Dropdown
-                    menu={{ items }}
-                    trigger={['click']}
-                  >
+                  <Dropdown menu={{ items }} trigger={['click']}>
                     <a onClick={(e) => e.preventDefault()}>
                       <Space>
                         <span>Select View / Filter Type </span>
@@ -228,7 +268,9 @@ const ContractsVerifiedModule = () => {
                 </div>
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 12 }}>
-                    <p className="contracts-verified-info">More than &gt; {contractsVerified?.total} verified contracts source code found</p>
+                    <p className="contracts-verified-info">
+                      More than &gt; {contractsVerified?.total} verified contracts source code found
+                    </p>
                     <p className="contracts-verified-show">(Showing the last 500 verified contracts source code)</p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">
@@ -264,7 +306,7 @@ const ContractsVerifiedModule = () => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 

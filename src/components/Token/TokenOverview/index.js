@@ -6,7 +6,7 @@ import FormatAmount from 'components/FormatAmount/index.jsx'
 import { formatBigNumber } from 'library/helpers/Number.js'
 import { useSettings } from 'redux/settings/hooks'
 
-const tokenPrice = 295
+const tokenPrice = 0
 
 const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
   const statisticsFirstItem = statistics?.[0]
@@ -55,36 +55,33 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
                     PRICE
                   </Col>
                   <Col xs={24} xl={24} className="content-subtitle">
-                    <span>${tokenPrice ? tokenPrice.toFixed(2) : '--'}</span>
+                    <span>--</span>
+                    {/* <span>${tokenPrice ? tokenPrice.toFixed(2) : '--'}</span>
                     <span>{withNativePriceUsd.newPrice ? ` @ ${withNativePriceUsd.newPrice} ${chain.native.symbol} ` : ''}</span>
-                    {withNativePriceUsd.perChange && <span>({withNativePriceUsd.perChange}%)</span>}
+                    {withNativePriceUsd.perChange && <span>({withNativePriceUsd.perChange}%)</span>} */}
                   </Col>
                 </Row>
               </Col>
-
+              {/* 
               <Col xs={12} md={14} className="content-desc">
                 <Row style={{ flex: 1 }} align="middle" gutter={[{ xs: 4 }, { xs: 4 }]}>
                   <Col xs={24} xl={14} className="text-small">
-                    FULLY DILUTED MARKET CAP
+                    MARKET CAP
                   </Col>
                   <Col xs={24} xl={10} className="volume">
-                    {/* {token.volume} */} --
+                    --
                   </Col>
                 </Row>
-              </Col>
+              </Col> */}
             </Row>
 
             <Row className="card_token_overview_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
               <Col xs={24} md={10}>
-                Max Total Supply:
+                Total Supply:
               </Col>
 
               <Col xs={24} md={14}>
-                <FormatAmount
-                  value={formatBigNumber(addressDetail?.pro?.tsu, { decimals: -addressDetail?.pro?.de })}
-                  nullValue="0"
-                  suffix={` ${addressDetail?.pro?.sym || ''}`}
-                />
+                <FormatAmount value={addressDetail?.pro?.tsu} nullValue="0" suffix={` ${addressDetail?.pro?.sym || ''}`} />
               </Col>
             </Row>
 

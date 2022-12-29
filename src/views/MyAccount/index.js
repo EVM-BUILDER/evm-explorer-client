@@ -61,10 +61,7 @@ const Overview = () => {
           <div className="breakcum-left">
             <div className="">Home</div>
             <div className="breakcum-arrow">/</div>
-            <a href="#" style={{ color: '#418143' }}>
-              {/* Account Overview */}
-              {breakCum}
-            </a>
+            <a href="#">{breakCum}</a>
           </div>
         </div>
       </div>
