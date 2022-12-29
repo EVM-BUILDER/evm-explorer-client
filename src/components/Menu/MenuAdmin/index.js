@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Layout, Menu } from 'antd'
-import { HomeOutlined, SettingOutlined } from '@ant-design/icons'
+import {
+  HomeOutlined,
+  SettingOutlined,
+  UserOutlined,
+  FontColorsOutlined,
+  BookOutlined,
+  UsergroupAddOutlined,
+  MailOutlined,
+} from '@ant-design/icons'
 
 import Header from './Header'
 import Link from 'components/Link/Link'
@@ -16,29 +24,28 @@ const siderbarMenu = [
   },
   {
     key: '/admin/users',
-    icon: <HomeOutlined />,
+    icon: <UserOutlined />,
     label: <Link href={`/admin`}>Users</Link>,
   },
   {
     key: '/admin/verifyaddress',
-    icon: <HomeOutlined />,
+    icon: <FontColorsOutlined />,
 
     label: <Link href={`/admin/verifyaddress`}>Verify Address</Link>,
   },
   {
     key: '/admin/abilibrary',
-    icon: <HomeOutlined />,
+    icon: <BookOutlined />,
 
     label: <Link href={`/admin/abilibrary`}>ABI Library</Link>,
   },
   {
     key: '/admin/communication',
-    icon: <SettingOutlined />,
+    icon: <UsergroupAddOutlined />,
     label: 'Communication',
     children: [
       {
         key: '/admin/communication/sendmail',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/communication/sendmail`}>Send Mail</Link>,
       },
     ],
@@ -46,36 +53,30 @@ const siderbarMenu = [
   {
     key: '/admin/settings',
     icon: <SettingOutlined />,
-    label: <Link href={`/admin/settings`}>Settings</Link>,
+    label: 'Settings',
     children: [
       {
         key: '/admin/settings/general',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/general`}>General</Link>,
       },
       {
         key: '/admin/settings/menu',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/menu`}>Menu</Link>,
       },
       {
         key: '/admin/settings/ads',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/ads`}>Ads</Link>,
       },
       {
         key: '/admin/settings/chain',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/chain`}>Chain</Link>,
       },
       {
         key: '/admin/settings/script',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/script`}>Script</Link>,
       },
       {
         key: '/admin/settings/systemsettings',
-        icon: <SettingOutlined />,
         label: <Link href={`/admin/settings/systemsettings`}>System Settings</Link>,
       },
     ],

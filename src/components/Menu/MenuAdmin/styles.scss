@@ -254,6 +254,7 @@
 }
 
 .sidebar-admin {
+  padding-top: 30px;
   background-color: rgb(45, 52, 70);
   color: #ffffff;
   min-height: calc(100vh - 80px);
@@ -274,21 +275,27 @@
     top: 72px;
   }
 
-  .ant-menu {
+  ul.ant-menu {
     background-color: rgb(45, 52, 70);
-    padding-top: 30px;
 
     .ant-menu-item {
       background-color: rgb(45, 52, 70);
       color: rgb(120, 129, 149);
       width: 100%;
-
-      a {
-        color: rgb(120, 129, 149);
-      }
     }
-
-    .ant-menu-item-selected {
+    .ant-menu-item a,
+    .ant-menu-submenu-title,
+    .ant-menu-submenu-arrow {
+      color: rgb(120, 129, 149);
+    }
+    .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon,
+    .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+      color: var(--white);
+    }
+    .ant-menu-item:hover,
+    .ant-menu-item-selected,
+    .ant-menu-submenu-active,
+    .ant-menu-submenu-active:active {
       background-color: rgba(0, 0, 0, 0.4);
       color: var(--white);
 
