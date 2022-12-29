@@ -91,7 +91,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
             <img src="/images/icon/price.png" alt="" />
           </div>
           <div className="body-content">
-            <h2>{settings?.chain?.native?.symbol || ''} PRICE</h2>
+            <h2>PRICE</h2>
             <Space className="body-content-text-under">
               <span className="text-secondary">
                 ${<FormatAmount value={roundNumber(latestStatistic?.tp?.cur, { scale: 5 })} nullValue="--" />}
@@ -127,7 +127,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
             </div>
             <div className="body-content">
               {/* Is total txh per secon (TPS) */}
-              <h2>TRANSACTIONS</h2> 
+              <h2>TRANSACTIONS</h2>
               <a className="body-content-text-under">{totalTxs || '0'}</a>
             </div>
           </div>

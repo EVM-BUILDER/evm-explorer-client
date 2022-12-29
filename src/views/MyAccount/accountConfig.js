@@ -16,17 +16,17 @@ export const tabAccount = () => [
     label: 'ACCOUNT',
     items: [
       {
-        label: 'Account Overview',
+        label: 'Overview',
         href: TAB_ACCOUNT_LINK.overview,
         image: '/images/account/overview.png',
       },
       {
-        label: 'Account Settings',
+        label: 'Settings',
         href: TAB_ACCOUNT_LINK.settings,
         image: '/images/account/accountsetting.png',
       },
       {
-        label: 'PULSESCAN Connect',
+        label: 'Profile',
         href: TAB_ACCOUNT_LINK.pulsescan,
         image: '/images/account/pulsescanconnect.png',
       },

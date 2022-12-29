@@ -1,6 +1,6 @@
 {
   "name": "explorer",
-  "version": "4.0.3",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@ant-design/compatible": "^1.0.5",
@@ -25,7 +25,6 @@
     "ace-builds": "^1.13.1",
     "antd": "^4.6.2",
     "antd-colorpicker": "^1.0.0",
-    "antd-local-icon": "^0.1.3",
     "apexcharts": "^3.35.0",
     "auth0-lock": "^11.26.3",
     "axios": "0.27.2",
