@@ -10,8 +10,9 @@
     width: 100%;
     min-height: 270px;
     height: 100%;
-    background-color: var(--background-color);
-    background-image: url('/images/background/banner.svg');
+    background-color: var(--banner-bg-color);
+    background-image: var(--banner-bg-image);
+    background-repeat: repeat;
 
     .home__body {
       display: flex;
@@ -44,7 +45,10 @@
         }
 
         .ads-text {
-          display: block;
+          color: #fff;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 18px;
           margin: 24px 0 12px;
         }
       }
@@ -55,6 +59,7 @@
 
         @include media-up(lg) {
           display: block;
+          flex: 1;
         }
       }
     }

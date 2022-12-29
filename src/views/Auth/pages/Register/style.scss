@@ -10,7 +10,7 @@
       font-weight: 700;
       font-size: 24px;
       line-height: 31.13px;
-      color: #418143;
+      color: var(--primary);
     }
     p {
       font-weight: 500;
@@ -60,7 +60,7 @@
       line-height: 21px;
       color: #ffffff;
       border-radius: 4px;
-      background-color: #418143;
+      background-color: var(--primary);
       padding: 8px 10px;
       width: 156px;
       height: 37px;
@@ -79,7 +79,7 @@
       }
 
       a {
-        color: #418143;
+        color: var(--primary);
       }
     }
   }

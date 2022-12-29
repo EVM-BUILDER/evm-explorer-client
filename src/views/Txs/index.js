@@ -9,6 +9,7 @@ import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListTransactions } from 'redux/transactions/actions'
 import { getListStatistics } from 'redux/statistics/actions'
+import { useAds } from 'redux/statistics/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -18,6 +19,8 @@ const TransactionsModule = () => {
 
   const { settings } = useSelector((state) => state.Settings)
   const { transactions, page, page_size, total, loading } = useSelector((state) => state.Transactions)
+
+  const adsText = useAds()
 
   // handle params with url
   const [paramsListBlock, setParamsListBlock] = useState({
@@ -190,7 +193,16 @@ const TransactionsModule = () => {
         <div className="txs-heading">
           <h1>Transactions</h1>
         </div>
-        <p className="txs-desc">PulseDex presale details to be announced soon</p>
+        {adsText && (
+          <p className="ads-text">
+            {adsText.text}{' '}
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
+          </p>
+        )}
         <div className="txs-bottom">
           <div className="txs-card">
             <div className="txs-card-body">

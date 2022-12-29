@@ -1,27 +1,20 @@
 import React from 'react'
-import { Link } from 'components/Link'
-import CardBase from 'components/Card/CardBase'
 import { Col, Row } from 'antd'
-import { HeartOutlined } from '@ant-design/icons'
+import { Link } from 'components/Link'
 import { ADDRESS_TYPE } from 'redux/constants'
-
-const address = {
-  balance: 0.000160398587097,
-  blockChain: 'PN-20',
-  priceUSD: 0.000648,
-  priceChangePercent: '-0.03',
-  volume: '32,290,064,214.76',
-  totalSupply: '32,297,815,690.525604',
-  holders: '4,465,382 (0.00%)',
-  transfer: '162,245,033',
-}
+import { useSettings } from 'redux/settings/hooks'
+import CardBase from 'components/Card/CardBase'
 
 const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
+  const { appearance } = useSettings()
+
   return (
     <div className="card_address_info">
       <CardBase
         title="More Info"
         items={[{}]}
+        backgroundHeader={appearance?.card?.header_bg_color}
+        backgroundBody={appearance?.card?.body_bg_color}
         content={
           <>
             <Row className="card_address_info_item">
@@ -43,10 +36,7 @@ const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
                 <Col xs={{ span: 24 }} md={{ span: 16 }}>
                   <div className="contract-creator">
                     {addressDetail?.ca?.a && (
-                      <Link
-                        className={addressDetail?.ch ? 'valid' : ''}
-                        href={`/address/${addressDetail?.ca?.a || '#'}`}
-                      >
+                      <Link className={addressDetail?.ch ? 'valid' : ''} href={`/address/${addressDetail?.ca?.a || '#'}`}>
                         {addressDetail?.ca?.a || 'Unknown'}
                       </Link>
                     )}
@@ -92,7 +82,6 @@ const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
             </Link>
           </div>
         }
-        backgroundHeader="#EEEEEE"
       />
     </div>
   )

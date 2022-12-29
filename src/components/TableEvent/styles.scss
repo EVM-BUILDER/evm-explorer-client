@@ -11,7 +11,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: $primary;
+    color: var(--primary);
   }
 
   .data-txtHash-div {
@@ -19,7 +19,7 @@
       margin-right: 4px;
     }
     a:last-child {
-      color: $text;
+      color: var(--text);
     }
   }
   span:last-child {
@@ -54,9 +54,9 @@
     margin: 0 4px;
   }
   .data-logs-event-lastChild {
-    color: $text;
+    color: var(--text);
     a {
-      color: $text;
+      color: var(--text);
       margin: 0 4px;
     }
     table {

@@ -86,7 +86,7 @@
       //title
 
       h1 {
-        color: #418143;
+        color: var(--primary);
         font-size: 20px;
         font-weight: 700;
         line-height: 26px;
@@ -114,7 +114,7 @@
           }
           &:active {
             background-color: #eeeeee;
-            color: #418143;
+            color: var(--primary);
           }
         }
         &:active {
@@ -122,11 +122,11 @@
         }
         &:active span {
           background-color: #eeeeee;
-          color: #418143 !important;
+          color: var(--primary) !important;
           font-weight: bold !important;
         }
         &:active img {
-          color: #418143 !important;
+          color: var(--primary) !important;
         }
       }
       .account-active {
@@ -159,7 +159,7 @@
       padding: 32px 39px 23px 39px;
 
       h1 {
-        color: #418143;
+        color: var(--primary);
         font-size: 20px;
         font-weight: 700;
         line-height: 26px;
@@ -187,7 +187,7 @@
           }
           &:active {
             background-color: #eeeeee;
-            color: #418143;
+            color: var(--primary);
           }
         }
         &:active {
@@ -195,11 +195,11 @@
         }
         &:active span {
           background-color: #eeeeee;
-          color: #418143 !important;
+          color: var(--primary) !important;
           font-weight: bold !important;
         }
         &:active img {
-          color: #418143 !important;
+          color: var(--primary) !important;
         }
       }
       .account-active {
@@ -234,7 +234,7 @@
       //title
 
       h1 {
-        color: #418143;
+        color: var(--primary);
         font-size: 20px;
         font-weight: 700;
         line-height: 26px;
@@ -262,7 +262,7 @@
           }
           &:active {
             background-color: #eeeeee;
-            color: #418143;
+            color: var(--primary);
           }
         }
         &:active {
@@ -270,11 +270,11 @@
         }
         &:active span {
           background-color: #eeeeee;
-          color: #418143 !important;
+          color: var(--primary) !important;
           font-weight: bold !important;
         }
         &:active img {
-          color: #418143 !important;
+          color: var(--primary) !important;
         }
       }
       .account-active {

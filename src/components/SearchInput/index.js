@@ -8,14 +8,14 @@ import { isNumber } from 'library/helpers/Number'
 const { Option } = Select
 
 const WrapSearchInput = styled.div`
+  color: var(--header-search-color);
   width: 100%;
-  height: 48px;
+  height: 44px;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid #eeeeee;
+  background-color: var(--header-search-bg-color);
+  border: 1px solid var(--header-search-border-color);
   border-radius: 8px;
-  background-color: #fff;
-  color: #787a91;
 
   ${({ theme }) => theme.mediaQueries.md} {
     border: 1px solid var(--header-search-border-color);
@@ -34,8 +34,9 @@ const WrapSearchInput = styled.div`
       border-right: 1px solid ${({ theme }) => theme.colors.tertiary};
       outline: none;
     }
-    .ant-select-selection-item {
-      color: #787a91;
+    .ant-select-selection-item,
+    .ant-select-arrow {
+      color: var(--header-search-color);
     }
     .ant-select-selector {
       color: #787a91;
@@ -47,16 +48,13 @@ const WrapSearchInput = styled.div`
       font-size: 16px;
       line-height: 19px;
     }
-    .ant-select-arrow {
-      color: #787a91;
-    }
   }
 
   > input {
+    color: var(--header-search-color);
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    color: #787a91;
     width: 100%;
     height: 100%;
     padding: 12px 16px;

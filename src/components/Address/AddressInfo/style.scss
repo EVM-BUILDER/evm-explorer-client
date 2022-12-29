@@ -75,7 +75,7 @@
     > a:last-child {
       min-width: 80px;
       padding: 2px 6px;
-      background-color: $primary;
+      background-color: var(--primary);
       border-radius: 4px;
       text-align: center;
 

@@ -34,12 +34,12 @@
             padding: 8px 10px;
             font-size: 16px;
             font-weight: 700;
-            color: #418143;
+            color: var(--primary);
             border-radius: 4px;
-            color: #418143;
+            color: var(--primary);
             border: 1px solid #418143;
             &:hover {
-              background-color: #418143;
+              background-color: var(--primary);
               color: #ffffff;
             }
           }
@@ -98,7 +98,7 @@
 
           font-size: 16px;
           font-weight: 700;
-          background-color: #418143;
+          background-color: var(--primary);
           border-radius: 4px;
           display: flex;
           align-items: center;

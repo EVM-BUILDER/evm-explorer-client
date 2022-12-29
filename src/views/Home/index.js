@@ -40,9 +40,14 @@ const HomeView = () => {
               <h1>{settings?.chain?.name || ''}</h1>
               <SearchInput />
               {adsText && (
-                <a className="ads-text" href={adsText.url} target="_blank" rel="noreferrer">
-                  {adsText.text || ''}
-                </a>
+                <p className="ads-text">
+                  {adsText.text}{' '}
+                  {adsText.url && (
+                    <Link href={adsText.url} target="_blank" rel="noreferrer">
+                      View now !
+                    </Link>
+                  )}
+                </p>
               )}
             </div>
             <div className="body-right">

@@ -19,7 +19,7 @@
     }
 
     > span:nth-child(2) {
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -95,7 +95,7 @@
           .header-right {
             .anticon-meh {
               margin: 0 4px;
-              color: $primary;
+              color: var(--primary);
               background: $background-color-padding;
               border-color: transparent;
               width: 21px;
@@ -111,7 +111,7 @@
 
               &:hover {
                 color: $secondary;
-                background: $primary;
+                background: var(--primary);
                 box-shadow: 0 4px 11px $color-shadow-account;
               }
             }
@@ -198,7 +198,7 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 text-decoration: none;
-                color: $primary;
+                color: var(--primary);
                 background-color: transparent;
               }
               .contract-link {
@@ -206,14 +206,14 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 margin-right: 4px;
-                color: $primary;
+                color: var(--primary);
                 word-wrap: break-word;
                 display: inline-block;
                 vertical-align: bottom;
               }
               .contract-link-copy {
                 display: none;
-                color: $primary;
+                color: var(--primary);
 
                 svg {
                   path {
@@ -227,7 +227,7 @@
               }
             }
             .contract-update {
-              color: $primary;
+              color: var(--primary);
             }
           }
         }
@@ -322,7 +322,7 @@
         }
 
         &:hover {
-          color: $primary;
+          color: var(--primary);
 
           svg {
             width: 12px;
@@ -330,7 +330,7 @@
             margin-right: 4px !important;
 
             path {
-              fill: $primary;
+              fill: var(--primary);
             }
           }
         }

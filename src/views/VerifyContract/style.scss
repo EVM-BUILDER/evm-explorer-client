@@ -97,7 +97,7 @@
         }
 
         .text-green {
-          color: #418143;
+          color: var(--primary);
         }
         .check-buttons {
           display: flex;
@@ -119,7 +119,7 @@
             width: 120px;
             height: 37px;
             &.green {
-              background: #418143;
+              background: var(--primary);
               color: white;
             }
             &.white {

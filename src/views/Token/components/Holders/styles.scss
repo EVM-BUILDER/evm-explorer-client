@@ -80,7 +80,7 @@
 
         .ant-progress-success-bg,
         .ant-progress-bg {
-          background-color: $primary;
+          background-color: var(--primary);
         }
       }
     }

@@ -13,12 +13,15 @@ import { roundNumber } from 'library/helpers/Number'
 import FormatAmount from 'components/FormatAmount'
 import Pagination from 'components/Table/Pagination'
 import TableBase from 'components/Table/TableBase'
+import { useAds } from 'redux/statistics/hooks'
 
 const AccountModule = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
   const { topAccounts } = useSelector((state) => state.Accounts)
   const { settings } = useSelector((state) => state.Settings)
+
+  const adsText = useAds()
 
   // handle params with url
   const [paramsTopAccount, setParamsTopAccount] = useState({
@@ -93,7 +96,16 @@ const AccountModule = () => {
         <div className="account__heading">
           <h1>Top Accounts by {settings?.chain?.native?.symbol || ''} Balance</h1>
         </div>
-        <p className="account-desc">PulseDex presale details to be announced soon</p>
+        {adsText && (
+          <p className="ads-text">
+            {adsText.text}{' '}
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
+          </p>
+        )}
         <div className="account__bottom">
           <div className="card">
             <div className="card-body">

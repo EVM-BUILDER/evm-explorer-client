@@ -14,7 +14,6 @@ const VerifyPage = () => {
   const [form] = Form.useForm()
   const [fileCode, setFileCode] = useState('')
   const [verifyErrorMess, setVerifyErrorMess] = useState('')
-  console.log('verifyErrorMess', verifyErrorMess)
 
   const onFinish = (values) => {
     if (!fileCode) {
@@ -44,7 +43,6 @@ const VerifyPage = () => {
       console.log(info.file, info.fileList)
     }
     if (info.file.status === 'done') {
-      console.log('info', info)
       setFileCode(info.file)
     } else if (info.file.status === 'error') {
       console.error(`${info.file.name} file upload failed.`)
@@ -64,16 +62,16 @@ const VerifyPage = () => {
         <div className="right">
           <div className="text-verify">
             <p>
-              Source code verification provides <span className="bold">transparency</span> for users interacting with
-              smart contracts. By uploading the source code, Etherscan will match the compiled code with that on the
-              blockchain. Just like contracts, a "smart contract" should provide end users with more information on what
-              they are "digitally signing" for and give users an opportunity to audit the code to independently verify
-              that it actually does what it is supposed to do.
+              Source code verification provides <span className="bold">transparency</span> for users interacting with smart
+              contracts. By uploading the source code, Etherscan will match the compiled code with that on the blockchain. Just
+              like contracts, a "smart contract" should provide end users with more information on what they are "digitally
+              signing" for and give users an opportunity to audit the code to independently verify that it actually does what it
+              is supposed to do.
             </p>
             <p>
-              Please be informed that advanced settings (e.g. bytecodeHash: "none" or viaIR: "true") can be accessed via
-              Solidity (Standard-Json-Input) verification method. More information can be found under Solidity's
-              "Compiler Input and Output JSON Description" documentation section.
+              Please be informed that advanced settings (e.g. bytecodeHash: "none" or viaIR: "true") can be accessed via Solidity
+              (Standard-Json-Input) verification method. More information can be found under Solidity's "Compiler Input and Output
+              JSON Description" documentation section.
             </p>
           </div>
           <div className="input-verify">
@@ -247,8 +245,7 @@ const VerifyPage = () => {
                 valuePropName="checked"
                 rules={[
                   {
-                    validator: (_, value) =>
-                      value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                    validator: (_, value) => (value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement'))),
                     message: 'Required',
                   },
                 ]}

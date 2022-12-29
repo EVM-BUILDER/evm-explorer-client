@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardBase = ({ title, rightNode, content, backgroundHeader }) => {
+const CardBase = ({ title, rightNode, content, backgroundHeader, backgroundBody }) => {
   return (
-    <div className="card_base">
+    <div className="card_base" style={{ background: backgroundBody }}>
       <div className="card_base_header" style={{ background: backgroundHeader }}>
         <div className="card_base_header_title">{title}</div>
         {rightNode}

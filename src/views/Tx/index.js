@@ -65,9 +65,11 @@ const TransactionModule = () => {
         {adsText && (
           <b>
             {adsText.text}{' '}
-            <Link href={adsText.url} target="_blank">
-              View now !
-            </Link>
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
           </b>
         )}
       </div>
@@ -120,8 +122,8 @@ const TransactionModule = () => {
         <div className="txn-desc">
           <img src="/images/icon/lamp-hub.png" alt="" />
           <span>
-            A wallet address is a publicly available address that allows its owner to receive funds from another party.
-            To access the funds in an address, you must have its private key. Learn more about addresses in our{' '}
+            A wallet address is a publicly available address that allows its owner to receive funds from another party. To access
+            the funds in an address, you must have its private key. Learn more about addresses in our{' '}
             <Link href="/knowledgw-base">Knowledge Base.</Link>
           </span>
         </div>
