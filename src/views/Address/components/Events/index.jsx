@@ -8,7 +8,7 @@ import { Link } from 'components/Link'
 
 const Events = () => {
   return (
-    <div className="accounts_erc20token_txs">
+    <div className="address-event">
       <div className="main-under-card-content">
         <div className="card-content-text-event">
           <div>

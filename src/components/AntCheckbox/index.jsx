@@ -7,7 +7,7 @@ const AntCheckbox = styled(Checkbox)`
   .ant-checkbox-checked::after {
     width: 18px;
     height: 18px;
-    border-color: #418143 !important;
+    border-color: var(--primary) !important;
   }
   &::after {
     content: unset;
@@ -26,7 +26,7 @@ const AntCheckbox = styled(Checkbox)`
   }
 
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #418143;
+    background-color: var(--primary);
   }
 `
 

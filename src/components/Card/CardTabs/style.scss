@@ -1,6 +1,6 @@
 .card-tabs.ant-tabs {
   width: 100%;
-  border: 1px solid var(----border-color);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
 
@@ -8,7 +8,7 @@
     display: none;
   }
 
-  &>.ant-tabs-nav {
+  & > .ant-tabs-nav {
     padding: 14px 24px;
     margin: 0;
     display: flex;
@@ -53,7 +53,7 @@
     .ant-tabs-tab .ant-tabs-tab-btn {
       color: var(--text);
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 21px;
 
       @include media-down(sm) {
@@ -75,8 +75,8 @@
     }
   }
 
-  &>.ant-tabs-nav::before {
-    border-bottom: 1px solid #c1c1c1;
+  & > .ant-tabs-nav::before {
+    border-bottom: 1px solid var(--border-color);
   }
 
   .card-tabs-content {

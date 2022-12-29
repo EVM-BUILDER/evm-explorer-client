@@ -2,23 +2,27 @@ import React, { Fragment } from 'react'
 import CardBase from 'components/Card/CardBase'
 import { Link } from 'components/Link'
 import { Col, Dropdown, Menu, Row } from 'antd'
-import DropdownBase from 'components/Dropdown/DropdownBase'
 import { DownOutlined } from '@ant-design/icons'
 import { ArrowUpDownIcon, FolderIcon } from 'widgets/Svg'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 import { ADDRESS_TYPE } from 'redux/constants'
 import BigNumber from 'bignumber.js'
+import { useSettings } from 'redux/settings/hooks'
 
 const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, balancesErc20, balancesErc721 }) => {
   const statisticsFirstItem = statistics?.[0]
-  const statisticSecondItem = statistics?.[1]
+  // const statisticSecondItem = statistics?.[1]
+
+  const { appearance } = useSettings()
 
   const totalTokenInAddress = (balancesErc20?.total || 0) + (balancesErc721?.total || 0)
   return (
     <div className="card_address_overview">
       <CardBase
         title={addressType !== ADDRESS_TYPE.address ? 'Contract Overview' : 'Overview'}
+        backgroundHeader={appearance?.card?.header_bg_color}
+        backgroundBody={appearance?.card?.body_bg_color}
         content={
           <>
             <Row className="card_address_overview_item">
@@ -79,18 +83,13 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                             <li>
                               <ul>
                                 <li className="search-token-result" onClick={(e) => e.stopPropagation()}>
-                                  <span>
-                                    PN-20 Tokens ({balancesErc20?.total > 100 ? '>100' : balancesErc20?.total})
-                                  </span>
+                                  <span>PN-20 Tokens ({balancesErc20?.total > 100 ? '>100' : balancesErc20?.total})</span>
                                   <ArrowUpDownIcon />
                                 </li>
 
                                 {balancesErc20?.data?.map((item) => (
                                   <li key={item?.ta?.a}>
-                                    <Link
-                                      className="result-item"
-                                      href={`/token/${item?.ta?.a}?a=${addressDetail?.data?.a}`}
-                                    >
+                                    <Link className="result-item" href={`/token/${item?.ta?.a}?a=${addressDetail?.data?.a}`}>
                                       <img src={item?.ta?.pro?.ico || '/images/logo/eth.png'} alt="logo" />
                                       <div className="result-item-text">
                                         <span>
@@ -112,9 +111,7 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                             <li>
                               <ul>
                                 <li className="search-token-result" onClick={(e) => e.stopPropagation()}>
-                                  <span>
-                                    PN-721 Tokens ({balancesErc721?.total > 100 ? '>100' : balancesErc721?.total})
-                                  </span>
+                                  <span>PN-721 Tokens ({balancesErc721?.total > 100 ? '>100' : balancesErc721?.total})</span>
                                   <ArrowUpDownIcon />
                                 </li>
 
@@ -162,7 +159,6 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
             )}
           </>
         }
-        backgroundHeader="#EEEEEE"
       />
     </div>
   )

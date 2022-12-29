@@ -12,6 +12,7 @@ import { removeEmpty } from 'library/helpers/CommonHelper'
 import { getListStatistics } from 'redux/statistics/actions'
 import TableBase from 'components/Table/TableBase'
 import { useSettings } from 'redux/settings/hooks'
+import { useAds } from 'redux/statistics/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -21,6 +22,8 @@ const BlocksModule = () => {
 
   const { blocks, page, page_size, total, loading } = useSelector((state) => state.Blocks)
   const settings = useSettings()
+
+  const adsText = useAds()
 
   // handle params with url
   const [paramsListBlock, setParamsListBlock] = useState({
@@ -176,7 +179,16 @@ const BlocksModule = () => {
             </Link>
           </div>
         </div>
-        <p className="blocks-desc">PulseDex presale details to be announced soon</p>
+        {adsText && (
+          <p className="ads-text">
+            {adsText.text}{' '}
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
+          </p>
+        )}
         <div className="blocks-bottom">
           <div className="blocks-card">
             <div className="block-card-body">

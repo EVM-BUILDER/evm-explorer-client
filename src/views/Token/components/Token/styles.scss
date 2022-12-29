@@ -20,7 +20,7 @@
     padding: 15px;
 
     a {
-      color: $primary;
+      color: var(--primary);
       font-size: 11px;
       padding: 5px 10px;
       background: rgba(130, 71, 229, 0.1);
@@ -60,16 +60,16 @@
     }
 
     .data-txnHash {
-      color: $primary;
+      color: var(--primary);
     }
 
     .data-block {
-      color: $primary;
+      color: var(--primary);
     }
 
     .data-txn {
       width: 50px;
-      color: $primary;
+      color: var(--primary);
     }
 
     .data-to {
@@ -98,7 +98,7 @@
     }
 
     .data-validator {
-      color: $primary;
+      color: var(--primary);
       max-width: 171px;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -111,7 +111,7 @@
       .ant-progress-line {
         .ant-progress-bg {
           height: 2px !important;
-          background-color: $primary;
+          background-color: var(--primary);
         }
 
         .ant-progress-text {
@@ -121,11 +121,11 @@
     }
 
     .data-tokenId {
-      color: $primary;
+      color: var(--primary);
     }
 
     .data-owner {
-      color: $primary;
+      color: var(--primary);
     }
 
     // .data-gasUse {
@@ -138,7 +138,7 @@
     // .ant-progress-line {
     //   .ant-progress-bg {
     //     height: 2px !important;
-    //     background-color: $primary;
+    //     background-color: var(--primary);
     //   }
 
     //   .ant-progress-text {
@@ -156,7 +156,7 @@
       .ant-progress-line {
         .ant-progress-bg {
           height: 2px !important;
-          background-color: $primary;
+          background-color: var(--primary);
         }
 
         .ant-progress-text {
@@ -175,7 +175,7 @@
         .ant-pagination-item-container {
           .ant-pagination-item-link-icon {
             path {
-              fill: $primary;
+              fill: var(--primary);
             }
           }
         }
@@ -190,7 +190,7 @@
         }
 
         &:hover {
-          background: $primary;
+          background: var(--primary);
 
           a {
             color: $secondary;
@@ -201,7 +201,7 @@
       .ant-pagination-prev {
         &:hover {
           border: none;
-          background: $primary;
+          background: var(--primary);
 
           .ant-pagination-item-link {
             color: $secondary;
@@ -215,7 +215,7 @@
 
         &:hover {
           border: none;
-          background: $primary;
+          background: var(--primary);
 
           .ant-pagination-item-link {
             color: $secondary;
@@ -230,7 +230,7 @@
           background: rgba(130, 71, 229, 0.1);
 
           &:hover {
-            background-color: $primary;
+            background-color: var(--primary);
             color: $secondary;
             // font-weight: 700;
           }
@@ -254,7 +254,7 @@
     padding: 15px;
 
     .info-update-link {
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -267,7 +267,7 @@
         font-size: 11.2px;
 
         a {
-          color: $primary;
+          color: var(--primary);
           margin-left: 4px;
           font-weight: 600;
         }

@@ -118,7 +118,7 @@
                   transform: rotate(0deg);
                 }
 
-                >span {
+                > span {
                   font-size: 18px;
                   margin-left: 9px;
                 }
@@ -173,7 +173,7 @@
                     width: 100%;
 
                     &.dropdown-divider {
-                      padding: 0
+                      padding: 0;
                     }
 
                     a {
@@ -188,7 +188,7 @@
               }
             }
 
-            &>li:hover {
+            & > li:hover {
               .submenu {
                 display: block;
               }
@@ -246,7 +246,7 @@
     position: fixed;
     top: 80px;
     left: -200px;
-    transition: all .3s;
+    transition: all 0.3s;
     z-index: 999;
 
     &.show-sidebar {

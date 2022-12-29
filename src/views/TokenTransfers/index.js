@@ -8,6 +8,7 @@ import TablePagination from 'components/TablePagination/TablePagination'
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllTxsErc20 } from 'redux/token/actions'
+import { useAds } from 'redux/statistics/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -17,6 +18,8 @@ const TokenTransfersModule = () => {
 
   const { settings } = useSelector((state) => state.Settings)
   const { allTxnsErc20 } = useSelector((state) => state.Token)
+
+  const adsText = useAds()
 
   // handle params with url
   const [paramsListTxn, setParamsListTxn] = useState({
@@ -163,7 +166,16 @@ const TokenTransfersModule = () => {
             </Link>
           </h1>
         </div>
-        <p className="token-transfer-desc">PulseDex presale details to be announced soon</p>
+        {adsText && (
+          <p className="ads-text">
+            {adsText.text}{' '}
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
+          </p>
+        )}
         <div className="token-transfer-bottom">
           <div className="token-transfer-card">
             <div className="token-transfer-card-body">

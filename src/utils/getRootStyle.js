@@ -21,11 +21,14 @@ function getRootStyle(settings = {}) {
     --header-color: ${get(settings, 'appearance.header.textcolor')};
     --header-active-color: ${get(settings, 'appearance.header.text_active_color')};
     --header-font-size: ${get(settings, 'appearance.header.fontsize')}px;
-    --header-font-weight: ${get(settings, 'appearance.header.fontweight')};
+    --header-font-weight: ${get(settings, 'appearance.header.fontweight')};    
     
     --header-search-color: ${get(settings, 'appearance.homesearch.color')};
-    --header-search-bg-color: ${get(settings, 'appearance.home-search.bgcolor')};
-    --header-search-border-color: ${get(settings, 'appearance.home-search.bordercolor')};
+    --header-search-bg-color: ${get(settings, 'appearance.homesearch.bgcolor')};
+    --header-search-border-color: ${get(settings, 'appearance.homesearch.bordercolor')};
+
+    --banner-bg-color: ${get(settings, 'appearance.banner.bgcolor')};
+    --banner-bg-image: url(${get(settings, 'appearance.banner.bgimage')};);
 
     --footer-bg: ${get(settings, 'appearance.footer.bgcolor')};
     --footer-bg-image: url(${get(settings, 'appearance.footer.bgimage')});
@@ -33,12 +36,15 @@ function getRootStyle(settings = {}) {
     --footer-active-color: ${get(settings, 'appearance.footer.text_active_color')};
     --footer-font-size: ${get(settings, 'appearance.footer.fontsize')}px;
     --footer-font-weight: ${get(settings, 'appearance.footer.fontweight')};
+
+    --card-header-bgcolor: ${get(settings, 'appearance.card.header_bg_color')};
+    --card-body-bgcolor: ${get(settings, 'appearance.card.body_bg_color')};
     
     --text: ${get(settings, 'appearance.text')};
     --text-header: #4a4f55; 
     --text-span: #77838f;
   
-    --link-color: #418143;
+    --link-color: ${get(settings, 'appearance.footer.fontsize')}px;
   
     --white-color: white;
     --black-color: #1e2022;

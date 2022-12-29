@@ -8,6 +8,7 @@ import { roundNumber } from 'library/helpers/Number'
 import TablePagination from 'components/TablePagination/TablePagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListAddress } from 'redux/address/actions'
+import { useAds } from 'redux/statistics/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -17,6 +18,8 @@ const TopTokensModule = () => {
 
   const { settings } = useSelector((state) => state.Settings)
   const { listAddress } = useSelector((state) => state.Address)
+
+  const adsText = useAds()
 
   // handle params with url
   const [paramsListToken, setParamsListToken] = useState({
@@ -83,11 +86,7 @@ const TopTokensModule = () => {
       title: '#',
       dataIndex: 'index',
       with: 200,
-      render: (text, record, index) => (
-        <div className="data-rank">
-          {index + 1}
-        </div>
-      ),
+      render: (text, record, index) => <div className="data-rank">{index + 1}</div>,
     },
     {
       title: 'Token',
@@ -98,9 +97,12 @@ const TopTokensModule = () => {
           <div className="data-token">
             <Link href={`/token/${record?.a}`}>
               <img src={pro?.ico || '/images/icon/empty-token.webp'} alt="" />
-              <span>{pro?.na || ""} {pro?.sym && `( ${pro?.sym} )`}</span></Link>
+              <span>
+                {pro?.na || ''} {pro?.sym && `( ${pro?.sym} )`}
+              </span>
+            </Link>
           </div>
-        );
+        )
       },
     },
     {
@@ -113,11 +115,7 @@ const TopTokensModule = () => {
       title: 'Change (%)',
       dataIndex: 'c',
       with: 200,
-      render: (c) => (
-        <div className="data-change">
-          {c || '-'}
-        </div>
-      ),
+      render: (c) => <div className="data-change">{c || '-'}</div>,
     },
     {
       title: 'Volume (24H)',
@@ -129,22 +127,25 @@ const TopTokensModule = () => {
       title: 'Circulating Market Cap ',
       dataIndex: 'pro',
       with: 120,
-      render: (pro) => !isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-',
+      render: (pro) => (!isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-'),
     },
     {
       title: 'On-Chain Market Cap ',
       dataIndex: 'pro',
       with: 120,
-      render: (pro) => !isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-',
+      render: (pro) => (!isNaN(pro?.tsu * 1) ? roundNumber(pro?.tsu, { decimals: pro?.de, scale: 5 }) : '-'),
     },
     {
       title: 'Holders',
       dataIndex: 'pro',
       with: 120,
-      render: (pro) => !isNaN(pro?.tho * 1) ? (pro.tho * 1).toLocaleString('en-GB', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }) : '-',
+      render: (pro) =>
+        !isNaN(pro?.tho * 1)
+          ? (pro.tho * 1).toLocaleString('en-GB', {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })
+          : '-',
     },
   ]
 
@@ -158,9 +159,17 @@ const TopTokensModule = () => {
               <Button>PN20</Button>
             </Link>
           </h1>
-
         </div>
-        <p className="top-tokens-desc">PulseDex presale details to be announced soon</p>
+        {adsText && (
+          <p className="top-tokens-desc">
+            {adsText.text}{' '}
+            {adsText.url && (
+              <Link href={adsText.url} target="_blank" rel="noreferrer">
+                View now !
+              </Link>
+            )}
+          </p>
+        )}
         <div className="top-tokens-bottom">
           <div className="top-tokens-card">
             <div className="top-tokens-card-body">

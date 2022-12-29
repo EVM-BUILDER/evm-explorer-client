@@ -9,7 +9,7 @@
     span {
       margin-left: 4px;
       .card-content-text-transactions {
-        color: $primary;
+        color: var(--primary);
         margin: 0 4px;
       }
     }
@@ -40,7 +40,7 @@
 
       a {
         display: inline-block;
-        color: $primary;
+        color: var(--primary);
         max-width: 200px;
         overflow: hidden;
         overflow: hidden;
@@ -60,7 +60,7 @@
     }
 
     .data-block {
-      color: $primary;
+      color: var(--primary);
     }
 
     .data-age {
@@ -100,7 +100,7 @@
       }
       .data-to-link {
         display: inline-block;
-        color: $primary;
+        color: var(--primary);
         max-width: 200px;
         overflow: hidden;
         overflow: hidden;
@@ -152,7 +152,7 @@
         font-size: 11.2px;
 
         a {
-          color: $primary;
+          color: var(--primary);
           margin-left: 4px;
           font-weight: 600;
         }
@@ -171,7 +171,7 @@
       color: $text;
 
       a {
-        color: $primary;
+        color: var(--primary);
       }
     }
   }
@@ -181,7 +181,7 @@
     height: 28px;
     cursor: pointer;
     border-radius: 4px;
-    background: $primary;
+    background: var(--primary);
     position: relative;
 
     svg {

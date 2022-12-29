@@ -4,6 +4,7 @@ import { useRouter } from 'next/dist/client/router'
 import Link from 'components/Link/Link'
 import SearchInput from 'components/SearchInput'
 import MenuCollapseIcon from 'widgets/MenuCollapseIcon'
+import { useSettings } from 'redux/settings/hooks'
 import { getActiveMenuItem, getActiveSubMenuItem } from '../utils'
 import config from '../config'
 import ContentMobile from '../ContentMobile/ContentMobile'
@@ -14,8 +15,9 @@ import { roundNumber } from 'library/helpers/Number'
 const HeaderBlock = ({ showMenu, toggleMenu }) => {
   const router = useRouter()
 
-  const { settings } = useSelector((state) => state.Settings)
   const { nativePrice } = useSelector((state) => state.Statistics)
+
+  const settings = useSettings()
 
   const menuHeader = settings?.menu_header
   const nativeToken = settings?.chain?.native
@@ -53,9 +55,9 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
             }
             (
             {nativePrice?.isUp ? (
-              <span className="text-success">+{nativePrice?.perChange || 0}%</span>
+              <span className="text-success">{nativePrice?.perChange || 0}%</span>
             ) : (
-              <span className="text-warning">-{nativePrice?.perChange || 0}%</span>
+              <span className="text-warning">{nativePrice?.perChange || 0}%</span>
             )}
             )
             <img src="/images/icon/gas.svg" alt="" /> {nativePrice?.gasPrice || 0} Gwei

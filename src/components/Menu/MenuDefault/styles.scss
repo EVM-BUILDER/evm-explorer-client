@@ -7,7 +7,7 @@
     flex-direction: column;
     .nav-top {
       width: 100%;
-      background: #262525;
+      background: var(--header-bg);
       .nav-top-content {
         height: 80px;
         display: flex;
@@ -157,7 +157,7 @@
                   li {
                     width: 100%;
                     &.dropdown-divider {
-                      padding: 0
+                      padding: 0;
                     }
 
                     a {

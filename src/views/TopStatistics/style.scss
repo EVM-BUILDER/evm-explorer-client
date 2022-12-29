@@ -30,24 +30,27 @@
     margin: 0 0 22px;
 
     &::before {
-      border-color: var(--secondary);
+      border-color: var(--border-color);
     }
 
-    .ant-tabs-tab-active {
-      .ant-tabs-tab-btn {
-        font-weight: 700;
+    .ant-tabs-tab-btn {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 21px;
+      padding: 10px 0;
+      &:hover {
         color: var(--primary);
       }
     }
 
-    .ant-tabs-tab {
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 21px;
-      padding: 10px 0;
-
-      &:hover {
+    .ant-tabs-tab-active {
+      .ant-tabs-tab-btn {
         color: var(--primary);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 21px;
+        text-shadow: unset;
       }
     }
 
@@ -106,7 +109,7 @@
   table tr {
     border: solid;
     border-width: 0px 1px 0px;
-    border-color: #000;
+    border-color: var(--border-color);
   }
 
   table tr:nth-child(2n + 3):not(:last-child) {
@@ -114,7 +117,7 @@
   }
 
   table tr:nth-child(2n + 3):not(:last-child)::before {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid var(--border-color);
     content: '';
     display: block;
     height: 1px;
@@ -129,7 +132,7 @@
   table tr:last-child {
     border: solid;
     border-width: 0px 1px 1px;
-    border-color: #000;
+    border-color: var(--border-color);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
@@ -143,11 +146,11 @@
     overflow: hidden;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
   }
 
   table > tr:first-child > th:last-child {
-    color: #418143;
+    color: var(--primary);
     font-weight: 500;
   }
 
@@ -162,7 +165,7 @@
 
   .topstatistics-nav li:first-child {
     margin-right: 16px;
-    color: rgb(34, 192, 105);
+    color: var(--primary);
   }
 
   .topstatistics-nav {
@@ -248,6 +251,6 @@
   }
 
   .green {
-    color: #418143;
+    color: var(--primary);
   }
 }

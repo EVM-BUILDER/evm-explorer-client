@@ -79,11 +79,11 @@ p {
 }
 
 a {
-  color: var(--link-color);
+  color: var(--primary);
   transition: all 0.3s;
 
   &:hover {
-    color: var(--link-color);
+    color: var(--primary);
   }
 }
 

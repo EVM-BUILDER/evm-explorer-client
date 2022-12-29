@@ -5,6 +5,7 @@
   width: 100%;
   background: var(--footer-bg);
   background-image: var(--footer-bg-image);
+  background-repeat: repeat;
 
   .footer-container {
     color: var(--footer-color);
@@ -249,7 +250,7 @@
           }
 
           .under-left-primary {
-            color: $primary;
+            color: var(--primary);
             font-size: 12px;
             font-weight: bold;
             margin-left: 4px;
@@ -283,7 +284,7 @@
 
           li {
             a {
-              color: $primary;
+              color: var(--primary);
               margin-right: 8px;
               font-size: 12.25px;
             }
@@ -337,7 +338,7 @@
     width: 40px;
     line-height: 40px;
     border-radius: 4px;
-    background-color: $primary;
+    background-color: var(--primary);
     color: $secondary;
     text-align: center;
     font-size: 14px;

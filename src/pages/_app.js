@@ -191,7 +191,6 @@ MyApp.getInitialProps = async () => {
         memo[item.key] = item?.value
         return memo
       }, {})
-      console.log(settings)
     } else {
       settings = defaultSettings
     }

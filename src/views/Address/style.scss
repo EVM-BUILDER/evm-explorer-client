@@ -20,7 +20,7 @@
     }
 
     a {
-      color: $primary;
+      color: var(--primary);
       font-weight: bold;
       margin: 0 4px;
     }
@@ -113,7 +113,7 @@
 
 //       &:hover {
 //         color: $secondary;
-//         background-color: $primary;
+//         background-color: var(--primary);
 //         border-radius: 0.25rem;
 
 //         .detailt-token-table {

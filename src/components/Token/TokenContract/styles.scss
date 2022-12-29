@@ -33,7 +33,7 @@
 
     .content-desc.link {
       & > a {
-        color: $primary;
+        color: var(--primary);
         display: flex;
         align-items: center;
         > span {

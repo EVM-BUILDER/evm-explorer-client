@@ -66,6 +66,8 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 18px;
+    width: fit-content;
+    display: block;
     margin-bottom: 24px;
   }
 
@@ -78,7 +80,7 @@
       margin-right: 4px;
     }
 
-    &>span {
+    & > span {
       max-width: 90px;
       white-space: nowrap;
       text-overflow: ellipsis;

@@ -36,6 +36,10 @@
       "subnav_bg_color": "#ffffff",
       "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
     },
+    "banner": {
+      "bgcolor": "transparent",
+      "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
+    },
     "homesearch": {
       "color": "#fff",
       "bordercolor": "#fff",
