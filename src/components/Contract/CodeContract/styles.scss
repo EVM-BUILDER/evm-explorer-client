@@ -276,11 +276,12 @@
               background: var(--primary);
               border-radius: 4px;
               font-weight: 400;
-              font-size: 16px;
+              font-size: 13px;
               line-height: 21px;
               color: #eeeeee;
               margin-right: 16px;
-              padding: 4px 8px;
+              height: 28px;
+              padding: 2px 8px;
               margin-bottom: 16px;
 
               @include media-down(md) {
@@ -428,11 +429,11 @@
               background: var(--primary);
               border-radius: 4px;
               font-weight: 400;
-              font-size: 16px;
+              font-size: 13px;
               line-height: 21px;
               color: #eeeeee;
               margin-left: 16px;
-              padding: 4px 8px;
+              padding: 2px 8px;
               margin-bottom: 16px;
 
               @include media-down(sm) {
@@ -493,6 +494,7 @@
           button {
             display: flex;
             align-items: center;
+            height: 28px;
             padding: 4px 16px;
             background: var(--primary);
             border-radius: 4px;

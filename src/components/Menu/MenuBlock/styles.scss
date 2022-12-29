@@ -15,15 +15,16 @@
       background: var(--header-bg);
 
       .nav-top-content {
-        height: 104px;
+        // height: 60px;
+        padding-top: 12px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
 
-        @include media-down(md) {
-          height: 72px;
-        }
+        // @include media-down(md) {
+        //   height: 72px;
+        // }
       }
 
       .nav-top-left {
@@ -76,7 +77,7 @@
           }
 
           width: 100%;
-          max-width: 748px;
+          max-width: 680px;
           margin-left: auto;
         }
       }
@@ -110,7 +111,6 @@
       border-radius: 4px;
       display: flex;
       align-items: center;
-      font-weight: 700;
       font-size: 14px;
       line-height: 18px;
       white-space: nowrap;

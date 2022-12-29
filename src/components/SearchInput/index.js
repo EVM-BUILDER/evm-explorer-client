@@ -10,7 +10,7 @@ const { Option } = Select
 const WrapSearchInput = styled.div`
   color: var(--header-search-color);
   width: 100%;
-  height: 44px;
+  height: 42px;
   display: flex;
   justify-content: flex-end;
   background-color: var(--header-search-bg-color);
