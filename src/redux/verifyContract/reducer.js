@@ -8,6 +8,12 @@ import * as actions from './actions'
 
 const initState = {
   verifyContract: {},
+  contractsVerified: {
+    data: [],
+    page: 1,
+    page_size: 25,
+    total: 0,
+  },
 }
 
 export default function verifyContractReducer(state = initState, action) {
@@ -35,6 +41,25 @@ export default function verifyContractReducer(state = initState, action) {
             params,
             loading: false,
           },
+        },
+      }
+
+    case actions.GET_CONTRACTS_VERIFIED_START:
+      return {
+        ...state,
+        contractsVerified: {
+          ...state.contractsVerified,
+          loading: true,
+        },
+      }
+    case actions.GET_CONTRACTS_VERIFIED_SUCCESS:
+      console.log(data)
+      return {
+        ...state,
+        contractsVerified: {
+          ...state.contractsVerified,
+          ...data,
+          loading: false,
         },
       }
 

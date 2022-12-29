@@ -1,1 +1,19 @@
 @import './Auth/components/VerifyCode/style.scss';
+
+.ant-table-wrapper {
+  .ant-table {
+    .ant-table-thead {
+      .ant-table-cell {
+        font-weight: 500;
+        font-size: 14px;
+      }
+    }
+
+    .ant-table-tbody {
+      .ant-table-cell {
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+  }
+}
