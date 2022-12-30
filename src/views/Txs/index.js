@@ -22,7 +22,7 @@ const TransactionsModule = () => {
   const { settings } = useSelector((state) => state.Settings)
   const { transactions, page, page_size, total, loading } = useSelector((state) => state.Transactions)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   // handle params with url
   const [paramsListBlock, setParamsListBlock] = useState({

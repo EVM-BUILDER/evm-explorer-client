@@ -17,7 +17,7 @@ const TransactionModule = () => {
 
   // console.log('transactionDetail', transactionDetail)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   const menuSubHeader = settings?.menu_sub_header
 

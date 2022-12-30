@@ -18,7 +18,7 @@ const HomeView = () => {
   const { statistics } = useSelector((state) => state.Statistics)
   const { settings } = useSelector((state) => state.Settings)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   const { transactions } = useFetchAllTransactions(1, 10)
 

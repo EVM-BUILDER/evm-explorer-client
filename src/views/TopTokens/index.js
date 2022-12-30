@@ -20,7 +20,7 @@ const TopTokensModule = () => {
   const { settings } = useSelector((state) => state.Settings)
   const { listAddress } = useSelector((state) => state.Address)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   // handle params with url
   const [paramsListToken, setParamsListToken] = useState({

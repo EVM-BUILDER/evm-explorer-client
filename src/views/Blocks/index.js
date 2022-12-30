@@ -23,7 +23,7 @@ const BlocksModule = () => {
   const { blocks, page, page_size, total, loading } = useSelector((state) => state.Blocks)
   const settings = useSettings()
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   // handle params with url
   const [paramsListBlock, setParamsListBlock] = useState({

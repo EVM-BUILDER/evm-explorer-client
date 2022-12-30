@@ -53,7 +53,7 @@ const AddressPage = () => {
   const { settings } = useSelector((state) => state.Settings)
   const { userInfo } = useSelector((state) => state.User)
 
-  const adsText = useAds()
+  const { adsText, adsBanner } = useAds()
 
   const { statistics } = useFetchStatistics()
   const { addressDetail } = useAddressDetail(address)
@@ -101,8 +101,13 @@ const AddressPage = () => {
           </Row>
         </div>
         <div className="main-center">
-          <div className="ad-img">
-            <img src="/images/address/ad-img.png" alt="" />
+          <div className="ads-img">
+            {/* <img src="/images/address/ad-img.png" alt="" /> */}
+            {adsBanner && (
+              <a url={adsBanner.url} target="_blank">
+                <img src={adsBanner.image} alt="" />
+              </a>
+            )}
           </div>
         </div>
         <div className="main-table">

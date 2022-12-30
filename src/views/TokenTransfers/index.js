@@ -20,7 +20,7 @@ const TokenTransfers = () => {
   const { settings } = useSelector((state) => state.Settings)
   const { allTxnsErc20 } = useSelector((state) => state.Token)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   // handle params with url
   const [paramsListTxn, setParamsListTxn] = useState({
