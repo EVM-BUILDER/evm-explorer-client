@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Dropdown, Col, Row, Table, Space, Tooltip } from 'antd'
-import { AiFillEye } from 'react-icons/fa'
 import { DownOutlined, UnlockOutlined, FileTextOutlined, ThunderboltOutlined, ToolOutlined } from '@ant-design/icons'
+import { EyeOutlined } from '@ant-design/icons'
 import { useRouter } from 'next/router'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
@@ -84,7 +84,7 @@ const ContractsVerifiedModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <AiFillEye />
+          <EyeOutlined />
           <Link href={`/address/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),
