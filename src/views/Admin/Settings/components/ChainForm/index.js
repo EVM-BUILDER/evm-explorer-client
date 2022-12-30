@@ -34,6 +34,9 @@ const ChainForm = ({ settings, data }) => {
             id: values?.id || "",
             name: values?.name || "",
             rpc: values?.rpc || "",
+            erc20: values?.erc20 || "",
+            erc721: values?.erc721 || "",
+            erc1155: values?.erc1155 || "",
             native: {
                 name: values?.native_name || "",
                 symbol: values?.native_symbol || "",
@@ -59,6 +62,9 @@ const ChainForm = ({ settings, data }) => {
                 native_symbol: data?.native?.symbol || "",
                 native_decimals: data?.native?.decimals || "",
                 native_logo: data?.native?.logo || "",
+                erc20: data?.erc20 || "",
+                erc721: data?.erc721 || "",
+                erc1155: data?.erc1155 || "",
             }
         )
     }, [data])
@@ -101,6 +107,30 @@ const ChainForm = ({ settings, data }) => {
                     <Form.Item
                         name='rpc'
                         label="Rpc"
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={24} md={12} lg={8}>
+                    <Form.Item
+                        name='erc20'
+                        label="ERC20"
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={24} md={12} lg={8}>
+                    <Form.Item
+                        name='erc721'
+                        label="ERC721"
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={24} md={12} lg={8}>
+                    <Form.Item
+                        name='ERC1155'
+                        label="ERC1155"
                     >
                         <Input />
                     </Form.Item>
