@@ -4,5 +4,11 @@ import { getRandomAdsText } from 'utils/getAdsText'
 
 export function useAds() {
   const { settings } = useSelector((state) => state.Settings)
-  return useMemo(() => getRandomAdsText(settings?.ads_text || []), [settings?.ads_text])
+  return useMemo(
+    () => ({
+      adsText: getRandomAdsText(settings?.ads_text || []),
+      adsBanner: getRandomAdsText(settings?.ads_banner || []),
+    }),
+    [settings?.ads_banner, settings?.ads_text],
+  )
 }

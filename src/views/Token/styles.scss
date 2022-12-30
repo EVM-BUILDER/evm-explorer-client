@@ -23,11 +23,18 @@
     }
   }
 
-  .ad-img {
+  .ads-img {
     width: 100%;
     margin-bottom: 24px;
-    @include media-up(md) {
-      width: 88%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-height: 80px;
+      object-fit: cover;
+      @include media-up(md) {
+        // width: 88%;
+      }
     }
   }
 

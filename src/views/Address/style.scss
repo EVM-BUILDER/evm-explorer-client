@@ -32,12 +32,23 @@
     }
   }
 
+  .main-top {
+    padding: 0 0 20px;
+  }
+
   .main-center {
-    .ad-img {
+    .ads-img {
       width: 100%;
-      margin: 24px auto;
-      @include media-up(md) {
-        width: 88%;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-height: 80px;
+        object-fit: cover;
+        @include media-up(md) {
+          // width: 88%;
+        }
       }
     }
   }

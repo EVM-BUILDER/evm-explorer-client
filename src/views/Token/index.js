@@ -31,6 +31,7 @@ import useAddressDetail from 'hooks/useAddressDetail'
 import useFetchStatistics from 'redux/statistics/hooks/useFetchStatistics'
 import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
 import { useAds } from 'redux/statistics/hooks'
+import { useSettings } from 'redux/settings/hooks'
 
 const WrapCardRightSearch = styled.div`
   font-size: 0.7rem;
@@ -64,9 +65,10 @@ const TabContractTitle = styled.div`
 const TokenPage = () => {
   const router = useRouter()
   const { token } = router.query
-  const { settings } = useSelector((state) => state.Settings)
 
-  const adsText = useAds()
+  const settings = useSettings()
+  console.log('settings', settings)
+  const { adsText, adsBanner } = useAds()
 
   const { statistics } = useFetchStatistics()
   const { addressDetail } = useAddressDetail(token)
@@ -103,8 +105,13 @@ const TokenPage = () => {
           />
         </div>
 
-        <div className="container ad-img">
-          <img src="/images/address/ad-img.png" alt="" />
+        <div className="container ads-img">
+          {adsBanner && (
+            <a url={adsBanner.url} target="_blank">
+              <img src={adsBanner.image} alt="" />
+            </a>
+          )}
+          {/* <img src="/images/address/ad-img.png" alt="" /> */}
         </div>
 
         <div className="token-main-under">

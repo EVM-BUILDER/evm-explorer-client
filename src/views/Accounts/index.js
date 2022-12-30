@@ -21,7 +21,7 @@ const AccountModule = () => {
   const { topAccounts } = useSelector((state) => state.Accounts)
   const { settings } = useSelector((state) => state.Settings)
 
-  const adsText = useAds()
+  const { adsText } = useAds()
 
   // handle params with url
   const [paramsTopAccount, setParamsTopAccount] = useState({
