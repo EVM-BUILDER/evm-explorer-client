@@ -22,7 +22,7 @@ export const WTxDetailOverview = styled.div`
     .tx-left-title {
       font-size: 14px;
       font-weight: 500;
-      margin-bottom: 6px;
+      margin-bottom: 12px;
       ${({ theme }) => theme.mediaQueries.sm} {
         margin-bottom: 0;
       }
@@ -131,13 +131,34 @@ export const WTxDetailOverview = styled.div`
         margin-left: 4px;
       }
 
-      .to-contract,
       .from-contract {
         display: flex;
         img {
           width: 18px;
           min-width: 18px;
           margin-left: 10px;
+        }
+      }
+
+      .to-contract {
+        display: flex;
+        align-items: center;
+        color: var(--primary);
+
+        .arrow-right-icon {
+          width: 16px;
+          fill: transparent;
+          stroke: var(--primary);
+          margin-right: 10px;
+        }
+        .file-address {
+          display: inline-flex;
+          align-items: center;
+          svg {
+            fill: var(--primary);
+            width: 16px;
+            margin-right: 2px;
+          }
         }
       }
 
@@ -150,8 +171,10 @@ export const WTxDetailOverview = styled.div`
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
-        margin-bottom: 6px;
         display: inline-block;
+        height: 24px;
+        min-height: 24px;
+        white-space: nowrap;
 
         &:focus {
           box-shadow: none;
@@ -168,6 +191,7 @@ export const WTxDetailOverview = styled.div`
         font-size: 14px;
         line-height: 18px;
         white-space: nowrap;
+        height: 24px;
       }
 
       .u-label {

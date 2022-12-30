@@ -7,7 +7,7 @@ import { CopyOutlined, CheckCircleOutlined } from '@ant-design/icons'
 const WrapCoppyInput = styled.div`
   display: flex;
   .coppy-text.link {
-    color: #16a637;
+    color: var(--primary);
   }
   .coppy-right {
     margin-left: 4px;

@@ -6,8 +6,8 @@
   .card_address_overview_item {
     font-size: 14px;
     line-height: normal;
-    padding: 7px 0;
-    border-bottom: 1px solid $text;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
 
     @include media-up(md) {
       font-size: 16px;
@@ -78,7 +78,10 @@
   }
 
   .card_address_overview_item:first-child {
-    padding-top: 0;
+    padding: 0 0 16px;
+    @include media-down(sm) {
+      padding: 0 0 12px;
+    }
   }
 }
 

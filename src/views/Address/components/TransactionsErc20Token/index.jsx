@@ -53,12 +53,9 @@ const Transactions = ({ address }) => {
     {
       title: 'To',
       dataIndex: 't',
-      render: (text, record) => (
+      render: (text) => (
         <div className="data-address">
-          <span
-            className={text?.a?.toLowerCase() === address?.toLowerCase() ? 'in' : 'out'}
-            style={{ marginRight: '6px' }}
-          >
+          <span className={text?.a?.toLowerCase() === address?.toLowerCase() ? 'in' : 'out'} style={{ marginRight: '6px' }}>
             {text?.a?.toLowerCase() === address?.toLowerCase() ? 'IN' : 'OUT'}
           </span>
           {text?.a?.toLowerCase() === address?.toLowerCase() ? (
@@ -83,11 +80,11 @@ const Transactions = ({ address }) => {
     {
       title: 'Token',
       dataIndex: 'ca',
-      render: (text) => (
+      render: (_, record) => (
         <div className="data-token">
-          <Link href={`/token/${text?.a}?a=${address}`}>
-            <img src={text?.ico || '/images/icon/empty-token.webp'} alt="" />
-            <span>{text?.sym || 'Unknown'}</span>
+          <Link href={`/token/${record?.ca?.a}?a=${record?.ca?.a}`}>
+            <img src={record?.ca?.pro?.ico || '/images/icon/empty-token.webp'} alt="" />
+            <span>{record?.ca?.pro?.sym || 'Unknown'}</span>
           </Link>
         </div>
       ),
@@ -98,8 +95,8 @@ const Transactions = ({ address }) => {
     <div className="accounts_txs_erc20">
       <div className="card-content-text">
         <span>
-          Latest {txsErc20?.total > paramsTxsErc20.page_size ? paramsTxsErc20.page_size : txsErc20?.total} PN-20 Token
-          Transfer Events
+          Latest {txsErc20?.total > paramsTxsErc20.page_size ? paramsTxsErc20.page_size : txsErc20?.total} PN-20 Token Transfer
+          Events
         </span>
         <div className="card-content-right">
           <ButtonPrimary

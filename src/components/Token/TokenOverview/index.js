@@ -50,7 +50,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
           <>
             <Row className="card_token_overview_item">
               <Col xs={12} md={10}>
-                <Row style={{ flex: 1 }} align="middle" gutter={[{ xs: 4 }, { xs: 4 }]}>
+                <Row style={{ flex: 1 }} align="middle" gutter={[{ xs: 10 }, { xs: 10 }]}>
                   <Col xs={24} xl={24} className="text-small">
                     PRICE
                   </Col>
@@ -64,7 +64,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
               </Col>
               {/* 
               <Col xs={12} md={14} className="content-desc">
-                <Row style={{ flex: 1 }} align="middle" gutter={[{ xs: 4 }, { xs: 4 }]}>
+                <Row style={{ flex: 1 }} align="middle" gutter={[{ xs: 10 }, { xs: 10 }]}>
                   <Col xs={24} xl={14} className="text-small">
                     MARKET CAP
                   </Col>
@@ -75,7 +75,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
               </Col> */}
             </Row>
 
-            <Row className="card_token_overview_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={24} md={10}>
                 Total Supply:
               </Col>
@@ -85,7 +85,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
               </Col>
             </Row>
 
-            <Row className="card_token_overview_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={24} md={10}>
                 Holders:
               </Col>
@@ -100,7 +100,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
               </Col>
             </Row>
 
-            <Row className="card_token_overview_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={24} md={10}>
                 Transfers:
               </Col>

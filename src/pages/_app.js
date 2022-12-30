@@ -264,7 +264,7 @@ function App({ Component, globalProps, pageProps }) {
   }
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
       <IntlProvider locale={language} messages={languages[language]}>
         <GlobalHooks />
         <ThemeContextProvider>

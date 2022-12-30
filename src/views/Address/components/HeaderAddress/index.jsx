@@ -133,8 +133,8 @@ const HeaderAddress = ({ address, addressType, menuSubHeader }) => {
           <a onClick={() => setModalQrCode(true)}>
             <img src="/images/icon/qr_icon.png" alt="" />
           </a>
-          <img src="/images/icon/textbox_icon.png" alt="" />
-          <img src="/images/icon/chat_dot_icon.png" alt="" />
+          {/* <img src="/images/icon/textbox_icon.png" alt="" /> */}
+          {/* <img src="/images/icon/chat_dot_icon.png" alt="" /> */}
         </Space>
       </div>
       <div className="heading-right">

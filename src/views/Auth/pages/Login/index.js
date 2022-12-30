@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'antd'
+import { Button, Form, Space } from 'antd'
 import Checkbox from 'components/AntCheckbox'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import useAuth from 'hooks/useAuth'
@@ -130,12 +130,14 @@ const LoginPage = () => {
             Login
           </Button>
           <div className="question">
-            <p>
-              Don't have an account?{' '}
-              <span>
-                <Link href="/register">Click to sign up</Link>
-              </span>
-            </p>
+            <Space size={[12, 12]} direction="vertical">
+              <p>
+                Don't have an account? <Link href="/register">Click to sign up</Link>
+              </p>
+              <p>
+                <Link href="/forgot">Forgot Password?</Link>
+              </p>
+            </Space>
           </div>
         </Form.Item>
       </Form>

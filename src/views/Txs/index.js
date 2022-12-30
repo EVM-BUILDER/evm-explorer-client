@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row, Table } from 'antd'
 import { useRouter } from 'next/router'
-import { FaEye } from 'react-icons/fa'
+import { BsEye, BsFileCode, BsFileFill, BsFileText, BsFileTextFill, BsFillArrowRightCircleFill } from 'react-icons/bs'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getListTransactions } from 'redux/transactions/actions'
 import { getListStatistics } from 'redux/statistics/actions'
 import { useAds } from 'redux/statistics/hooks'
+import { ArrowRightFill } from 'widgets/Svg'
 
 const DEFAULT_LIMIT = 25
 
@@ -96,7 +97,7 @@ const TransactionsModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <FaEye />
+          <BsEye />
           <Link href={`/tx/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),
@@ -143,18 +144,23 @@ const TransactionsModule = () => {
       title: 'To',
       dataIndex: 't',
       with: 200,
-      render: (t) => (
-        <div className="data-to">
-          {t?.a && (
-            <>
-              <img src="/images/icon/arrow-right.svg" alt="" />
-              <Link href={`/address/${t?.a}`} className="data-to-link">
-                {formatCode(t?.a || '', 16, 0)}
-              </Link>
-            </>
-          )}
-        </div>
-      ),
+      render: (_, record) => {
+        return (
+          <div className="data-to">
+            <ArrowRightFill className="arrow-right-icon" />
+            {record?.t || record?.ca ? (
+              <div className="file-address">
+                {record?.ca?.pro && <BsFileTextFill />}
+                <Link href={`/address/${record?.t?.a}`} className="data-to-link">
+                  {record?.ca?.pro ? record?.ca?.pro?.na : formatCode(record?.t?.a || '', 16, 0)}
+                </Link>
+              </div>
+            ) : (
+              'Unknown'
+            )}
+          </div>
+        )
+      },
     },
     {
       title: 'Value',
@@ -182,7 +188,7 @@ const TransactionsModule = () => {
               maximumFractionDigits: 5,
             })}
           </span>
-          <img src="/images/icon/lamp-charge.svg" alt="" />
+          {/* <img src="/images/icon/lamp-charge.svg" alt="" /> */}
         </div>
       ),
     },

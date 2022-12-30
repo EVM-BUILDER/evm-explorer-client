@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Button, Checkbox, Row, Col } from 'antd'
 import { useDispatch } from 'react-redux'
-import { useFormik } from 'formik'
+// import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components'
 import CardOverview from '../CardOverview'
 import { TAB_ACCOUNT_LINK } from 'views/MyAccount/accountConfig'
 import { InputWrapper, InputPassword } from 'components/Input'
 import { useForm } from 'components/Form/useForm'
+import { getProfile, requestChangePassword } from 'redux/user/actions'
 
 const PasswordTitle = styled.div`
   margin-top: 24px;
@@ -17,7 +18,7 @@ const PasswordTitle = styled.div`
 `
 const Password = ({ userInfo, onChangeTab }) => {
   const dispatch = useDispatch()
-  const [submitSuccessMess, setSubmitSuccessMess] = useState({
+  const [submitMess, setSubmitMess] = useState({
     status: null,
     message: '',
   })
@@ -32,7 +33,7 @@ const Password = ({ userInfo, onChangeTab }) => {
         name: 'newPassword',
         validate: Yup.string()
           .required('Required')
-          .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, 'Minimum 8 characters, at least 1 UPPER CASE, at least 1 number'),
+          .matches(/^(?=.*)(?=.*)(?=.{8,})/, 'Minimum 8 characters'),
       },
       {
         name: 'confirmNewPassword',
@@ -54,21 +55,21 @@ const Password = ({ userInfo, onChangeTab }) => {
       // },
     ],
     onSubmit: async (values) => {
-      setSubmitSuccessMess({ status: '', message: '' })
+      setSubmitMess({ status: '', message: '' })
       if (values.newPassword !== values.confirmNewPassword) return
       dispatch(
-        updateProfile(
+        requestChangePassword(
           {
-            oldPassword: values.oldPassword,
+            password: values.oldPassword,
             newPassword: values.newPassword,
           },
           () => {
             dispatch(getProfile())
-            setSubmitSuccessMess({ status: true, message: 'Profile updated successfully' })
-            onChangeTab(TAB_ACCOUNT_LINK.overview)
+            setSubmitMess({ status: true, message: 'Password updated successfully' })
+            // onChangeTab(TAB_ACCOUNT_LINK.overview)
           },
           (error) => {
-            setSubmitSuccessMess({ status: false, message: error?.message || 'Profile updated successfully' })
+            setSubmitMess({ status: false, message: error?.message || 'Error' })
           },
         ),
       )
@@ -76,7 +77,7 @@ const Password = ({ userInfo, onChangeTab }) => {
   })
 
   return (
-    <CardOverview className="password" title={'Password'} status={submitSuccessMess.status} message={submitSuccessMess.message}>
+    <CardOverview className="password" title={'Password'} status={submitMess.status} message={submitMess.message}>
       <PasswordTitle>Edit the fields below to update your password.</PasswordTitle>
       <div className="overview_info_content password_content">
         <div className="password_content_top">

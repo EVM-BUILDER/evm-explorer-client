@@ -64,19 +64,19 @@ const Holders = ({ addressDetail }) => {
       title: 'Value',
       dataIndex: 'value',
       key: 'value',
-      render: () => <div className="data-value">{/* $3,243,254,665.96 */}</div>,
+      render: () => <div className="data-value">{/* $3,243,254,665.96 */}--</div>,
     },
-    {
-      title: 'Analytics',
-      dataIndex: 'a',
-      render: (_, record) => (
-        <div className="data-analytics">
-          <NextLink href={`/token/${addressDetail?.a}?a=${record.a.a}#tokenAnalytics`}>
-            <ChartIcon />
-          </NextLink>
-        </div>
-      ),
-    },
+    // {
+    //   title: 'Analytics',
+    //   dataIndex: 'a',
+    //   render: (_, record) => (
+    //     <div className="data-analytics">
+    //       <NextLink href={`/token/${addressDetail?.a}?a=${record.a.a}#tokenAnalytics`}>
+    //         <ChartIcon />
+    //       </NextLink>
+    //     </div>
+    //   ),
+    // },
   ]
 
   return (
@@ -84,10 +84,11 @@ const Holders = ({ addressDetail }) => {
       <div className="card-content">
         <div className="card-content-header">
           <div className="content-top">
-            <Link href="#">
+            <span />
+            {/* <Link href="#">
               <HealthIcon />
               Token Holders Chart
-            </Link>
+            </Link> */}
             <span>(Holders Snapshot taken 5 mins ago)</span>
           </div>
 

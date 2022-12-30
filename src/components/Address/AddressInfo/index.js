@@ -17,7 +17,7 @@ const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
         backgroundBody={appearance?.card?.body_bg_color}
         content={
           <>
-            <Row className="card_address_info_item">
+            <Row className="card_address_info_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
                 My Name Tag:
               </Col>
@@ -28,30 +28,32 @@ const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
               </Col>
             </Row>
             {addressType !== ADDRESS_TYPE.address && (
-              <Row className="card_address_info_item">
+              <Row className="card_address_info_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
                   ContractCreator:
                 </Col>
 
-                <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                  <div className="contract-creator">
-                    {addressDetail?.ca?.a && (
-                      <Link className={addressDetail?.ch ? 'valid' : ''} href={`/address/${addressDetail?.ca?.a || '#'}`}>
-                        {addressDetail?.ca?.a || 'Unknown'}
-                      </Link>
-                    )}
+                {addressDetail?.ca?.a && (
+                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                    <div className="contract-creator">
+                      {addressDetail?.ca?.a && (
+                        <Link className={addressDetail?.ch ? 'valid' : ''} href={`/address/${addressDetail?.ca?.a || '#'}`}>
+                          {addressDetail?.ca?.a || 'Unknown'}
+                        </Link>
+                      )}
 
-                    {addressDetail?.ch && (
-                      <>
-                        at txn <Link href={`/tx/${addressDetail?.ch || '#'}`}>{addressDetail?.ch || '--'}</Link>
-                      </>
-                    )}
-                  </div>
-                </Col>
+                      {addressDetail?.ch && (
+                        <>
+                          at txn <Link href={`/tx/${addressDetail?.ch || '#'}`}>{addressDetail?.ch || '--'}</Link>
+                        </>
+                      )}
+                    </div>
+                  </Col>
+                )}
               </Row>
             )}
             {addressType === ADDRESS_TYPE.tokenErc20 && (
-              <Row className="card_address_info_item">
+              <Row className="card_address_info_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
                   TokenTracker:
                 </Col>

@@ -6,6 +6,8 @@ import { Link } from 'components/Link'
 import AntInput from 'components/AntInput'
 import useAuth from 'hooks/useAuth'
 import { getOTP } from 'redux/auth/actions'
+import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 const FORGOT_STEP = {
   GETOTP: 1,
@@ -14,6 +16,7 @@ const FORGOT_STEP = {
 
 const Forgot = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
   const [form] = Form.useForm()
 
   const [step, setStep] = useState(FORGOT_STEP.GETOTP)
@@ -48,8 +51,9 @@ const Forgot = () => {
           values,
           (result) => {
             setRequestOtpResult(result)
-            setInfoMess('Please get code from email!')
-            setStep(2)
+            setStep(FORGOT_STEP.GETOTP)
+            toast.success('Password updated successfully')
+            router.push('/login')
           },
           (error) => {
             setErrorMess(error?.message || 'Error!')

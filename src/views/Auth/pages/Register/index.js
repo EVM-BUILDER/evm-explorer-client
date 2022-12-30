@@ -25,6 +25,7 @@ const Register = () => {
     if (values.password !== values.password_confirm) return
     register(
       {
+        username: values.username,
         email: values.email,
         password: values.password,
       },

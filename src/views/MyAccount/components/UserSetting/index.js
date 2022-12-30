@@ -6,7 +6,7 @@ import CardOverview from '../CardOverview'
 import InputOverview from 'components/InputOverview'
 import AntCheckbox from 'components/AntCheckbox'
 import { Regex } from 'utils/regex.utils'
-import { getProfile, updateProfile } from 'redux/user/actions'
+import { getProfile, requestUpdateProfile } from 'redux/user/actions'
 
 const UserSettingTitle = styled.div`
   margin-top: 24px;
@@ -48,7 +48,7 @@ const UserSetting = ({ userInfo }) => {
 
     setErrorMess('')
     dispatch(
-      updateProfile(
+      requestUpdateProfile(
         formUser,
         () => {
           dispatch(getProfile())

@@ -1,5 +1,23 @@
 .pulsescan {
   &_content {
+    .avatar {
+      img {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        margin-right: 12px;
+        border-radius: 50%;
+      }
+      .btn_profile {
+        border-radius: 4px;
+        background-color: #eeeeee;
+        height: 21px;
+        font-weight: 400;
+        padding: 0.3rem 0.6rem;
+        align-items: center;
+        display: inline-flex;
+      }
+    }
     &_top {
       margin-bottom: 24px;
       // border-bottom: 1px solid var(--border-color);
@@ -15,19 +33,7 @@
         //row
         .ant-row {
           align-items: center;
-          .btn_profile {
-            margin-left: 32px;
-            border-radius: 4px;
-            background-color: #eeeeee;
-            height: 21px;
-            font-weight: 400;
-            padding: 0.3rem 0.6rem;
-            align-items: center;
-            display: inline-flex;
-            span {
-              font-size: 12px !important;
-            }
-          }
+
           .btn_view {
             align-items: center;
             display: inline-flex;
@@ -51,19 +57,13 @@
             border-radius: 4px;
           }
 
-          textarea::placeholder,
-          input::placeholder {
-            font-weight: 500;
-            font-size: 16px;
-            color: #3c3a3a;
-          }
           input:hover {
             border-color: #3c3a3a;
           }
-          textarea.ant-input {
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-          }
+          // textarea.ant-input {
+          //   border: 1px solid var(--border-color);
+          //   border-radius: 4px;
+          // }
           .ant-input:focus,
           .ant-input-focused {
             border-color: none;

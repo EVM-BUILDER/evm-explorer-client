@@ -14,6 +14,7 @@ export { default as HealthIcon } from './Icons/Health'
 export { default as ChartIcon } from './Icons/Chart'
 export { default as ArrowUpDownIcon } from './Icons/ArrowUpDown'
 export { default as FolderIcon } from './Icons/Folder'
+export { default as ArrowRightFill } from './Icons/ArrowRightFill'
 // wallet
 export { default as MetamaskIcon } from './Icons/Metamask'
 export { default as TrustWalletIcon } from './Icons/TrustWallet'
