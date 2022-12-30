@@ -13,10 +13,10 @@ const TokenHeader = ({ addressDetail, menuSubHeader }) => {
           <div className="token-name">{addressDetail?.pro.na}</div>
         </div>
 
-        <div className="btn-group">
+        {/* <div className="btn-group">
           <div>Bitfinex</div>
           <div>Stablecoin</div>
-        </div>
+        </div> */}
       </div>
 
       <div className="heading-right">

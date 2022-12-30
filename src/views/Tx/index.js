@@ -15,6 +15,8 @@ const TransactionModule = () => {
   const { blocks } = useSelector((state) => state.Blocks)
   const { transactionDetail, loading } = useSelector((state) => state.Transactions)
 
+  // console.log('transactionDetail', transactionDetail)
+
   const adsText = useAds()
 
   const menuSubHeader = settings?.menu_sub_header

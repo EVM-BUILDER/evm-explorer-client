@@ -28,7 +28,7 @@ function* getProfile({ cbs, cbe }) {
   }
 }
 
-function updateProfileFromApi(payload) {
+function requestUpdateProfileFromApi(payload) {
   return fetchHelper
     .fetch(`${siteConfig.apiUrl}/user/set-profiles`, {
       method: 'POST',
@@ -39,14 +39,14 @@ function updateProfileFromApi(payload) {
       status,
     }))
 }
-function* updateProfile({ payload, cbs, cbe }) {
+function* requestUpdateProfile({ payload, cbs, cbe }) {
   try {
-    const { data, status } = yield call(updateProfileFromApi, payload)
-    if (status === 200) {
+    const { data } = yield call(requestUpdateProfileFromApi, payload)
+    if (data.status === 200) {
       if (cbs) cbs(data.data)
     } else if (cbe) cbe(data)
   } catch (error) {
-    console.error('updateProfile', error)
+    console.error('requestUpdateProfile', error)
     if (cbe) cbe(error)
   }
 }
@@ -75,10 +75,34 @@ function* updateKyc({ payload, cbs, cbe }) {
   }
 }
 
+function requestChangePasswordFromApi(payload) {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/user/change_password`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+    .then(([resp, status]) => ({
+      data: resp,
+      status,
+    }))
+}
+function* requestChangePassword({ payload, cbs, cbe }) {
+  try {
+    const { data } = yield call(requestChangePasswordFromApi, payload)
+    if (data.status === 200) {
+      if (cbs) cbs(data.data)
+    } else if (cbe) cbe(data)
+  } catch (error) {
+    console.error('requestChangePassword', error)
+    if (cbe) cbe(error)
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeLatest(actions.GET_PROFILE, getProfile),
-    takeLatest(actions.UPDATE_PROFILE, updateProfile),
+    takeLatest(actions.REQUEST_UPDATE_PROFILE, requestUpdateProfile),
     takeLatest(actions.UPDATE_KYC, updateKyc),
+    takeLatest(actions.REQUEST_CHANGE_PASSWORD, requestChangePassword),
   ])
 }

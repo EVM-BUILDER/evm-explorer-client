@@ -34,13 +34,14 @@ const contract = {
 }
 
 const TokenContract = ({ address, addressDetail }) => {
+  console.log(addressDetail)
   return (
     <div className="card_token_contract">
       <CardBase
         title="Contract"
         content={
           <>
-            <Row className="card_token_contract_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_contract_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 Contract:
               </Col>
@@ -50,7 +51,7 @@ const TokenContract = ({ address, addressDetail }) => {
               </Col>
             </Row>
 
-            <Row className="card_token_contract_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_contract_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 Decimals:
               </Col>
@@ -60,40 +61,44 @@ const TokenContract = ({ address, addressDetail }) => {
               </Col>
             </Row>
 
-            <Row className="card_token_contract_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_contract_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 Official Site:
               </Col>
 
               <Col xs={{ span: 24 }} md={{ span: 16 }} className="content-desc link">
-                <a href={contract.officialSite} target="_blank" rel="noreferrer">
-                  {contract.officialSite ? (
-                    <>
-                      {contract.officialSite}{' '}
-                      <span>
-                        <img src="/images/icon/export.svg" alt="export" />
-                      </span>
-                    </>
-                  ) : (
+                {addressDetail?.officialSite ? (
+                  <a href={addressDetail.officialSite} target="_blank" rel="noreferrer">
+                    {addressDetail.officialSite}{' '}
                     <span>
-                      Not Available, <a>Update?</a>
+                      <img src="/images/icon/export.svg" alt="export" />
                     </span>
-                  )}
-                </a>
+                  </a>
+                ) : (
+                  <span>
+                    Not Available, <Link to={`/myaccount`}>Update?</Link>
+                  </span>
+                )}
               </Col>
             </Row>
 
-            <Row className="card_token_contract_item" gutter={[{ xs: 4 }, { xs: 4 }]}>
+            <Row className="card_token_contract_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 Socials:
               </Col>
 
               <Col xs={{ span: 24 }} md={{ span: 16 }} className="content-desc socials">
-                {contract.socials.map((item) => (
-                  <a className="icon" key={item.icon} href={item.url} target="_blank" rel="noreferrer noopener">
-                    <img src={item.icon} alt="social" />
-                  </a>
-                ))}
+                {addressDetail?.socials ? (
+                  contract.socials.map((item) => (
+                    <a className="icon" key={item.icon} href={item.url} target="_blank" rel="noreferrer noopener">
+                      <img src={item.icon} alt="social" />
+                    </a>
+                  ))
+                ) : (
+                  <span>
+                    Not Available, <Link to={`/myaccount`}>Update?</Link>
+                  </span>
+                )}
               </Col>
             </Row>
           </>

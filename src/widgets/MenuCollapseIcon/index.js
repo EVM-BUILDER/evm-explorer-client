@@ -30,7 +30,7 @@ const WrapCollapseIcon = styled.div`
   .icon .menu::after {
     content: '';
     height: ${lineWidth}px;
-    background: ${({ theme }) => theme.colors.primaryColor};
+    background: var(--primary);
     display: block;
     position: absolute;
     transition: ease 0.3s, top ease 0.3s 0.3s, transform ease 0.3s;
@@ -53,7 +53,7 @@ const WrapCollapseIcon = styled.div`
   .icon:hover .menu,
   .icon:hover .menu::before,
   .icon:hover .menu::after {
-    background: ${({ theme }) => theme.colors.textMain};
+    background: var(--primary);
   }
 
   .icon .menu::before {

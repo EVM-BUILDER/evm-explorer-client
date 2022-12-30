@@ -112,7 +112,7 @@ const Transactions = ({ address }) => {
       render: (text) => (
         <div className="data-txnfee">
           <Link className="data-txnfee-link">{(text / 1e18)?.toFixed(5)} </Link>
-          <LampBlueIcon />
+          {/* <LampBlueIcon /> */}
         </div>
       ),
     },

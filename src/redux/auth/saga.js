@@ -103,7 +103,7 @@ function* getOTPRequest({ params, cbs, cbe }) {
 // forgot
 function forgotRequestFromApi(params) {
   return fetchHelper
-    .fetch(`${siteConfig.apiUrl}/user/set-password`, {
+    .fetch(`${siteConfig.apiUrl}/user/forget_password`, {
       method: 'POST',
       body: JSON.stringify(params),
     })

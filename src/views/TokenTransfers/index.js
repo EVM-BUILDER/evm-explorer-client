@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Row, Table } from 'antd'
-import { AiFillEye } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import { BsEye } from 'react-icons/bs'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
@@ -13,7 +13,7 @@ import { useAds } from 'redux/statistics/hooks'
 
 const DEFAULT_LIMIT = 25
 
-const TokenTransfersModule = () => {
+const TokenTransfers = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
 
@@ -88,7 +88,7 @@ const TokenTransfersModule = () => {
       with: 200,
       render: (text) => (
         <div className="data-txnHash">
-          <AiFillEye />
+          <BsEye />
           <Link href={`/tx/${text}`}>{formatCode(text, 13, 0)}</Link>
         </div>
       ),
@@ -223,5 +223,5 @@ const TokenTransfersModule = () => {
   )
 }
 
-TokenTransfersModule.Layout = PublicLayoutBlock
-export default TokenTransfersModule
+TokenTransfers.Layout = PublicLayoutBlock
+export default TokenTransfers

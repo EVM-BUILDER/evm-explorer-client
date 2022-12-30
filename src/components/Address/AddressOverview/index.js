@@ -14,9 +14,12 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
   const statisticsFirstItem = statistics?.[0]
   // const statisticSecondItem = statistics?.[1]
 
-  const { appearance } = useSettings()
+  const { appearance, chain } = useSettings()
 
   const totalTokenInAddress = (balancesErc20?.total || 0) + (balancesErc721?.total || 0)
+
+  console.log('statisticsFirstItem', statisticsFirstItem)
+  console.log('addressDetail', addressDetail)
   return (
     <div className="card_address_overview">
       <CardBase
@@ -25,7 +28,7 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
         backgroundBody={appearance?.card?.body_bg_color}
         content={
           <>
-            <Row className="card_address_overview_item">
+            <Row className="card_address_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
                 Balance:
               </Col>
@@ -38,32 +41,34 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
               </Col>
             </Row>
 
-            <Row className="card_address_overview_item">
+            <Row className="card_address_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
-                PULSE Value:
+                {chain.native.symbol} Value:
               </Col>
 
-              <Col xs={{ span: 24 }} md={{ span: 16 }} className="content">
-                <FormatAmount
-                  prefix="$"
-                  value={roundNumber(
-                    statisticsFirstItem?.tp?.cur * new BigNumber(addressDetail?.data?.v).shiftedBy(-18).toNumber(),
-                  )}
-                />
-                <span>
-                  {statisticsFirstItem && (
-                    <FormatAmount
-                      value={roundNumber(statisticsFirstItem?.tp?.cur)?.toFixed(5)}
-                      prefix={` (@ $`}
-                      suffix={`/${nativeToken?.symbol || ''})`}
-                    />
-                  )}
-                </span>
-              </Col>
+              {statisticsFirstItem && addressDetail && (
+                <Col xs={{ span: 24 }} md={{ span: 16 }} className="content">
+                  <FormatAmount
+                    prefix="$"
+                    value={roundNumber(
+                      statisticsFirstItem?.tp?.cur * new BigNumber(addressDetail?.data?.v).shiftedBy(-18).toNumber(),
+                    )}
+                  />
+                  <span>
+                    {statisticsFirstItem && (
+                      <FormatAmount
+                        value={roundNumber(statisticsFirstItem?.tp?.cur, { scale: 5 })}
+                        prefix={` (@ $`}
+                        suffix={`/${nativeToken.symbol || ''})`}
+                      />
+                    )}
+                  </span>
+                </Col>
+              )}
             </Row>
 
             {totalTokenInAddress && totalTokenInAddress > 0 ? (
-              <Row className="card_address_overview_item">
+              <Row className="card_address_overview_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xs={{ span: 24 }} md={{ span: 8 }} className="title">
                   Token:
                 </Col>

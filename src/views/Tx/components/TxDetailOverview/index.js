@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Menu, Dropdown, Button, Space, Tabs, Row, Col, message, Spin } from 'antd'
+import { BsFileTextFill } from 'react-icons/bs'
 import {
   UserOutlined,
   ClockCircleOutlined,
@@ -12,6 +13,7 @@ import {
 import moment from 'moment-timezone'
 import ReactTimeAgo from 'react-time-ago'
 import CurrencyFormat from 'react-currency-format'
+import { ArrowRightFill } from 'widgets/Svg'
 import { Link } from 'components/Link'
 import CoppyText from 'components/Coppy/CoppyText'
 import { roundNumber } from 'library/helpers/Number'
@@ -189,14 +191,28 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                     </div>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                    {transactionDetail?.t?.a && (
-                      <div className="to-contract">
-                        <Link href={`/address/${transactionDetail?.t?.a}`}>{transactionDetail?.t?.a}</Link>
-                        <CoppyText value={transactionDetail?.t?.a}>
-                          <img src="/images/icon/folder.svg" alt="" />
-                        </CoppyText>
-                      </div>
-                    )}
+                    <div className="to-contract">
+                      {transactionDetail?.ca ? (
+                        <div className="file-address">
+                          <BsFileTextFill />
+                          <Link href={`/address/${transactionDetail?.ca?.a}`}>
+                            {transactionDetail?.ca?.pro?.na || transactionDetail?.ca?.a}
+                          </Link>
+                          <CoppyText value={transactionDetail?.ca?.a}>
+                            <img src="/images/icon/folder.svg" alt="" />
+                          </CoppyText>
+                        </div>
+                      ) : transactionDetail?.t ? (
+                        <div className="file-address">
+                          <Link href={`/address/${transactionDetail.t.a}`}>{formatCode(transactionDetail.t.a || '', 16, 0)}</Link>
+                          <CoppyText value={transactionDetail?.t?.a}>
+                            <img src="/images/icon/folder.svg" alt="" />
+                          </CoppyText>
+                        </div>
+                      ) : (
+                        'Unknown'
+                      )}
+                    </div>
                   </Col>
                 </Row>
               </div>
@@ -243,12 +259,14 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       </div>
                     </Col>
                     <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                      <span className="card-content-item-value">
-                        {transactionDetail?.tf / 1e18 || 0} {settings?.chain?.native?.symbol || ''}
-                      </span>
-                      <span className="card-content-item-price">
-                        (${((transactionDetail?.gp / 1e9) * transactionDetail.gu) / 1e9})
-                      </span>
+                      <Space wrap>
+                        <span className="card-content-item-value">
+                          {transactionDetail?.tf / 1e18 || 0} {settings?.chain?.native?.symbol || ''}
+                        </span>
+                        <span className="card-content-item-price">
+                          (${((transactionDetail?.gp / 1e9) * transactionDetail.gu) / 1e9})
+                        </span>
+                      </Space>
                     </Col>
                   </Row>
                 </div>
@@ -267,8 +285,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 16 }}>
                         {roundNumber(transactionDetail?.gp, { scale: false, decimals: 18 })}{' '}
-                        {settings?.chain?.native?.symbol || ''} (
-                        {roundNumber(transactionDetail?.gp, { decimals: 9, scale: 3 })} Gwei)
+                        {settings?.chain?.native?.symbol || ''} ({roundNumber(transactionDetail?.gp, { decimals: 9, scale: 3 })}{' '}
+                        Gwei)
                       </Col>
                     </Row>
                   </div>

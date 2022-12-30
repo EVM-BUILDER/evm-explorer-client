@@ -21,7 +21,7 @@ const PersonalInfo = ({ userInfo, onChangeTab }) => {
               <span>Your username</span>
             </Col>
             <Col xl={{ span: 12 }} sm={{ span: 16 }} md={{ span: 14 }} xs={{ span: 24 }}>
-              <h3 style={{ fontWeight: 'bold', fontSize: '16px' }}>{userInfo.profile.username}</h3>
+              <h3 style={{ fontWeight: 'bold', fontSize: '16px' }}>{userInfo ? userInfo.profile.username : ''}</h3>
             </Col>
           </Row>
         </div>
@@ -38,7 +38,7 @@ const PersonalInfo = ({ userInfo, onChangeTab }) => {
               xs={{ span: 24 }}
               style={{ display: 'flex', justifyContent: 'space-between' }}
             >
-              <h3>{userInfo.profile.email}</h3>
+              <h3>{userInfo ? userInfo.profile.email : ''}</h3>
               <Button
                 className="btn_overview"
                 onClick={() => {

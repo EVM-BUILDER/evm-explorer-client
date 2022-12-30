@@ -41,7 +41,7 @@ const config = () => [
       },
       {
         label: 'Top Statistics',
-        href: '/top-statistics',
+        href: '/topstatistics',
       },
     ],
   },
