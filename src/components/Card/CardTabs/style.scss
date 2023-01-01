@@ -13,6 +13,7 @@
     margin: 0;
     display: flex;
     align-items: flex-start;
+    background: var(--card-header-bgcolor);
 
     @include media-down(sm) {
       padding: 10px 12px;

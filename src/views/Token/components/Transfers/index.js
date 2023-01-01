@@ -109,6 +109,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             columns={columns}
             dataSource={txsErc20?.data || []}
             loading={txsErc20?.loading}
+            scroll={{ x: 700 }}
             pagination={{
               total: txsErc20?.total,
               page: paramsTxsErc20?.page,

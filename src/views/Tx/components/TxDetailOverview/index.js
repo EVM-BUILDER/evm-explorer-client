@@ -18,6 +18,7 @@ import { Link } from 'components/Link'
 import CoppyText from 'components/Coppy/CoppyText'
 import { roundNumber } from 'library/helpers/Number'
 import { WTxDetailOverview } from './styled'
+import { formatCode } from 'library/helpers/CommonHelper'
 
 const menuSuccess = (
   <Menu className="success-modal-container">
@@ -59,8 +60,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
           {transactionDetail && (
             <>
               <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                <Row>
-                  <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={24} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -68,10 +69,10 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       Transaction Hash:
                     </div>
                   </Col>
-                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                    <div className="tx-item">
+                  <Col xs={24} md={16}>
+                    <div className="link-with-copy">
                       <CoppyText value={transactionDetail?.h}>
-                        <img src="/images/icon/folder.svg" alt="" />
+                        <img className="icon-left" style={{ marginRight: '10px' }} src="/images/icon/folder.svg" alt="" />
                       </CoppyText>
                       <Link href={`/tx/${transactionDetail?.h}`}>{transactionDetail?.h}</Link>
                     </div>
@@ -79,8 +80,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                 </Row>
               </div>
               <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                <Row>
-                  <Col xs={{ span: 10 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={10} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -88,7 +89,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       Status:
                     </div>
                   </Col>
-                  <Col xs={{ span: 14 }} md={{ span: 16 }}>
+                  <Col xs={14} md={16}>
                     <Dropdown
                       className={`u-label ${transactionDetail?.s ? 'u-label--success' : 'u-label--danger'}`}
                       overlay={menuSuccess}
@@ -103,8 +104,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                 </Row>
               </div>
               <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                <Row>
-                  <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={24} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -112,7 +113,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       Block:
                     </div>
                   </Col>
-                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                  <Col xs={24} md={16}>
                     <CheckCircleOutlined />
                     <Link href={`/block/${transactionDetail?.bn}`} className="item-clock">
                       {transactionDetail?.bn}
@@ -131,8 +132,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                 </Row>
               </div>
               <div className="card-content-item ant-menu-horizontal ">
-                <Row>
-                  <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={24} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -140,7 +141,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       Timestamp:
                     </div>
                   </Col>
-                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                  <Col xs={24} md={16}>
                     <Link href="/" className="item-timestamp-icons">
                       <ClockCircleOutlined />
                     </Link>
@@ -159,8 +160,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                 </Row>
               </div>
               <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                <Row>
-                  <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={24} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -168,12 +169,12 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       From:
                     </div>
                   </Col>
-                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                  <Col xs={24} md={16}>
                     {transactionDetail?.f?.a && (
-                      <div className="from-contract">
+                      <div className="link-with-copy">
                         <Link href={`/address/${transactionDetail?.f?.a}`}>{transactionDetail?.f?.a}</Link>
                         <CoppyText value={transactionDetail?.f?.a}>
-                          <img src="/images/icon/folder.svg" alt="" />
+                          <img className="icon-right" style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
                         </CoppyText>
                       </div>
                     )}
@@ -181,8 +182,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                 </Row>
               </div>
               <div className="card-content-item ant-menu-horizontal ">
-                <Row>
-                  <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                <Row gutter={[12, 12]}>
+                  <Col xs={24} md={8}>
                     <div className="tx-left-title">
                       <Space>
                         <img src="/images/icon/question.svg" alt="" />
@@ -190,36 +191,34 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       To:
                     </div>
                   </Col>
-                  <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                    <div className="to-contract">
-                      {transactionDetail?.ca ? (
-                        <div className="file-address">
-                          <BsFileTextFill />
-                          <Link href={`/address/${transactionDetail?.ca?.a}`}>
-                            {transactionDetail?.ca?.pro?.na || transactionDetail?.ca?.a}
-                          </Link>
-                          <CoppyText value={transactionDetail?.ca?.a}>
-                            <img src="/images/icon/folder.svg" alt="" />
-                          </CoppyText>
-                        </div>
-                      ) : transactionDetail?.t ? (
-                        <div className="file-address">
-                          <Link href={`/address/${transactionDetail.t.a}`}>{formatCode(transactionDetail.t.a || '', 16, 0)}</Link>
-                          <CoppyText value={transactionDetail?.t?.a}>
-                            <img src="/images/icon/folder.svg" alt="" />
-                          </CoppyText>
-                        </div>
-                      ) : (
-                        'Unknown'
-                      )}
-                    </div>
+                  <Col xs={24} md={16}>
+                    {transactionDetail?.ca ? (
+                      <div className="file-address">
+                        <BsFileTextFill />
+                        <Link href={`/address/${transactionDetail?.ca?.a}`}>
+                          {transactionDetail?.ca?.pro?.na || transactionDetail?.ca?.a}
+                        </Link>
+                        <CoppyText value={transactionDetail?.ca?.a}>
+                          <img src="/images/icon/folder.svg" alt="" />
+                        </CoppyText>
+                      </div>
+                    ) : transactionDetail?.t ? (
+                      <div className="link-with-copy">
+                        <Link href={`/address/${transactionDetail.t.a}`}>{transactionDetail.t.a || ''}</Link>
+                        <CoppyText value={transactionDetail?.t?.a}>
+                          <img className="icon-right" style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                        </CoppyText>
+                      </div>
+                    ) : (
+                      'Unknown'
+                    )}
                   </Col>
                 </Row>
               </div>
               {transactionDetail && (
                 <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                  <Row>
-                    <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                  <Row gutter={[12, 12]}>
+                    <Col xs={24} md={8}>
                       <div className="tx-left-title">
                         <Space>
                           <img src="/images/icon/question.svg" alt="" />
@@ -227,7 +226,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                         Value:
                       </div>
                     </Col>
-                    <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                    <Col xs={24} md={16}>
                       <Space>
                         <Dropdown className="card-content-item-value" overlay={menuBlock} placement="topRight">
                           <span>
@@ -249,8 +248,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
               {/*  */}
               {transactionDetail && (
                 <div className="card-content-item ant-menu-horizontal ">
-                  <Row>
-                    <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                  <Row gutter={[12, 12]}>
+                    <Col xs={24} md={8}>
                       <div className="tx-left-title">
                         <Space>
                           <img src="/images/icon/question.svg" alt="" />
@@ -258,7 +257,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                         Transaction Fee:
                       </div>
                     </Col>
-                    <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                    <Col xs={24} md={16}>
                       <Space wrap>
                         <span className="card-content-item-value">
                           {transactionDetail?.tf / 1e18 || 0} {settings?.chain?.native?.symbol || ''}
@@ -274,8 +273,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
               {collapse && (
                 <div className="card-content-item_show">
                   <div className="card-content-item ant-menu-horizontal no-border-bottom">
-                    <Row>
-                      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                    <Row gutter={[12, 12]}>
+                      <Col xs={24} md={8}>
                         <div className="tx-left-title">
                           <Space>
                             <img src="/images/icon/question.svg" alt="" />
@@ -283,7 +282,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                           Gas Price:
                         </div>
                       </Col>
-                      <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                      <Col xs={24} md={16}>
                         {roundNumber(transactionDetail?.gp, { scale: false, decimals: 18 })}{' '}
                         {settings?.chain?.native?.symbol || ''} ({roundNumber(transactionDetail?.gp, { decimals: 9, scale: 3 })}{' '}
                         Gwei)
@@ -291,21 +290,21 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                     </Row>
                   </div>
                   <div className="card-content-item ant-menu-horizontal">
-                    <Row>
-                      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                    <Row gutter={[12, 12]}>
+                      <Col xs={24} md={8}>
                         <Space>
                           <img src="/images/icon/question.svg" alt="" />
                         </Space>
                         {settings?.chain?.native?.symbol || ''} Price:
                       </Col>
-                      <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                      <Col xs={24} md={16}>
                         {/* {transactionDetail?.p ? numberFormatter(transactionDetail?.p, transactionDetail?.p > 0 ? 2 : 5) : 0} */}
                       </Col>
                     </Row>
                   </div>
                   <div className="card-content-item ant-menu-horizontal">
-                    <Row>
-                      <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                    <Row gutter={[12, 12]}>
+                      <Col xs={24} md={8}>
                         <div className="tx-left-title">
                           <Space>
                             <img src="/images/icon/question.svg" alt="" />
@@ -313,7 +312,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                           Private Note:
                         </div>
                       </Col>
-                      <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                      <Col xs={24} md={16}>
                         {userInfo?.username ? (
                           <textarea className="text-area-private" cols="30" rows="2" />
                         ) : (

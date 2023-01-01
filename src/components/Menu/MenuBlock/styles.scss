@@ -148,11 +148,11 @@
 
           .nav-item {
             svg {
-              fill: var(--header-color);
+              fill: var(--subheader-color);
             }
           }
           a {
-            color: var(--header-color);
+            color: var(--subheader-color);
             font-size: var(--header-color);
             line-height: 21px;
             font-weight: var(--header-font-weight);
@@ -239,6 +239,10 @@
 
       .nav-account {
         margin-left: 14px;
+
+        .username a {
+          color: var(--subheader-color);
+        }
       }
     }
   }

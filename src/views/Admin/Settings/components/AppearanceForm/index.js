@@ -35,6 +35,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       bordercolor: values?.bordercolor || '',
       header: {
         textcolor: values?.header_textcolor || '',
+        subtextcolor: values?.sub_header_textcolor || '',
         fontsize: values?.header_fontsize || 16,
         fontweight: values?.header_fontweight || 400,
         text_active_color: values?.header_text_active_color || '',
@@ -132,6 +133,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       bordercolor: data?.bordercolor || '',
 
       header_textcolor: data?.header?.textcolor || '',
+      sub_header_textcolor: data?.header?.subtextcolor || '',
       header_text_active_color: data?.header?.text_active_color || '',
       header_subnav_bg_color: data?.header?.subnav_bg_color || '',
       header_bgimage: data?.header?.bgimage || '',
@@ -258,6 +260,11 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={6}>
           <Form.Item name="header_textcolor" label="Text color">
+            <Colorpicker popup onColorResult={(color) => color.hex} />
+          </Form.Item>
+        </Col>
+        <Col span={24} md={8} lg={6}>
+          <Form.Item name="sub_header_textcolor" label="Sub text color">
             <Colorpicker popup onColorResult={(color) => color.hex} />
           </Form.Item>
         </Col>
