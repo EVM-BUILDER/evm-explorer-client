@@ -15,7 +15,7 @@ const PersonalInfo = ({ userInfo, onChangeTab }) => {
       <PersonalInfoTitle>Below are the username, email and overview information for your account.</PersonalInfoTitle>
       <div className="personal_info_content">
         <div className="personal_info_content_username">
-          <Row>
+          <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
             <Col xl={{ span: 12 }} sm={{ span: 8 }} md={{ span: 10 }} xs={{ span: 24 }}>
               <img src="/images/account/overview.png" alt="" />
               <span>Your username</span>
@@ -26,7 +26,7 @@ const PersonalInfo = ({ userInfo, onChangeTab }) => {
           </Row>
         </div>
         <div className="personal_info_content_username">
-          <Row>
+          <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
             <Col xl={{ span: 12 }} sm={{ span: 8 }} md={{ span: 10 }} xs={{ span: 24 }}>
               <img src="/images/account/mail.png" alt="" />
               <span>Your Email Address</span>
@@ -51,7 +51,7 @@ const PersonalInfo = ({ userInfo, onChangeTab }) => {
           </Row>
         </div>
         <div className="personal_info_content_username">
-          <Row>
+          <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
             <Col xl={{ span: 12 }} sm={{ span: 8 }} md={{ span: 10 }} xs={{ span: 24 }}>
               <img src="/images/account/lastlogin.png" alt="" />
               <span>Last Login</span>
