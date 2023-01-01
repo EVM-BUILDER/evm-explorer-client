@@ -220,6 +220,7 @@ const BlocksModule = () => {
                   columns={columns}
                   dataSource={blocks || []}
                   loading={loading}
+                  scroll={{ x: 800 }}
                   pagination={{
                     total,
                     page: paramsListBlock?.page,

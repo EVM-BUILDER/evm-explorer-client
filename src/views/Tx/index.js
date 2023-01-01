@@ -17,7 +17,7 @@ const TransactionModule = () => {
 
   // console.log('transactionDetail', transactionDetail)
 
-  const { adsText } = useAds()
+  const { adsText, adsBanner } = useAds()
 
   const menuSubHeader = settings?.menu_sub_header
 
@@ -130,8 +130,13 @@ const TransactionModule = () => {
           </span>
         </div>
 
-        <div className="txn-banner-bottom">
-          <img src="/images/banner/banner.png" alt="" />
+        <div className="ads-image">
+          {/* <img src="/images/banner/banner.png" alt="" /> */}
+          {adsBanner && (
+            <a url={adsBanner.url} target="_blank">
+              <img src={adsBanner.image} alt="" />
+            </a>
+          )}
         </div>
       </div>
     </main>

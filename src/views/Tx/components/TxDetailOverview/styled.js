@@ -22,10 +22,6 @@ export const WTxDetailOverview = styled.div`
     .tx-left-title {
       font-size: 14px;
       font-weight: 500;
-      margin-bottom: 12px;
-      ${({ theme }) => theme.mediaQueries.sm} {
-        margin-bottom: 0;
-      }
     }
 
     .tx-item {
@@ -131,12 +127,12 @@ export const WTxDetailOverview = styled.div`
         margin-left: 4px;
       }
 
-      .from-contract {
+      .link-with-copy {
         display: flex;
-        img {
+        .icon-left,
+        .icon-right {
           width: 18px;
           min-width: 18px;
-          margin-left: 10px;
         }
       }
 

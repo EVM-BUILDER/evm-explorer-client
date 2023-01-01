@@ -19,6 +19,7 @@ function getRootStyle(settings = {}) {
     --header-bg: ${get(settings, 'appearance.header.bgcolor')};
     --header-bg-subnav: ${get(settings, 'appearance.header.subnav_bg_color')};
     --header-color: ${get(settings, 'appearance.header.textcolor')};
+    --subheader-color: ${get(settings, 'appearance.header.subtextcolor')};
     --header-active-color: ${get(settings, 'appearance.header.text_active_color')};
     --header-font-size: ${get(settings, 'appearance.header.fontsize')}px;
     --header-font-weight: ${get(settings, 'appearance.header.fontweight')};    
@@ -40,6 +41,9 @@ function getRootStyle(settings = {}) {
     --card-header-bgcolor: ${get(settings, 'appearance.card.header_bg_color')};
     --card-body-bgcolor: ${get(settings, 'appearance.card.body_bg_color')};
     
+    --table-header-bgcolor: ${get(settings, 'appearance.table.header_bg_color')};
+    --table-body-bgcolor: ${get(settings, 'appearance.table.body_bg_color')};
+
     --text: ${get(settings, 'appearance.text')};
     --text-header: #4a4f55; 
     --text-span: #77838f;

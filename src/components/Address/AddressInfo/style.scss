@@ -7,7 +7,7 @@
     line-height: normal;
     min-height: 48px;
     padding: 12px 0;
-    border-bottom: 1px solid $text;
+    border-bottom: 1px solid var(--border-color);
 
     @include media-up(md) {
       font-size: 16px;

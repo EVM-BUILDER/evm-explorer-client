@@ -107,9 +107,11 @@
 
         display: flex;
         flex-direction: column;
+        overflow: hidden;
 
         .table-header {
           border-bottom: 1px solid var(--border-color);
+          background: var(--card-header-bgcolor);
 
           h2 {
             font-size: 14px;
