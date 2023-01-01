@@ -10,6 +10,7 @@ import { useUser } from 'redux/user/hooks'
 import { TAB_ACCOUNT_LINK } from 'views/MyAccount/accountConfig'
 import { getProfile } from 'redux/user/actions'
 import { useDispatch } from 'react-redux'
+import { BsImageFill, BsPersonFill } from 'react-icons/bs'
 
 const UserSettingTitle = styled.div`
   margin-top: 24px;
@@ -79,11 +80,12 @@ const PulsescanConnect = ({ onChangeTab }) => {
         <div className="overview_info_content pulsescan_content">
           <div className="pulsescan_content_top">
             <div className="pulsescan_content_top_username">
-              <Row>
+              <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                  <img src="/images/account/overview.png" alt="" />
-                  {/* <img src="/images/account/profile.png" alt="" /> */}
-                  <span>Public Profile Picture</span>
+                  <div className="left">
+                    <img src="/images/account/profile.png" alt="" />
+                    <span>Public Profile Picture</span>
+                  </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <div className="avatar">
@@ -98,10 +100,12 @@ const PulsescanConnect = ({ onChangeTab }) => {
               </Row>
             </div>
             <div className="pulsescan_content_top_username">
-              <Row>
+              <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                  <img src="/images/account/overview.png" alt="" />
-                  <span>PULSESCAN Public Profile</span>
+                  <div className="left">
+                    <img src="/images/account/profileview.png" alt="" />
+                    <span>PULSESCAN Public Profile</span>
+                  </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <Button className="btn_view">
@@ -111,10 +115,12 @@ const PulsescanConnect = ({ onChangeTab }) => {
               </Row>
             </div>
             <div className="pulsescan_content_top_username">
-              <Row>
+              <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                  <img src="/images/account/overview.png" alt="" />
-                  <span>Public Profile Name</span>
+                  <div className="left">
+                    <img src="/images/account/overview.png" alt="" />
+                    <span>Public Profile Name</span>
+                  </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <InputWrapper
@@ -126,7 +132,7 @@ const PulsescanConnect = ({ onChangeTab }) => {
                     <div style={{ width: '10%' }}>
                       <img style={{ fontWeight: 400, width: '21px' }} src="/images/account/matching.png" alt="" />
                     </div>
-                    {/* &ensp; */}
+                    &ensp;
                     <span style={{ fontSize: '12px', fontWeight: 400, lineHeight: '15px' }}>
                       Your PUBLIC Profile information can be viewed publicly. Please do not enter sensitive information like your
                       private keys here.
@@ -136,10 +142,12 @@ const PulsescanConnect = ({ onChangeTab }) => {
               </Row>
             </div>
             <div className="pulsescan_content_top_username">
-              <Row>
+              <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                  <img src="/images/account/web.png" alt="" />
-                  <span>Public Profile Website</span>
+                  <div className="left">
+                    <img src="/images/account/web.png" alt="" />
+                    <span>Public Profile Website</span>
+                  </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <InputWrapper
@@ -151,10 +159,12 @@ const PulsescanConnect = ({ onChangeTab }) => {
               </Row>
             </div>
             <div className="pulsescan_content_top_username">
-              <Row>
+              <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
-                  <img src="/images/account/BIO.png" alt="" />
-                  <span>Public Profile BIO</span>
+                  <div className="left">
+                    <img src="/images/account/BIO.png" alt="" />
+                    <span>Public Profile BIO</span>
+                  </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <InputWrapper
