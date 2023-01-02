@@ -173,21 +173,18 @@
 //   }
 // }
 
-.txn-banner-bottom {
-  margin-top: 45px;
-  margin-left: 7.46%;
-  margin-right: 7.46%;
-  background: #262525;
-  border-radius: 4px;
-  text-align: center;
+.ads-image {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 
-  @include media-down(md) {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  @include media-down(sm) {
-    display: block;
-    text-align: center;
+  img {
+    max-height: 80px;
+    object-fit: cover;
+    @include media-up(md) {
+      // width: 88%;
+    }
   }
 }

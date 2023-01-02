@@ -25,6 +25,7 @@ import useAllErc20Balances from 'redux/token/hooks/useAllErc20Balances'
 import useAllErc721Balances from 'redux/token/hooks/useAllErc721Balances'
 import { useAds } from 'redux/statistics/hooks'
 import PN_20 from 'config/abis/erc20.json'
+import { useSettings } from 'redux/settings/hooks'
 
 const TabContractTitle = styled.div`
   img {
@@ -50,9 +51,9 @@ const AddressPage = () => {
   const router = useRouter()
   const { address } = router.query
 
-  const { settings } = useSelector((state) => state.Settings)
   const { userInfo } = useSelector((state) => state.User)
 
+  const settings = useSettings()
   const { adsText, adsBanner } = useAds()
 
   const { statistics } = useFetchStatistics()
@@ -65,6 +66,7 @@ const AddressPage = () => {
   // console.log('balancesErc20', balancesErc20)
 
   const addressType = addressDetail?.data?.ty
+  const chain = settings?.chain
   const nativeToken = settings?.chain?.native
   const menuSubHeader = settings?.menu_sub_header
 
@@ -127,14 +129,14 @@ const AddressPage = () => {
                 },
                 {
                   key: TABS_VIEW.TX_ERC20,
-                  title: 'PN20 Token Txns',
+                  title: `${chain?.erc20 || ''} Token Txns`,
                   content: <TransactionsErc20Token address={address} />,
                 },
-                addressType === ADDRESS_TYPE.tokenErc20 && {
-                  key: TABS_VIEW.TX_ERC721,
-                  title: 'PN721 Token Txns',
-                  content: <TransactionsErc20Token address={address} />,
-                },
+                // addressType === ADDRESS_TYPE.tokenErc20 && {
+                //   key: TABS_VIEW.TX_ERC721,
+                //   title: `${chain?.erc721 || ''} Token Txns`,
+                //   content: <TransactionsErc20Token address={address} />,
+                // },
                 addressType !== ADDRESS_TYPE.address && {
                   key: TABS_VIEW.CONTRACT,
                   title: (

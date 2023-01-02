@@ -67,7 +67,7 @@ const Overview = () => {
       </div>
 
       <div className="overview-page_content">
-        <Sidebar tabList={tabList} activeTab={activeTab} onChangeTab={onChangeTab} />
+        <Sidebar tabList={tabList} activeTab={activeTab} userInfo={userInfo} onChangeTab={onChangeTab} />
 
         <Layout className="overview-page_content_right">
           {(() => {

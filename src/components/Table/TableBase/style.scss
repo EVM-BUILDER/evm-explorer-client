@@ -21,7 +21,7 @@
       .ant-table-cell {
         padding: 16px 10px;
         white-space: nowrap;
-        background-color: var(--tertiary);
+        background: var(--card-header-bgcolor);
         border-bottom: 1px solid var(--border-color);
 
         @include media-down(sm) {
@@ -45,6 +45,7 @@
     .ant-table-tbody {
       .ant-table-cell {
         padding: 16px 10px;
+        background: var(--card-body-bgcolor);
         border-bottom: 1px solid var(--border-color);
         white-space: nowrap;
 

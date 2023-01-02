@@ -95,10 +95,10 @@
       li {
         display: flex;
         align-items: center;
-        // padding: 8px 16px 8px 16px;
         margin-top: 8px;
 
         a {
+          width: 100%;
           font-weight: 400;
           line-height: 21px;
           font-size: 16px;
@@ -106,29 +106,15 @@
           img {
             width: 24px;
             margin: 8px 16px;
-            -webkit-filter: hue-rotate(180deg);
-            filter: hue-rotate(180deg);
           }
           span {
             font-size: 16px;
           }
-          &:active {
-            background-color: #eeeeee;
-            color: var(--primary);
-          }
-        }
-        &:active {
-          background-color: #eeeeee;
-        }
-        &:active span {
-          color: var(--primary) !important;
-          background-color: #eeeeee;
-        }
-        &:active img {
-          color: var(--primary) !important;
         }
       }
-      .account-active {
+      li.account-active a {
+        color: var(--primary);
+        font-weight: 500;
         background-color: #eeeeee;
       }
     }

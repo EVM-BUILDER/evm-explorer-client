@@ -119,6 +119,7 @@ const Holders = ({ addressDetail }) => {
             columns={columns}
             dataSource={holders?.data || []}
             loading={holders?.loading}
+            scroll={{ x: 600 }}
             pagination={{
               total: holders?.total,
               page: paramsTokenHolder?.page,

@@ -10,12 +10,15 @@ import useFetchTxsByAddress from 'redux/transactions/hooks/useFetchTxsByAddress'
 import FormatAmount from 'components/FormatAmount'
 import FormatTimeAgo from 'components/FormatTimeAgo'
 import { roundNumber } from 'library/helpers/Number'
+import BoxInOut from 'components/BoxInOut'
 // import { useSettings } from 'redux/settings/hooks'
 
 const Transactions = ({ address }) => {
   // const { chain } = useSettings()
   const nativeToken = useSelector((state) => state.Settings?.settings?.chain?.native)
   const { txsByAddress } = useFetchTxsByAddress(address, 1, 25)
+
+  console.log('txsByAddress', txsByAddress)
 
   const columns = [
     {
@@ -59,39 +62,24 @@ const Transactions = ({ address }) => {
       filters: [],
       filterSearch: true,
       onFilter: (value, record) => record.address.indexOf(value) === 0,
-      render: (text, record) => (
-        <div className="data-from">
-          {text?.a?.toLowerCase() === address?.toLowerCase() ? (
-            <span>{text?.a}</span>
-          ) : (
-            <Link href={`/address/${text?.a}`}>{text?.a}</Link>
-          )}
-
-          {record?.t?.a?.toLowerCase() === address?.toLowerCase() ? (
-            <div className="in">IN</div>
-          ) : (
-            <div className="out">OUT</div>
-          )}
-        </div>
-      ),
+      render: (text) => <BoxInOut address={address} f={text} />,
     },
     {
       title: 'To',
       dataIndex: 't',
       filters: [],
       onFilter: (value, record) => record.address.indexOf(value) === 0,
-      render: (text) => text?.a ? (
-        <div className="data-to">
-          <div>
-            <ContainerOutlined />
+      render: (text, record) =>
+        text?.a ? (
+          <div className="data-to">
+            <div>
+              <ContainerOutlined />
+            </div>
+            <BoxInOut address={address} f={record?.f} hideInOut />
           </div>
-          {text?.a?.toLowerCase() === address?.toLowerCase() ? (
-            <span>{text?.a}</span>
-          ) : (
-            <Link href={`/address/${text?.a}`}>{text?.a}</Link>
-          )}
-        </div>
-      ) : '',
+        ) : (
+          ''
+        ),
     },
     {
       title: 'Value',
@@ -123,7 +111,7 @@ const Transactions = ({ address }) => {
       <div className="card-content-text">
         <span>
           Latest 25 from a total of{` `}
-          <Link href={`/txs?a=${address}" className="card-content-text-transactions`}>
+          <Link href={`/txs?a=${address}`} className="card-content-text-transactions">
             <FormatAmount value={txsByAddress?.total} nullValue="0" />
           </Link>
           {` `}

@@ -9,7 +9,7 @@ const WrapSidebar = styled.div`
   margin-bottom: 20px;
 `
 
-const Sidebar = ({ tabList, activeTab, onChangeTab }) => {
+const Sidebar = ({ tabList, activeTab, onChangeTab, userInfo }) => {
   const [showSideBar, setShowSideBar] = useState(false)
 
   const handleSidebar = () => {
@@ -50,8 +50,8 @@ const Sidebar = ({ tabList, activeTab, onChangeTab }) => {
       <div className="overview-page_content_tablet">
         <WrapSidebar>
           <div>
-            {/* <h1 style={{ margin: '10px 0px' }}>ACCOUNT</h1> */}
-            {/* <p>Account@gmail.com</p> */}
+            <h1 style={{ margin: '10px 0px' }}>USERNAME</h1>
+            <p>{userInfo?.profile?.email || ''}</p>
           </div>
           <div onClick={handleSidebar}>
             {showSideBar ? (

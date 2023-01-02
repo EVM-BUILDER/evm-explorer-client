@@ -8,6 +8,7 @@ import FormatTimeAgo from 'components/FormatTimeAgo'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 import { useRouter } from 'next/router'
+import BoxInOut from 'components/BoxInOut'
 
 const Transactions = ({ address }) => {
   const router = useRouter()
@@ -38,35 +39,12 @@ const Transactions = ({ address }) => {
     {
       title: 'From',
       dataIndex: 'f',
-      render: (text) => (
-        <div className="data-address">
-          {text?.a?.toLowerCase() === address?.toLowerCase() ? (
-            <span className="data-address-value">{text?.a}</span>
-          ) : (
-            <Link className="data-address-value" href={`/address/${text?.a}`}>
-              {text?.a}
-            </Link>
-          )}
-        </div>
-      ),
+      render: (text, record) => <BoxInOut address={address} f={record?.f} hideInOut />,
     },
     {
       title: 'To',
-      dataIndex: 't',
-      render: (text) => (
-        <div className="data-address">
-          <span className={text?.a?.toLowerCase() === address?.toLowerCase() ? 'in' : 'out'} style={{ marginRight: '6px' }}>
-            {text?.a?.toLowerCase() === address?.toLowerCase() ? 'IN' : 'OUT'}
-          </span>
-          {text?.a?.toLowerCase() === address?.toLowerCase() ? (
-            <span className="data-address-value">{text?.a}</span>
-          ) : (
-            <Link className="data-address-value" href={`/address/${text?.a}`}>
-              {text?.a}
-            </Link>
-          )}
-        </div>
-      ),
+      dataIndex: 'f',
+      render: (text, record) => <BoxInOut address={address} f={record?.f} />,
     },
     {
       title: 'Value',

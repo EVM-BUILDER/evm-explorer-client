@@ -82,7 +82,7 @@ const Password = ({ userInfo, onChangeTab }) => {
       <div className="overview_info_content password_content">
         <div className="password_content_top">
           <div className="password_content_top_username">
-            <Row>
+            <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                 <div className="item left">
                   <img src="/images/account/lock.png" alt="" />
@@ -98,7 +98,7 @@ const Password = ({ userInfo, onChangeTab }) => {
             </Row>
           </div>
           <div className="password_content_top_username">
-            <Row>
+            <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                 <div className="item left">
                   <img src="/images/account/lock.png" alt="" />
@@ -114,7 +114,7 @@ const Password = ({ userInfo, onChangeTab }) => {
             </Row>
           </div>
           <div className="password_content_top_username">
-            <Row>
+            <Row gutter={[{ xs: 10 }, { xs: 10 }]}>
               <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                 <div className="item left">
                   <img src="/images/account/lock.png" alt="" />

@@ -67,7 +67,6 @@ const TokenPage = () => {
   const { token } = router.query
 
   const settings = useSettings()
-  console.log('settings', settings)
   const { adsText, adsBanner } = useAds()
 
   const { statistics } = useFetchStatistics()
