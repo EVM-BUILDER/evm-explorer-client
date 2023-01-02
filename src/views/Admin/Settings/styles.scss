@@ -5,13 +5,23 @@
         .ant-collapse-header-text {
             font-size: 16px;
             font-weight: 700;
-            color: var(--primary)
+            color: #2271b1;
+        }
+    }
+
+    .ant-form {
+        .ant-form-item-label {
+            text-align: left;
+            display: inline-block;
+            max-width: 100%;
+            word-break: break-word;
+            white-space: break-spaces;
         }
     }
 
     .ant-btn-primary {
-        border-color: var(--primary);
-        background-color: var(--primary);
+        border-color: #2271b1;
+        background-color: #2271b1;
         color: #fff;
 
         &:hover,
@@ -238,8 +248,8 @@
     }
 
     .ant-btn-primary {
-        border-color: var(--primary);
-        background-color: var(--primary);
+        border-color: #2271b1;
+        background-color: #2271b1;
         color: #fff;
 
         &:hover,

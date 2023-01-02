@@ -7,6 +7,9 @@ const initState = {
   page_size: 25,
   result: 1,
   total: 1,
+  topTransactions: [],
+  topTokens: [],
+  topNetworks: [],
 }
 
 export default function statisticsReducer(state = initState, action) {
@@ -48,6 +51,22 @@ export default function statisticsReducer(state = initState, action) {
           gasPrice,
           gasPriceUsd,
         },
+      }
+
+    case actions.GET_TOP_TRANSACTIONS_SUCCESS:
+      return {
+        ...state,
+        topTransactions: data,
+      }
+    case actions.GET_TOP_TOKENS_SUCCESS:
+      return {
+        ...state,
+        topTokens: data,
+      }
+    case actions.GET_TOP_NETWORKS_SUCCESS:
+      return {
+        ...state,
+        topNetworks: data,
       }
     default:
       return state

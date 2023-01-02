@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Collapse, Space } from 'antd'
 
 import AdminLayout from 'layouts/AdminLayout'
-import GlobalForm from './components/GlobalForm'
+import ScriptForm from './components/ScriptForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSettings } from 'redux/settings/actions'
 import Breadcrumb from 'components/Breadcrumb'
@@ -18,10 +18,15 @@ const breadcrumb = [
     link: "/admin/settings/general",
     title: "Settings",
     isCurrent: true,
+  },
+  {
+    link: "/admin/settings/script",
+    title: "Script",
+    isCurrent: true,
   }
 ]
 
-const Settings = () => {
+const SettingsScript = () => {
   const dispatch = useDispatch()
 
   const { settings } = useSelector((state) => state.Settings)
@@ -35,8 +40,8 @@ const Settings = () => {
       <Breadcrumb listItems={breadcrumb} />
       <Space direction="vertical" className="admin-setting-wrapper">
         <Collapse defaultActiveKey={['1']}>
-          <Panel header="Global Settings" key="1">
-            <GlobalForm settings={settings} data={settings} />
+          <Panel header="Script" key="1">
+            <ScriptForm settings={settings} data={settings?.script || {}} />
           </Panel>
         </Collapse>
       </Space>
@@ -44,6 +49,6 @@ const Settings = () => {
   )
 }
 
-Settings.Layout = AdminLayout
+SettingsScript.Layout = AdminLayout
 
-export default Settings
+export default SettingsScript

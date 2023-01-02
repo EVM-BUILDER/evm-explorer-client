@@ -5,12 +5,16 @@ import { setSettings } from 'redux/settings/actions'
 
 const layout = {
     labelCol: {
-        span: 24,
+        span: 4,
     },
     wrapperCol: {
-        span: 24,
+        span: 20,
     },
 }
+
+const tailLayout = {
+    wrapperCol: { span: 24 },
+};
 
 const validateMessages = {
     required: '${label} is required!',
@@ -25,7 +29,7 @@ const validateMessages = {
 
 const SystemForm = ({ settings, data }) => {
     const dispatch = useDispatch()
-
+    console.log(settings);
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
@@ -85,121 +89,94 @@ const SystemForm = ({ settings, data }) => {
             className="setting-form setting-system"
         >
             <h3 className='block-title'>SMTP</h3>
-            <Row gutter={24}>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='host'
-                        label="Host"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='from'
-                        label="From"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='mail'
-                        label="Mail"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='key'
-                        label="Key"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-            </Row>
+            <Form.Item
+                name='host'
+                label="Host"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='from'
+                label="From"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='mail'
+                label="Mail"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='key'
+                label="Key"
+            >
+                <Input />
+            </Form.Item>
             <h3 className='block-title'>Token Price</h3>
-            <Row gutter={24}>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_source'
-                        label="Source"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_symbol'
-                        label="Symbol"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_circulating_supply'
-                        label="Circulating Supply"
-                        rules={[
-                            {
-                                type: 'number',
-                                min: 0,
-                            },
-                        ]}
-                    >
-                        <InputNumber />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_total_supply'
-                        label="Total Supply"
-                        rules={[
-                            {
-                                type: 'number',
-                                min: 0,
-                            },
-                        ]}
-                    >
-                        <InputNumber />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_token'
-                        label="Token"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_pair_a'
-                        label="Pair A"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_pair_mr'
-                        label="Pair MR"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='token_pair_bv'
-                        label="Pair BV"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-            </Row>
+            <Form.Item
+                name='token_source'
+                label="Source"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='token_symbol'
+                label="Symbol"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='token_circulating_supply'
+                label="Circulating Supply"
+                rules={[
+                    {
+                        type: 'number',
+                        min: 0,
+                    },
+                ]}
+            >
+                <InputNumber />
+            </Form.Item>
+            <Form.Item
+                name='token_total_supply'
+                label="Total Supply"
+                rules={[
+                    {
+                        type: 'number',
+                        min: 0,
+                    },
+                ]}
+            >
+                <InputNumber />
+            </Form.Item>
+            <Form.Item
+                name='token_token'
+                label="Token"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='token_pair_a'
+                label="Pair A"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='token_pair_mr'
+                label="Pair MR"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='token_pair_bv'
+                label="Pair BV"
+            >
+                <Input />
+            </Form.Item>
             <Form.Item
                 className='form-actions'
+                {...tailLayout}
             >
                 <Button type="primary" htmlType="submit">
                     Save

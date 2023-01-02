@@ -60,6 +60,10 @@ const siderbarMenu = [
         label: <Link href={`/admin/settings/general`}>General</Link>,
       },
       {
+        key: '/admin/settings/appearance',
+        label: <Link href={`/admin/settings/appearance`}>Appearance</Link>,
+      },
+      {
         key: '/admin/settings/menu',
         label: <Link href={`/admin/settings/menu`}>Menu</Link>,
       },
