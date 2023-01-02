@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react'
-import { Button, Col, Form, Input, InputNumber, Row } from 'antd'
+import { Button, Form, Input, InputNumber } from 'antd'
 import { useDispatch } from 'react-redux'
 import { setSettings } from 'redux/settings/actions'
 
 const layout = {
     labelCol: {
-        span: 24,
+        span: 4,
     },
     wrapperCol: {
-        span: 24,
+        span: 20,
     },
 }
+
+const tailLayout = {
+    wrapperCol: { span: 24 },
+};
 
 const validateMessages = {
     required: '${label} is required!',
@@ -78,108 +82,83 @@ const ChainForm = ({ settings, data }) => {
             className="setting-form setting-chain"
         >
             <h3 className='block-title'>Global</h3>
-            <Row gutter={24}>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='explorer'
-                        label="Explorer"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='id'
-                        label="ID"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='name'
-                        label="Name"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='rpc'
-                        label="Rpc"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='erc20'
-                        label="ERC20"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='erc721'
-                        label="ERC721"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='ERC1155'
-                        label="ERC1155"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-            </Row>
+            <Form.Item
+                name='explorer'
+                label="Explorer"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='id'
+                label="ID"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='name'
+                label="Name"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='rpc'
+                label="Rpc"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='erc20'
+                label="ERC20"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='erc721'
+                label="ERC721"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='ERC1155'
+                label="ERC1155"
+            >
+                <Input />
+            </Form.Item>
             <h3 className='block-title'>Native</h3>
-            <Row gutter={24}>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='native_decimals'
-                        label="Decimals"
-                        rules={[
-                            {
-                                type: 'number',
-                                min: 0,
-                                max: 99,
-                            },
-                        ]}
-                    >
-                        <InputNumber />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='native_logo'
-                        label="Logo"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='native_name'
-                        label="Name"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={24} md={12} lg={8}>
-                    <Form.Item
-                        name='native_symbol'
-                        label="Symbol"
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-            </Row>
+            <Form.Item
+                name='native_decimals'
+                label="Decimals"
+                rules={[
+                    {
+                        type: 'number',
+                        min: 0,
+                        max: 99,
+                    },
+                ]}
+            >
+                <InputNumber />
+            </Form.Item>
+            <Form.Item
+                name='native_logo'
+                label="Logo"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='native_name'
+                label="Name"
+            >
+                <Input />
+            </Form.Item>
+            <Form.Item
+                name='native_symbol'
+                label="Symbol"
+            >
+                <Input />
+            </Form.Item>
             <Form.Item
                 className='form-actions'
+                {...tailLayout}
             >
                 <Button type="primary" htmlType="submit">
                     Save
