@@ -2,6 +2,7 @@ import React from 'react'
 import CardBase from 'components/Card/CardBase'
 import { Link } from 'components/Link'
 import { Col, Row } from 'antd'
+import { useSettings } from 'redux/settings/hooks'
 
 const contract = {
   officialSite: 'website',
@@ -34,11 +35,14 @@ const contract = {
 }
 
 const TokenContract = ({ address, addressDetail }) => {
-  console.log(addressDetail)
+  const { appearance, chain } = useSettings()
+  // console.log(addressDetail)
   return (
     <div className="card_token_contract">
       <CardBase
         title="Contract"
+        backgroundHeader={appearance?.card?.header_bg_color}
+        backgroundBody={appearance?.card?.body_bg_color}
         content={
           <>
             <Row className="card_token_contract_item" gutter={[{ xs: 10 }, { xs: 10 }]}>
@@ -122,7 +126,6 @@ const TokenContract = ({ address, addressDetail }) => {
             </Link>
           </div>
         }
-        backgroundHeader="#EEEEEE"
       />
     </div>
   )

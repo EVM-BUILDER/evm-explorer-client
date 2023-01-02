@@ -111,6 +111,7 @@
     border: solid;
     border-width: 0px 1px 0px;
     border-color: var(--border-color);
+    background: var(--card-body-bgcolor);
   }
 
   table tbody tr:first-child {
@@ -144,8 +145,7 @@
     border-bottom-right-radius: 8px;
   }
 
-  table>tr:first-child {
-    background: #eeeeee;
+  table > tr:first-child {
     font-weight: 700;
     font-size: 16px;
     height: 53px;
@@ -154,9 +154,10 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border: 1px solid var(--border-color);
+    background: var(--card-header-bgcolor);
   }
 
-  table>tr:first-child>th:last-child {
+  table > tr:first-child > th:last-child {
     color: var(--primary);
     font-weight: 500;
   }

@@ -1,14 +1,16 @@
 .card_base {
   border-radius: 12px;
-  border: 1px solid var(--border-color);
   overflow: hidden;
   height: 100%;
+  border: 1px solid var(--border-color);
+  background: var(--card-body-bgcolor);
 
   .card_base_header {
     padding: 12px;
-    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
+    background: var(--card-header-bgcolor);
+    border-bottom: 1px solid var(--border-color);
 
     @include media-up(lg) {
       padding: 16px 24px;

@@ -80,10 +80,9 @@
       height: 700px;
       border-radius: 12px;
       border: 1px solid var(--border-color);
-      background-color: #ffffff;
+      background: var(--card-body-bgcolor);
       padding: 32px 39px 23px 39px;
       margin-right: 48px;
-      //title
 
       h1 {
         color: var(--primary);
