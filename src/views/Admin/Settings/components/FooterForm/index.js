@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Form, Input, InputNumber, Row } from 'antd'
+import { Button, Form, Input } from 'antd'
 import MenuListFooter from '../MenuListFooter'
 import { useDispatch } from 'react-redux'
 import { setSettings } from 'redux/settings/actions'
 
 const layout = {
     labelCol: {
-        span: 24,
+        span: 4,
     },
     wrapperCol: {
-        span: 24,
+        span: 20,
     },
 }
+
+const tailLayout = {
+    wrapperCol: { span: 24 },
+};
 
 const validateMessages = {
     required: '${label} is required!',
@@ -108,40 +112,30 @@ const FooterForm = ({ settings, data }) => {
                 className="setting-form setting-footer"
             >
                 <h3 className='block-title'>Global</h3>
-                <Row gutter={24}>
-                    <Col span={24} md={12} lg={8}>
-                        <Form.Item
-                            name='fttitle'
-                            label="Title"
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                    <Col span={24} md={12} lg={8}>
-                        <Form.Item
-                            name='ftlogo'
-                            label="Logo"
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                    <Col span={24} md={12} lg={8}>
-                        <Form.Item
-                            name='ftdesciption'
-                            label="Desciption"
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                    <Col span={24} md={12} lg={8}>
-                        <Form.Item
-                            name='ftcopyright'
-                            label="Copyright"
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                </Row>
+                <Form.Item
+                    name='fttitle'
+                    label="Title"
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name='ftlogo'
+                    label="Logo"
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name='ftdesciption'
+                    label="Desciption"
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name='ftcopyright'
+                    label="Copyright"
+                >
+                    <Input />
+                </Form.Item>
                 <h3 className='block-title'>Footer 01</h3>
                 <Form.Item
                     name='ft01_title'
@@ -174,6 +168,7 @@ const FooterForm = ({ settings, data }) => {
 
                 <Form.Item
                     className='form-actions'
+                    {...tailLayout}
                 >
                     <Button type="primary" htmlType="submit">
                         Save

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { Collapse, Space } from 'antd'
 
 import AdminLayout from 'layouts/AdminLayout'
-import GlobalForm from './components/GlobalForm'
+import AppearanceForm from './components/AppearanceForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSettings } from 'redux/settings/actions'
+import { getListGoogleFont, getSettings } from 'redux/settings/actions'
 import Breadcrumb from 'components/Breadcrumb'
 
 const { Panel } = Collapse
@@ -18,16 +18,27 @@ const breadcrumb = [
     link: "/admin/settings/general",
     title: "Settings",
     isCurrent: true,
+  },
+  {
+    link: "/admin/settings/appearance",
+    title: "Appearance",
+    isCurrent: true,
   }
 ]
 
-const Settings = () => {
+const SettingsAppearance = () => {
   const dispatch = useDispatch()
 
-  const { settings } = useSelector((state) => state.Settings)
+  const { settings, listGoogleFont } = useSelector((state) => state.Settings)
+
+  const listOptionsFont = listGoogleFont?.items?.map((item) => ({
+    value: item?.family,
+    label: item?.family,
+  })) || []
 
   useEffect(() => {
     dispatch(getSettings())
+    dispatch(getListGoogleFont())
   }, [dispatch])
 
   return (
@@ -35,8 +46,8 @@ const Settings = () => {
       <Breadcrumb listItems={breadcrumb} />
       <Space direction="vertical" className="admin-setting-wrapper">
         <Collapse defaultActiveKey={['1']}>
-          <Panel header="Global Settings" key="1">
-            <GlobalForm settings={settings} data={settings} />
+          <Panel header="Appearance" key="1">
+            <AppearanceForm settings={settings} data={settings?.appearance || {}} listOptionsFont={listOptionsFont} />
           </Panel>
         </Collapse>
       </Space>
@@ -44,6 +55,6 @@ const Settings = () => {
   )
 }
 
-Settings.Layout = AdminLayout
+SettingsAppearance.Layout = AdminLayout
 
-export default Settings
+export default SettingsAppearance

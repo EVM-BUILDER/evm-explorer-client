@@ -31,7 +31,7 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
             return ({
                 ...item,
                 id: itemid,
-                child: generateIDChild(item?.child, itemid),
+                child: generateIDChild(item?.child || [], itemid),
             });
         })
         setListMenu(newListMenuItems)

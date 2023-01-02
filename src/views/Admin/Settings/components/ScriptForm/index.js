@@ -7,12 +7,16 @@ const { TextArea } = Input
 
 const layout = {
     labelCol: {
-        span: 24,
+        span: 4,
     },
     wrapperCol: {
-        span: 24,
+        span: 20,
     },
 }
+
+const tailLayout = {
+    wrapperCol: { span: 24 },
+};
 
 const ScriptForm = ({ settings, data }) => {
     const dispatch = useDispatch()

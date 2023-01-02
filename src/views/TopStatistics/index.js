@@ -3,10 +3,13 @@ import TabPane from 'antd/lib/tabs/TabPane'
 import Link from 'next/link'
 import router, { useRouter } from 'next/router'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTopNetworks, getTopTokens, getTopTransactions } from 'redux/statistics/actions'
 
 const TopStatistics = () => {
-  const { statistics } = useSelector((state) => state.Statistics)
+  const dispatch = useDispatch()
+  const { topTransactions, topTokens, topNetworks } = useSelector((state) => state.Statistics)
+  const { settings } = useSelector((state) => state.Settings)
 
   const { query } = useRouter()
 
@@ -15,16 +18,9 @@ const TopStatistics = () => {
   })
 
   React.useEffect(() => {
-    if (paramsStatistics?.day !== 1) {
-      router.push({
-        pathname: '/topstatistics',
-        query: { ...paramsStatistics },
-      })
-    } else {
-      router.push({
-        pathname: '/topstatistics',
-      })
-    }
+    dispatch(getTopTransactions(paramsStatistics))
+    dispatch(getTopTokens(paramsStatistics))
+    dispatch(getTopNetworks(paramsStatistics))
   }, [paramsStatistics])
 
   const handleChangeFilterDate = (value) => {
@@ -35,166 +31,105 @@ const TopStatistics = () => {
   }
 
   const tableTransactions = () => {
+    const dataTransactions = topTransactions?.slice(0, 4) || [];
     return (
       <table className="topstatistics-transaction">
-        <tr>
-          <th>Transactions</th>
-          <th>
-            <Link href="top-transactions">View top 10</Link>
-          </th>
-        </tr>
-        <tr>
-          <td>Top ETH Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">FTX Exchange 2</td>
-          <td>
-            {' '}
-            <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> 147,096.946643999
-          </td>
-        </tr>
-
-        <tr>
-          <td>Top ETH Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">FTX Exchange 2</td>
-          <td>
-            <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> 147,096.946643999
-          </td>
-        </tr>
-
-        <tr>
-          <td>Top ETH Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">FTX Exchange 2</td>
-          <td>
-            {' '}
-            <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> 147,096.946643999
-          </td>
-        </tr>
-
-        <tr>
-          <td>Top ETH Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">FTX Exchange 2</td>
-          <td>
-            {' '}
-            <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> 147,096.946643999
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Transactions</th>
+            {/* <th>
+              <Link href="top-transactions">View top 10</Link>
+            </th> */}
+          </tr>
+          {dataTransactions?.map((transaction) => {
+            return (
+              <>
+                <tr>
+                  <td>Top {settings?.chain?.native?.symbol || ''} Sender</td>
+                  <td>Total {settings?.chain?.native?.symbol || ''}</td>
+                </tr>
+                <tr>
+                  <td className="green">FTX Exchange 2</td>
+                  <td>
+                    <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> {(transaction?.v / 1e18).toLocaleString('en-GB', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 5,
+                    }) || 0}
+                  </td>
+                </tr>
+              </>
+            )
+          })}
+        </tbody>
       </table>
     )
   }
 
   const tableTokens = () => {
+    const dataTokens = topTokens?.slice(0, 4) || [];
     return (
       <table className="topstatistics-tokens">
-        <tr>
-          <th>Tokens</th>
-          <th>
-            <Link href="top-tokens">View top 10</Link>
-          </th>
-        </tr>
-        <tr>
-          <td>Top Unique Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">
-            <img alt="" src="/images/icon/tethericon.png" className="tether" />
-            Tether USD(USDT)
-          </td>
-          <td>201.459</td>
-        </tr>
-
-        <tr>
-          <td>Top Unique Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">
-            <img alt="" src="/images/icon/tethericon.png" className="tether" />
-            Tether USD(USDT)
-          </td>
-          <td>201.459</td>
-        </tr>
-
-        <tr>
-          <td>Top Unique Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">
-            <img alt="" src="/images/icon/tethericon.png" className="tether" /> Tether USD(USDT)
-          </td>
-          <td>201.459</td>
-        </tr>
-
-        <tr>
-          <td>Top Unique Sender</td>
-          <td>Total ETH</td>
-        </tr>
-        <tr>
-          <td className="green">
-            <img alt="" src="/images/icon/tethericon.png" className="tether" /> Tether USD(USDT)
-          </td>
-          <td>201.459</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Tokens</th>
+            {/* <th>
+              <Link href="top-tokens">View top 10</Link>
+            </th> */}
+          </tr>
+          {dataTokens?.map((token) => {
+            return (
+              <>
+                <tr>
+                  <td>Top Unique Sender</td>
+                  <td>Total {settings?.chain?.native?.symbol || ''}</td>
+                </tr>
+                <tr>
+                  <td className="green">
+                    <img src={token?.pro?.ico || '/images/icon/empty-token.webp'} alt="" />
+                    {token?.pro?.na || ""}{token?.pro?.sym ? `(${token?.pro?.sym})` : ""}
+                  </td>
+                  <td>{(token?.v / 1e18).toLocaleString('en-GB', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 5,
+                  }) || 0}</td>
+                </tr>
+              </>
+            )
+          })}
+        </tbody>
       </table>
     )
   }
 
   const tableNetwork = () => {
+    const dataNetworks = topNetworks?.slice(0, 4) || [];
     return (
       <table className="topstatistics-network">
-        <tr>
-          <th>Network</th>
-          <th>
-            <Link href="top-networks">View top 10</Link>
-          </th>
-        </tr>
-        <tr>
-          <td>Top Gas Used</td>
-          <td>Gas Used</td>
-        </tr>
-        <tr>
-          <td className="green">Optimism: Sequencer</td>
-          <td>147,096.946643999</td>
-        </tr>
-
-        <tr>
-          <td>Top Gas Used</td>
-          <td>Gas Used</td>
-        </tr>
-        <tr>
-          <td className="green">Optimism: Sequencer</td>
-          <td>147,096.946643999</td>
-        </tr>
-
-        <tr>
-          <td>Top Gas Used</td>
-          <td>Gas Used</td>
-        </tr>
-        <tr>
-          <td className="green">Optimism: Sequencer</td>
-          <td>147,096.946643999</td>
-        </tr>
-
-        <tr>
-          <td>Top Gas Used</td>
-          <td>Gas Used</td>
-        </tr>
-        <tr>
-          <td className="green">Optimism: Sequencer</td>
-          <td>147,096.946643999</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Network</th>
+            {/* <th>
+              <Link href="top-networks">View top 10</Link>
+            </th> */}
+          </tr>
+          {dataNetworks?.map((token) => {
+            return (
+              <>
+                <tr>
+                  <td>Top Gas Used</td>
+                  <td>Gas Used</td>
+                </tr>
+                <tr>
+                  <td className="green">Optimism: Sequencer</td>
+                  <td>{(token?.gu / 1e18).toLocaleString('en-GB', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 5,
+                  }) || 0}</td>
+                </tr>
+              </>
+            )
+          })}
+        </tbody>
       </table>
     )
   }
@@ -222,7 +157,7 @@ const TopStatistics = () => {
       </div>
 
       <Tabs>
-        <TabPane tab="Overview" key="1">
+        <TabPane tab="Overview" key="all">
           {filterDate()}
           <div className="topstatistics-content">
             {tableTransactions()}
@@ -230,15 +165,15 @@ const TopStatistics = () => {
             {tableNetwork()}
           </div>
         </TabPane>
-        <TabPane tab="Transaction" key="2">
+        <TabPane tab="Transaction" key="transaction">
           {filterDate()}
           <div className="topstatistics-content">{tableTransactions()}</div>
         </TabPane>
-        <TabPane tab="Tokens" key="3">
+        <TabPane tab="Tokens" key="token">
           {filterDate()}
           <div className="topstatistics-content">{tableTokens()}</div>
         </TabPane>
-        <TabPane tab="Network" key="4">
+        <TabPane tab="Network" key="network">
           {filterDate()}
           <div className="topstatistics-content">{tableNetwork()}</div>
         </TabPane>
