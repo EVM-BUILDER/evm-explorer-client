@@ -139,6 +139,7 @@ const AccountModule = () => {
                   columns={columns}
                   dataSource={topAccounts?.data || []}
                   loading={topAccounts?.loading}
+                  scroll={{ x: 700 }}
                   pagination={{
                     total: topAccounts?.total,
                     page: paramsTopAccount?.page,

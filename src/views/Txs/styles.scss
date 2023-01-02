@@ -104,9 +104,9 @@
         .ant-table-thead {
           .ant-table-cell {
             padding: 16px 10px;
-            border-bottom: 1px solid var(--border-color);
             white-space: nowrap;
-            background-color: var(--tertiary);
+            background: var(--table-header-bgcolor);
+            border-bottom: 1px solid var(--border-color);
 
             &::before {
               display: none;
@@ -127,9 +127,10 @@
         .ant-table-tbody {
           .ant-table-cell {
             padding: 16px 10px;
-            border-bottom: 1px solid var(--border-color);
             vertical-align: text-bottom;
             white-space: nowrap;
+            background: var(--table-body-bgcolor);
+            border-bottom: 1px solid var(--border-color);
 
             .data-txnfee {
               display: flex;

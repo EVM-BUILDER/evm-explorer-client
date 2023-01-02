@@ -49,7 +49,9 @@ const DexTrades = () => {
         </div>
 
         <div className="card-content-table">
-          <TableBase columns={columns} dataSource={[]} pagination={{ showSizeChange: false }} />
+          <TableBase columns={columns} dataSource={[]} 
+                  scroll={{ x: 700 }}
+          pagination={{ showSizeChange: false }} />
         </div> */}
       {/* </div> */}
     </div>

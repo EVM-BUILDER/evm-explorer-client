@@ -12,7 +12,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
   const statisticsFirstItem = statistics?.[0]
   const statisticSecondItem = statistics?.[1]
 
-  const { chain } = useSettings()
+  const { appearance } = useSettings()
 
   const withNativePriceUsd = useMemo(() => {
     let newPrice
@@ -40,6 +40,8 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
   return (
     <div className="card_token_overview">
       <CardBase
+        backgroundHeader={appearance?.card?.header_bg_color}
+        backgroundBody={appearance?.card?.body_bg_color}
         title={
           <>
             Overview{` `}
@@ -116,7 +118,6 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
             Chart
           </Link>
         }
-        backgroundHeader="#EEEEEE"
       />
     </div>
   )

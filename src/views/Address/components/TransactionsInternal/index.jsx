@@ -95,7 +95,9 @@ const InternalTransactions = ({ address }) => {
         </Space>
       </div>
       <div className="card-content-table">
-        <TableBase columns={columns} loading={txsErc20?.loading} dataSource={txsErc20?.data || []} />
+        <TableBase columns={columns} loading={txsErc20?.loading}
+                  scroll={{ x: 700 }}
+         dataSource={txsErc20?.data || []} />
       </div> */}
       {/* <div className="card-content-footer">
         <div className="content-footer-text">

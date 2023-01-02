@@ -4,7 +4,7 @@ import * as qs from 'query-string'
 import * as actions from './actions'
 import siteConfig from 'config/site.config'
 
-function getListTransactionFromApi({ params }) {
+function getListTransactionFromApi(params) {
   const str = qs.stringify(params || {})
   return fetchHelper
     .fetch(`${siteConfig.apiUrl}/transaction?${str}`, {

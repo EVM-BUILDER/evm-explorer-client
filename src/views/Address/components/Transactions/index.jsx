@@ -18,7 +18,7 @@ const Transactions = ({ address }) => {
   const nativeToken = useSelector((state) => state.Settings?.settings?.chain?.native)
   const { txsByAddress } = useFetchTxsByAddress(address, 1, 25)
 
-  console.log('txsByAddress', txsByAddress)
+  // console.log('txsByAddress', txsByAddress)
 
   const columns = [
     {
@@ -180,7 +180,7 @@ const Transactions = ({ address }) => {
         </div>
       </div>
       <div className="card-content-table">
-        <TableBase columns={columns} loading={txsByAddress?.loading} dataSource={txsByAddress?.data || []} />
+        <TableBase columns={columns} loading={txsByAddress?.loading} scroll={{ x: 700 }} dataSource={txsByAddress?.data || []} />
       </div>
       {/* <div className="card-content-footer">
         <div className="content-footer-text">

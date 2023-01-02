@@ -82,6 +82,7 @@
 
   .card-tabs-content {
     padding: 16px 24px;
+    background: var(--card-body-bgcolor);
 
     @include media-down(sm) {
       padding: 12px;

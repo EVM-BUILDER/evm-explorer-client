@@ -18,8 +18,8 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
 
   const totalTokenInAddress = (balancesErc20?.total || 0) + (balancesErc721?.total || 0)
 
-  console.log('statisticsFirstItem', statisticsFirstItem)
-  console.log('addressDetail', addressDetail)
+  // console.log('statisticsFirstItem', statisticsFirstItem)
+  // console.log('addressDetail', addressDetail)
   return (
     <div className="card_address_overview">
       <CardBase
