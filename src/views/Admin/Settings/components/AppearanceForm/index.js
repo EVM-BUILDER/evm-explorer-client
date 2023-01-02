@@ -72,6 +72,10 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
         header_bg_color: values?.card_header_bgcolor || '',
         body_bg_color: values?.card_body_bgcolor || '',
       },
+      table: {
+        header_bg_color: values?.table_header_bgcolor || '',
+        body_bg_color: values?.table_body_bgcolor || '',
+      },
       input: {
         color: values?.input_color || '',
         bgcolor: data?.input_bgcolor || '',
@@ -163,6 +167,9 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
 
       card_header_bgcolor: data?.card?.header_bg_color || '',
       card_body_bgcolor: data?.card?.body_bg_color || '',
+
+      table_header_bgcolor: data?.table?.header_bg_color || '',
+      table_body_bgcolor: data?.table?.body_bg_color || '',
 
       // card_bordercolor: data?.card?.bordercolor || '',
       input_color: data?.input?.color || '',
@@ -328,6 +335,14 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
         <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
       </Form.Item>
       <Form.Item name="card_body_bgcolor" label="Body background color">
+        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+      </Form.Item>
+
+      <h3 className="block-title">Table</h3>
+      <Form.Item name="table_header_bgcolor" label="Header background color">
+        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+      </Form.Item>
+      <Form.Item name="table_body_bgcolor" label="Body background color">
         <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
       </Form.Item>
 
