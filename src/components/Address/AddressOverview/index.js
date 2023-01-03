@@ -88,7 +88,7 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                             <li>
                               <ul>
                                 <li className="search-token-result" onClick={(e) => e.stopPropagation()}>
-                                  <span>PN-20 Tokens ({balancesErc20?.total > 100 ? '>100' : balancesErc20?.total})</span>
+                                  <span>{chain?.erc20 || ''} Tokens ({balancesErc20?.total > 100 ? '>100' : balancesErc20?.total})</span>
                                   <ArrowUpDownIcon />
                                 </li>
 

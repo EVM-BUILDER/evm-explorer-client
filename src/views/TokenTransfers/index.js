@@ -10,6 +10,7 @@ import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllTxsErc20 } from 'redux/token/actions'
 import { useAds } from 'redux/statistics/hooks'
+import { useSettings } from 'redux/settings/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -17,9 +18,9 @@ const TokenTransfers = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
 
-  const { settings } = useSelector((state) => state.Settings)
   const { allTxnsErc20 } = useSelector((state) => state.Token)
 
+  const { chain } = useSettings()
   const { adsText } = useAds()
 
   // handle params with url
@@ -162,9 +163,11 @@ const TokenTransfers = () => {
         <div className="token-transfer-heading">
           <h1>
             <span>Token Transfers</span>
-            <Link key="PN20">
-              <Button>PN20</Button>
-            </Link>
+            {chain && (
+              <Link href="/tokens">
+                <Button>{chain?.erc20}</Button>
+              </Link>
+            )}
           </h1>
         </div>
         {adsText && (

@@ -12,7 +12,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
   const statisticsFirstItem = statistics?.[0]
   const statisticSecondItem = statistics?.[1]
 
-  const { appearance } = useSettings()
+  const { appearance, chain } = useSettings()
 
   const withNativePriceUsd = useMemo(() => {
     let newPrice
@@ -45,7 +45,7 @@ const TokenOverview = ({ addressDetail, statistics, totalTransfer }) => {
         title={
           <>
             Overview{` `}
-            <span className="card_token_overview_title_small">[PN-20]</span>
+            {chain && <span className="card_token_overview_title_small">[{chain.erc20}]</span>}
           </>
         }
         content={
