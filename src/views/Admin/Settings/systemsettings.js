@@ -4,7 +4,7 @@ import { Collapse, Space } from 'antd'
 import AdminLayout from 'layouts/AdminLayout'
 import SystemForm from './components/SystemForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSettings } from 'redux/settings/actions'
+import { getAdminSettings } from 'redux/settings/actions'
 import Breadcrumb from 'components/Breadcrumb'
 
 const { Panel } = Collapse
@@ -29,10 +29,10 @@ const breadcrumb = [
 const SystemSettings = () => {
   const dispatch = useDispatch()
 
-  const { settings } = useSelector((state) => state.Settings)
+  const { adminSettings } = useSelector((state) => state.Settings)
 
   useEffect(() => {
-    dispatch(getSettings())
+    dispatch(getAdminSettings())
   }, [dispatch])
 
   return (
@@ -41,7 +41,7 @@ const SystemSettings = () => {
       <Space direction="vertical" className="admin-setting-wrapper">
         <Collapse defaultActiveKey={['1']}>
           <Panel header="System Settings" key="1">
-            <SystemForm settings={settings} data={settings?.system || {}} />
+            <SystemForm settings={adminSettings} data={adminSettings?.system || {}} />
           </Panel>
         </Collapse>
       </Space>
