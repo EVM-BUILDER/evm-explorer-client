@@ -11,11 +11,11 @@ import FormatAmount from 'components/FormatAmount'
 import FormatTimeAgo from 'components/FormatTimeAgo'
 import { roundNumber } from 'library/helpers/Number'
 import BoxInOut from 'components/BoxInOut'
-// import { useSettings } from 'redux/settings/hooks'
+import { useSettings } from 'redux/settings/hooks'
 
 const Transactions = ({ address }) => {
   // const { chain } = useSettings()
-  const nativeToken = useSelector((state) => state.Settings?.settings?.chain?.native)
+  const { chain } = useSettings()
   const { txsByAddress } = useFetchTxsByAddress(address, 1, 25)
 
   // console.log('txsByAddress', txsByAddress)
@@ -62,7 +62,7 @@ const Transactions = ({ address }) => {
       filters: [],
       filterSearch: true,
       onFilter: (value, record) => record.address.indexOf(value) === 0,
-      render: (text) => <BoxInOut address={address} f={text} />,
+      render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} />,
     },
     {
       title: 'To',
@@ -75,7 +75,7 @@ const Transactions = ({ address }) => {
             <div>
               <ContainerOutlined />
             </div>
-            <BoxInOut address={address} f={record?.f} hideInOut />
+            <BoxInOut type="to" address={address} f={record.f} t={record.t} hideInOut />
           </div>
         ) : (
           ''
@@ -88,7 +88,7 @@ const Transactions = ({ address }) => {
         <div className="data-value">
           <FormatAmount
             value={roundNumber(text, { decimals: 18, scale: 5 })}
-            suffix={` ${nativeToken?.symbol || ''}`}
+            suffix={` ${chain?.native?.symbol || ''}`}
             nullValue="0"
           />
         </div>

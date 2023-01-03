@@ -32,6 +32,7 @@ import useFetchStatistics from 'redux/statistics/hooks/useFetchStatistics'
 import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
 import { useAds } from 'redux/statistics/hooks'
 import { useSettings } from 'redux/settings/hooks'
+import Events from './components/Events'
 
 const WrapCardRightSearch = styled.div`
   font-size: 0.7rem;
@@ -61,6 +62,16 @@ const TabContractTitle = styled.div`
     margin-left: 4px;
   }
 `
+
+export const TABS_VIEW = {
+  Transfers: 'Transfers',
+  Holders: 'Holders',
+  Info: 'Info',
+  DexTrade: 'contract',
+  Events: 'Events',
+  Contract: 'Contract',
+  Comments: 'Comments',
+}
 
 const TokenPage = () => {
   const router = useRouter()
@@ -132,27 +143,27 @@ const TokenPage = () => {
             }
             tabs={[
               {
-                key: '1',
+                key: TABS_VIEW.Transfers,
                 title: 'Transfers',
                 content: <Transfers txsErc20={txsErc20} paramsTxsErc20={paramsTxsErc20} setParamsTxsErc20={setParamsTxsErc20} />,
               },
               {
-                key: '2',
+                key: TABS_VIEW.Holders,
                 title: 'Holders',
                 content: <Holders addressDetail={addressDetail?.data} />,
               },
               {
-                key: '3',
+                key: TABS_VIEW.Info,
                 title: 'Info',
                 content: <Info />,
               },
               {
-                key: '4',
+                key: TABS_VIEW.DexTrade,
                 title: 'DEX Trades',
                 content: <DexTrades />,
               },
               {
-                key: '5',
+                key: TABS_VIEW.Contract,
                 title: (
                   <TabContractTitle>
                     Contract
@@ -162,7 +173,12 @@ const TokenPage = () => {
                 content: <Contract token={token} addressDetail={addressDetail?.data} />,
               },
               {
-                key: '6',
+                key: TABS_VIEW.Events,
+                title: 'Events',
+                content: <Events />,
+              },
+              {
+                key: TABS_VIEW.Comments,
                 title: 'Comments',
                 content: <Comments />,
               },

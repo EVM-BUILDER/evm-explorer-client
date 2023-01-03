@@ -42,7 +42,7 @@ export const TABS_VIEW = {
   TX_ERC20: 'txPn20',
   TX_ER721: 'txPn721',
   CONTRACT: 'contract',
-  EVENTS: 'EVENTS',
+  // EVENTS: 'EVENTS',
   ANALYTICS: 'ANALYTICS',
   COMMENTS: 'COMMENTS',
 }
@@ -147,11 +147,11 @@ const AddressPage = () => {
                   ),
                   content: <Contract address={address} addressDetail={addressDetail?.data} />,
                 },
-                {
-                  key: TABS_VIEW.EVENTS,
-                  title: 'Events',
-                  content: <Events />,
-                },
+                // {
+                //   key: TABS_VIEW.EVENTS,
+                //   title: 'Events',
+                //   content: <Events />,
+                // },
                 {
                   key: TABS_VIEW.ANALYTICS,
                   title: 'Analytics',

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getListAddress } from 'redux/address/actions'
 import { useAds } from 'redux/statistics/hooks'
 import FormatAmount from 'components/FormatAmount'
+import { useSettings } from 'redux/settings/hooks'
 
 const DEFAULT_LIMIT = 25
 
@@ -17,9 +18,9 @@ const TopTokensModule = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
 
-  const { settings } = useSelector((state) => state.Settings)
   const { listAddress } = useSelector((state) => state.Address)
 
+  const { chain } = useSettings()
   const { adsText } = useAds()
 
   // handle params with url
@@ -156,9 +157,11 @@ const TopTokensModule = () => {
         <div className="top-tokens-heading">
           <h1>
             <span>Top Tokens</span>
-            <Link key="PN20">
-              <Button>PN20</Button>
-            </Link>
+            {chain && (
+              <Link href="/tokens">
+                <Button>{chain?.erc20}</Button>
+              </Link>
+            )}
           </h1>
         </div>
         {adsText && (

@@ -9,9 +9,12 @@ import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 import { useRouter } from 'next/router'
 import BoxInOut from 'components/BoxInOut'
+import { useSettings } from 'redux/settings/hooks'
 
 const Transactions = ({ address }) => {
   const router = useRouter()
+  const { chain } = useSettings()
+
   const { txsErc20, paramsTxsErc20 } = useFetchTxsErc20(address, 1, 25)
 
   const columns = [
@@ -39,12 +42,12 @@ const Transactions = ({ address }) => {
     {
       title: 'From',
       dataIndex: 'f',
-      render: (text, record) => <BoxInOut address={address} f={record?.f} hideInOut />,
+      render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} hideInOut />,
     },
     {
       title: 'To',
       dataIndex: 'f',
-      render: (text, record) => <BoxInOut address={address} f={record?.f} />,
+      render: (text, record) => <BoxInOut type="to" address={address} f={record.f} t={record.t} />,
     },
     {
       title: 'Value',
@@ -73,8 +76,8 @@ const Transactions = ({ address }) => {
     <div className="accounts_txs_erc20">
       <div className="card-content-text">
         <span>
-          Latest {txsErc20?.total > paramsTxsErc20.page_size ? paramsTxsErc20.page_size : txsErc20?.total} PN-20 Token Transfer
-          Events
+          Latest {txsErc20?.total > paramsTxsErc20.page_size ? paramsTxsErc20.page_size : txsErc20?.total} {chain?.erc20 || ''}{' '}
+          Token Transfer Events
         </span>
         <div className="card-content-right">
           <ButtonPrimary
