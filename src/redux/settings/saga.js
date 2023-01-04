@@ -3,6 +3,38 @@ import fetchHelper from 'library/helpers/FetchHelper'
 import * as actions from './actions'
 import siteConfig from 'config/site.config'
 
+function getAdminSettingFromApi() {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/setting/get`, {
+      method: 'GET',
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
+}
+
+function* getAdminSettingRequest() {
+  try {
+    const { status, data } = yield call(getAdminSettingFromApi)
+    if (status === 200) {
+      let settings = Object.entries(data.data).reduce((memo, [_, item]) => {
+        memo[item.key] = item?.value
+        return memo
+      }, {});
+      yield put(actions.getAdminSettingsSuccess(settings))
+    } else {
+      let error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
+  } catch (error) {
+    yield put(actions.getAdminSettingsSuccess(null))
+  }
+}
+
 function updateSettingsFromApi(payload) {
   return fetchHelper
     .fetch(
@@ -27,7 +59,7 @@ function* updateSettings({ payload }) {
     if (status === 200) {
       yield put(actions.setSettingsSuccess(payload))
     }
-  } catch (error) {}
+  } catch (error) { }
 }
 
 function getListGoogleFontFromApi() {
@@ -46,9 +78,13 @@ function* getListGoogleFont() {
     if (status === 200) {
       yield put(actions.getListGoogleFontSuccess(data))
     }
-  } catch (error) {}
+  } catch (error) { }
 }
 
 export default function* statisticSaga() {
-  yield all([takeLatest(actions.SET_SETTINGS, updateSettings), takeLatest(actions.GET_LIST_GOOLE_FONT, getListGoogleFont)])
+  yield all([
+    takeLatest(actions.SET_SETTINGS, updateSettings),
+    takeLatest(actions.GET_LIST_GOOLE_FONT, getListGoogleFont),
+    takeLatest(actions.GET_ADMIN_SETTINGS, getAdminSettingRequest),
+  ])
 }

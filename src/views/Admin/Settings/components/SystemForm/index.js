@@ -61,12 +61,12 @@ const SystemForm = ({ settings, data }) => {
     }
 
     useEffect(() => {
-        console.log(data);
         form.setFieldsValue(
             {
                 key: data?.smtp?.key || "",
                 mail: data?.smtp?.mail || "",
                 host: data?.smtp?.host || "",
+                from: data?.smtp?.from || "",
                 token_source: data?.["token-price"]?.source || "",
                 token_symbol: data?.["token-price"]?.symbol || "",
                 token_circulating_supply: data?.["token-price"]?.circulating_supply || "",

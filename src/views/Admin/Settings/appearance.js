@@ -4,7 +4,7 @@ import { Collapse, Space } from 'antd'
 import AdminLayout from 'layouts/AdminLayout'
 import AppearanceForm from './components/AppearanceForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { getListGoogleFont, getSettings } from 'redux/settings/actions'
+import { getListGoogleFont, getAdminSettings } from 'redux/settings/actions'
 import Breadcrumb from 'components/Breadcrumb'
 
 const { Panel } = Collapse
@@ -29,7 +29,7 @@ const breadcrumb = [
 const SettingsAppearance = () => {
   const dispatch = useDispatch()
 
-  const { settings, listGoogleFont } = useSelector((state) => state.Settings)
+  const { adminSettings, listGoogleFont } = useSelector((state) => state.Settings)
 
   const listOptionsFont = listGoogleFont?.items?.map((item) => ({
     value: item?.family,
@@ -37,7 +37,7 @@ const SettingsAppearance = () => {
   })) || []
 
   useEffect(() => {
-    dispatch(getSettings())
+    dispatch(getAdminSettings())
     dispatch(getListGoogleFont())
   }, [dispatch])
 
@@ -47,7 +47,7 @@ const SettingsAppearance = () => {
       <Space direction="vertical" className="admin-setting-wrapper">
         <Collapse defaultActiveKey={['1']}>
           <Panel header="Appearance" key="1">
-            <AppearanceForm settings={settings} data={settings?.appearance || {}} listOptionsFont={listOptionsFont} />
+            <AppearanceForm settings={adminSettings} data={adminSettings?.appearance || {}} listOptionsFont={listOptionsFont} />
           </Panel>
         </Collapse>
       </Space>
