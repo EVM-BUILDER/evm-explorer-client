@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useMemo, useState } from 'react'
 import CardBase from 'components/Card/CardBase'
 import { Link } from 'components/Link'
 import { Col, Dropdown, Menu, Row } from 'antd'
@@ -18,8 +18,35 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
 
   const totalTokenInAddress = (balancesErc20?.total || 0) + (balancesErc721?.total || 0)
 
+  // console.log('balancesErc20', balancesErc20)
   // console.log('statisticsFirstItem', statisticsFirstItem)
   // console.log('addressDetail', addressDetail)
+
+  const [searchTokenBalance, setSearchTokenBalance] = useState()
+
+  const searchErc20Result = useMemo(() => {
+    if (!balancesErc20?.data) return []
+    if (!searchTokenBalance) return balancesErc20.data || []
+    return balancesErc20.data.filter((entry) => {
+      const obj = {
+        ...entry.ta,
+        ...entry.ta.pro,
+      }
+      return Object.values(obj).some((val) => typeof val === 'string' && val?.includes(searchTokenBalance))
+    })
+  }, [balancesErc20?.data, searchTokenBalance])
+  const searchErc721Result = useMemo(() => {
+    if (!balancesErc721?.data) return []
+    if (!searchTokenBalance) return balancesErc721?.data || []
+    return balancesErc721?.data.filter((entry) => {
+      const obj = {
+        ...entry.ta,
+        ...entry.ta.pro,
+      }
+      return Object.values(obj).some((val) => typeof val === 'string' && val?.includes(searchTokenBalance))
+    })
+  }, [balancesErc721?.data, searchTokenBalance])
+
   return (
     <div className="card_address_overview">
       <CardBase
@@ -81,18 +108,24 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                         overlay={
                           <ul className="address_dropdown_menu">
                             <li>
-                              <input placeholder="Search for Token name" onClick={(e) => e.stopPropagation()} />
+                              <input
+                                placeholder="Search for Token name"
+                                onChange={(e) => setSearchTokenBalance(e.target.value)}
+                              />
                             </li>
 
                             {/* Erc20 */}
                             <li>
                               <ul>
                                 <li className="search-token-result" onClick={(e) => e.stopPropagation()}>
-                                  <span>{chain?.erc20 || ''} Tokens ({balancesErc20?.total > 100 ? '>100' : balancesErc20?.total})</span>
+                                  <span>
+                                    {chain?.erc20 || ''} Tokens (
+                                    {searchErc20Result.length > 100 ? '>100' : searchErc20Result.length})
+                                  </span>
                                   <ArrowUpDownIcon />
                                 </li>
 
-                                {balancesErc20?.data?.map((item) => (
+                                {searchErc20Result.map((item) => (
                                   <li key={item?.ta?.a}>
                                     <Link className="result-item" href={`/token/${item?.ta?.a}?a=${addressDetail?.data?.a}`}>
                                       <img src={item?.ta?.pro?.ico || '/images/logo/eth.png'} alt="logo" />
@@ -116,11 +149,14 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                             <li>
                               <ul>
                                 <li className="search-token-result" onClick={(e) => e.stopPropagation()}>
-                                  <span>PN-721 Tokens ({balancesErc721?.total > 100 ? '>100' : balancesErc721?.total})</span>
+                                  <span>
+                                    {chain?.erc721 || ''} Tokens (
+                                    {searchErc721Result.length > 100 ? '>100' : searchErc721Result.length})
+                                  </span>
                                   <ArrowUpDownIcon />
                                 </li>
 
-                                {balancesErc721?.data?.map((item) => (
+                                {searchErc721Result.map((item) => (
                                   <li key={item?.ta?.a}>
                                     <div className="result-item">
                                       <img src={item?.ta?.pro?.ico || '/images/logo/eth.png'} alt="logo" />

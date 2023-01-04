@@ -28,15 +28,20 @@
 
   .base_pagination_pagination {
     width: 100%;
-    justify-content: end;
     display: flex;
+    align-items: center;
+    justify-content: end;
+
+    .base_pagination_total {
+      margin-right: 6px;
+      white-space: nowrap;
+    }
 
     &.base_pagination_have-show-records {
       width: calc(100% - 210px);
     }
 
-    div,
-    button {
+    .item {
       background-color: #eeeeee;
       border-radius: 4px;
       display: flex;
@@ -49,6 +54,7 @@
       line-height: 18px;
       color: var(--text);
       padding: 4px 10px;
+      white-space: nowrap;
     }
 
     .base_pagination_first {

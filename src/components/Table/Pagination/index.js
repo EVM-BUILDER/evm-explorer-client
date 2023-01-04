@@ -11,6 +11,7 @@ const Pagination = ({
   onChange = () => null,
   onChangeSize = () => {},
   showSizeChange = true,
+  showTotal = '',
   props,
 }) => {
   const [initPageSize] = useState(page_size)
@@ -64,31 +65,20 @@ const Pagination = ({
           showSizeChange ? 'base_pagination_have-show-records' : 'base_pagination_none-show-records'
         }`}
       >
-        <button className="base_pagination_first" disabled={page <= 1} onClick={() => handleChangePagination('first')}>
+        {showTotal && <div className="base_pagination_total">{showTotal}</div>}
+        <button className="item base_pagination_first" disabled={page <= 1} onClick={() => handleChangePagination('first')}>
           First
         </button>
-        <button
-          className="base_pagination_previous"
-          disabled={page <= 1}
-          onClick={() => handleChangePagination('previous')}
-        >
+        <button className="item base_pagination_previous" disabled={page <= 1} onClick={() => handleChangePagination('previous')}>
           <span>&#60;</span>
         </button>
-        <div className="base_pagination_number">
+        <div className="item base_pagination_number">
           Page {page} of {totalPage}
         </div>
-        <button
-          className="base_pagination_next"
-          disabled={page >= totalPage}
-          onClick={() => handleChangePagination('next')}
-        >
+        <button className="item base_pagination_next" disabled={page >= totalPage} onClick={() => handleChangePagination('next')}>
           <span>&#62;</span>
         </button>
-        <button
-          className="base_pagination_last"
-          disabled={page >= totalPage}
-          onClick={() => handleChangePagination('last')}
-        >
+        <button className="item base_pagination_last" disabled={page >= totalPage} onClick={() => handleChangePagination('last')}>
           Last
         </button>
       </div>
