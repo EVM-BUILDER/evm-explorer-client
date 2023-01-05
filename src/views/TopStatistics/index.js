@@ -1,5 +1,6 @@
 import { Tabs } from 'antd'
 import TabPane from 'antd/lib/tabs/TabPane'
+import { formatCode } from 'library/helpers/CommonHelper'
 import Link from 'next/link'
 import router, { useRouter } from 'next/router'
 import React from 'react'
@@ -41,23 +42,23 @@ const TopStatistics = () => {
               <Link href="top-transactions">View top 10</Link>
             </th> */}
           </tr>
-          {dataTransactions?.map((transaction) => {
+          {dataTransactions?.map((transaction, index) => {
             return (
-              <>
+              <React.Fragment key={transaction?.id || index}>
                 <tr>
                   <td>Top {settings?.chain?.native?.symbol || ''} Sender</td>
                   <td>Total {settings?.chain?.native?.symbol || ''}</td>
                 </tr>
                 <tr>
-                  <td className="green">FTX Exchange 2</td>
+                  <td className="green">{transaction?.f?.ca ? transaction?.f?.ca : formatCode(transaction?.f?.a || '', 13, 0)}</td>
                   <td>
-                    <img alt="" src="/images/icon/cryptocurrency_eth.png" className="crypto" /> {(transaction?.v / 1e18).toLocaleString('en-GB', {
+                    <img src={transaction?.t?.pro?.ico || '/images/icon/empty-token.webp'} alt="" /> {(transaction?.v * 1 / 1e18).toLocaleString('en-GB', {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 5,
                     }) || 0}
                   </td>
                 </tr>
-              </>
+              </React.Fragment>
             )
           })}
         </tbody>
@@ -76,9 +77,9 @@ const TopStatistics = () => {
               <Link href="top-tokens">View top 10</Link>
             </th> */}
           </tr>
-          {dataTokens?.map((token) => {
+          {dataTokens?.map((token, index) => {
             return (
-              <>
+              <React.Fragment key={token?.id || index}>
                 <tr>
                   <td>Top Unique Sender</td>
                   <td>Total {settings?.chain?.native?.symbol || ''}</td>
@@ -88,12 +89,12 @@ const TopStatistics = () => {
                     <img src={token?.pro?.ico || '/images/icon/empty-token.webp'} alt="" />
                     {token?.pro?.na || ""}{token?.pro?.sym ? `(${token?.pro?.sym})` : ""}
                   </td>
-                  <td>{(token?.v / 1e18).toLocaleString('en-GB', {
+                  <td>{(token?.v * 1 / 1e18).toLocaleString('en-GB', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 5,
                   }) || 0}</td>
                 </tr>
-              </>
+              </React.Fragment>
             )
           })}
         </tbody>
@@ -103,6 +104,7 @@ const TopStatistics = () => {
 
   const tableNetwork = () => {
     const dataNetworks = topNetworks?.slice(0, 4) || [];
+    console.log(dataNetworks);
     return (
       <table className="topstatistics-network">
         <tbody>
@@ -112,21 +114,21 @@ const TopStatistics = () => {
               <Link href="top-networks">View top 10</Link>
             </th> */}
           </tr>
-          {dataNetworks?.map((token) => {
+          {dataNetworks?.map((network, index) => {
             return (
-              <>
+              <React.Fragment key={network?.id || index}>
                 <tr>
                   <td>Top Gas Used</td>
                   <td>Gas Used</td>
                 </tr>
                 <tr>
-                  <td className="green">Optimism: Sequencer</td>
-                  <td>{(token?.gu / 1e18).toLocaleString('en-GB', {
+                  <td className="green">{network?.pro?.na || network?.pro?.sym || ''}</td>
+                  <td>{(network?.gu * 1 / 1e18).toLocaleString('en-GB', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 5,
                   }) || 0}</td>
                 </tr>
-              </>
+              </React.Fragment>
             )
           })}
         </tbody>
