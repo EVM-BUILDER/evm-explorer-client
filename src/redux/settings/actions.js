@@ -11,6 +11,18 @@ export const getSettingsSuccess = (payload) => ({
   payload,
 })
 
+export const GET_ADMIN_SETTINGS = 'GET_ADMIN_SETTINGS'
+export const GET_ADMIN_SETTINGS_SUCCESS = 'GET_ADMIN_SETTINGS_SUCCESS'
+
+export const getAdminSettings = () => ({
+  type: GET_ADMIN_SETTINGS,
+})
+
+export const getAdminSettingsSuccess = (payload) => ({
+  type: GET_ADMIN_SETTINGS_SUCCESS,
+  payload,
+})
+
 export const SET_SETTINGS = 'SET_SETTINGS'
 export const SET_SETTINGS_SUCCESS = 'SET_SETTINGS_SUCCESS'
 

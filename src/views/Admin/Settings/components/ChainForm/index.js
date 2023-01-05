@@ -119,7 +119,7 @@ const ChainForm = ({ settings, data }) => {
                 <Input />
             </Form.Item>
             <Form.Item
-                name='ERC1155'
+                name='erc1155'
                 label="ERC1155"
             >
                 <Input />

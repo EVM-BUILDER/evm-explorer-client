@@ -6,7 +6,7 @@ import AdsBannerForm from './components/AdsBannerForm'
 import AdsSearchBannerForm from './components/AdsSearchBannerForm'
 import AdsTextForm from './components/AdsTextForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSettings } from 'redux/settings/actions'
+import { getAdminSettings } from 'redux/settings/actions'
 import Breadcrumb from 'components/Breadcrumb'
 
 const { Panel } = Collapse
@@ -31,10 +31,10 @@ const breadcrumb = [
 const SettingsAds = () => {
   const dispatch = useDispatch()
 
-  const { settings } = useSelector((state) => state.Settings)
+  const { adminSettings } = useSelector((state) => state.Settings)
 
   useEffect(() => {
-    dispatch(getSettings())
+    dispatch(getAdminSettings())
   }, [dispatch])
 
   return (
@@ -43,17 +43,17 @@ const SettingsAds = () => {
       <Space direction="vertical" className="admin-setting-wrapper">
         <Collapse defaultActiveKey={['1']}>
           <Panel header="Ads Banner" key="1">
-            <AdsBannerForm settings={settings} dataAds={settings?.ads_banner || {}} />
+            <AdsBannerForm settings={adminSettings} dataAds={adminSettings?.ads_banner || {}} />
           </Panel>
         </Collapse>
         <Collapse defaultActiveKey={['1']}>
           <Panel header="Ads Search Banner" key="1">
-            <AdsSearchBannerForm settings={settings} dataAds={settings?.ads_search_banner || {}} />
+            <AdsSearchBannerForm settings={adminSettings} dataAds={adminSettings?.ads_search_banner || {}} />
           </Panel>
         </Collapse>
         <Collapse defaultActiveKey={['1']}>
           <Panel header="Ads Text" key="1">
-            <AdsTextForm settings={settings} dataAds={settings?.ads_text || {}} />
+            <AdsTextForm settings={adminSettings} dataAds={adminSettings?.ads_text || {}} />
           </Panel>
         </Collapse>
       </Space>
