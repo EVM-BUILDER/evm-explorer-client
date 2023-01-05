@@ -4,8 +4,21 @@ import { ClassNames } from 'utils/classNames.util'
 import { ObjectUtils } from 'utils/object.utils'
 
 const InputWrapperStyled = styled.div`
-  .errorMessage {
+  .label {
+    font-size: 14px;
+    width: fit-content;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  &.required .label::before {
+    content: '*';
+    position: absolute;
+    top: -2px;
+    right: -10px;
     color: red;
+  }
+  .description {
+    color: #77838f;
     font-size: 12px;
   }
 `

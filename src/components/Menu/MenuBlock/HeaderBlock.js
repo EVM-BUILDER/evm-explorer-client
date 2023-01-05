@@ -66,10 +66,10 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
             <ul className="nav-ul">
               {menuConfig.map((entry, index) => {
                 const isActive = activeMenuItem?.title === entry.title
-                if (entry.child?.length > 0) {
+                if (entry.child.length > 0) {
                   return (
                     <li key={`${entry.title}-${index}`}>
-                      <Link href="/" className={`nav-item ${isActive ? 'nav-item-active' : ''}`}>
+                      <Link className={`nav-item ${isActive ? 'nav-item-active' : ''}`} href={entry.url}>
                         {entry.title}
                         <span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

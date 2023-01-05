@@ -13,3 +13,22 @@
   color: var(--text);
   border-color: var(--border-color);
 }
+
+//////////////////// table
+.ant-table-wrapper {
+  .ant-table {
+    .ant-table-thead {
+      .ant-table-cell {
+        font-weight: 500;
+        font-size: 14px;
+      }
+    }
+
+    .ant-table-tbody {
+      .ant-table-cell {
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -111,7 +111,11 @@ const Account = ({ iconFirst, top, onClickMenuItem }) => {
     >
       <WrapAccount iconFirst={iconFirst}>
         <div className="username" style={{ order: iconFirst ? 1 : 0 }}>
-          {userInfo ? <a>{get(userInfo, 'profile.username', 'Unknown')}</a> : <Link href="/login">Sign In</Link>}
+          {userInfo ? (
+            <a>{get(userInfo, 'profile.username', '') || get(userInfo, 'profile.email', '') || 'Unknown'}</a>
+          ) : (
+            <Link href="/login">Sign In</Link>
+          )}
         </div>
         <div className="avatar" style={{ order: iconFirst ? 0 : 1 }}>
           {userInfo?.profile?.avatar ? (

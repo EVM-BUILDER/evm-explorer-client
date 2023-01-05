@@ -1,8 +1,7 @@
 export function ClassNames(obj) {
   let className = ''
-
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (key && obj.hasOwnProperty(key)) {
       const item = obj[key]
       if (item) className += ` ${key}`
     }

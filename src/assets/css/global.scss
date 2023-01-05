@@ -235,3 +235,17 @@ input:-webkit-autofill:active {
   overflow: hidden;
   border-top: 1px solid #e7eaf3;
 }
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+}
+
+// Sticky
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+}

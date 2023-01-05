@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Table } from 'antd'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Pagination from 'components/Table/Pagination'
 import CardOverview from '../CardOverview'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
-import { getTopAccounts } from 'redux/accounts/actions'
-import { Table } from 'antd'
+import { getListAddressVerify } from 'redux/accounts/actions'
 import { Link } from 'components/Link'
+import { BsCurrencyDollar, BsFillTagsFill, BsPencilFill, BsTagFill } from 'react-icons/bs'
 
 const VerifiedTitle = styled.div`
   margin-top: 24px;
@@ -19,45 +20,64 @@ const VerifiedAddresses = () => {
   const dispatch = useDispatch()
   const { query } = useRouter()
 
-  const { topAccounts } = useSelector((state) => state.Accounts)
-  // console.log('topAccounts', topAccounts)
+  const { listAddressVerify } = useSelector((state) => state.Accounts)
+
+  // console.log('listAddressVerify', listAddressVerify)
 
   // handle params with url
-  const [paramsTopAccount, setParamsTopAccount] = useState({
+  const [params, setParams] = useState({
     page: 1,
     page_size: 25,
-    orderBy: 'balance',
-    sort: 'desc',
     status_url: true, // for check is handle url done will fetch api
   })
   useEffect(() => {
-    setParamsTopAccount((prev) => ({
+    setParams((prev) => ({
       ...prev,
       ...query,
       status_url: '',
     }))
   }, [query])
   useEffect(() => {
-    if (!paramsTopAccount.status_url) {
-      dispatch(getTopAccounts(removeEmpty(paramsTopAccount)))
+    if (!params.status_url) {
+      dispatch(getListAddressVerify(removeEmpty(params)))
     }
-  }, [dispatch, paramsTopAccount])
+  }, [dispatch, params])
 
   const columns = [
     {
       title: 'Address',
-      dataIndex: 'a',
+      dataIndex: 'address',
       render: (text) => <Link href={`/address/${text}`}>{formatCode(text, 6, 6)}</Link>,
     },
     {
       title: 'Quick Links',
-      dataIndex: 'a',
-      render: (text) => text,
+      dataIndex: 'address',
+      render: (text, record) => {
+        return (
+          <div className="quick-link">
+            <Link href={`/tokenupdate/${record.address}`}>
+              <BsPencilFill />
+            </Link>
+            <Link href={`/tokenicoupdate/${record.address}`}>
+              <BsCurrencyDollar />
+            </Link>
+            <Link href={`/dapp/edit/${record.address}`}>
+              <BsPencilFill />
+            </Link>
+            <Link href={`/contactus?id=5&amp;a=${record.address}`}>
+              <BsTagFill />
+            </Link>
+            <Link href={`/contactus?id=5&amp;a=${record.address}`}>
+              <BsFillTagsFill />
+            </Link>
+          </div>
+        )
+      },
     },
     {
       title: 'Verified Date',
-      dataIndex: 'a',
-      render: (text) => text,
+      dataIndex: 'time',
+      render: (text) => `2021-10-15`,
     },
   ]
 
@@ -87,21 +107,21 @@ const VerifiedAddresses = () => {
           <div className="verified_addresses_content_top_username ">
             <span style={{ fontSize: '14px', fontWeight: 400 }}>
               {' '}
-              {topAccounts?.total || 0} address verified (out of 1000 max limit)
+              {listAddressVerify.total || 0} address verified (out of 1000 max limit)
             </span>
             <div>
               <img src="/images/account/search.png" alt="" />
             </div>
           </div>
 
-          {topAccounts?.data?.length > 0 ? (
+          {listAddressVerify.data?.length > 0 ? (
             <Table
               className="TableVerifyAddress"
               columns={columns}
-              rowKey={(record) => record.a}
-              dataSource={topAccounts?.data || []}
-              loading={topAccounts.loading}
-              scroll={{ x: 1024 }}
+              rowKey={(record) => record._id.$oid}
+              dataSource={listAddressVerify.data || []}
+              loading={listAddressVerify.loading}
+              scroll={{ x: true }}
               pagination={false}
             />
           ) : (
@@ -116,13 +136,13 @@ const VerifiedAddresses = () => {
 
         <div className="verified_addresses_content_bottom">
           <Pagination
-            total={topAccounts?.total}
-            page={paramsTopAccount?.page}
-            page_size={paramsTopAccount?.page_size}
+            total={listAddressVerify.total || 0}
+            page={params.page}
+            page_size={params.page_size}
             showSizeChange={false}
-            showTotal={`${topAccounts?.total} items`}
+            showTotal={`${listAddressVerify.total || 0} items`}
             onChange={({ page, page_size }) => {
-              setParamsTopAccount((prev) => {
+              setParams((prev) => {
                 return {
                   ...prev,
                   page,

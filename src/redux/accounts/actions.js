@@ -9,6 +9,10 @@ const actions = {
   GET_LATEST_ACCOUNT_SUCCESS: 'GET_LATEST_ACCOUNT_SUCCESS',
   GET_LATEST_ACCOUNT_FAILURE: 'GET_LATEST_ACCOUNT_FAILURE',
 
+  GET_LIST_ADDRESS_VERIFY: 'GET_LIST_ADDRESS_VERIFY',
+  GET_LIST_ADDRESS_VERIFY_SUCCESS: 'GET_LIST_ADDRESS_VERIFY_SUCCESS',
+  GET_LIST_ADDRESS_VERIFY_ERROR: 'GET_LIST_ADDRESS_VERIFY_ERROR',
+
   getTopAccounts: (params) => ({
     type: actions.GET_TOP_ACCOUNT,
     params,
@@ -32,6 +36,27 @@ const actions = {
     type: actions.GET_LATEST_ACCOUNT_FAILURE,
     payload: error,
   }),
+  getListAddressVerify: (payload) => ({
+    type: actions.GET_LIST_ADDRESS_VERIFY,
+    payload,
+  }),
+  getListVerifyAddressSuccess: (payload) => ({
+    type: actions.GET_LIST_ADDRESS_VERIFY_SUCCESS,
+    payload,
+  }),
+  getListVerifyAddressError: (payload) => ({
+    type: actions.GET_LIST_ADDRESS_VERIFY_ERROR,
+    payload,
+  }),
+
+  // Submit info address
+  SUBMIT_INFO_TOKEN: 'SUBMIT_INFO_TOKEN',
+  submitInfoToken: (payload, cbs, cbe) => ({
+    type: actions.SUBMIT_INFO_TOKEN,
+    payload,
+    cbs,
+    cbe,
+  }),
 }
 
 export const {
@@ -41,6 +66,7 @@ export const {
   getLatestAccount,
   getLatestAccountSuccess,
   getLatestAccountFailure,
+  getListAddressVerify,
+  submitInfoToken,
 } = actions
-
 export default actions

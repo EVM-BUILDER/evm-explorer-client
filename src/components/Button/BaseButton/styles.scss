@@ -1,0 +1,60 @@
+@import 'assets/css/variables.scss';
+
+.BaseButton {
+  color: #ffffff;
+  font-weight: 500;
+  width: 100%;
+  padding: 3px 6px;
+  background: var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+
+  outline: unset;
+  border: unset;
+
+  // size
+  &.small {
+    font-size: 13px;
+    height: 32px;
+    @include media-down(sm) {
+      font-size: 11px;
+      height: 26px;
+    }
+  }
+  &.standard {
+    font-size: 16px;
+    line-height: 22px;
+    height: 42px;
+    @include media-down(sm) {
+      font-size: 14px;
+      height: 38px;
+    }
+  }
+  &.larger {
+    font-size: 18px;
+    line-height: 24px;
+    height: 67px;
+    @include media-down(sm) {
+      font-size: 16px;
+      height: 57px;
+    }
+  }
+
+  // variant style
+  &.danger {
+    background-color: var(--warning);
+    border-color: var(--warning);
+  }
+  &.gray {
+    background-color: #77838f;
+    border-color: #77838f;
+  }
+
+  //
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: 1;
+  }
+}

@@ -8,7 +8,7 @@ const InputNumberStyled = styled.div`
     color: #495057;
     line-height: 1.5;
     width: 100%;
-    height: 32px;
+    height: 36px;
     padding: 0.375rem 0.75rem;
     background-color: #fff;
     background-clip: padding-box;
