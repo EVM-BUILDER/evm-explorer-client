@@ -1,0 +1,49 @@
+.tokenUpdateImport {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  h2 {
+    color: #4a4f55;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .boxError {
+    color: #73231d;
+    background-color: #f8dad7;
+    border-color: #f6cbc7;
+    position: relative;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 0 solid transparent;
+    border-radius: 0.35rem;
+    margin-bottom: 16px;
+  }
+  .tokenUpdateImport-body {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaf3;
+    border-radius: 0.5rem;
+  }
+  .tokenUpdateImport-form {
+    width: 100%;
+    max-width: 664px;
+    margin: 0 auto;
+  }
+  .tokenUpdateImport-action {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: fit-content;
+      min-width: 80px;
+    }
+  }
+}

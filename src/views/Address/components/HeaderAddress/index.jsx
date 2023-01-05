@@ -48,10 +48,13 @@ const WHeaderAddress = styled.div`
       color: #3c3a3a;
       font-weight: 400;
       font-size: 16px;
-      line-height: 21px;
+      line-height: 1.5;
       margin-right: 12px;
     }
     .address_head_actions {
+      a {
+        display: flex;
+      }
       img {
         width: 18px;
         height: 18px;

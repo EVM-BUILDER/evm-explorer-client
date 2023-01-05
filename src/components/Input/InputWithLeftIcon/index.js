@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const InputStyled = styled.div`
+const InputWithLeftIconStyled = styled.div`
   width: 100%;
   position: relative;
   .winput {
@@ -9,7 +9,6 @@ const InputStyled = styled.div`
     line-height: 1.5;
     width: 100%;
     height: 36px;
-    padding: 0.375rem 0.75rem;
     background-color: #fff;
     background-clip: padding-box;
     border: ${({ error }) => (error ? '1px solid red' : '1px solid var(--border-color)')};
@@ -21,8 +20,18 @@ const InputStyled = styled.div`
     &:focus {
       border: ${({ error }) => (error ? '1px solid red' : '1px solid #ced4da')};
     }
+    .input-group-prepend {
+      width: 36px;
+      min-width: 36px;
+      height: 100%;
+      border-right: 1px solid #d5dae2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     input {
       width: 100%;
+      padding: 0.375rem 0.75rem;
       border: unset;
       &:hover,
       &:focus {
@@ -33,11 +42,11 @@ const InputStyled = styled.div`
   }
 `
 
-export const InputText = ({ name, onChange, onTouched, value, onBlur, placeholder, error, ...props }) => {
+export const InputWithLeftIcon = ({ name, onChange, onTouched, value, onBlur, placeholder, error, leftIcon, ...props }) => {
   return (
-    <InputStyled error={error}>
+    <InputWithLeftIconStyled error={error}>
       <div className="winput">
-        {props.prefix}
+        <div className="input-group-prepend">{leftIcon}</div>
         <input
           id={name}
           type="text"
@@ -52,8 +61,7 @@ export const InputText = ({ name, onChange, onTouched, value, onBlur, placeholde
           value={value || ''}
           placeholder={placeholder ? placeholder : ''}
         />
-        {props.suffix}
       </div>
-    </InputStyled>
+    </InputWithLeftIconStyled>
   )
 }

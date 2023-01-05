@@ -109,7 +109,7 @@ const TokenContract = ({ address, addressDetail }) => {
         }
         rightNode={
           <div className="right-node-contract">
-            <Link href="#">
+            {/* <Link href="#">
               <a target="_blank" rel="noreferrer noopener">
                 <img src="/images/contract/like.svg" alt="like" />
               </a>
@@ -118,7 +118,7 @@ const TokenContract = ({ address, addressDetail }) => {
               <a target="_blank" rel="noreferrer noopener">
                 <img src="/images/contract/check.svg" alt="check" />
               </a>
-            </Link>
+            </Link> */}
             <Link href="#">
               <a target="_blank" rel="noreferrer noopener">
                 More

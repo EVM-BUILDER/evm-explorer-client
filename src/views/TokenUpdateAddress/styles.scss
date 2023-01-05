@@ -1,0 +1,81 @@
+.TokenUpdate {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  h2 {
+    color: #4a4f55;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .boxError {
+    color: #73231d;
+    background-color: #f8dad7;
+    border-color: #f6cbc7;
+    position: relative;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 0 solid transparent;
+    border-radius: 0.35rem;
+    margin-bottom: 16px;
+  }
+  .TokenUpdate-body {
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaf3;
+    border-radius: 0.5rem;
+  }
+  .TokenUpdate-form {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .TokenUpdate-form-frame {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e7eaf3;
+    border-top-width: 3px;
+    border-top-color: var(--primary);
+    border-radius: 0.5rem;
+    padding: 32px;
+    box-shadow: 0 0.5rem 1.2rem rgb(189 197 209 / 20%);
+    margin-bottom: 24px;
+
+    .left-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .left-description {
+      color: #6c757e;
+      font-size: 14px;
+    }
+  }
+
+  .TokenUpdate-agree-check {
+    padding: 12px;
+    background-color: rgba(119, 131, 143, 0.1);
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+  .TokenUpdate-action {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: fit-content;
+      min-width: 120px;
+    }
+  }
+}

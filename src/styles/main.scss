@@ -1,6 +1,10 @@
+// Components
+@import 'widgets/index.scss';
+@import 'components/index.scss';
+@import 'views/index.scss';
+
 // Widgets
 @import '../widgets/Banner/styles.scss';
-@import '../widgets/ButtonPrimary/styles.scss';
 @import '../widgets/ButtonSecondary/styles.scss';
 @import '../widgets/FormItem/styles.scss';
 @import '../widgets/Input/Input.scss';
@@ -10,28 +14,22 @@
 @import '../widgets/Svg/styles.scss';
 @import '../widgets/TypeNumber/styles.scss';
 
-// Components
 @import '../components/Card/styles.scss';
 @import '../components/Footer/styles.scss';
 @import '../components/InputCode/styles.scss';
 @import '../components/Menu/MenuDefault/styles.scss';
 @import '../components/Menu/MenuBlock/styles.scss';
 @import '../components/Menu/MenuAdmin/styles.scss';
-@import '../components/ProfileAccount/styles.scss';
 @import '../components/TableEvent/styles.scss';
 @import '../components/MainBox/MainBox.scss';
 @import '../components/TableItemLatest/TableItemLatest.scss';
 @import '../components/TableItemTransactions/TableItemTransactions.scss';
 @import '../components/TableLatest/TableLatest.scss';
-// @import '../components/TableTransactionDetail/styles.scss';
-// @import '../components/TableTransactionDetailTxn/styles.scss';
 @import '../components/TableTransactions/TableTransactions.scss';
 @import '../components/Pagination/styles.scss';
 @import '../components/TablePagination/TablePagination.scss';
 @import '../components/Table/TableBase/style.scss';
 @import '../components/Table/Pagination/style.scss';
-@import '../components/Address/style.scss';
-@import '../components/Token/styles.scss';
 @import '../components/Contract/CodeContract/styles.scss';
 @import '../components/Modal/styles.scss';
 @import '../components/AccountSidebar/styles.scss';
@@ -43,7 +41,6 @@
 @import '../views/Auth/pages/Forgot/style.scss';
 
 // View pages
-@import 'views';
 @import '../views/Accounts/styles.scss';
 @import '../views/Block/Block.scss';
 @import '../views/Blocks/styles.scss';

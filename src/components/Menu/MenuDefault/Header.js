@@ -37,7 +37,7 @@ const Header = ({ showMenu, toggleMenu }) => {
                     if (entry.child?.length > 0) {
                       return (
                         <li key={`${entry.title}-${index}`}>
-                          <Link href="/" className="nav-blockchain">
+                          <Link href={entry.url} className="nav-blockchain">
                             {entry.title}
                             <span>
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

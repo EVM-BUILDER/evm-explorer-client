@@ -3,7 +3,7 @@ import { EyeOutlined } from '@ant-design/icons'
 import { Link } from 'components/Link'
 import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
 import TableBase from 'components/Table/TableBase'
-import ButtonPrimary from 'widgets/ButtonPrimary'
+import { BaseButton } from 'components/Button'
 import FormatTimeAgo from 'components/FormatTimeAgo'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
@@ -80,14 +80,14 @@ const Transactions = ({ address }) => {
           Token Transfer Events
         </span>
         <div className="card-content-right">
-          <ButtonPrimary
+          <BaseButton
             size="small"
             onClick={() => {
               router.push(`/tokentxns?a=${address}`)
             }}
           >
             View All
-          </ButtonPrimary>
+          </BaseButton>
         </div>
       </div>
       <div className="card-content-table">
