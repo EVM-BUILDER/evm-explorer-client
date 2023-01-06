@@ -19,6 +19,7 @@ import CoppyText from 'components/Coppy/CoppyText'
 import { roundNumber } from 'library/helpers/Number'
 import { WTxDetailOverview } from './styled'
 import { formatCode } from 'library/helpers/CommonHelper'
+import ToTokenAddress from 'components/Token/ToTokenAddress'
 
 const menuSuccess = (
   <Menu className="success-modal-container">
@@ -71,10 +72,10 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                   </Col>
                   <Col xs={24} md={16}>
                     <div className="link-with-copy">
-                      <CoppyText value={transactionDetail?.h}>
-                        <img className="icon-left" style={{ marginRight: '10px' }} src="/images/icon/folder.svg" alt="" />
-                      </CoppyText>
                       <Link href={`/tx/${transactionDetail?.h}`}>{transactionDetail?.h}</Link>
+                      <CoppyText value={transactionDetail?.h}>
+                        <img className="icon-left" style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                      </CoppyText>
                     </div>
                   </Col>
                 </Row>
@@ -192,26 +193,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                     </div>
                   </Col>
                   <Col xs={24} md={16}>
-                    {transactionDetail?.ca ? (
-                      <div className="file-address">
-                        <BsFileTextFill />
-                        <Link href={`/address/${transactionDetail?.ca?.a}`}>
-                          {transactionDetail?.ca?.pro?.na || transactionDetail?.ca?.a}
-                        </Link>
-                        <CoppyText value={transactionDetail?.ca?.a}>
-                          <img src="/images/icon/folder.svg" alt="" />
-                        </CoppyText>
-                      </div>
-                    ) : transactionDetail?.t ? (
-                      <div className="link-with-copy">
-                        <Link href={`/address/${transactionDetail.t.a}`}>{transactionDetail.t.a || ''}</Link>
-                        <CoppyText value={transactionDetail?.t?.a}>
-                          <img className="icon-right" style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
-                        </CoppyText>
-                      </div>
-                    ) : (
-                      'Unknown'
-                    )}
+                    <ToTokenAddress txDetail={transactionDetail} />
                   </Col>
                 </Row>
               </div>

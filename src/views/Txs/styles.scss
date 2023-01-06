@@ -192,6 +192,7 @@
             .file-address {
               display: inline-flex;
               align-items: center;
+              flex-direction: row;
               svg {
                 fill: var(--primary);
                 width: 16px;

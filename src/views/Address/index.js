@@ -98,7 +98,7 @@ const AddressPage = () => {
               />
             </Col>
             <Col xs={24} sm={24} md={12}>
-              <AddressInfo userInfo={userInfo} addressDetail={addressDetail} addressType={addressType} />
+              <AddressInfo userInfo={userInfo} addressDetail={addressDetail?.data} addressType={addressType} />
             </Col>
           </Row>
         </div>

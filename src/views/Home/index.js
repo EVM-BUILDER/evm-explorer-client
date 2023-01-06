@@ -22,6 +22,8 @@ const HomeView = () => {
 
   const { transactions } = useFetchAllTransactions(1, 10)
 
+  console.log('transactions', transactions)
+
   const latestBlock = useMemo(() => {
     return blocks?.[0]
   }, [blocks])

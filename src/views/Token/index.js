@@ -152,11 +152,11 @@ const TokenPage = () => {
                 title: 'Holders',
                 content: <Holders addressDetail={addressDetail?.data} />,
               },
-              {
-                key: TABS_VIEW.Info,
-                title: 'Info',
-                content: <Info />,
-              },
+              // {
+              //   key: TABS_VIEW.Info,
+              //   title: 'Info',
+              //   content: <Info />,
+              // },
               {
                 key: TABS_VIEW.DexTrade,
                 title: 'DEX Trades',

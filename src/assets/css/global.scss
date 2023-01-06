@@ -241,6 +241,16 @@ input:-webkit-autofill:active {
   font-size: 12px;
 }
 
+.hash-tag {
+  max-width: 171px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 // Sticky
 @supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {

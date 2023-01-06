@@ -36,6 +36,7 @@
     .contract-creator {
       display: flex;
       align-items: center;
+      white-space: nowrap;
       a:last-child {
         max-width: 200px;
         display: inline-block;
