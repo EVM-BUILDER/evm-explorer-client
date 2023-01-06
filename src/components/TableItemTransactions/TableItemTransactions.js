@@ -3,6 +3,7 @@ import ReactTimeAgo from 'react-time-ago'
 import { Link } from 'components/Link'
 import { formatCode, numberFormatter } from 'library/helpers/CommonHelper'
 import { useSelector } from 'react-redux'
+import ToTokenAddress from 'components/Token/ToTokenAddress'
 
 const TableItemTransactions = ({ dataItem }) => {
   const { settings } = useSelector((state) => state.Settings)
@@ -37,7 +38,15 @@ const TableItemTransactions = ({ dataItem }) => {
               </div>
               <div style={{ whiteSpace: 'nowrap' }}>
                 <span>To </span>
-                <Link href={`/address/${dataItem?.t?.a || ''}`}>{formatCode(dataItem?.t?.a || '', 20, 0)}</Link>
+                {dataItem?.ca ? (
+                  <Link href={`/address/${dataItem?.ca?.a || ''}`}>
+                    {dataItem?.ca?.pro?.na ? dataItem?.ca?.pro?.na : formatCode(dataItem?.ca?.a || '', 20, 0)}
+                  </Link>
+                ) : dataItem?.t ? (
+                  <Link href={`/address/${dataItem?.t?.a || ''}`}>{formatCode(dataItem?.t?.a || '', 20, 0)}</Link>
+                ) : (
+                  <Link>Unknown</Link>
+                )}
               </div>
             </span>
             <div>

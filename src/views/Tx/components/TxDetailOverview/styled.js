@@ -147,15 +147,6 @@ export const WTxDetailOverview = styled.div`
           stroke: var(--primary);
           margin-right: 10px;
         }
-        .file-address {
-          display: inline-flex;
-          align-items: center;
-          svg {
-            fill: var(--primary);
-            width: 16px;
-            margin-right: 2px;
-          }
-        }
       }
 
       .card-content-item-value {
