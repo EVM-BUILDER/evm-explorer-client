@@ -29,7 +29,6 @@ import getRootMetaTitle from 'utils/getRootMetaTitle'
 import defaultSettings from './settings.json'
 import useFetchPulsePrice from 'redux/statistics/hooks/useFetchPulsePrice'
 import { useRouter } from 'next/router'
-import { listRouteAdmin } from 'config/constants'
 import { getProfile } from 'redux/user/actions'
 
 TimeAgo.addLocale({
@@ -242,7 +241,7 @@ function App({ Component, globalProps, pageProps }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (listRouteAdmin.includes(router?.pathname) && userInfo?.role !== 'admin') {
+    if (router?.pathname?.includes("/admin") && userInfo?.role !== 'admin') {
       router.push(`/`)
     } else {
       setLoading(false)
