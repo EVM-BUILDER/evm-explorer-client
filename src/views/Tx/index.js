@@ -9,6 +9,7 @@ import TxDetailOverview from './components/TxDetailOverview'
 import TxDetailConsensusInfo from './components/TxDetailConsensusInfo'
 import TxDetailComments from './components/TxDetailComments'
 import { useAds } from 'redux/statistics/hooks'
+import TxDetailLogs from './components/TxDetailLogs'
 
 const TransactionModule = () => {
   const { settings } = useSelector((state) => state.Settings)
@@ -111,6 +112,11 @@ const TransactionModule = () => {
                 //   tabBarExtraContent: operations,
                 // },
                 content: <TxDetailConsensusInfo />,
+              },
+              {
+                key: 'logs',
+                title: `Logs (${transactionDetail?.l?.length || 0})`,
+                content: <TxDetailLogs txDetail={transactionDetail} />,
               },
               {
                 key: 'Comments',

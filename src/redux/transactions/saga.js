@@ -18,8 +18,9 @@ function getListTransactionFromApi(params) {
     })
 }
 function* getListTransactionsRequest({ payload }) {
+  const { params } = payload
   try {
-    const { status, data } = yield call(getListTransactionFromApi, payload)
+    const { status, data } = yield call(getListTransactionFromApi, params)
     if (status === 200) {
       yield put(actions.getListTransactionsSuccess({ ...data }))
     }

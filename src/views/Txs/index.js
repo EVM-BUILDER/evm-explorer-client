@@ -5,13 +5,14 @@ import { BsEye, BsFileCode, BsFileFill, BsFileText, BsFileTextFill, BsFillArrowR
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
-import TablePagination from 'components/TablePagination/TablePagination'
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListTransactions } from 'redux/transactions/actions'
 import { getListStatistics } from 'redux/statistics/actions'
 import { useAds } from 'redux/statistics/hooks'
 import { ArrowRightFill } from 'widgets/Svg'
+import TableBase from 'components/Table/TableBase'
+import Pagination from 'components/Table/Pagination'
 
 const DEFAULT_LIMIT = 25
 
@@ -81,13 +82,6 @@ const TransactionsModule = () => {
         })
         break
     }
-  }
-
-  const handleChangeShow = (value) => {
-    setParamsListBlock({
-      ...paramsListBlock,
-      page_size: value,
-    })
   }
 
   const columns = [
@@ -220,32 +214,49 @@ const TransactionsModule = () => {
                     <p className="txs-show">(Showing the last 500k records)</p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">
-                    <TablePagination
+                    <Pagination
                       total={total || 0}
-                      pageSize={paramsListBlock?.page_size || page_size}
-                      page={paramsListBlock?.page || page}
-                      onChange={handleChangePagination}
-                      disableShow={true}
+                      page={paramsListBlock.page}
+                      page_size={paramsListBlock.page_size}
+                      showSizeChange={false}
+                      showTotal={`${total || 0} items`}
+                      onChange={({ page, page_size }) => {
+                        setParamsListBlock((prev) => {
+                          return {
+                            ...prev,
+                            page,
+                            page_size,
+                          }
+                        })
+                      }}
                     />
                   </Col>
                 </Row>
               </div>
               <div className="card-body-center">
-                <Table
+                <TableBase
                   columns={columns}
+                  dataSource={transactions || []}
                   loading={loading}
-                  rowKey={(record) => record?._id?.$oid}
-                  dataSource={[...(transactions || [])]}
-                  pagination={false}
-                />
-              </div>
-              <div className="card-footer">
-                <TablePagination
-                  total={total || 0}
-                  pageSize={paramsListBlock?.page_size || page_size}
-                  page={paramsListBlock?.page || page}
-                  onChange={handleChangePagination}
-                  onChangeShow={handleChangeShow}
+                  scroll={{ x: 800 }}
+                  pagination={{
+                    total,
+                    page: paramsListBlock?.page,
+                    page_size: paramsListBlock?.page_size,
+                    onChange: ({ page, page_size }) => {
+                      setParamsListBlock((prev) => ({
+                        ...prev,
+                        page,
+                        page_size,
+                      }))
+                    },
+                    onChangeSize: (page_size) => {
+                      setParamsListBlock((prev) => ({
+                        ...prev,
+                        page_size,
+                      }))
+                    },
+                  }}
                 />
               </div>
             </div>

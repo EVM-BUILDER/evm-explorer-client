@@ -16,6 +16,8 @@ import {
 import styled from 'styled-components'
 import Link from 'components/Link/Link'
 import TypeNumber from 'widgets/TypeNumber/index'
+import { get } from 'lodash'
+import { getEventLogMd } from 'utils/eventLogs'
 
 const WrapperTx = styled.div`
   display: flex;
@@ -104,74 +106,106 @@ const WrapperTx = styled.div`
     }
   }
 `
-const address = (
-  <Menu>
-    <Menu.Item key="1" icon={<UserOutlined />}>
-      Matches Topic[0]
-    </Menu.Item>
-  </Menu>
-)
-function TxReceiptEventLogItem({ mapkey, dataItem, web3 }) {
+
+function TxReceiptEventLogItem({ dataItem, web3 }) {
+  const md = getEventLogMd(dataItem.md)
   return (
-    <WrapperTx key={mapkey}>
+    <WrapperTx>
       <div className="media-body-item-left">
         <div>
-          <span>{dataItem.logIndex}</span>
+          <span>{dataItem.li}</span>
         </div>
       </div>
       <div className="media-body-item-right">
-        <Row>
-          <Col xs={{ span: 24 }} md={{ span: 4 }}>
-            Address
-          </Col>
-          <Col xs={{ span: 24 }} md={{ span: 20 }}>
-            <Link href={`/address/${dataItem.address}`} className="token-address">
-              {dataItem.address}
-            </Link>
-            <span className="item-address-button">
-              <Dropdown overlay={address}>
+        <Row gutter={[12, 12]}>
+          <Col span={24}>
+            <Row>
+              <Col xs={{ span: 24 }} md={{ span: 4 }}>
+                Address
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 20 }}>
+                <Link href={`/address/${dataItem.a}`} className="token-address">
+                  {dataItem.a}
+                </Link>
+                {/* <span className="item-address-button">
+              <Dropdown
+                overlay={
+                  <Menu>
+                    <Menu.Item key="1" icon={<UserOutlined />}>
+                      Matches Topic[0]
+                    </Menu.Item>
+                  </Menu>
+                }
+              >
                 <Button>
                   <ZoomInOutlined /> <DownOutlined />
                 </Button>
               </Dropdown>
-            </span>
+            </span> */}
+              </Col>
+            </Row>
           </Col>
-        </Row>
-        <Row>
-          <Col xs={{ span: 24 }} md={{ span: 4 }}>
-            Topics
+          {md && (
+            <Col span={24}>
+              <Row>
+                <Col xs={{ span: 24 }} md={{ span: 4 }}>
+                  Name
+                </Col>
+                <Col xs={{ span: 24 }} md={{ span: 20 }}>
+                  <p className="text-span text-monospace">
+                    <span>
+                      {md[0].event}
+                      {/* &nbsp;(<span className="text-success">address</span>&nbsp;{' '}
+                      <span className="text-danger">token</span>
+                      ,&nbsp;&nbsp;
+                      <span className="text-success">uint256</span> &nbsp;<span className="text-danger">total</span>)&nbsp;&nbsp; */}
+                      {/* <Link href={`/address/${}#code`}>View Source</Link>{' '} */}
+                    </span>
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          )}
+          <Col span={24}>
+            <Row>
+              <Col xs={{ span: 24 }} md={{ span: 4 }}>
+                Topics
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 20 }}>
+                {dataItem.tp.map((value, index) => (
+                  <div className="topic-items" key={`toptic-item-${index}`}>
+                    <span className="item-hash-padding">{index}</span>
+                    <span className="item-hash">{value}</span>
+                  </div>
+                ))}
+              </Col>
+            </Row>
           </Col>
-          <Col xs={{ span: 24 }} md={{ span: 20 }}>
-            {dataItem.topics.map((item, index) => (
-              <div className="topic-items" key={`toptic-item-${index}`}>
-                <span className="item-hash-padding">{index}</span>
-                <span className="item-hash">{item}</span>
-              </div>
-            ))}
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={{ span: 24 }} md={{ span: 4 }}>
-            Data
-          </Col>
-          <Col xs={{ span: 24 }} md={{ span: 20 }}>
-            <ul className="typeNumber-ul">
-              {(() => {
-                const { length } = dataItem.data
-                const cutData = dataItem.data.slice(2, dataItem.data.length)
-                const splitCount = Math.floor(length / 64)
-                return new Array(splitCount).fill(undefined).map((_, index) => {
-                  return (
-                    <TypeNumber
-                      key={index}
-                      mapkey={`data-decode-item-${index}`}
-                      dataItem={cutData.slice(index * 64, (index + 1) * 64)}
-                      web3={web3}
-                    />
-                  )
-                })
-              })()}
-            </ul>
+          <Col span={24}>
+            <Row>
+              <Col xs={{ span: 24 }} md={{ span: 4 }}>
+                Data
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 20 }}>
+                <ul className="typeNumber-ul">
+                  {(() => {
+                    const { length } = dataItem.d
+                    const cutData = dataItem.d.slice(2, dataItem.d.length)
+                    const splitCount = Math.floor(length / 64)
+                    return new Array(splitCount).fill(undefined).map((_, index) => {
+                      return (
+                        <TypeNumber
+                          key={index}
+                          mapkey={`data-decode-item-${index}`}
+                          dataItem={cutData.slice(index * 64, (index + 1) * 64)}
+                          web3={web3}
+                        />
+                      )
+                    })
+                  })()}
+                </ul>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </div>
