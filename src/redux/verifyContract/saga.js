@@ -60,7 +60,6 @@ function getListContractsVerifiedFromApi(params) {
 function* getListContractsVerifiedRequest({ params }) {
   try {
     const { status, data } = yield call(getListContractsVerifiedFromApi, params)
-    console.log(status, data);
     if (status === 200) {
       yield put(actions.getListContractsVerifiedSuccess(data))
     }

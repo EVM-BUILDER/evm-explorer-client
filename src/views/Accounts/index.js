@@ -151,26 +151,15 @@ const AccountModule = () => {
                         page_size,
                       }))
                     },
+                    onChangeSize: (page_size) => {
+                      setParamsTopAccount((prev) => ({
+                        ...prev,
+                        page_size,
+                      }))
+                    },
                   }}
                 />
-
-                {/* <Table
-                  loading={topAccounts?.loading}
-                  columns={columns}
-                  dataSource={topAccounts?.data}
-                  rowKey={(record) => record._id.$oid}
-                  pagination={false}
-                /> */}
               </div>
-              {/* <div className="card-footer">
-                <TablePagination
-                  total={topAccounts?.total || 0}
-                  pageSize={paramsTopAccount?.page_size || page_size}
-                  page={paramsTopAccount?.page || page}
-                  onChange={handleChangePagination}
-                  onChangeShow={handleChangeShow}
-                />
-              </div> */}
             </div>
           </div>
         </div>

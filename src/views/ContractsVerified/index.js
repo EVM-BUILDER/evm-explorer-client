@@ -9,6 +9,8 @@ import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
 import TablePagination from 'components/TablePagination/TablePagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListContractsVerified } from 'redux/verifyContract/actions'
+import TableBase from 'components/Table/TableBase'
+import Pagination from 'components/Table/Pagination'
 
 const DEFAULT_LIMIT = 25
 
@@ -68,13 +70,6 @@ const ContractsVerifiedModule = () => {
         })
         break
     }
-  }
-
-  const handleChangeShow = (value) => {
-    setParamsListTxn({
-      ...paramsListTxn,
-      page_size: value,
-    })
   }
 
   const columns = [
@@ -274,26 +269,65 @@ const ContractsVerifiedModule = () => {
                     <p className="contracts-verified-show">(Showing the last 500 verified contracts source code)</p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">
-                    <TablePagination
+                    <Pagination
+                      total={contractsVerified?.total || 0}
+                      page={paramsListTxn.page}
+                      page_size={paramsListTxn.page_size}
+                      showSizeChange={false}
+                      onChange={({ page, page_size }) => {
+                        setParamsListTxn((prev) => {
+                          return {
+                            ...prev,
+                            page,
+                            page_size,
+                          }
+                        })
+                      }}
+                    />
+                    {/* <TablePagination
                       total={contractsVerified?.total || 0}
                       pageSize={paramsListTxn?.page_size || contractsVerified?.page_size || 25}
                       page={paramsListTxn?.page || contractsVerified?.page || 1}
                       onChange={handleChangePagination}
                       disableShow={true}
-                    />
+                    /> */}
                   </Col>
                 </Row>
               </div>
               <div className="card-body-center">
-                <Table
+                {/* <Table
                   columns={columns}
                   loading={contractsVerified?.loading || false}
                   rowKey={(record) => record?._id?.$oid}
                   dataSource={[...(contractsVerified?.data || [])]}
                   pagination={false}
+                /> */}
+                <TableBase
+                  columns={columns}
+                  dataSource={contractsVerified?.data || []}
+                  loading={contractsVerified?.loading || false}
+                  scroll={{ x: 800 }}
+                  pagination={{
+                    total: contractsVerified?.total || 0,
+                    page: paramsListTxn?.page,
+                    page_size: paramsListTxn?.page_size,
+                    onChange: ({ page, page_size }) => {
+                      setParamsListTxn((prev) => ({
+                        ...prev,
+                        page,
+                        page_size,
+                      }))
+                    },
+                    onChangeSize: (page_size) => {
+                      setParamsListTxn((prev) => ({
+                        ...prev,
+                        page_size,
+                      }))
+                    },
+                  }}
                 />
               </div>
-              <div className="card-footer">
+              {/* <div className="card-footer">
                 <TablePagination
                   total={contractsVerified?.total || 0}
                   pageSize={paramsListTxn?.page_size || contractsVerified?.page_size || 25}
@@ -301,7 +335,7 @@ const ContractsVerifiedModule = () => {
                   onChange={handleChangePagination}
                   onChangeShow={handleChangeShow}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

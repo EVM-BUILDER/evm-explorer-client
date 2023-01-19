@@ -6,13 +6,13 @@ import ReactTimeAgo from 'react-time-ago'
 import CurrencyFormat from 'react-currency-format'
 import Link from 'components/Link/Link'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
-import TablePagination from 'components/TablePagination/TablePagination'
 import { getListBlocks } from 'redux/blocks/actions'
 import { removeEmpty } from 'library/helpers/CommonHelper'
 import { getListStatistics } from 'redux/statistics/actions'
 import TableBase from 'components/Table/TableBase'
 import { useSettings } from 'redux/settings/hooks'
 import { useAds } from 'redux/statistics/hooks'
+import Pagination from 'components/Table/Pagination'
 
 const DEFAULT_LIMIT = 25
 
@@ -205,12 +205,20 @@ const BlocksModule = () => {
                     </p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">
-                    <TablePagination
+                    <Pagination
                       total={total || 0}
-                      pageSize={paramsListBlock?.page_size || page_size}
-                      page={paramsListBlock?.page || page}
-                      onChange={handleChangePagination}
-                      disableShow={true}
+                      page={paramsListBlock.page}
+                      page_size={paramsListBlock.page_size}
+                      showSizeChange={false}
+                      onChange={({ page, page_size }) => {
+                        setParamsListBlock((prev) => {
+                          return {
+                            ...prev,
+                            page,
+                            page_size,
+                          }
+                        })
+                      }}
                     />
                   </Col>
                 </Row>

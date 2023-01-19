@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { Menu, Dropdown, Button, Space } from 'antd'
 import { DownOutlined } from '@ant-design/icons'
-import Link from 'components/Link/Link'
 
-const TypeNumber = ({ mapkey, dataItem }) => {
-  const [activeKey, setActiveKey] = React.useState('Hex')
+const TypeNumber = ({ web3, dataItem }) => {
+  const [activeKey, setActiveKey] = useState('Hex')
   return (
-    <li className="typeNumber-li" key={mapkey}>
+    <li className="typeNumber-li">
       <Space wrap>
         <Dropdown
           overlay={
@@ -35,7 +34,7 @@ const TypeNumber = ({ mapkey, dataItem }) => {
       </Space>
       <span>
         → {dataItem}
-        {/* {web3.eth.abi.decodeParameter('uint256', activeKey)} */}
+        {/* {web3.eth.abi.decodeParameter('uint256', dataItem)} */}
       </span>
     </li>
   )

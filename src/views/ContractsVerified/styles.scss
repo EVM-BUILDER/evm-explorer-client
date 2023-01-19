@@ -69,7 +69,7 @@
       margin-right: 4px;
     }
 
-    &>span {
+    & > span {
       max-width: 90px;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -100,12 +100,12 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         border-bottom: 1px solid var(--border-color);
         width: calc(100% + 40px);
         position: absolute;
         bottom: 0;
-        left: -20px
+        left: -20px;
       }
 
       .ant-space-horizontal {
@@ -138,7 +138,6 @@
       }
 
       .card-body-center {
-        overflow: auto;
         margin-bottom: 20px;
 
         .ant-table {
@@ -198,7 +197,7 @@
 
           .data-setting {
             .anticon {
-              background: rgba(119, 131, 143, .1);
+              background: rgba(119, 131, 143, 0.1);
               border-radius: 50%;
               width: 20px;
               height: 20px;

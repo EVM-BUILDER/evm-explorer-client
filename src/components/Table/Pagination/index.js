@@ -52,7 +52,7 @@ const Pagination = ({
         <div className="base_pagination_show-record">
           <span className="base_pagination_show">Show</span>
           <Select
-            defaultValue={25}
+            value={page_size}
             style={{ width: 70 }}
             onChange={(value) => onChangeSize(value)}
             options={sizeOptions.map((size) => ({ label: size, value: size }))}
