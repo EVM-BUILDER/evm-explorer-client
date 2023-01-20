@@ -38,8 +38,8 @@ export function useContract(address, ABI, withSignerIfPossible = true) {
 
   const signer = useMemo(() => {
     const isMainnet = true
-    return withSignerIfPossible ? getProviderOrSigner(library, account) : isMainnet ? getRpcProvider(parseInt(chain.id)) : library
-  }, [withSignerIfPossible, library, account, chainId])
+    return withSignerIfPossible ? getProviderOrSigner(library, account) : isMainnet ? getRpcProvider(chain.rpc) : library
+  }, [withSignerIfPossible, library, account, chain.rpc])
 
   const canReturnContract = useMemo(
     () => address && ABI && (withSignerIfPossible ? library : true),

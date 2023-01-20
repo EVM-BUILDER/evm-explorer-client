@@ -8,7 +8,7 @@ import { ClassNames } from 'utils/classNames.util'
 
 const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
   const { appearance } = useSettings()
-  console.log(addressDetail)
+
   return (
     <div className="card_address_info">
       <CardBase

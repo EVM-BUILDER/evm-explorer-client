@@ -50,7 +50,7 @@ const ResultForm = ({ abi, type, address, onSubmit, result }) => {
     const form = {}
     const errorField = {}
     Array.from(e.target).forEach((child) => {
-      const key = child.name.split(' ')[0]
+      const key = child.id
       const value = child.value
       if (!key) return
       if (value === '' || value === undefined || value === null) {
@@ -64,7 +64,6 @@ const ResultForm = ({ abi, type, address, onSubmit, result }) => {
 
   return (
     <ResultFormStyled>
-      {/* {JSON.stringify(result)} */}
       <Form onSubmit={handleSubmitForm}>
         {abi.inputs?.map((input) => {
           return (
@@ -89,12 +88,7 @@ const ResultForm = ({ abi, type, address, onSubmit, result }) => {
               Write{result?.loading && <Dots />}
             </button>
             {result?.status === true && (
-              <a
-                className="contract_result_action write"
-                href={`/tx/${result?.data?.hash}`}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="contract_result_action write" href={`/tx/${result?.data?.hash}`} target="_blank" rel="noreferrer">
                 View your transaction
               </a>
             )}

@@ -33,7 +33,7 @@ const InputStyled = styled.div`
   }
 `
 
-export const InputText = ({ name, onChange, onTouched, value, onBlur, placeholder, error, ...props }) => {
+export const InputText = ({ name, onChange, onTouched, onBlur, placeholder, error, ...props }) => {
   return (
     <InputStyled error={error}>
       <div className="winput">
@@ -41,15 +41,15 @@ export const InputText = ({ name, onChange, onTouched, value, onBlur, placeholde
         <input
           id={name}
           type="text"
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChange?.(e.target.value)}
           onBlur={(e) => {
             const value = e.target.value
             setTimeout(() => {
-              onTouched()
+              onTouched?.()
               if (onBlur) onBlur(value)
             }, 500)
           }}
-          value={value || ''}
+          // value={value || ''}
           placeholder={placeholder ? placeholder : ''}
         />
         {props.suffix}
