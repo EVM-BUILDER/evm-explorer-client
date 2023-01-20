@@ -15,7 +15,7 @@ const ReviewType = ({ outputs }) => {
       <img src="/images/icon/shape-1.svg" alt="" />{' '}
       {outputs?.map((output, index) => {
         return (
-          <span key={output.name} className="text-monospace ">
+          <span key={`${output.name}-${index}`} className="text-monospace ">
             {output.name}
             {` `}
             <i>{output.type}</i>

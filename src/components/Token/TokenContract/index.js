@@ -36,7 +36,7 @@ const contract = {
 
 const TokenContract = ({ address, addressDetail }) => {
   const { appearance, chain } = useSettings()
-  // console.log(addressDetail)
+
   return (
     <div className="card_token_contract">
       <CardBase

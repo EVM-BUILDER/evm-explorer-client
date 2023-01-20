@@ -26,7 +26,7 @@ const FormItem = ({ name, label, rightLabel, ...props }) => {
           {rightLabel && <div className="form_item_label_right">{rightLabel}</div>}
         </div>
       )}
-      <InputText type="text" id={name} name={label} {...props} />
+      <InputText type="text" id={name} name={name} {...props} />
     </FormItemStyled>
   )
 }

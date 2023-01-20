@@ -21,7 +21,6 @@ const ContractResult = ({ type, address, abi, contract }) => {
       if (address && contract && abi.inputs?.length <= 0) {
         try {
           const result = await contract[abi.name]()
-          console.log(abi, result)
           setValueConstant(result)
         } catch (error) {
           console.error(`fetch ${abi.name} error`, error)
