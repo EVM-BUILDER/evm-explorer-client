@@ -76,6 +76,12 @@ const Register = () => {
                 message: 'Please input your username!',
                 whitespace: true,
               },
+              {
+                min: 5,
+              },
+              {
+                max: 30
+              }
             ]}
             className="register-page_form_item"
           >

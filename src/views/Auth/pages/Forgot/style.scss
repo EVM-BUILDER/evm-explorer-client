@@ -1,5 +1,5 @@
 .forgot-page {
-  min-height: 80vh;
+  min-height: calc(100vh - 120px - 260px);
   display: flex;
   flex-direction: column;
   justify-content: center;

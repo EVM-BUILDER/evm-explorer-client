@@ -113,11 +113,11 @@ const LoginPage = () => {
         <Form.Item
           name="agreement"
           valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) => (value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement'))),
-            },
-          ]}
+          // rules={[
+          //   {
+          //     validator: (_, value) => (value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement'))),
+          //   },
+          // ]}
           {...tailFormItemLayout}
         >
           <Checkbox className="form-checkbox" style={{ fontSize: '14px', fontWeight: 400 }}>

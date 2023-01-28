@@ -284,7 +284,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                       </Col>
                     </Row>
                   </div>
-                  <div className="card-content-item ant-menu-horizontal">
+                  {/* <div className="card-content-item ant-menu-horizontal">
                     <Row gutter={[12, 12]}>
                       <Col xs={24} md={8}>
                         <div className="tx-left-title">
@@ -304,7 +304,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                         )}
                       </Col>
                     </Row>
-                  </div>
+                  </div> */}
                 </div>
               )}
               <div className="card-content-item ant-menu-horizontal no-border-bottom">

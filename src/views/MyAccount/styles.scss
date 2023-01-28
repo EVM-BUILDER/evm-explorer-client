@@ -76,7 +76,7 @@
       border-radius: 12px;
       border: 1px solid var(--border-color);
       background: var(--card-body-bgcolor);
-      padding: 32px 39px 23px 39px;
+      padding: 20px 39px 23px 39px;
       margin-right: 48px;
 
       h1 {
@@ -84,6 +84,7 @@
         font-size: 20px;
         font-weight: 700;
         line-height: 26px;
+        margin-bottom: 12px;
       }
 
       li {
