@@ -32,12 +32,20 @@ const Overview = () => {
     setActiveTab(value)
     router.push(value)
     switch (value) {
-      case '#overview': {
+      case TAB_ACCOUNT_LINK.overview: {
         setBreakcum('Account Overview')
         break
       }
-      case '#settings': {
-        setBreakcum('Account settings')
+      case TAB_ACCOUNT_LINK.settings: {
+        setBreakcum('Account Settings')
+        break
+      }
+      case TAB_ACCOUNT_LINK.pulsescan: {
+        setBreakcum('Account Profile')
+        break
+      }
+      case TAB_ACCOUNT_LINK.verifiedaddresses: {
+        setBreakcum('Verified Addresses')
         break
       }
 

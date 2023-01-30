@@ -203,16 +203,17 @@ const CodeContract = ({ addressDetail }) => {
               highlightActiveLine={true}
               value={JSON.stringify(addressDetail?.ab || {})}
               readOnly={true}
+              wrapEnabled
               setOptions={{
                 enableBasicAutocompletion: false,
                 enableLiveAutocompletion: false,
                 enableSnippets: false,
                 showLineNumbers: false,
-                tabSize: 10,
+                tabSize: 1,
               }}
               width="100%"
               height="300px"
-              showPrintMargin={false}
+              showPrintMargin
             />
           </div>
         </div>

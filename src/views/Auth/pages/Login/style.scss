@@ -1,5 +1,5 @@
 .login-page {
-  min-height: 60vh;
+  min-height: calc(100vh - 80px - 260px);
   padding: 32px 0 24px;
 
   //login-page_header
@@ -29,7 +29,7 @@
   &_form {
     width: 100%;
     max-width: 600px;
-    margin: 20px auto 144px;
+    margin: 20px auto 40px;
     padding: 0 15px;
 
     .form_header {

@@ -233,12 +233,12 @@
           }
 
           .data-txnHash {
-            img {
-              margin-right: 16px;
-            }
+            display: flex;
+            align-items: center;
 
             a {
               width: 100px;
+              margin-left: 6px;
             }
           }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import AdminLayout from 'layouts/AdminLayout'
-import AdminView from 'views/Admin'
+import AdminDashboard from 'views/Admin/Dashboard'
 
-export default function AdminDashboard() {
-  return <AdminView />
+export default function AdminDashboardPage() {
+  return <AdminDashboard />
 }
 
-AdminDashboard.Layout = AdminLayout
+AdminDashboardPage.Layout = AdminLayout

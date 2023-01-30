@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
 import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
-import TablePagination from 'components/TablePagination/TablePagination'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListContractsVerified } from 'redux/verifyContract/actions'
 import TableBase from 'components/Table/TableBase'
@@ -40,38 +39,6 @@ const ContractsVerifiedModule = () => {
     }
   }, [dispatch, paramsListTxn])
 
-  const handleChangePagination = (key) => {
-    switch (key) {
-      case 'first':
-        setParamsListTxn({
-          ...paramsListTxn,
-          page: 1,
-        })
-        break
-      case 'previous':
-        setParamsListTxn({
-          ...paramsListTxn,
-          page: paramsListTxn?.page - 1,
-        })
-        break
-      case 'next':
-        setParamsListTxn({
-          ...paramsListTxn,
-          page: paramsListTxn?.page + 1,
-        })
-        break
-      case 'last':
-        setParamsListTxn({
-          ...paramsListTxn,
-          page:
-            contractsVerified?.total % paramsListTxn?.page_size > 0
-              ? Math.floor((contractsVerified?.total / paramsListTxn?.page_size) * 1) + 1
-              : Math.floor((contractsVerified?.total / paramsListTxn?.page_size) * 1),
-        })
-        break
-    }
-  }
-
   const columns = [
     {
       title: 'Address',
@@ -80,7 +47,7 @@ const ContractsVerifiedModule = () => {
       render: (text) => (
         <div className="data-txnHash">
           <EyeOutlined />
-          <Link href={`/address/${text}`}>{formatCode(text, 13, 0)}</Link>
+          <Link href={`/address/${text.a}`}>{formatCode(text.a, 13, 0)}</Link>
         </div>
       ),
     },
@@ -237,6 +204,8 @@ const ContractsVerifiedModule = () => {
     currentFilter = items?.find((it) => it?.key === query?.filter)?.text
   }
 
+  // console.log('contractsVerified', contractsVerified)
+
   return (
     <div className="contracts-verified-wrapper">
       <div className="container ">
@@ -284,24 +253,10 @@ const ContractsVerifiedModule = () => {
                         })
                       }}
                     />
-                    {/* <TablePagination
-                      total={contractsVerified?.total || 0}
-                      pageSize={paramsListTxn?.page_size || contractsVerified?.page_size || 25}
-                      page={paramsListTxn?.page || contractsVerified?.page || 1}
-                      onChange={handleChangePagination}
-                      disableShow={true}
-                    /> */}
                   </Col>
                 </Row>
               </div>
               <div className="card-body-center">
-                {/* <Table
-                  columns={columns}
-                  loading={contractsVerified?.loading || false}
-                  rowKey={(record) => record?._id?.$oid}
-                  dataSource={[...(contractsVerified?.data || [])]}
-                  pagination={false}
-                /> */}
                 <TableBase
                   columns={columns}
                   dataSource={contractsVerified?.data || []}
@@ -327,15 +282,6 @@ const ContractsVerifiedModule = () => {
                   }}
                 />
               </div>
-              {/* <div className="card-footer">
-                <TablePagination
-                  total={contractsVerified?.total || 0}
-                  pageSize={paramsListTxn?.page_size || contractsVerified?.page_size || 25}
-                  page={paramsListTxn?.page || contractsVerified?.page || 1}
-                  onChange={handleChangePagination}
-                  onChangeShow={handleChangeShow}
-                />
-              </div> */}
             </div>
           </div>
         </div>

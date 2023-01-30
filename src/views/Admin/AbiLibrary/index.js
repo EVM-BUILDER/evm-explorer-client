@@ -1,9 +1,9 @@
 import React from 'react'
 import AdminLayout from 'layouts/AdminLayout'
 import Breadcrumb from 'components/Breadcrumb'
-import WPageAdmin from './WPageAdmin'
+import WPageAdmin from '../WPageAdmin'
 
-const Dashboard = () => {
+const AbiLibrary = () => {
   const breadcrumb = [
     {
       link: '/admin',
@@ -14,11 +14,11 @@ const Dashboard = () => {
   return (
     <WPageAdmin>
       <Breadcrumb listItems={breadcrumb} />
-      <h2>Dashboard</h2>
+      <h2>AbiLibrary</h2>
     </WPageAdmin>
   )
 }
 
-Dashboard.Layout = AdminLayout
+AbiLibrary.Layout = AdminLayout
 
-export default Dashboard
+export default AbiLibrary
