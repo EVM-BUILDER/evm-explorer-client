@@ -186,7 +186,7 @@ const TokenTransfers = () => {
               <div className="card-body-header">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 12 }}>
-                    <p className="token-transfer-info">More than &gt; {allTxnsErc20?.total} txns found</p>
+                    <p className="token-transfer-info">A total of &gt; {allTxnsErc20?.total} txns found</p>
                     <p className="token-transfer-show">(Showing the last 10,000 records only)</p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">
