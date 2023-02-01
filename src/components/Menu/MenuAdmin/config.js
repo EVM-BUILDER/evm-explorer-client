@@ -51,6 +51,10 @@ export const adminMenu = () => [
         label: <Link href={`/admin/settings/general`}>General</Link>,
       },
       {
+        key: '/admin/settings/statistics',
+        label: <Link href={`/admin/settings/statistics`}>Statistics Box</Link>,
+      },
+      {
         key: '/admin/settings/appearance',
         label: <Link href={`/admin/settings/appearance`}>Appearance</Link>,
       },

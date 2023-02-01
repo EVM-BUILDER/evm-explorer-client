@@ -69,9 +69,13 @@ const MenuList = ({ settings, menuName, listMenuItems, noSubmenu }) => {
             let newListMenu = []
             if (isUpdate) {
                 const listMenuOld = listMenu?.filter((it) => it?.id !== data?.id)
+                const menuOld = listMenu?.find((it) => it?.id === data?.id)
                 newListMenu = [
                     ...listMenuOld,
-                    data
+                    {
+                        ...data,
+                        child: menuOld.child,
+                    }
                 ]
             } else {
                 newListMenu = [
