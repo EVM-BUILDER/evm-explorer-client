@@ -79,7 +79,7 @@ const Transactions = ({ address }) => {
           Latest {txsErc20?.total > paramsTxsErc20.page_size ? paramsTxsErc20.page_size : txsErc20?.total} {chain?.erc20 || ''}{' '}
           Token Transfer Events
         </span>
-        <div className="card-content-right">
+        {/* <div className="card-content-right">
           <BaseButton
             size="small"
             onClick={() => {
@@ -88,7 +88,7 @@ const Transactions = ({ address }) => {
           >
             View All
           </BaseButton>
-        </div>
+        </div> */}
       </div>
       <div className="card-content-table">
         <TableBase columns={columns} loading={txsErc20?.loading} scroll={{ x: 700 }} dataSource={txsErc20?.data || []} />
