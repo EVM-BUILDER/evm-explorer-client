@@ -114,7 +114,9 @@ const Account = ({ iconFirst, top, onClickMenuItem }) => {
           {userInfo ? (
             <a>{get(userInfo, 'profile.username', '') || get(userInfo, 'profile.email', '') || 'Unknown'}</a>
           ) : (
-            <Link href="/login">Sign In</Link>
+            <Link href="/login" onClick={handleClickMenuItem}>
+              Sign In
+            </Link>
           )}
         </div>
         <div className="avatar" style={{ order: iconFirst ? 0 : 1 }}>
