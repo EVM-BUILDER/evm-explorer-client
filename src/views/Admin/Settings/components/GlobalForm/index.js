@@ -14,7 +14,7 @@ const layout = {
 
 const tailLayout = {
     wrapperCol: { span: 24 },
-};
+}
 
 const validateMessages = {
     required: '${label} is required!',
@@ -30,31 +30,32 @@ const validateMessages = {
 const GlobalForm = ({ settings, data }) => {
     const dispatch = useDispatch()
 
-    const [form] = Form.useForm();
+    const [form] = Form.useForm()
 
     const onFinish = async (values) => {
         const dataGlobal = {
-            ...values
+            ...values,
         }
 
-        dispatch(setSettings({
-            ...settings,
-            ...dataGlobal,
-        }));
+        dispatch(
+            setSettings({
+                ...settings,
+                ...dataGlobal,
+            }),
+        )
     }
 
     useEffect(() => {
-        form.setFieldsValue(
-            {
-                logo: data?.logo || "",
-                favicon: data?.favicon || "",
-                ogimage: data?.ogimage || "",
-                sitename: data?.sitename || "",
-                sitedescription: data?.sitedescription || "",
-                graphicimg: data?.graphicimg || "",
-                ggtag: data?.ggtag || "",
-            }
-        )
+        form.setFieldsValue({
+            logo: data?.logo || '',
+            logotext: data?.logotext || '',
+            favicon: data?.favicon || '',
+            ogimage: data?.ogimage || '',
+            sitename: data?.sitename || '',
+            sitedescription: data?.sitedescription || '',
+            graphicimg: data?.graphicimg || '',
+            ggtag: data?.ggtag || '',
+        })
     }, [data])
 
     return (
@@ -66,52 +67,31 @@ const GlobalForm = ({ settings, data }) => {
             validateMessages={validateMessages}
             className="setting-form setting-global"
         >
-            <Form.Item
-                name='logo'
-                label="Logo"
-            >
+            <Form.Item name="logo" label="Logo">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='favicon'
-                label="Favicon"
-            >
+            <Form.Item name="logotext" label="Logo Text">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='ogimage'
-                label="OG image"
-            >
+            <Form.Item name="favicon" label="Favicon">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='sitename'
-                label="Site Name"
-            >
+            <Form.Item name="ogimage" label="OG image">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='sitedescription'
-                label="Site Description"
-            >
+            <Form.Item name="sitename" label="Site Name">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='graphicimg'
-                label="Graphic Image"
-            >
+            <Form.Item name="sitedescription" label="Site Description">
                 <Input />
             </Form.Item>
-            <Form.Item
-                name='ggtag'
-                label="Google tag"
-            >
+            <Form.Item name="graphicimg" label="Graphic Image">
                 <Input />
             </Form.Item>
-            <Form.Item
-                className='form-actions'
-                {...tailLayout}
-            >
+            <Form.Item name="ggtag" label="Google tag">
+                <Input />
+            </Form.Item>
+            <Form.Item className="form-actions" {...tailLayout}>
                 <Button type="primary" htmlType="submit">
                     Save
                 </Button>
