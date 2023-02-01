@@ -1,5 +1,6 @@
 {
-  "logo": "/logo-text.png",
+  "logo": "/logo.png",
+  "logotext": "/logo-text.png",
   "favicon": "/favicon.ico",
   "ogimage": "https://logo1.png",
   "sitename": "PulseScan",
