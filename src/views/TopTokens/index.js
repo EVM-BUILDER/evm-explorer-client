@@ -156,7 +156,7 @@ const TopTokensModule = () => {
       <div className="container ">
         <div className="top-tokens-heading">
           <h1>
-            <span>Top Tokens</span>
+            <span>Token Tracker</span>
             {chain && (
               <Link href="/tokens">
                 <Button>{chain?.erc20}</Button>
@@ -180,7 +180,7 @@ const TopTokensModule = () => {
               <div className="card-body-header">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 12 }}>
-                    <p className="top-tokens-info">More than &gt; {listAddress?.total} txns found</p>
+                    <p className="top-tokens-info">A total of &gt; {listAddress?.total} Token Contracts found</p>
                     <p className="top-tokens-show">(Showing the last 10,000 records only)</p>
                   </Col>
                   <Col xs={{ span: 24 }} md={{ span: 12 }} className="header-pagination">

@@ -140,7 +140,7 @@ const VerifiedAddresses = () => {
             page={params.page}
             page_size={params.page_size}
             showSizeChange={false}
-            showTotal={`${listAddressVerify.total || 0} items`}
+            // showTotal={`${listAddressVerify.total || 0} items`}
             onChange={({ page, page_size }) => {
               setParams((prev) => {
                 return {
