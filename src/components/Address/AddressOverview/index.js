@@ -9,6 +9,7 @@ import { roundNumber } from 'library/helpers/Number'
 import { ADDRESS_TYPE } from 'redux/constants'
 import BigNumber from 'bignumber.js'
 import { useSettings } from 'redux/settings/hooks'
+import { formatCode } from 'library/helpers/CommonHelper'
 
 const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, balancesErc20, balancesErc721 }) => {
   const statisticsFirstItem = statistics?.[0]
@@ -35,6 +36,8 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
       return Object.values(obj).some((val) => typeof val === 'string' && val?.includes(searchTokenBalance))
     })
   }, [balancesErc20?.data, searchTokenBalance])
+
+  // console.log('balancesErc721', balancesErc721)
   const searchErc721Result = useMemo(() => {
     if (!balancesErc721?.data) return []
     if (!searchTokenBalance) return balancesErc721?.data || []
@@ -46,6 +49,7 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
       return Object.values(obj).some((val) => typeof val === 'string' && val?.includes(searchTokenBalance))
     })
   }, [balancesErc721?.data, searchTokenBalance])
+  // console.log('searchErc721Result', searchErc721Result)
 
   return (
     <div className="card_address_overview">
@@ -162,7 +166,9 @@ const AddressOverview = ({ addressType, nativeToken, addressDetail, statistics, 
                                       <img src={item?.ta?.pro?.ico || '/images/logo/eth.png'} alt="logo" />
                                       <div className="result-item-text">
                                         <span>
-                                          {item?.ta?.pro?.na} ({item?.ta?.pro?.sym})
+                                          {item?.ta?.pro?.na
+                                            ? `${item?.ta?.pro?.na} (${item?.ta?.pro?.sym})`
+                                            : formatCode(item?.ta?.a, 4, 6)}
                                         </span>
                                         <span>
                                           <FormatAmount
