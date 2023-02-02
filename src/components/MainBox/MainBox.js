@@ -18,6 +18,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
   const { isMobile } = useMatchBreakpoints()
 
   const statisticsDataChart = [...statistics]
+  statisticsDataChart.reverse()
   const chart = {
     options: {
       colors: ['#3C3A3A'],
@@ -31,7 +32,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
       xaxis: {
         offsetX: isMobile ? 26 : 16,
         offsetY: isMobile ? 20 : 5,
-        categories: statisticsDataChart?.reverse()?.map((it) => moment(it.da, 'YYYY/MM/DD').format('MMM DD YYYY')),
+        categories: statisticsDataChart?.map((it) => moment(it.da, 'YYYY/MM/DD').format('MMM DD YYYY')),
         tickAmount: 2,
         labels: {
           formatter: function (value, timestamp, opts) {
@@ -62,7 +63,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
         x: {
           show: true,
           formatter: function (value, { dataPointIndex }) {
-            return moment(statisticsDataChart?.reverse()?.[dataPointIndex]?.da, 'YYYY/MM/DD').format('MMM DD, YYYY')
+            return moment(statisticsDataChart?.[dataPointIndex]?.da, 'YYYY/MM/DD').format('MMM DD, YYYY')
           },
         },
       },
@@ -70,7 +71,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
     series: [
       {
         name: 'Transactions',
-        data: statisticsDataChart?.reverse()?.map((it) => it?.tt || 0),
+        data: statisticsDataChart?.map((it) => it?.tt || 0),
       },
     ],
   }
