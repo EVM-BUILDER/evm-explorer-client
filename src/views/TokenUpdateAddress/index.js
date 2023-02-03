@@ -13,7 +13,6 @@ import {
   BsDiscord,
   BsFacebook,
   BsFilePdf,
-  BsFilePdfFill,
   BsGithub,
   BsLinkedin,
   BsMedium,
@@ -24,8 +23,7 @@ import {
 } from 'react-icons/bs'
 import AntCheckbox from 'components/AntCheckbox'
 import { submitInfoToken } from 'redux/accounts/actions'
-
-const isDev = process.env.NODE_ENV === 'development'
+import { isDev } from 'config/site.config'
 
 const TokenUpdate = () => {
   const dispatch = useDispatch()
