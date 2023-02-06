@@ -146,7 +146,7 @@ const TransactionsModule = () => {
               <div className="file-address">
                 {record?.ca?.pro && <BsFileTextFill />}
                 <Link href={`/address/${record?.ca?.a || record?.t?.a}`} className="data-to-link">
-                  {record?.ca?.pro ? formatAddress(record?.ca) : formatAddress(record?.t)}
+                  {record?.ca?.pro ? record?.ca?.pro?.na || 'Create Contract' : formatCode(record?.t?.a || '', 16, 0)}
                 </Link>
               </div>
             ) : (

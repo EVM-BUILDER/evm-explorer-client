@@ -97,6 +97,7 @@ function SearchInput({ isContrast, ...props }) {
   const [searchValue, setSearchValue] = React.useState('')
 
   const handleSearch = () => {
+    if (!searchValue) return
     if (isAddress(searchValue)) {
       router.push(`/address/${searchValue}`)
     } else if (isTxhash(searchValue)) {

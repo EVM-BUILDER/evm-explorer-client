@@ -8,7 +8,7 @@ function getParameter(name, url) {
 }
 
 function getParameterByName(name, url = '') {
-  var fontFamilies = getParameter(name, url).split('|')
+  var fontFamilies = getParameter(name, url)?.split('|') || []
   var fontArr = []
   fontFamilies.forEach(function (item) {
     fontArr.push(item.split(':')[0])

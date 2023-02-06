@@ -104,7 +104,7 @@ const PulsescanConnect = ({ onChangeTab }) => {
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
                   <div className="left">
                     <img src="/images/account/profileview.png" alt="" />
-                    <span>PULSESCAN Public Profile</span>
+                    <span>Public Profile</span>
                   </div>
                 </Col>
                 <Col xl={{ span: 12 }} sm={{ span: 12 }} xs={{ span: 24 }}>
