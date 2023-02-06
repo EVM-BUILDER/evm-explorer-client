@@ -62,8 +62,10 @@
         }
         img {
           max-width: 50px;
+          max-height: 80px;
           @include media-down(sm) {
             max-width: 32px;
+            max-height: 60px;
           }
         }
       }

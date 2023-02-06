@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import { Link } from 'components/Link'
-import { formatCode, numberFormatter } from 'library/helpers/CommonHelper'
+import { formatAddress, formatCode, numberFormatter } from 'library/helpers/CommonHelper'
 import { useSelector } from 'react-redux'
 import ToTokenAddress from 'components/Token/ToTokenAddress'
 
@@ -33,17 +33,17 @@ const TableItemTransactions = ({ dataItem }) => {
               <div style={{ whiteSpace: 'nowrap' }}>
                 <span>From</span>
                 <Link href={`/address/${dataItem?.f?.a || ''}`} className="content-hasktag">
-                  {formatCode(dataItem?.f?.a || '', 20, 0)}
+                  {formatAddress(dataItem?.f)}
                 </Link>
               </div>
               <div style={{ whiteSpace: 'nowrap' }}>
                 <span>To </span>
                 {dataItem?.ca ? (
                   <Link href={`/address/${dataItem?.ca?.a || ''}`}>
-                    {dataItem?.ca?.pro?.na ? dataItem?.ca?.pro?.na : formatCode(dataItem?.ca?.a || '', 20, 0)}
+                    {formatAddress(dataItem?.ca)}
                   </Link>
                 ) : dataItem?.t ? (
-                  <Link href={`/address/${dataItem?.t?.a || ''}`}>{formatCode(dataItem?.t?.a || '', 20, 0)}</Link>
+                  <Link href={`/address/${dataItem?.t?.a || ''}`}>{formatAddress(dataItem?.t)}</Link>
                 ) : (
                   <Link>Unknown</Link>
                 )}

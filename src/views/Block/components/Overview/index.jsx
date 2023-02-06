@@ -4,7 +4,7 @@ import { LeftOutlined, RightOutlined, ClockCircleOutlined, ArrowDownOutlined, Ar
 import ReactTimeAgo from 'react-time-ago'
 import CurrencyFormat from 'react-currency-format'
 import { Link } from 'components/Link'
-import { numberFormatter } from 'library/helpers/CommonHelper'
+import { formatAddress, numberFormatter } from 'library/helpers/CommonHelper'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 
@@ -128,8 +128,8 @@ const Overview = () => {
                 <span>Fee Recipient:</span>
               </Col>
               <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                <Link href={`/address/${blockDetail?.vb?.a}`}>
-                  <span className="item-fee-recipient">{blockDetail?.vb?.a || ''}</span>
+                <Link href={`/address/${blockDetail?.vb?.a || ''}`}>
+                  <span className="item-fee-recipient">{formatAddress(blockDetail?.vb)}</span>
                 </Link>
               </Col>
             </Row>

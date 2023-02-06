@@ -7,7 +7,7 @@ import CurrencyFormat from 'react-currency-format'
 import Link from 'components/Link/Link'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { getListBlocks } from 'redux/blocks/actions'
-import { removeEmpty } from 'library/helpers/CommonHelper'
+import { formatAddress, removeEmpty } from 'library/helpers/CommonHelper'
 import { getListStatistics } from 'redux/statistics/actions'
 import TableBase from 'components/Table/TableBase'
 import { useSettings } from 'redux/settings/hooks'
@@ -118,7 +118,7 @@ const BlocksModule = () => {
       dataIndex: 'vb',
       render: (vb) => (
         <Link href={`/address/${vb?.a}`} className="data-validator">
-          {vb?.a}
+          {formatAddress(vb)}
         </Link>
       ),
     },

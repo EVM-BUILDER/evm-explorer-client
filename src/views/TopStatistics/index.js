@@ -1,6 +1,6 @@
 import { Tabs } from 'antd'
 import TabPane from 'antd/lib/tabs/TabPane'
-import { formatCode } from 'library/helpers/CommonHelper'
+import { formatAddress, formatCode } from 'library/helpers/CommonHelper'
 import Link from 'next/link'
 import router, { useRouter } from 'next/router'
 import React from 'react'
@@ -50,7 +50,7 @@ const TopStatistics = () => {
                   <td>Total {settings?.chain?.native?.symbol || ''}</td>
                 </tr>
                 <tr>
-                  <td className="green">{transaction?.f?.ca ? transaction?.f?.ca : formatCode(transaction?.f?.a || '', 13, 0)}</td>
+                  <td className="green">{formatAddress(transaction?.f, 13, 0)}</td>
                   <td>
                     <img src={transaction?.t?.pro?.ico || '/images/icon/empty-token.webp'} alt="" /> {(transaction?.v * 1 / 1e18).toLocaleString('en-GB', {
                       minimumFractionDigits: 2,

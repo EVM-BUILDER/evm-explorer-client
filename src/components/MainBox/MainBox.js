@@ -89,7 +89,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
       <Col xs={24} sm={24} md={24} lg={8} className="col-item">
         <div className="col-left-1">
           <div className="body-img">
-            <img src="/images/icon/price.png" alt="" />
+            <img src={settings?.statistics?.icon_price ? settings.statistics.icon_price  : '/images/icon/price.png'} alt="" />
           </div>
           <div className="body-content">
             <h2>PRICE</h2>
@@ -112,7 +112,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
         </div>
         <div className="col-left-1">
           <div className="body-img">
-            <img src="/images/icon/marketcap.png" alt="" />
+            <img src={settings?.statistics?.icon_market_cap ? settings.statistics.icon_market_cap  : '/images/icon/marketcap.png'} alt="" />
           </div>
           <div className="body-content">
             <h2>MARKET CAP</h2>
@@ -124,7 +124,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
         <div className="col-left-1 col-center-1">
           <div className="col-center-left-container">
             <div className="body-img">
-              <img src="/images/icon/transactions.png" alt="" />
+              <img src={settings?.statistics?.icon_transactions ? settings.statistics.icon_transactions  : '/images/icon/transactions.png'} alt="" />
             </div>
             <div className="body-content">
               {/* Is total txh per secon (TPS) */}
@@ -146,7 +146,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
         </div>
         <div className="col-left-1 col-center-2">
           <div className="body-img">
-            <img src="/images/icon/finalized.png" alt="" />
+            <img src={settings?.statistics?.icon_block ? settings.statistics.icon_block  : '/images/icon/finalized.png'} alt="" />
           </div>
           <div className="body-content">
             <h2>LAST FINALIZED BLOCK</h2>

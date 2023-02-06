@@ -18,7 +18,7 @@ import { Link } from 'components/Link'
 import CoppyText from 'components/Coppy/CoppyText'
 import { roundNumber } from 'library/helpers/Number'
 import { WTxDetailOverview } from './styled'
-import { formatCode } from 'library/helpers/CommonHelper'
+import { formatAddress, formatCode } from 'library/helpers/CommonHelper'
 import ToTokenAddress from 'components/Token/ToTokenAddress'
 
 const menuSuccess = (
@@ -173,7 +173,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                   <Col xs={24} md={16}>
                     {transactionDetail?.f?.a && (
                       <div className="link-with-copy">
-                        <Link href={`/address/${transactionDetail?.f?.a}`}>{transactionDetail?.f?.a}</Link>
+                        <Link href={`/address/${transactionDetail?.f?.a}`}>{formatAddress(transactionDetail?.f)}</Link>
                         <CoppyText value={transactionDetail?.f?.a}>
                           <img className="icon-right" style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
                         </CoppyText>
