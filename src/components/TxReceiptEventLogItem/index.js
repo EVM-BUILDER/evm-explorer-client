@@ -1,28 +1,18 @@
 import React from 'react'
-import { Menu, Dropdown, Button, Space, Tabs, Row, Col, message } from 'antd'
-import {
-  DownOutlined,
-  UserOutlined,
-  QuestionCircleOutlined,
-  CopyOutlined,
-  CheckCircleFilled,
-  ClockCircleOutlined,
-  ArrowDownOutlined,
-  ArrowUpOutlined,
-  ZoomInOutlined,
-  MoreOutlined,
-  CheckCircleOutlined,
-} from '@ant-design/icons'
+import { Row, Col } from 'antd'
 import styled from 'styled-components'
 import Link from 'components/Link/Link'
 import TypeNumber from 'widgets/TypeNumber/index'
-import { get } from 'lodash'
 import { getEventLogMd } from 'utils/eventLogs'
 
 const WrapperTx = styled.div`
   display: flex;
   margin-top: 10px;
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.borderColor};
+  overflow: auto;
+  @media only screen and (min-width: 768px) {
+    overflow: hidden;
+  }
 
   .media-body-item-left {
     margin-right: 20px;
@@ -46,6 +36,7 @@ const WrapperTx = styled.div`
       border-radius: 50%;
 
       span {
+        color: var(--primary);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -60,7 +51,7 @@ const WrapperTx = styled.div`
       margin-bottom: 8px;
     }
     .token-address {
-      color: ${({ theme }) => theme.colors.primaryColor};
+      color: var(--primary);
     }
     .item-address-button {
       button {

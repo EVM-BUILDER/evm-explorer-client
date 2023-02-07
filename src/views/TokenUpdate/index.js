@@ -14,6 +14,7 @@ import { submitInfoToken } from 'redux/accounts/actions'
 const TokenUpdateImport = () => {
   const dispatch = useDispatch()
   const router = useRouter()
+  const { address }= router.query
 
   const [submitMess, setSubmitMess] = useState({
     status: null,
