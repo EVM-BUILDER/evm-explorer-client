@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { BsEye, BsFileCode, BsFileFill, BsFileText, BsFileTextFill, BsFillArrowRightCircleFill } from 'react-icons/bs'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { Link } from 'components/Link'
-import { formatCode, removeEmpty } from 'library/helpers/CommonHelper'
+import { formatAddress, formatCode, removeEmpty } from 'library/helpers/CommonHelper'
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListTransactions } from 'redux/transactions/actions'
@@ -129,7 +129,7 @@ const TransactionsModule = () => {
       render: (f) => (
         <div className="data-from">
           <Link href={`/address/${f?.a}`} className="data-from-link">
-            {formatCode(f?.a || '', 13, 0)}
+            {formatAddress(f)}
           </Link>
         </div>
       ),

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactTimeAgo from 'react-time-ago'
 import Link from 'components/Link/Link'
 import { useSelector } from 'react-redux'
+import { formatAddress } from 'library/helpers/CommonHelper'
 
 const TableItem = ({ dataItem, ...props }) => {
   const { settings } = useSelector((state) => state.Settings)
@@ -29,8 +30,8 @@ const TableItem = ({ dataItem, ...props }) => {
           <div className="show-content">
             <span>
               <span>Fee Recipient: </span>
-              <Link href={`/address/${dataItem?.vb?.pro?.n || dataItem?.vb?.a}`} className="content-hasktag">
-                {dataItem?.vb?.pro?.n || dataItem?.vb?.a}
+              <Link href={`/address/${dataItem?.vb?.a}`} className="content-hasktag">
+                {formatAddress(dataItem?.vb)}
               </Link>
             </span>
             <div>
