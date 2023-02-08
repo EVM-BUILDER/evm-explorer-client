@@ -3,17 +3,12 @@ import { Button, Row, Col } from 'antd'
 import CardOverview from '../CardOverview'
 import styled from 'styled-components'
 
-const OverviewUsageTitle = styled.div`
-  margin: 24px 24px 0px 24px;
-  font-size: 16px;
-`
-
 const OverviewUsage = ({ userInfo }) => {
   return (
     <CardOverview className="overview_usage" title="Overview Usage">
-      <OverviewUsageTitle>
+      <div className="overview_usage_title">
         Usage of account features such as address watch list, address name tags, and API keys.
-      </OverviewUsageTitle>
+      </div>
       <div className="overview_usage_content">
         <div className="overview_usage_content_username">
           <Row>
