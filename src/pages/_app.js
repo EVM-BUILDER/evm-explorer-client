@@ -191,14 +191,15 @@ MyApp.getInitialProps = async () => {
             settings = parseSettingsData(response.data)
         }
     } catch (error) {
-        // settings = defaultSettings
+        settings = defaultSettings
     }
 
     if (!settings) {
-        const res = await getDefaultSettings()
-        if (res.data) {
-            settings = parseSettingsData(res.data)
-        }
+        settings = defaultSettings
+        // const res = await getDefaultSettings()
+        // if (res.data) {
+        //     settings = parseSettingsData(res.data)
+        // }
     }
 
     if (settings) {
