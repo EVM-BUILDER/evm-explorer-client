@@ -6,7 +6,7 @@ import { useSettings } from 'redux/settings/hooks'
 import CardBase from 'components/Card/CardBase'
 import { ClassNames } from 'utils/classNames.util'
 
-const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
+const AddressInfo = ({ address, addressType, addressDetail, userInfo }) => {
   const { appearance } = useSettings()
 
   return (
@@ -25,7 +25,7 @@ const AddressInfo = ({ addressType, addressDetail, userInfo }) => {
 
               <Col xs={{ span: 24 }} md={{ span: 16 }}>
                 Not Available,{` `}
-                {userInfo ? <Link href="/login">Update?</Link> : <Link href="/login">login to update</Link>}
+                {userInfo ? <Link href={`/${tokenupdate}/${address}`}>Update?</Link> : <Link href="/login">login to update</Link>}
               </Col>
             </Row>
             {addressType !== ADDRESS_TYPE.address && (

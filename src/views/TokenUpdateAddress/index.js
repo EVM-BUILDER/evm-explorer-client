@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { Col, Row, Space } from 'antd'
 import * as Yup from 'yup'
+import { get } from 'lodash'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import Page from 'views/Page'
 import { BaseButton } from 'components/Button'
@@ -23,12 +24,20 @@ import {
 } from 'react-icons/bs'
 import AntCheckbox from 'components/AntCheckbox'
 import { submitInfoToken } from 'redux/accounts/actions'
-import { isDev } from 'config/site.config'
+import { useListInfoAddress } from 'redux/verifyContract/hooks'
 
 const TokenUpdate = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const { address } = router.query
+
+    const { listAddressVerify } = useListInfoAddress(router.query)
+
+    const fAddressItem = listAddressVerify.data?.find((item) => item.address === address)
+    const requestType = get(fAddressItem, 'token-waiting-review.request_type', null)
+    const basicInfo = get(fAddressItem, 'token-waiting-review.basic_info', null)
+    const socialProfie = get(fAddressItem, 'token-waiting-review.social_profiles', null)
+    const other = get(fAddressItem, 'token-waiting-review.other', null)
 
     const [checked, setChecked] = useState({ value: false, message: '' })
     const [submitMess, setSubmitMess] = useState({
@@ -37,15 +46,16 @@ const TokenUpdate = () => {
     })
 
     const { handleSubmit, getInputProps, isSubmitting } = useForm({
+        enableReinitialize: true,
         structure: [
             {
                 name: 'requestType',
                 validate: Yup.string().required('Required'),
-                defaultValue: 'New/First Time Token Update',
+                defaultValue: get(requestType, 'request_type', 'New/First Time Token Update'),
             },
             {
                 name: 'requestType_message',
-                defaultValue: isDev ? 'Please specify the category of your token update application.' : '',
+                defaultValue: get(requestType, 'message', 'Please specify the category of your token update application.'),
             },
             {
                 name: 'basicInformation_address',
@@ -55,100 +65,102 @@ const TokenUpdate = () => {
             {
                 name: 'basicInformation_name',
                 validate: Yup.string().required('Requester name is required'),
-                defaultValue: isDev ? 'EVMBuiler USD' : '',
+                defaultValue: get(basicInfo, 'name', ''),
             },
             {
                 name: 'basicInformation_email',
                 validate: Yup.string().required('Please enter a valid email address'),
-                defaultValue: isDev ? 'evmbuilder@gmail.com' : '',
+                defaultValue: get(basicInfo, 'requester_email', ''),
             },
             {
                 name: 'basicInformation_projectName',
-                defaultValue: isDev ? 'EVMBuiler Smart Chain' : '',
+                defaultValue: get(basicInfo, 'project_name', ''),
             },
             {
                 name: 'basicInformation_website',
                 validate: Yup.string().required('Project website is required'),
-                defaultValue: isDev ? 'https://google.com' : '',
+                defaultValue: get(basicInfo, 'website', ''),
             },
             {
                 name: 'basicInformation_official_email',
                 validate: Yup.string().required('Project email address is required'),
-                defaultValue: isDev ? 'evmbuilderoffical@gmail.com' : '',
+                defaultValue: get(basicInfo, 'official_email', ''),
             },
             {
                 name: 'basicInformation_logo',
                 validate: Yup.string().required('Link to download a 32x32 png icon logo is required'),
-                defaultValue: isDev ? 'https://google.com/logo.png' : '',
+                defaultValue: get(basicInfo, 'logo', ''),
             },
             {
                 name: 'basicInformation_sector',
                 validate: Yup.string().required('Required'),
-                defaultValue: isDev ? 'WEB3,WEB4' : '',
+                defaultValue: get(basicInfo, 'sector', ''),
             },
             {
                 name: 'basicInformation_project_description',
                 validate: Yup.string().required('Project description is required'),
-                defaultValue: isDev ? 'SUPPER PROJECT' : '',
+                defaultValue: get(basicInfo, 'description', ''),
             },
             // Social
             {
                 name: 'socialProfiles_whitepaper',
-                defaultValue: isDev ? 'whitepaper' : '',
+                defaultValue: get(socialProfie, 'whitepaper', ''),
             },
             {
                 name: 'socialProfiles_medium',
-                defaultValue: isDev ? 'medium' : '',
+                defaultValue: get(socialProfie, 'medium', ''),
             },
             {
                 name: 'socialProfiles_github',
-                defaultValue: isDev ? 'github' : '',
+                defaultValue: get(socialProfie, 'github', ''),
             },
             {
                 name: 'socialProfiles_reddit',
-                defaultValue: isDev ? 'reddit' : '',
+                defaultValue: get(socialProfie, 'reddit', ''),
             },
             {
                 name: 'socialProfiles_telegram',
-                defaultValue: isDev ? 'telegram' : '',
+                defaultValue: get(socialProfie, 'telegram', ''),
             },
             {
                 name: 'socialProfiles_slack',
-                defaultValue: isDev ? 'slack' : '',
+                defaultValue: get(socialProfie, 'slack', ''),
             },
             {
                 name: 'socialProfiles_wechat',
-                defaultValue: isDev ? 'wechat' : '',
+                defaultValue: get(socialProfie, 'wechat', ''),
             },
             {
                 name: 'socialProfiles_facebook',
-                defaultValue: isDev ? 'facebook' : '',
+                defaultValue: get(socialProfie, 'facebook', ''),
             },
             {
                 name: 'socialProfiles_linkedin',
-                defaultValue: isDev ? 'linkadin' : '',
+                defaultValue: get(socialProfie, 'linkedin', ''),
             },
             {
                 name: 'socialProfiles_twitter',
-                defaultValue: isDev ? 'twitter' : '',
+                defaultValue: get(socialProfie, 'twitter', ''),
             },
             {
                 name: 'socialProfiles_discord',
-                defaultValue: isDev ? 'discord' : '',
+                defaultValue: get(socialProfie, 'discord', ''),
             },
             {
                 name: 'socialProfiles_bitcointalk',
-                defaultValue: isDev ? 'bitcointalk' : '',
+                defaultValue: get(socialProfie, 'bitcointalk', ''),
             },
             {
                 name: 'socialProfiles_ticketing',
-                defaultValue: isDev ? 'ticketing' : '',
+                defaultValue: get(socialProfie, 'ticketing', ''),
             },
 
             // Others
             {
                 name: 'other_public_sale',
-                defaultValue: `1. *Token Sale Address: 
+                defaultValue:
+                    other?.public_sale ||
+                    `1. *Token Sale Address: 
 
 2. *Token Sale Start Date: 
 
@@ -172,7 +184,9 @@ const TokenUpdate = () => {
             },
             {
                 name: 'other_private_sale',
-                defaultValue: `1. Private Sale Token Price (in USD and/or BNB): 
+                defaultValue:
+                    other?.private_sale ||
+                    `1. Private Sale Token Price (in USD and/or BNB): 
 
 2. Private Sale Allocation: 
 
@@ -186,7 +200,9 @@ const TokenUpdate = () => {
             },
             {
                 name: 'other_burn_event',
-                defaultValue: `1. Announcements Link: 
+                defaultValue:
+                    other?.burn_event ||
+                    `1. Announcements Link: 
   Tx Hash: 
 
 2. Announcements Link: 
@@ -313,7 +329,12 @@ const TokenUpdate = () => {
                                         <InputWrapper
                                             label="Comment/Message"
                                             inputProps={getInputProps('requestType_message')}
-                                            renderInput={(props) => <TextArea {...props} />}
+                                            renderInput={(props) => (
+                                                <TextArea
+                                                    placeholder="Please specify the category of your token update application."
+                                                    {...props}
+                                                />
+                                            )}
                                         />
                                     </Col>
                                 </Row>
