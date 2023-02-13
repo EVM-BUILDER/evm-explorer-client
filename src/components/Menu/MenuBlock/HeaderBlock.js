@@ -78,7 +78,7 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
                                                 </span>
                                             </Link>
                                             <ul className="subnav fadeIn">
-                                                {entry.child.map((subMenu, subIndex) => {
+                                                {entry.child.map(({showBorder, ...subMenu}, subIndex) => {
                                                     const isSubItemActive = activeSubMenuItem?.url === subMenu.url
                                                     return (
                                                         <React.Fragment key={`${subMenu.title}-${subIndex}`}>
@@ -95,7 +95,7 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
                                                                     {subMenu.title}
                                                                 </Link>
                                                             </li>
-                                                            {subMenu.showBorder && <li className="dropdown-divider" />}
+                                                            {showBorder && <li className="dropdown-divider" />}
                                                         </React.Fragment>
                                                     )
                                                 })}
