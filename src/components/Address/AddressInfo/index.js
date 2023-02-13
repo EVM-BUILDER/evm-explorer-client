@@ -86,11 +86,11 @@ const AddressInfo = ({ address, addressType, addressDetail, userInfo }) => {
                 }
                 rightNode={
                     <div className="right-node-address">
-                        <Link href="#">
+                        {/* <Link href="#">
                             <a target="_blank" rel="noreferrer noopener">
                                 <img src="/images/contract/heart.svg" alt="check" />
                             </a>
-                        </Link>
+                        </Link> */}
                         <Link href="#">
                             <a target="_blank" rel="noreferrer noopener">
                                 More

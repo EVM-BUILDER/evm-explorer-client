@@ -247,6 +247,16 @@ input:-webkit-autofill:active {
   display: inline-block;
   vertical-align: bottom;
 }
+.hash-tag-small {
+  max-width: 120px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.hash-tag-large {
+  max-width: 271px;
+  display: inline-block;
+  vertical-align: bottom;
+}
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;

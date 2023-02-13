@@ -47,7 +47,7 @@ const Header = ({ showMenu, toggleMenu }) => {
                                                     </Link>
                                                     <div className="submenu fadeIn">
                                                         <ul>
-                                                            {entry.child.map((subMenu, subIndex) => (
+                                                            {entry.child.map(({showBorder, ...subMenu}, subIndex) => (
                                                                 <React.Fragment key={`${subMenu.title}-${subIndex}`}>
                                                                     <li>
                                                                         <Link
@@ -58,7 +58,7 @@ const Header = ({ showMenu, toggleMenu }) => {
                                                                             {subMenu.title}
                                                                         </Link>
                                                                     </li>
-                                                                    {subMenu.showBorder && <li className="dropdown-divider" />}
+                                                                    {showBorder && <li className="dropdown-divider" />}
                                                                 </React.Fragment>
                                                             ))}
                                                         </ul>
