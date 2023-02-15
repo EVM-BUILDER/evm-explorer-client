@@ -11,7 +11,7 @@ export const getSettings = async (params) =>
 
 export const getDefaultSettings = async (params) =>
     request({
-        url: `${siteConfig.defaultSettingsUrl}`,
+        url: `${siteConfig.s3FileUrl}/setting.json`,
         method: 'GET',
         params,
         isAuth: false,
