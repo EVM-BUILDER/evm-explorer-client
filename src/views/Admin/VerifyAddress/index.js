@@ -81,12 +81,12 @@ const VerifyAddress = () => {
           page: contractsVerify?.page || 1,
           page_size: contractsVerify?.page_size || 10,
           showSizeChange: false, 
-          onChange: ({ page, page_size }) => {
+          onChange: (page, pageSize) => {
             setParamsAllVerifyContract((prev) => {
               return {
                 ...prev,
                 page,
-                page_size,
+                pageSize,
               }
             })
           }

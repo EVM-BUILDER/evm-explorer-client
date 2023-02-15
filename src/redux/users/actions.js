@@ -1,3 +1,7 @@
+export const CREATE_USER = 'CREATE_USER'
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS'
+export const CREATE_USER_FAILURE = 'CREATE_USER_FAILURE'
+
 export const UPDATE_USER = 'UPDATE_USER'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
@@ -47,5 +51,18 @@ export const updateUserSuccess = (data) => ({
 })
 export const updateUserFailure = (error) => ({
   type: UPDATE_USER_FAILURE,
+  payload: error,
+})
+
+export const createUser = (data) => ({
+  type: CREATE_USER,
+  payload: { data },
+})
+export const createUserSuccess = (data) => ({
+  type: CREATE_USER_SUCCESS,
+  payload: data,
+})
+export const createUserFailure = (error) => ({
+  type: CREATE_USER_FAILURE,
   payload: error,
 })

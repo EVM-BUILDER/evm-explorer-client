@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Form, Modal } from 'antd';
-import { TextArea } from 'components/Input';
+import { Button, Form, Input, Modal } from 'antd';
+
+const { TextArea } = Input;
 
 const layout = {
     labelCol: {
@@ -11,17 +12,15 @@ const layout = {
     },
 };
 
-const validateMessages = {
-    required: '${label} is required!',
-};
-
 const ModalABI = ({ open, onClose, handleAddAbi }) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
         handleAddAbi(values)
         form.resetFields()
-        onClose()
+        setTimeout(() => {
+            onClose()
+        }, 1000)
     };
 
     return (
@@ -37,14 +36,13 @@ const ModalABI = ({ open, onClose, handleAddAbi }) => {
                 {...layout}
                 name="abis-form"
                 onFinish={onFinish}
-                validateMessages={validateMessages}
                 form={form}
             >
                 <Form.Item
                     name='data'
                     label="Data"
                 >
-                    <TextArea rows={20} />
+                    <TextArea rows="10" />
                 </Form.Item>
                 <Form.Item className='form-actions'>
                     <Button type="primary" htmlType="submit">

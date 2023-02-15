@@ -62,7 +62,7 @@ const ModalUser = ({ open, onClose, handleUpdateUser, currentUser }) => {
                     name='email'
                     label="Email"
                 >
-                    <Input />
+                    <Input disabled={currentUser?.email ? true : false} />
                 </Form.Item>
                 <Form.Item
                     name='role'

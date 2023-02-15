@@ -30,19 +30,20 @@ const AbiLibrary = () => {
   
   const columns = [
     {
-      title: 'ID',
-      dataIndex: '_id',
-      key: 'id',
-      render: (id) => (
-        id?.['$oid'] || ""
+      title: 'Data',
+      dataIndex: 'data',
+      key: 'data',
+      render: (data) => (
+        data !== null && typeof data === 'object' ? JSON.stringify(data) : data
       )
     },
   ]
 
-  const handleAddAbi = async (data) => {
-    console.log(data)
-    await dispatch(addAbi(data));
-    fetchAllAbis();
+  const handleAddAbi = (data) => {
+    dispatch(addAbi(data));
+    setTimeout(() => {
+      fetchAllAbis();
+    }, 1000);
   }
 
   const handleCloseForm = useCallback(() => {
@@ -52,7 +53,7 @@ const AbiLibrary = () => {
   return (
     <WPageAdmin>
       <Breadcrumb listItems={breadcrumb} />
-      <div className='users-wrapper'>
+      <div className='abis-wrapper'>
         <div className='title-group'>
           <h2>ABIs</h2>
           <Button type="primary" className='button-create' onClick={() => {
@@ -65,12 +66,12 @@ const AbiLibrary = () => {
           page: abis?.page || 1,
           page_size: abis?.page_size || 10,
           showSizeChange: false, 
-          onChange: ({ page, page_size }) => {
+          onChange: (page, pageSize) => {
             setParamsAllAbis((prev) => {
               return {
                 ...prev,
                 page,
-                page_size,
+                pageSize,
               }
             })
           }

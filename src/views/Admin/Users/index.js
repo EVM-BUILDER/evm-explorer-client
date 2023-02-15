@@ -6,7 +6,7 @@ import { Table, Button, Space, Popconfirm } from 'antd'
 import ModalUser from './components/ModalUser'
 import useFetchAllUsers from 'redux/users/hooks/useFetchAllUsers'
 import moment from 'moment-timezone'
-import { updateUser } from 'redux/users/actions'
+import { updateUser, createUser } from 'redux/users/actions'
 import { useDispatch } from 'react-redux'
 
 const User = () => {
@@ -89,7 +89,11 @@ const User = () => {
   }
 
   const handleEditUser = async (item) => {
-    await dispatch(updateUser(item));
+    if(currentUser !== null) {
+      await dispatch(updateUser(item));
+    } else {
+      await dispatch(createUser(item));
+    }
     fetchAllUsers();
 
   }
@@ -104,10 +108,10 @@ const User = () => {
       <div className='users-wrapper'>
         <div className='title-group'>
           <h2>Users</h2>
-          {/* <Button type="primary" className='button-create' onClick={() => {
+          <Button type="primary" className='button-create' onClick={() => {
             setCurrentUser(null)
             setShowForm(true)
-          }}>Create</Button> */}
+          }}>Create</Button>
         </div>
         <ModalUser open={showForm} onClose={handleCloseForm} handleUpdateUser={handleEditUser} currentUser={currentUser} />
         <Table dataSource={users?.data || []} columns={columns} pagination={{
@@ -115,12 +119,12 @@ const User = () => {
           page: users?.page || 1,
           page_size: users?.page_size || 10,
           showSizeChange: false, 
-          onChange: ({ page, page_size }) => {
+          onChange: (page, pageSize) => {
             setParamsAllUsers((prev) => {
               return {
                 ...prev,
                 page,
-                page_size,
+                pageSize,
               }
             })
           }

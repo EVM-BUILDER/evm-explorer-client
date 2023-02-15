@@ -71,10 +71,35 @@ function* updateUserRequest({ payload }) {
     const { status, data } = yield call(updateUserFromApi, payload)
 
     if (status === 200) {
-      yield put(actions.getUserDetailSuccess(data))
+      yield put(actions.updateUserSuccess(data))
     }
   } catch (error) {
-    yield put(actions.getUserDetailFailure(error))
+    yield put(actions.updateUserFailure(error))
+  }
+}
+
+function createUserFromApi({ data }) {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/create_user`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
+}
+function* createUserRequest({ payload }) {
+  try {
+    const { status, data } = yield call(createUserFromApi, payload)
+
+    if (status === 200) {
+      yield put(actions.createUserSuccess(data))
+    }
+  } catch (error) {
+    yield put(actions.createUserFailure(error))
   }
 }
 
@@ -82,6 +107,21 @@ export default function* usersSaga() {
   yield all([
     takeLatest(actions.GET_USERS_START, getListUsersRequest),
     takeLatest(actions.UPDATE_USER, updateUserRequest),
+    takeLatest(actions.CREATE_USER, createUserRequest),
     takeLatest(actions.GET_USER_DETAIL_START, geUserDetailRequest),
   ])
+}
+
+export function sendMailUsersFromApi({ data }) {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/send-mail`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
 }

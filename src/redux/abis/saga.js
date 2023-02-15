@@ -31,7 +31,7 @@ function* getListAbisRequest({ payload }) {
 
 function addAbiFromApi({ data }) {
   return fetchHelper
-    .fetch(`${siteConfig.apiUrl}/admin/update_user_info`, {
+    .fetch(`${siteConfig.apiUrl}/admin/abi`, {
       method: 'POST',
       body: JSON.stringify(data),
     })
