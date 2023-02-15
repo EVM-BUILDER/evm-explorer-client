@@ -25,12 +25,11 @@ import { useLanguage } from 'redux/language/hooks'
 import { getDefaultSettings, getSettings } from 'services/api/settings'
 import { getSettingsSuccess } from 'redux/settings/actions'
 import getRootStyle from 'utils/getRootStyle'
-import getRootMetaTitle from 'utils/getRootMetaTitle'
+import { getRootMetaTitle, parseSettingsData } from 'utils/settings'
 import defaultSettings from './settings.json'
 import useFetchPulsePrice from 'redux/statistics/hooks/useFetchPulsePrice'
 import { useRouter } from 'next/router'
 import { getProfile } from 'redux/user/actions'
-import parseSettingsData from 'utils/parseSettingsData'
 import { CenterStyle } from 'styles'
 
 TimeAgo.addLocale({
