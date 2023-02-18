@@ -34,9 +34,9 @@ const ModalUser = ({ open, onClose, handleUpdateUser, currentUser }) => {
     useEffect(() => {
         form.setFieldsValue(
             {
-                email: currentUser?.email || "",
-                role: currentUser?.role || "",
-                status: currentUser?.status || "",
+                email: currentUser?.email || '',
+                role: currentUser?.role || '',
+                status: currentUser?.status || '',
             }
         )
     }, [currentUser])
@@ -45,14 +45,14 @@ const ModalUser = ({ open, onClose, handleUpdateUser, currentUser }) => {
         <Modal
             forceRender 
             title='User'
-            width="500px"
+            width='500px'
             onCancel={onClose}
             open={open}
             footer={null}
         >
             <Form
                 {...layout}
-                name="user-form"
+                name='user-form'
                 onFinish={onFinish}
                 validateMessages={validateMessages}
                 form={form}
@@ -60,7 +60,7 @@ const ModalUser = ({ open, onClose, handleUpdateUser, currentUser }) => {
             >
                 <Form.Item
                     name='email'
-                    label="Email"
+                    label='Email'
                 >
                     <Input disabled={currentUser?.email ? true : false} />
                 </Form.Item>
@@ -98,26 +98,16 @@ const ModalUser = ({ open, onClose, handleUpdateUser, currentUser }) => {
                         ]}
                     />
                 </Form.Item>
-                {/* <Form.Item
-                    name='subscribe'
-                    label="Subscribe"
-                >
-                    <Select
-                        defaultValue='false'
-                        options={[
-                            {
-                                value: 'false',
-                                label: 'No',
-                            },
-                            {
-                                value: 'true',
-                                label: 'Yes',
-                            },
-                        ]}
-                    />
-                </Form.Item> */}
+                {currentUser === null && 
+                    <Form.Item
+                        name='password'
+                        label='Password'
+                    >
+                        <Input type='password' />
+                    </Form.Item>
+                }
                 <Form.Item className='form-actions'>
-                    <Button type="primary" htmlType="submit">
+                    <Button type='primary' htmlType='submit'>
                         Save
                     </Button>
                 </Form.Item>

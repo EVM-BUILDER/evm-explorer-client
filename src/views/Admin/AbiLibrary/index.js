@@ -2,9 +2,9 @@ import React, { useCallback, useState } from 'react'
 import AdminLayout from 'layouts/AdminLayout'
 import Breadcrumb from 'components/Breadcrumb'
 import WPageAdmin from '../WPageAdmin'
-import { Table, Button } from 'antd'
+import { Table, Button, Space, Popconfirm } from 'antd'
 import ModalABI from './components/ModalABI'
-import { addAbi } from 'redux/abis/actions'
+import { addAbi, deleteAbi } from 'redux/abis/actions'
 import { useDispatch } from 'react-redux'
 import useFetchAllAbis from 'redux/abis/hooks/useFetchAllAbis'
 
@@ -37,14 +37,40 @@ const AbiLibrary = () => {
         data !== null && typeof data === 'object' ? JSON.stringify(data) : data
       )
     },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size="middle">
+          <Popconfirm
+              title="Are you sure to delete this Abi?"
+              okText="Yes"
+              cancelText="No"
+              onConfirm={() => handleDeleteAbi(record?._id['$oid'])}
+          >
+              <Button type="link" danger>Delete</Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
   ]
 
   const handleAddAbi = (data) => {
-    dispatch(addAbi(data));
+    const dataSUbmit = [data?.data];
+    dispatch(addAbi(dataSUbmit));
     setTimeout(() => {
       fetchAllAbis();
     }, 1000);
   }
+
+  const handleDeleteAbi = (id) => {
+    dispatch(deleteAbi({ ids: [id]}));
+    setTimeout(() => {
+      fetchAllAbis();
+    }, 1000);
+  }
+
+  
 
   const handleCloseForm = useCallback(() => {
     setShowForm(false)

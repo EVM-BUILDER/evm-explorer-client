@@ -6,6 +6,11 @@ export const UPDATE_USER = 'UPDATE_USER'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE'
 
+export const DELETE_USER = 'DELETE_USER'
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'
+export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE'
+
+
 export const GET_USERS_REQUEST = 'GET_USERS_REQUEST'
 export const GET_USERS_START = 'GET_USERS_START'
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'
@@ -66,3 +71,17 @@ export const createUserFailure = (error) => ({
   type: CREATE_USER_FAILURE,
   payload: error,
 })
+
+export const deleteUser = (email) => ({
+  type: DELETE_USER,
+  payload: { email },
+})
+export const deleteUserSuccess = (data) => ({
+  type: CREATE_USER_SUCCESS,
+  payload: data,
+})
+export const deleteUserFailure = (error) => ({
+  type: CREATE_USER_FAILURE,
+  payload: error,
+})
+

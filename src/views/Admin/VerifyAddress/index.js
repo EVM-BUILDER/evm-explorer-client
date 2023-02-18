@@ -31,6 +31,11 @@ const VerifyAddress = () => {
       key: 'address',
     },
     {
+      title: 'Owner',
+      dataIndex: 'owner',
+      key: 'owner',
+    },
+    {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
@@ -44,7 +49,7 @@ const VerifyAddress = () => {
               title="Are you sure to accept verify address?"
               okText="Yes"
               cancelText="No"
-              onConfirm={() => handleAcceptVerifyAddress(record?.a)}
+              onConfirm={() => handleAcceptVerifyAddress(record?.address)}
           >
               <Button type="link">Accept</Button>
           </Popconfirm>
@@ -52,7 +57,7 @@ const VerifyAddress = () => {
               title="Are you sure to reject verify address?"
               okText="Yes"
               cancelText="No"
-              onConfirm={() => handleRejectVerifyAddress(record?.a)}
+              onConfirm={() => handleRejectVerifyAddress(record?.address)}
           >
               <Button type="link" danger>Reject</Button>
           </Popconfirm>
@@ -69,7 +74,7 @@ const VerifyAddress = () => {
   const handleRejectVerifyAddress = async (address) => {
     await dispatch(rejectVerifyAddress(address));
     fetchAllVerifyContract();
-  } 
+  }
 
   return (
     <WPageAdmin>

@@ -80,7 +80,7 @@ function* updateUserRequest({ payload }) {
 
 function createUserFromApi({ data }) {
   return fetchHelper
-    .fetch(`${siteConfig.apiUrl}/admin/create_user`, {
+    .fetch(`${siteConfig.apiUrl}/admin/create-user`, {
       method: 'POST',
       body: JSON.stringify(data),
     })
@@ -103,18 +103,61 @@ function* createUserRequest({ payload }) {
   }
 }
 
+function deleteUserFromApi({ email }) {
+  const data = {
+    email: email,
+  }
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/delete-user`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
+}
+function* deleteUserRequest({ payload }) {
+  try {
+    const { status, data } = yield call(deleteUserFromApi, payload)
+
+    if (status === 200) {
+      yield put(actions.createUserSuccess(data))
+    }
+  } catch (error) {
+    yield put(actions.createUserFailure(error))
+  }
+}
+
 export default function* usersSaga() {
   yield all([
     takeLatest(actions.GET_USERS_START, getListUsersRequest),
     takeLatest(actions.UPDATE_USER, updateUserRequest),
     takeLatest(actions.CREATE_USER, createUserRequest),
     takeLatest(actions.GET_USER_DETAIL_START, geUserDetailRequest),
+    takeLatest(actions.DELETE_USER, deleteUserRequest),
   ])
 }
 
-export function sendMailUsersFromApi({ data }) {
+export function sendMailUsersFromApi(data) {
   return fetchHelper
-    .fetch(`${siteConfig.apiUrl}/admin/send-mail`, {
+    .fetch(`${siteConfig.apiUrl}/admin/notify`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
+}
+
+export function sendMailAllUsersFromApi(data) {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/notify/all`, {
       method: 'POST',
       body: JSON.stringify(data),
     })

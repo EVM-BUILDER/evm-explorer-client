@@ -6,7 +6,7 @@ import { Table, Button, Space, Popconfirm } from 'antd'
 import ModalUser from './components/ModalUser'
 import useFetchAllUsers from 'redux/users/hooks/useFetchAllUsers'
 import moment from 'moment-timezone'
-import { updateUser, createUser } from 'redux/users/actions'
+import { updateUser, createUser, deleteUser } from 'redux/users/actions'
 import { useDispatch } from 'react-redux'
 
 const User = () => {
@@ -75,7 +75,7 @@ const User = () => {
               title="Are you sure to delete this user?"
               okText="Yes"
               cancelText="No"
-              onConfirm={() => handleDeleteUser(record?._id?.['$oid'])}
+              onConfirm={() => handleDeleteUser(record?.email)}
           >
               <Button type="link" danger>Delete</Button>
           </Popconfirm>
@@ -84,8 +84,9 @@ const User = () => {
     },
   ]
 
-  const handleDeleteUser = (user_id) => {
-    console.log(user_id)
+  const handleDeleteUser = async (email) => {
+    await dispatch(deleteUser(email));
+    fetchAllUsers();
   }
 
   const handleEditUser = async (item) => {
@@ -95,7 +96,6 @@ const User = () => {
       await dispatch(createUser(item));
     }
     fetchAllUsers();
-
   }
 
   const handleCloseForm = useCallback(() => {

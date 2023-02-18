@@ -6,7 +6,8 @@ import { Button, Checkbox, Form, Input } from 'antd'
 
 import CKEditor from 'components/CKEditor'
 import { useDispatch } from 'react-redux'
-import { sendMailUsersFromApi } from 'redux/users/saga'
+import { sendMailAllUsersFromApi, sendMailUsersFromApi } from 'redux/users/saga'
+import { toast } from 'react-toastify'
 
 const layout = {
   labelCol: {
@@ -40,11 +41,26 @@ const SendMail = () => {
   ]
 
   const onFinish = async (values) => {
-    const dataSendMail = {
-      ...values,
-      message: messageContent,
+    
+    let sendMail = null;
+    if (sendAll) {
+      const dataSendMail = {
+        subject: values?.subject || "Notification",
+        content: messageContent,
+      }
+      sendMail = await sendMailAllUsersFromApi(dataSendMail);
+    } else {
+      const dataSendMail = {
+        subject: values?.subject || "Notification",
+        content: messageContent,
+        users: values?.email?.split(","),
+      }
+      sendMail = await sendMailUsersFromApi(dataSendMail);
     }
-    const sendMail = await sendMailUsersFromApi(dataSendMail);
+    
+    if (sendMail?.status === 200) {
+      toast.success('Send notify successfully!')
+    }
     form.resetFields()
   }
 
@@ -87,8 +103,8 @@ const SendMail = () => {
             </Form.Item>
             )}
             <Form.Item
-                name='message'
-                label="Message"
+                name='content'
+                label="Content"
             >
                 <CKEditor
                     onChange={handleChangeMessage}

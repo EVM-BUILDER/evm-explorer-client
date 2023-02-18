@@ -4,7 +4,7 @@ import { getListContractsVerify } from '../actions'
 
 function useFetchAllVerifyContract(page, page_size) {
   const dispatch = useDispatch()
-  const { contractsVerify, page: rPage, total, rPage_size } = useSelector((state) => state.VerifyContract)
+  const { contractsVerified, page: rPage, total, rPage_size } = useSelector((state) => state.VerifyContract)
 
   const [paramsAllVerifyContract, setParamsAllVerifyContract] = useState({
     page: page || 1,
@@ -20,7 +20,7 @@ function useFetchAllVerifyContract(page, page_size) {
   }, [fetchAllVerifyContract])
 
   return {
-    contractsVerify: { data: contractsVerify?.contractsVerify, page: rPage, total, page_size: rPage_size },
+    contractsVerify: { data: contractsVerified?.data, page: rPage, total, page_size: rPage_size },
     paramsAllVerifyContract,
     setParamsAllVerifyContract,
     fetchAllVerifyContract,

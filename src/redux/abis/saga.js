@@ -54,9 +54,35 @@ function* addAbiRequest({ payload }) {
   }
 }
 
+function deleteAbiFromApi({ data }) {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/delete-abi`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    .then(([data, status]) => {
+      return {
+        data,
+        status,
+      }
+    })
+}
+function* deleteAbiRequest({ payload }) {
+  try {
+    const { status, data } = yield call(deleteAbiFromApi, payload)
+
+    if (status === 200) {
+      yield put(actions.addAbiSuccess(data))
+    }
+  } catch (error) {
+    yield put(actions.addAbiFailure(error))
+  }
+}
+
 export default function* abisSaga() {
   yield all([
     takeLatest(actions.GET_ABIS_START, getListAbisRequest),
     takeLatest(actions.ADD_ABI, addAbiRequest),
+    takeLatest(actions.DELETE_ABI, deleteAbiRequest),
   ])
 }
