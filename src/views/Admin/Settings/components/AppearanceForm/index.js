@@ -67,7 +67,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
                 text_active_color: values?.footer_text_active_color || '',
                 bgcolor: values?.footer_bgcolor || '',
                 bgimage: values?.footer_bgimage || '',
-                show_addmetamask: values?.footer_show_addmetamask || true,
+                show_addmetamask: values?.footer_show_addmetamask,
             },
             card: {
                 header_bg_color: values?.card_header_bgcolor || '',
@@ -378,7 +378,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
             </Form.Item>
             <Form.Item name="footer_show_addmetamask" label="Add network to Metamask">
                 <Select
-                    defaultValue={true}
+                    // defaultValue={true}
                     options={[
                         {
                             value: true,
