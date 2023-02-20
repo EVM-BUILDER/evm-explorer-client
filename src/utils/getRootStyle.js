@@ -29,7 +29,7 @@ function getRootStyle(settings = {}) {
     --header-search-border-color: ${get(settings, 'appearance.homesearch.bordercolor')};
 
     --banner-bg-color: ${get(settings, 'appearance.banner.bgcolor')};
-    --banner-bg-image: url(${get(settings, 'appearance.banner.bgimage')};);
+    --banner-bg-image: url(${get(settings, 'appearance.banner.bgimage')});
 
     --footer-bg: ${get(settings, 'appearance.footer.bgcolor')};
     --footer-bg-image: url(${get(settings, 'appearance.footer.bgimage')});
