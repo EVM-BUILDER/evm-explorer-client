@@ -48,8 +48,8 @@ export default function tokenReducer(state = initState, action) {
         ...state,
         txsErc20: {
           ...state.txsErc20,
-          [params.a]: {
-            ...(state.txsErc20[params.a] || {}),
+          [params.ca]: {
+            ...(state.txsErc20[params.ca] || {}),
             loading: true,
           },
         },
@@ -59,7 +59,7 @@ export default function tokenReducer(state = initState, action) {
         ...state,
         txsErc20: {
           ...state.txsErc20,
-          [params.a]: {
+          [params.ca]: {
             ...data,
             loading: false,
           },

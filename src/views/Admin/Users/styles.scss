@@ -1,0 +1,27 @@
+.users-wrapper button.ant-btn-link  {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.users-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+.users-wrapper .title-group {
+  display: flex;
+}
+
+.users-wrapper .title-group h2 {
+  width: calc(100% - 80px);
+}
+
+.users-wrapper .title-group button {
+  text-align: center;
+  width: 80px;
+}
+
+.users-wrapper .ant-input[disabled] {
+  color: #333;
+}

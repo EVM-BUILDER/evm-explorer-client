@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button, Popconfirm } from 'antd'
 
 const MenuItem = ({ item, noActions, handleEditMenu, handleDeleteMenu, handleAddSubmenu }) => {
 
@@ -29,7 +29,14 @@ const MenuItem = ({ item, noActions, handleEditMenu, handleDeleteMenu, handleAdd
                 <div className='group-actions'>
                     {!noActions && (<Button type="link" onClick={() => handleAddSubmenu(item?.id)}>Add Sub Menu</Button>)}
                     <Button type="link" className='button-edit' onClick={() => handleEditMenu(item)}>Edit</Button>
-                    <Button type="link" danger onClick={() => handleDeleteMenu(item?.id, item?.parentMenuId)}>Delete</Button>
+                    <Popconfirm
+                        title="Are you sure to delete this menu?"
+                        okText="Yes"
+                        cancelText="No"
+                        onConfirm={() => handleDeleteMenu(item?.id, item?.parentMenuId)}
+                    >
+                        <Button type="link" danger>Delete</Button>
+                    </Popconfirm>
                 </div>
             </div>
             {item?.child?.length > 0 && renderChildNodes(item?.child)}

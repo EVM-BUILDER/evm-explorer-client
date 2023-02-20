@@ -1,0 +1,28 @@
+.abis-wrapper button.ant-btn-link  {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.abis-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+.abis-wrapper .title-group {
+  display: flex;
+}
+
+.abis-wrapper .title-group h2 {
+  width: calc(100% - 80px);
+}
+
+.abis-wrapper .title-group button {
+  text-align: center;
+  width: 80px;
+}
+
+.abis-wrapper .ant-table-wrapper .ant-table .ant-table-thead .ant-table-cell {
+  font-weight: 700;
+  font-size: 15px;
+}

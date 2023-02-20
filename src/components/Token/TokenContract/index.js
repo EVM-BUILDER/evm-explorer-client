@@ -80,7 +80,7 @@ const TokenContract = ({ address, addressDetail }) => {
                   </a>
                 ) : (
                   <span>
-                    Not Available, <Link to={`/myaccount`}>Update?</Link>
+                    Not Available, <Link href={`/tokenupdate/${address}`}>Update?</Link>
                   </span>
                 )}
               </Col>
@@ -100,7 +100,7 @@ const TokenContract = ({ address, addressDetail }) => {
                   ))
                 ) : (
                   <span>
-                    Not Available, <Link to={`/myaccount`}>Update?</Link>
+                    Not Available, <Link href={`/tokenupdate/${address}`}>Update?</Link>
                   </span>
                 )}
               </Col>

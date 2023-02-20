@@ -9,6 +9,8 @@ import BlocksSaga from 'redux/blocks/saga'
 import StatisticsSaga from 'redux/statistics/saga'
 import AccountsSaga from 'redux/accounts/saga'
 import SettingsSaga from 'redux/settings/saga'
+import UsersSaga from 'redux/users/saga'
+import AbisSaga from 'redux/abis/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -22,5 +24,7 @@ export default function* rootSaga() {
     StatisticsSaga(),
     AccountsSaga(),
     SettingsSaga(),
+    UsersSaga(),
+    AbisSaga(),
   ])
 }

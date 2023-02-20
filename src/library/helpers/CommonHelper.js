@@ -35,4 +35,14 @@ const numberFormatter = (num, digits) => {
   return item ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol : '0'
 }
 
-export { removeEmpty, formatCode, numberFormatter }
+const formatAddress = (address, start = 20, end = 0, concat = '...') => {
+  if(address?.pro?.na) return address?.pro?.na;
+  if (!address?.a) return '';
+  const total = start + end
+  const textStr = address?.a?.toString()
+  const { length } = textStr
+  if (total >= length) return address?.a;
+  return [textStr.slice(0, start), textStr.slice(length - end)].join(concat)
+}
+
+export { removeEmpty, formatCode, numberFormatter, formatAddress }

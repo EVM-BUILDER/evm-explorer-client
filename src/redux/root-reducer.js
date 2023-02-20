@@ -11,6 +11,8 @@ import Transactions from 'redux/transactions/reducer'
 import Blocks from 'redux/blocks/reducer'
 import Statistics from 'redux/statistics/reducer'
 import Language from 'redux/language/reducer'
+import Users from 'redux/users/reducer'
+import Abis from 'redux/abis/reducer'
 
 export default combineReducers({
   Global,
@@ -25,4 +27,6 @@ export default combineReducers({
   Blocks,
   Statistics,
   Language,
+  Users,
+  Abis,
 })
