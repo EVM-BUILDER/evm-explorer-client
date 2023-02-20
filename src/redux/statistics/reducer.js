@@ -43,8 +43,8 @@ export default function statisticsReducer(state = initState, action) {
             let oldPrice = statisticSecondItem?.tp?.cur
             let perChange = statisticsFirstItem?.tp?.dif?.toFixed(2)
             let isUp = price >= oldPrice
-            let gasPrice = (statisticsFirstItem?.gp?.cur / 1e9 || 0).toFixed(2)
-            let gasPriceUsd = ((statisticsFirstItem?.gp?.cur / 1e18) * statisticsFirstItem?.tp?.cur).toFixed(2)
+            let gasPrice = statisticsFirstItem?.gp?.cur / 1e9 || 0
+            let gasPriceUsd = (statisticsFirstItem?.gp?.cur / 1e18) * statisticsFirstItem?.tp?.cur
 
             return {
                 ...state,
