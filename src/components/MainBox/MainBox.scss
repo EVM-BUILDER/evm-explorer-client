@@ -123,6 +123,7 @@
                 &.med-gas-price {
                     & > .gas-value {
                         display: flex;
+                        flex-flow: row wrap;
                         a,
                         span {
                             display: block;

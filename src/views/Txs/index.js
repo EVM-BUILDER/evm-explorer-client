@@ -13,6 +13,7 @@ import { useAds } from 'redux/statistics/hooks'
 import { ArrowRightFill } from 'widgets/Svg'
 import TableBase from 'components/Table/TableBase'
 import Pagination from 'components/Table/Pagination'
+import BoxInOut from 'components/BoxInOut'
 
 const DEFAULT_LIMIT = 25
 
@@ -142,16 +143,16 @@ const TransactionsModule = () => {
         return (
           <div className="data-to">
             <ArrowRightFill className="arrow-right-icon" />
-            {record?.t || record?.ca ? (
-              <div className="file-address">
-                {record?.ca?.pro && <BsFileTextFill />}
-                <Link href={`/address/${record?.ca?.a || record?.t?.a}`} className="data-to-link">
-                  {record?.ca?.pro ? record?.ca?.pro?.na || 'Create Contract' : formatCode(record?.t?.a || '', 16, 0)}
-                </Link>
-              </div>
-            ) : (
-              'Unknown'
-            )}
+            <div className="data-to">
+              {record?.ca ? (
+                <>
+                  <BsFileTextFill />
+                  <BoxInOut type="to" isContract f={record.f} t={record.ca} hideInOut />
+                </>
+              ) : (
+                <BoxInOut type="to" f={record.f} t={record.t} hideInOut />
+              )}
+            </div>
           </div>
         )
       },
