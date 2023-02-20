@@ -19,7 +19,7 @@ const Footer = () => {
     const footer02 = settings?.['menu_footer']?.['ft02']
     const footer03 = settings?.['menu_footer']?.['ft03']
 
-    console.log(settings)
+    // console.log(settings)
 
     return (
         <>
@@ -45,7 +45,8 @@ const Footer = () => {
                                         class="btn-add-metamask"
                                         onClick={() => requestAddNetworkToWallet(settings.addToMetamask)}
                                     >
-                                        <img class="mr-1" width="15" src="/images/metamask.svg" alt="Metamask" /> Add BSC Network
+                                        <img class="mr-1" width="15" src="/images/metamask.svg" alt="Metamask" /> Add{' '}
+                                        {get(settings, 'chain.native.symbol', '')} Network
                                     </button>
                                 </div>
                             )}
