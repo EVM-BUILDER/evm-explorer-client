@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import dynamic from 'next/dynamic'
 import { Col, Row, Space } from 'antd'
-
-import { numberFormatter } from 'library/helpers/CommonHelper'
 import moment from 'moment-timezone'
-import { useSelector } from 'react-redux'
+import * as Handle from './Handle.util.js'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 import useMatchBreakpoints from 'hooks/useMatchBreakpoints'
@@ -126,7 +125,18 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                     </div>
                     <div className="body-content">
                         <h2>MARKET CAP</h2>
-                        <a className="body-content-text-under">${numberFormatter(latestStatistic?.mc * 1, 2)}</a>
+                        <span className="body-content-text-under">
+                            <FormatAmount value={Handle.getMarketCap(latestStatistic?.mc)} prefix={`$`} />
+                            &nbsp;
+                            <span className="text-span" style={{whiteSpace: 'nowrap' }}>
+                                (
+                                <FormatAmount
+                                    value={Handle.getTokenBalanceFromMCAndPrice(latestStatistic?.mc, nativePrice?.price)}
+                                    suffix={` ${settings.chain.native.symbol}`}
+                                />
+                                )
+                            </span>
+                        </span>
                     </div>
                 </div>
             </Col>

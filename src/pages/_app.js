@@ -206,7 +206,7 @@ MyApp.getInitialProps = async () => {
         const chain = settings ? settings.chain : {}
         const addToMetamask = [
             {
-                chainId: `0x${chain.id.toString(16)}`, // `0x76B9`,
+                chainId: `0x${(+chain.id).toString(16)}`, // `0x76B9`,
                 chainName: chain.name,
                 nativeCurrency: {
                     name: chain.native.name,
