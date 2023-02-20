@@ -73,4 +73,7 @@ export function checkLogin(req, res) {
             props: {},
         }
     }
+    return {
+        props: {},
+    }
 }

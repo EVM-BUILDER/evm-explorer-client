@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 const ToTokenAddressStyled = styled.div`
     .file-address {
+        white-space: nowrap;
         display: inline-flex;
         align-items: center;
         flex-direction: row;
@@ -14,6 +15,13 @@ const ToTokenAddressStyled = styled.div`
             fill: var(--primary);
             width: 16px;
             margin-right: 2px;
+        }
+
+        a {
+            max-width: 100px;
+            ${({ theme }) => theme.mediaQueries.sm} {
+                max-width: unset;
+            }
         }
     }
 `
@@ -24,10 +32,10 @@ const ToTokenAddress = ({ txDetail }) => {
             {txDetail?.ca ? (
                 <div className="file-address">
                     [Contract &nbsp; <BsFileTextFill />
-                    <Link className="address" href={`/address/${txDetail?.ca?.a}`}>
-                        {txDetail?.ca?.pro?.na || txDetail?.ca?.a}
+                    <Link className="address text-truncate" href={`/address/${txDetail?.ca?.a}`}>
+                        {txDetail?.ca?.a}
                     </Link>
-                    &nbsp; Created] &nbsp;
+                    &nbsp; Created] {txDetail?.ca?.pro?.na ? `(${txDetail?.ca?.pro?.na})` : ''}&nbsp;
                     <BsCheckCircleFill />
                     <CoppyText value={txDetail?.ca?.a}>
                         <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
