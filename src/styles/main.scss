@@ -34,6 +34,7 @@
 @import '../components/Modal/styles.scss';
 @import '../components/AccountSidebar/styles.scss';
 @import '../components/Breadcrumb/styles.scss';
+@import '../components/CKEditor/styles.scss';
 
 // View auth
 @import '../views/Auth/pages/Register/style.scss';
@@ -81,3 +82,7 @@
 /* Admin */
 @import '../views/Admin/styles.scss';
 @import '../views/Admin/Settings/styles.scss';
+@import '../views/Admin/Users/styles.scss';
+@import '../views/Admin/VerifyAddress/styles.scss';
+@import '../views/Admin/AbiLibrary/styles.scss';
+@import '../views/Admin/Communication/styles.scss';

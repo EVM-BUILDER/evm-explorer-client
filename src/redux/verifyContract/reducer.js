@@ -14,6 +14,13 @@ const initState = {
     page_size: 25,
     total: 0,
   },
+
+  contractsVerify: {
+    data: [],
+    page: 1,
+    page_size: 25,
+    total: 0,
+  },
 }
 
 export default function verifyContractReducer(state = initState, action) {
@@ -53,11 +60,28 @@ export default function verifyContractReducer(state = initState, action) {
         },
       }
     case actions.GET_CONTRACTS_VERIFIED_SUCCESS:
-      console.log(data)
       return {
         ...state,
         contractsVerified: {
           ...state.contractsVerified,
+          ...data,
+          loading: false,
+        },
+      }
+
+    case actions.GET_CONTRACTS_VERIFY_START:
+      return {
+        ...state,
+        contractsVerify: {
+          ...state.contractsVerify,
+          loading: true,
+        },
+      }
+    case actions.GET_CONTRACTS_VERIFY_SUCCESS:
+      return {
+        ...state,
+        contractsVerify: {
+          ...state.contractsVerify,
           ...data,
           loading: false,
         },

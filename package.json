@@ -6,6 +6,8 @@
     "@ant-design/compatible": "^1.0.5",
     "@babel/runtime": "^7.19.4",
     "@binance-chain/bsc-connector": "^1.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^36.0.1",
+    "@ckeditor/ckeditor5-react": "^5.0.6",
     "@ethersproject/providers": "^5.5.2",
     "@glidejs/glide": "^3.4.1",
     "@redq/js-info-bubble": "^0.8.1",
