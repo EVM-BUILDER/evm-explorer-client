@@ -160,7 +160,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
             footer_bgcolor: data?.footer?.bgcolor || '',
             footer_fontsize: data?.footer?.fontsize || '',
             footer_fontweight: data?.footer?.fontweight || '',
-            footer_show_addmetamask: data?.footer?.show_addmetamask || '',
+            footer_show_addmetamask: data?.footer?.show_addmetamask,
 
             home_search_color: data?.homesearch?.color || '',
             home_search_bordercolor: data?.homesearch?.bordercolor || '',
