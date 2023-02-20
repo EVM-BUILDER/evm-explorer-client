@@ -16,7 +16,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
 
     const { isMobile } = useMatchBreakpoints()
 
-    const statisticsDataChart = statistics ? [...statistics] : []
+    const statisticsDataChart = statistics ? [...statistics].reverse() : []
 
     const chart = {
         options: {
@@ -128,7 +128,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         <span className="body-content-text-under">
                             <FormatAmount value={Handle.getMarketCap(latestStatistic?.mc)} prefix={`$`} />
                             &nbsp;
-                            <span className="text-span" style={{whiteSpace: 'nowrap' }}>
+                            <span className="text-span" style={{ whiteSpace: 'nowrap' }}>
                                 (
                                 <FormatAmount
                                     value={Handle.getTokenBalanceFromMCAndPrice(latestStatistic?.mc, nativePrice?.price)}
@@ -164,8 +164,14 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         <div className="gas-value">
                             <a style={{ marginRight: '4px' }}>{nativePrice?.gasPrice} Gwei</a>
                             {nativePrice && (
-                                <span>
-                                    (<FormatAmount value={nativePrice?.gasPriceUsd} prefix="$" nullValue="0.00" />)
+                                <span style={{ whiteSpace: 'nowrap' }}>
+                                    (
+                                    <FormatAmount
+                                        value={roundNumber(nativePrice?.gasPriceUsd, { scale: 10 })}
+                                        prefix="$"
+                                        nullValue="0.00"
+                                    />
+                                    )
                                 </span>
                             )}
                         </div>
