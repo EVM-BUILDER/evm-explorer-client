@@ -6,6 +6,8 @@ const initState = {
   page: 1,
   page_size: 25,
   total: 0,
+  updateSucess: false,
+  loading: false,
 }
 
 export default function AbisReducer(state = initState, action) {
@@ -32,6 +34,24 @@ export default function AbisReducer(state = initState, action) {
         abis: [],
         loading: false,
       }
+
+      case actions.ADD_ABI_SUCCESS:
+        return {
+          ...state,
+          updateSucess: true,
+        }
+      
+      case actions.DELETE_ABI_SUCCESS:
+        return {
+          ...state,
+          updateSucess: true,
+        }
+      
+      case actions.UPDATE_STATUS:
+        return {
+          ...state,
+          updateSucess: false,
+        }
 
     default:
       return state

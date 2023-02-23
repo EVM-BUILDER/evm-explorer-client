@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Button, Col, Form, Input, InputNumber, Row, Select } from 'antd'
-import { Colorpicker, ColorPickerValue } from 'antd-colorpicker'
 import { useDispatch } from 'react-redux'
 import { setSettings } from 'redux/settings/actions'
+import Colorbox from 'components/Colorbox'
 
 const layout = {
   labelCol: {
@@ -251,29 +251,29 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
     >
       <h3 className="block-title">Global</h3>
       <Form.Item name="text" label="Text color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="bordercolor" label="Border color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="body_bgcolor" label="Body background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <h3 className="block-title">Header</h3>
       <Form.Item name="header_textcolor" label="Text color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="sub_header_textcolor" label="Sub text color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="header_text_active_color" label="Text active color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="header_bgcolor" label="Background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="header_subnav_bg_color" label="Sub Navigation background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="header_bgimage" label="Background image">
         <Input />
@@ -287,7 +287,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
 
       <h3 className="block-title">Banner</h3>
       <Form.Item name="banner_bgcolor" label="Background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="banner_bgimage" label="Background image">
         <Input />
@@ -295,16 +295,16 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
 
       <h3 className="block-title">Footer</h3>
       <Form.Item name="footer_textcolor" label="Text color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="footer_text_active_color" label="Text active color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="footer_bgcolor" label="Background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="footer_subnav_bg_color" label="Sub Navigation background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="footer_bgimage" label="Background image">
         <Input />
@@ -318,13 +318,13 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
 
       <h3 className="block-title">Home search</h3>
       <Form.Item name="home_search_color" label="Color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="home_search_bordercolor" label="Border color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="home_search_bgcolor" label="Background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="home_search_bgimage" label="Background image">
         <Input />
@@ -332,42 +332,42 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
 
       <h3 className="block-title">Card</h3>
       <Form.Item name="card_header_bgcolor" label="Header background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="card_body_bgcolor" label="Body background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
 
       <h3 className="block-title">Table</h3>
       <Form.Item name="table_header_bgcolor" label="Header background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="table_body_bgcolor" label="Body background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
 
       <h3 className="block-title">Input</h3>
       <Form.Item name="input_color" label="Color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="input_bgcolor" label="Background color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="input_bordercolor" label="Border color">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <h3 className="block-title">Color Scheme</h3>
       <Form.Item name="button" label="Button">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="primary" label="Primary">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="secondary" label="Secondary">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
       <Form.Item name="tertiary" label="Tertiary">
-        <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+        <Colorbox />
       </Form.Item>
 
       <h3 className="block-title">Typography</h3>
@@ -382,7 +382,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h1_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -400,7 +400,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h2_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -418,7 +418,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h3_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -436,7 +436,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h4_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -454,7 +454,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h5_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -472,7 +472,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="h6_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>
@@ -490,7 +490,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
       <Row gutter={24}>
         <Col span={24} md={8} lg={8}>
           <Form.Item name="p_color" label="Color">
-            <Colorpicker popup onColorResult={(color) => color.rgb.a === 1 ? color.hex : `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`} />
+            <Colorbox />
           </Form.Item>
         </Col>
         <Col span={24} md={8} lg={8}>

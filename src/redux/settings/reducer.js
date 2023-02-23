@@ -12,6 +12,7 @@ const initState = {
   settings: settingsLocal || DEFAULT_SETTING,
   adminSettings: settingsLocal || DEFAULT_SETTING,
   listGoogleFont: [],
+  resource: {},
 }
 
 export default function SettingsReducer(state = initState, action) {
@@ -44,6 +45,13 @@ export default function SettingsReducer(state = initState, action) {
         ...state,
         listGoogleFont: payload || [],
       }
+
+    case actions.GET_RESOURCE_SUCCESS:
+      return {
+        ...state,
+        resource: payload?.data || {},
+      }
+    
     default:
       return state
   }

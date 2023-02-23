@@ -5,7 +5,7 @@ import {
   FontColorsOutlined,
   BookOutlined,
   UsergroupAddOutlined,
-  MailOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons'
 import Link from 'components/Link/Link'
 
@@ -29,6 +29,11 @@ export const adminMenu = () => [
     key: '/admin/abilibrary',
     icon: <BookOutlined />,
     label: <Link href={`/admin/abilibrary`}>ABI Library</Link>,
+  },
+  {
+    key: '/admin/resource',
+    icon: <DatabaseOutlined />,
+    label: <Link href={`/admin/resource`}>Resource</Link>,
   },
   {
     key: '/admin/communication',

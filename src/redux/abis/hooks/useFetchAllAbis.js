@@ -4,7 +4,7 @@ import { getListAbis } from '../actions'
 
 function useFetchAllAbis(page, page_size) {
   const dispatch = useDispatch()
-  const { abis, page: rPage, total, rPage_size } = useSelector((state) => state.Abis)
+  const { abis, page: rPage, total, rPage_size, updateSucess, loading } = useSelector((state) => state.Abis)
 
   const [paramsAllAbis, setParamsAllAbis] = useState({
     page: page || 1,
@@ -20,7 +20,7 @@ function useFetchAllAbis(page, page_size) {
   }, [fetchAllAbis])
 
   return {
-    abis: { data: abis, page: rPage, total, page_size: rPage_size },
+    abis: { data: abis, page: rPage, total, page_size: rPage_size, updateSucess, loading },
     paramsAllAbis,
     setParamsAllAbis,
     fetchAllAbis,
