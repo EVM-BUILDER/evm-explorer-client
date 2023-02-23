@@ -132,8 +132,9 @@ Date.prototype.addDays = (date, days) => {
 const MyApp = (props) => {
     const { Component, ...rest } = props
     const { store } = wrapper.useWrappedStore(rest)
-    const metaTitle = getRootMetaTitle(rest.globalProps?.settings)
-    const rootStyle = getRootStyle(rest.globalProps?.settings)
+    const settings = rest.globalProps?.settings
+    const metaTitle = getRootMetaTitle(settings)
+    const rootStyle = getRootStyle(settings)
     return (
         <>
             <Head>
@@ -141,14 +142,14 @@ const MyApp = (props) => {
                     name="viewport"
                     content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover"
                 />
-                <link rel="icon" href={metaTitle.favicon} type="image/png" sizes="16x16" />
                 <meta name="theme-color" content="#1FC7D4" />
-                <meta name="twitter:image" content={metaTitle.graphicimg} />
-                <meta name="twitter:description" content={metaTitle.sitedescription} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={metaTitle.sitename} />
-                <meta name="description" content={metaTitle.sitedescription} />
-                <title>{metaTitle.sitename}</title>
+                {settings && <link rel="icon" href={metaTitle.favicon} type="image/png" sizes="16x16" />}
+                {settings && <meta name="twitter:image" content={metaTitle.graphicimg} />}
+                {settings && <meta name="twitter:description" content={metaTitle.sitedescription} />}
+                {settings && <meta name="twitter:card" content="summary_large_image" />}
+                {settings && <meta name="twitter:title" content={metaTitle.sitename} />}
+                {settings && <meta name="description" content={metaTitle.sitedescription} />}
+                <title>{settings ? metaTitle.sitename : 'Server Maintenance'}</title>
             </Head>
             <Web3ReactProvider getLibrary={getLibrary}>
                 <Provider store={store}>
@@ -219,7 +220,7 @@ MyApp.getInitialProps = async ({ ctx }) => {
 
     return {
         globalProps: {
-            settings
+            settings,
         },
     }
 }
@@ -263,11 +264,17 @@ function App({ Component, globalProps, pageProps }) {
     }, [dispatch])
 
     if (!globalProps?.settings) {
-        return <CenterStyle style={{ 
-            fontSize: '24px',
-            width: '100vw', 
-            height: '100vh',
-        }}>Server Maintenance</CenterStyle>
+        return (
+            <CenterStyle
+                style={{
+                    fontSize: '24px',
+                    width: '100vw',
+                    height: '100vh',
+                }}
+            >
+                Server Maintenance
+            </CenterStyle>
+        )
     }
     if (Component.pure) {
         return <Component {...pageProps} />
