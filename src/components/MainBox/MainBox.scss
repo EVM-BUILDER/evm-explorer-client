@@ -1,222 +1,226 @@
 @import 'assets/css/variables.scss';
 
 .row-body {
-  width: 100%;
-  min-height: 175px;
-  padding: 14px 20px 22px;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+    width: 100%;
+    min-height: 175px;
+    padding: 14px 20px 22px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 
-  background: var(--white);
-  background-clip: border-box;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  box-shadow: 0 0.5rem 1.2rem var(--color-shadow);
-  overflow: hidden;
+    background: var(--white);
+    background-clip: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1.2rem var(--color-shadow);
+    overflow: hidden;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-  @include media-down(md) {
-    padding: 6px 20px;
-  }
-  @include media-down(xs) {
-    padding: 6px;
-  }
-
-  .col-item {
-    padding: 0;
-
-    @include media-up(lg) {
-      width: 100%;
-      padding: 0 24px;
-      border-right: 0.3px solid var(--border-color);
-
-      &:last-child {
-        border-right: none;
-      }
+    @include media-down(md) {
+        padding: 6px 20px;
+    }
+    @include media-down(xs) {
+        padding: 6px;
     }
 
-    .col-left-1 {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 10px 0 24px;
-      border-bottom: 1px solid var(--border-color);
-      @include media-down(sm) {
-        padding: 21px 0;
-      }
-      &:last-child {
-        padding: 21px 0;
+    .col-item {
+        padding: 0;
+
         @include media-up(lg) {
-          border-bottom: none;
-          padding: 24px 0 10px;
-        }
-      }
+            width: 100%;
+            padding: 0 24px;
+            border-right: 0.3px solid var(--border-color);
 
-      .body-img {
-        margin-right: 30px;
-        @include media-down(sm) {
-          margin-right: 14px;
-        }
-        img {
-          max-width: 50px;
-          max-height: 80px;
-          @include media-down(sm) {
-            max-width: 32px;
-            max-height: 60px;
-          }
-        }
-      }
-
-      .body-content {
-        height: 100%;
-
-        > h2 {
-          color: var(--text);
-          font-size: 16px;
-          line-height: 21px;
-          font-weight: 400;
-          margin-bottom: 16px;
-          @include media-down(sm) {
-            margin-bottom: 0;
-          }
+            &:last-child {
+                border-right: none;
+            }
         }
 
-        a {
-          font-size: 16px;
-          color: var(--black-color);
-
-          .small-black {
-            font-size: 12px;
-          }
-
-          .text-secondary-11 {
-            font-size: 10px;
-            margin-left: 4px;
-          }
-        }
-      }
-    }
-
-    .col-center-1 {
-      display: flex;
-      align-items: flex-start;
-      font-size: 16px;
-
-      .col-center-left-container {
-        display: flex;
-        flex: 1;
-        @include media-up(sm) {
-          width: 60%;
-        }
-      }
-
-      .body-right {
-        width: 40%;
-        margin: 0;
-
-        &.med-gas-price {
-          & > .gas-value {
+        .col-left-1 {
             display: flex;
-            a,
-            span {
-              display: block;
-              font-size: 14px;
-              line-height: 18px;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0 24px;
+            border-bottom: 1px solid var(--border-color);
+            @include media-down(sm) {
+                padding: 21px 0;
             }
-          }
+            &:last-child {
+                padding: 21px 0;
+                @include media-up(lg) {
+                    border-bottom: none;
+                    padding: 24px 0 10px;
+                }
+            }
+
+            .body-img {
+                margin-right: 30px;
+                @include media-down(sm) {
+                    margin-right: 14px;
+                }
+                img {
+                    max-width: 50px;
+                    max-height: 80px;
+                    @include media-down(sm) {
+                        max-width: 32px;
+                        max-height: 60px;
+                    }
+                }
+            }
+
+            .body-content {
+                height: 100%;
+
+                > h2 {
+                    color: var(--text);
+                    font-size: 16px;
+                    line-height: 21px;
+                    font-weight: 400;
+                    margin-bottom: 16px;
+                    @include media-down(sm) {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .body-content-text-under {
+                    font-size: 16px;
+                    color: var(--black-color);
+
+                    display: flex;
+                    flex-flow: row wrap;
+
+                    .small-black {
+                        font-size: 12px;
+                    }
+
+                    .text-secondary-11 {
+                        font-size: 10px;
+                        margin-left: 4px;
+                    }
+                }
+            }
         }
 
-        h2 {
-          font-size: 16px;
-          line-height: 21px;
-          color: var(--text);
-          margin-bottom: 16px;
+        .col-center-1 {
+            display: flex;
+            align-items: flex-start;
+            font-size: 16px;
+
+            .col-center-left-container {
+                display: flex;
+                flex: 1;
+                @include media-up(sm) {
+                    width: 60%;
+                }
+            }
+
+            .body-right {
+                width: 40%;
+                margin: 0;
+
+                &.med-gas-price {
+                    & > .gas-value {
+                        display: flex;
+                        flex-flow: row wrap;
+                        a,
+                        span {
+                            display: block;
+                            font-size: 14px;
+                            line-height: 18px;
+                        }
+                    }
+                }
+
+                h2 {
+                    font-size: 16px;
+                    line-height: 21px;
+                    color: var(--text);
+                    margin-bottom: 16px;
+                }
+
+                a {
+                    color: var(--black-color);
+                    font-weight: 400;
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+                }
+
+                span {
+                    color: var(--text);
+                }
+
+                @include media-down(sm) {
+                    h2 {
+                        margin-bottom: 10px;
+                    }
+
+                    &.med-gas-price {
+                        h2 {
+                            margin-bottom: 10px;
+                            @include media-down(sm) {
+                                margin-bottom: 0;
+                            }
+                        }
+
+                        a,
+                        span {
+                            font-size: 16px;
+                            line-height: 21px;
+                        }
+                    }
+                }
+            }
         }
 
-        a {
-          color: var(--black-color);
-          font-weight: 400;
+        .col-left-2 {
+            display: flex;
+            align-items: center;
 
-          &:hover {
-            color: var(--primary);
-          }
+            .body-img {
+                max-width: 28px;
+                max-height: 28px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
+    }
 
-        span {
-          color: var(--text);
-        }
-
+    .mixed-chart {
+        min-width: 384px;
         @include media-down(sm) {
-          h2 {
-            margin-bottom: 10px;
-          }
+            width: 100%;
+            min-width: 100%;
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+        h2 {
+            font-size: 16px;
+            line-height: 21px;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
 
-          &.med-gas-price {
-            h2 {
-              margin-bottom: 10px;
-              @include media-down(sm) {
-                margin-bottom: 0;
-              }
+        .mixed-chart-item {
+            width: 100%;
+            min-height: 180px;
+            margin-bottom: -30px;
+
+            .apexcharts-toolbar {
+                display: none;
             }
 
-            a,
-            span {
-              font-size: 16px;
-              line-height: 21px;
+            .apexcharts-xaxis-texts-g {
+                > text {
+                    transform: rotate(0);
+                }
             }
-          }
         }
-      }
     }
-
-    .col-left-2 {
-      display: flex;
-      align-items: center;
-
-      .body-img {
-        max-width: 28px;
-        max-height: 28px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-  }
-
-  .mixed-chart {
-    min-width: 384px;
-    @include media-down(sm) {
-      width: 100%;
-      min-width: 100%;
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-    h2 {
-      font-size: 16px;
-      line-height: 21px;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    .mixed-chart-item {
-      width: 100%;
-      min-height: 180px;
-      margin-bottom: -30px;
-
-      .apexcharts-toolbar {
-        display: none;
-      }
-
-      .apexcharts-xaxis-texts-g {
-        > text {
-          transform: rotate(0);
-        }
-      }
-    }
-  }
 }

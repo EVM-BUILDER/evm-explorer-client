@@ -83,7 +83,7 @@ const TransactionModule = () => {
             tabBarExtraContent={
               <Dropdown
                 trigger={['click']}
-                menu={
+                overlay={
                   <Menu>
                     <Menu.Item key="1">Remix Debugger</Menu.Item>
                     <Menu.Divider />

@@ -164,12 +164,11 @@
           }
 
           .data-txnHash {
-            display: flex;
-            align-items: center;
             img,
             svg {
               font-size: 16px;
               margin-right: 8px;
+              vertical-align: top;
             }
 
             a {
@@ -180,8 +179,11 @@
           .data-to {
             display: flex;
             align-items: center;
-            color: var(--primary);
 
+            a,
+            svg {
+              color: var(--primary);
+            }
             .arrow-right-icon {
               width: 16px;
               fill: transparent;

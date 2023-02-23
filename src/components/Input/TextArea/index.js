@@ -44,10 +44,10 @@ export const TextArea = ({ name, onChange, onTouched, value, onBlur, placeholder
           type="text"
           onChange={(e) => onChange(e.target.value)}
           onBlur={(e) => {
-            const value = e.target.value
+            const v = e.target.value
             setTimeout(() => {
               onTouched()
-              if (onBlur) onBlur(value)
+              if (onBlur) onBlur(v)
             }, 500)
           }}
           value={value || ''}

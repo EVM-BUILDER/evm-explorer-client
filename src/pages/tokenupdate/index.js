@@ -1,7 +1,7 @@
 import TokenUpdate from 'views/TokenUpdate'
 
 function TokenUpdatePage() {
-  return <TokenUpdate />
+    return <TokenUpdate />
 }
 
 export default TokenUpdatePage

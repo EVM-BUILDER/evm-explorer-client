@@ -2,10 +2,11 @@
 
 .typeNumber-li {
   padding: 4px 10px;
+  white-space: nowrap;
 
   .ant-space-align-center {
     margin-right: 10px;
-
+ 
     .ant-space-item {
       button {
         padding: 4px 8px;
