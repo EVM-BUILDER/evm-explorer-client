@@ -182,7 +182,7 @@ const MyApp = (props) => {
     )
 }
 
-MyApp.getInitialProps = async () => {
+MyApp.getInitialProps = async ({ ctx }) => {
     let settings
     try {
         const response = await getSettings()
@@ -190,18 +190,15 @@ MyApp.getInitialProps = async () => {
             settings = parseSettingsData(response.data)
         }
     } catch (error) {
-        settings = defaultSettings
+        // settings = defaultSettings
     }
 
     if (!settings) {
-        settings = defaultSettings
         // const res = await getDefaultSettings()
         // if (res.data) {
         //     settings = parseSettingsData(res.data)
         // }
-    }
-
-    if (settings) {
+    } else if (settings) {
         // config add chain to metamask
         const chain = settings ? settings.chain : {}
         const addToMetamask = [
@@ -217,15 +214,13 @@ MyApp.getInitialProps = async () => {
                 blockExplorerUrls: [chain.explorer],
             },
         ]
-
-        return {
-            globalProps: {
-                settings: { ...settings, addToMetamask },
-            },
-        }
+        settings.addToMetamask = addToMetamask
     }
+
     return {
-        globalProps: {},
+        globalProps: {
+            settings
+        },
     }
 }
 
@@ -268,7 +263,11 @@ function App({ Component, globalProps, pageProps }) {
     }, [dispatch])
 
     if (!globalProps?.settings) {
-        return <CenterStyle>Fail to fetching data.</CenterStyle>
+        return <CenterStyle style={{ 
+            fontSize: '24px',
+            width: '100vw', 
+            height: '100vh',
+        }}>Server Maintenance</CenterStyle>
     }
     if (Component.pure) {
         return <Component {...pageProps} />

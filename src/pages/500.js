@@ -9,4 +9,7 @@ const ErrorPage = () => (
     <div>500</div>
   </>
 )
+
+ErrorPage.pure = true
+
 export default ErrorPage
