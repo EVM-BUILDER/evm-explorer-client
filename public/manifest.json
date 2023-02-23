@@ -2,7 +2,7 @@
   "short_name": "Explorer",
   "name": "Explorer",
   "description": "Explorer",
-  "homepage_url": "https://testexplorer.trustcoin.om",
+  "homepage_url": "/",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",
@@ -15,8 +15,8 @@
       "sizes": "16x16"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "favicon.ico",
+      "type": "image/x-icon",
       "sizes": "256x256"
     }
   ]
