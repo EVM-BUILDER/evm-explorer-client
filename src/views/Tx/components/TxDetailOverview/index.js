@@ -266,7 +266,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                                 >
                                                     <span>
                                                         <CurrencyFormat
-                                                            value={roundNumber(transactionDetail?.v, { decimals: 18 })}
+                                                            value={transactionDetail?.v / 1e18 || 0}
                                                             displayType="text"
                                                             thousandSeparator
                                                             renderText={(value) => value}
