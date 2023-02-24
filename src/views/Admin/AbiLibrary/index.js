@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import AdminLayout from 'layouts/AdminLayout'
 import Breadcrumb from 'components/Breadcrumb'
 import WPageAdmin from '../WPageAdmin'
 import { Table, Button, Space, Popconfirm } from 'antd'
 import ModalABI from './components/ModalABI'
-import { addAbi, deleteAbi } from 'redux/abis/actions'
+import { addAbi, deleteAbi, updateStatus } from 'redux/abis/actions'
 import { useDispatch } from 'react-redux'
 import useFetchAllAbis from 'redux/abis/hooks/useFetchAllAbis'
 
@@ -41,7 +41,7 @@ const AbiLibrary = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Space size="middle">
+        <Space size="large" className='action'>
           <Popconfirm
               title="Are you sure to delete this Abi?"
               okText="Yes"
@@ -58,16 +58,10 @@ const AbiLibrary = () => {
   const handleAddAbi = (data) => {
     const dataSUbmit = [data?.data];
     dispatch(addAbi(dataSUbmit));
-    setTimeout(() => {
-      fetchAllAbis();
-    }, 1000);
   }
 
   const handleDeleteAbi = (id) => {
     dispatch(deleteAbi({ ids: [id]}));
-    setTimeout(() => {
-      fetchAllAbis();
-    }, 1000);
   }
 
   
@@ -75,6 +69,13 @@ const AbiLibrary = () => {
   const handleCloseForm = useCallback(() => {
     setShowForm(false)
   }, [])
+
+  useEffect(() => {
+    if (abis.updateSucess) {
+      fetchAllAbis();
+      dispatch(updateStatus());
+    }
+  }, [abis.updateSucess])
 
   return (
     <WPageAdmin>
@@ -87,7 +88,7 @@ const AbiLibrary = () => {
           }}>Add ABI</Button>
         </div>
         <ModalABI open={showForm} onClose={handleCloseForm} handleAddAbi={handleAddAbi} />
-        <Table dataSource={abis?.data || []} columns={columns} pagination={{
+        <Table dataSource={abis?.data || []} columns={columns} loading={abis?.loading || false} pagination={{
           total: abis?.total || 0,
           page: abis?.page || 1,
           page_size: abis?.page_size || 10,

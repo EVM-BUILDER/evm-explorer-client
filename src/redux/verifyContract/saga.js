@@ -44,7 +44,7 @@ function* verifyContract({ params, cbs, cbe }) {
 
 function getListContractsVerifiedFromApi(params) {
   const str = qs.stringify(params || {})
-  console.log(`${siteConfig.apiUrl}/contract/verified?${str}`)
+
   return fetchHelper
     .fetch(`${siteConfig.apiUrl}/contract/verified?${str}`, {
       method: 'GET',
@@ -98,6 +98,10 @@ function updateVerifyAddressFromApi(data) {
     .fetch(`${siteConfig.apiUrl}/admin/address/approve`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {

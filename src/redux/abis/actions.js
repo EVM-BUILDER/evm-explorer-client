@@ -11,6 +11,8 @@ export const GET_ABIS_START = 'GET_ABIS_START'
 export const GET_ABIS_SUCCESS = 'GET_ABIS_SUCCESS'
 export const GET_ABIS_FAILURE = 'GET_ABIS_FAILURE'
 
+export const UPDATE_STATUS = 'UPDATE_STATUS'
+
 export const getListAbis = (params) => ({
   type: GET_ABIS_START,
   payload: { params },
@@ -48,4 +50,8 @@ export const deleteAbiSuccess = (data) => ({
 export const deleteAbiFailure = (error) => ({
   type: DELETE_ABI_FAILURE,
   payload: error,
+})
+
+export const updateStatus = () => ({
+  type: UPDATE_STATUS,
 })
