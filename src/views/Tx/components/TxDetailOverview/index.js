@@ -32,6 +32,16 @@ const menuBlock = (
     </Menu>
 )
 
+const menuTxn = (
+    <Menu className="Block-modal-container">
+        <Menu.Item>
+            <p className="Block-modal-conent" target="_blank" rel="noopener noreferrer">
+                The amount to be transfer to recipient
+            </p>
+        </Menu.Item>
+    </Menu>
+)
+
 const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
     const { settings } = useSelector((state) => state.Settings)
     const { userInfo } = useSelector((state) => state.User)
@@ -251,7 +261,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                             <Space>
                                                 <Dropdown
                                                     className="card-content-item-value"
-                                                    overlay={menuBlock}
+                                                    overlay={menuTxn}
                                                     placement="topRight"
                                                 >
                                                     <span>
