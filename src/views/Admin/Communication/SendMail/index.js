@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AdminLayout from 'layouts/AdminLayout'
 import Breadcrumb from 'components/Breadcrumb'
 import WPageAdmin from 'views/Admin/WPageAdmin'
-import { Button, Checkbox, Form, Input } from 'antd'
+import { Button, Checkbox, Form, Input, Card } from 'antd'
 
 import CKEditor from 'components/CKEditor'
 import { useDispatch } from 'react-redux'
@@ -76,46 +76,47 @@ const SendMail = () => {
     <WPageAdmin>
       <div className='send-mail-wrapper'>
         <Breadcrumb listItems={breadcrumb} />
-        <h2>Send Mail</h2>
-        <Form
-            {...layout}
-            name='send-mail-form'
-            onFinish={onFinish}
-            validateMessages={validateMessages}
-            form={form}
-            className='send-mail-form'
-        >
-            <Checkbox onChange={handleSendAll} checked={sendAll}>
-              Send to all users
-            </Checkbox>
-            <Form.Item
-                name='subject'
-                label="Subject"
-            >
-                <Input />
-            </Form.Item>
-            {!sendAll && (
-            <Form.Item
-                name='email'
-                label="Email"
-            >
-                <Input />
-            </Form.Item>
-            )}
-            <Form.Item
-                name='content'
-                label="Content"
-            >
-                <CKEditor
-                    onChange={handleChangeMessage}
-                />
-            </Form.Item>
-            <Form.Item className='form-actions'>
-                <Button type="primary" htmlType="submit">
-                    Send
-                </Button>
-            </Form.Item>
-        </Form>
+        <Card title="Send Mail" style={{ width: '100%' }}>
+          <Form
+              {...layout}
+              name='send-mail-form'
+              onFinish={onFinish}
+              validateMessages={validateMessages}
+              form={form}
+              className='send-mail-form'
+          >
+              <Checkbox onChange={handleSendAll} checked={sendAll}>
+                Send to all users
+              </Checkbox>
+              <Form.Item
+                  name='subject'
+                  label="Subject"
+              >
+                  <Input />
+              </Form.Item>
+              {!sendAll && (
+              <Form.Item
+                  name='email'
+                  label="Email"
+              >
+                  <Input />
+              </Form.Item>
+              )}
+              <Form.Item
+                  name='content'
+                  label="Content"
+              >
+                  <CKEditor
+                      onChange={handleChangeMessage}
+                  />
+              </Form.Item>
+              <Form.Item className='form-actions'>
+                  <Button type="primary" htmlType="submit">
+                      Send
+                  </Button>
+              </Form.Item>
+          </Form>
+        </Card>
       </div>
     </WPageAdmin>
   )

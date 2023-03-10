@@ -8,3 +8,11 @@
 .verify-address-wrapper h2 {
   margin-bottom: 20px;
 }
+
+.verify-address-wrapper .primary-color {
+  color: var(--primary);
+}
+
+.verify-address-wrapper .danger {
+  color: var(--warning);
+}
