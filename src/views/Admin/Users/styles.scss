@@ -25,3 +25,11 @@
 .users-wrapper .ant-input[disabled] {
   color: #333;
 }
+
+.users-wrapper .primary-color {
+  color: var(--primary);
+}
+
+.users-wrapper .danger {
+  color: var(--warning);
+}

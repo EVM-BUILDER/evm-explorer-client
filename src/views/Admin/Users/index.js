@@ -45,6 +45,7 @@ const User = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render: (text) => <span class={text === 'active' ? 'primary-color' : 'danger'}>{text}</span>
     },
     {
       title: 'Subscribe',

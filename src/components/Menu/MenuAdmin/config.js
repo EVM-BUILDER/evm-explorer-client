@@ -31,11 +31,6 @@ export const adminMenu = () => [
     label: <Link href={`/admin/abilibrary`}>ABI Library</Link>,
   },
   {
-    key: '/admin/resource',
-    icon: <DatabaseOutlined />,
-    label: <Link href={`/admin/resource`}>Resource</Link>,
-  },
-  {
     key: '/admin/communication',
     icon: <UsergroupAddOutlined />,
     label: 'Communication',

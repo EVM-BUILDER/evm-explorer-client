@@ -29,6 +29,7 @@ const VerifyAddress = () => {
       title: 'Address',
       dataIndex: 'address',
       key: 'address',
+      render: (text) => <a class="content-hasktag" href={`/address/${text}`}>{text}</a>
     },
     {
       title: 'Owner',
@@ -39,6 +40,7 @@ const VerifyAddress = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render: (text) => <span class={text === 'approved' ? 'primary-color' : 'danger'}>{text}</span>
     },
     {
       title: 'Action',
