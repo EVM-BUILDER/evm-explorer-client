@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { Row, Col, Button, Form, Upload } from 'antd'
@@ -11,6 +11,7 @@ import { verifyContract } from 'redux/verifyContract/actions'
 const VerifyPage = () => {
     const dispatch = useDispatch()
     const router = useRouter()
+    const { a: address } = router.query
     const [form] = Form.useForm()
     const [fileCode, setFileCode] = useState('')
     const [verifyErrorMess, setVerifyErrorMess] = useState('')
@@ -51,6 +52,12 @@ const VerifyPage = () => {
             console.error(`${info.file.name} file upload failed.`)
         }
     }
+
+    useEffect(() => {
+        if (address) {
+            form.setFieldsValue({ address })
+        }
+    }, [form, address])
 
     return (
         <div className="verify container">
