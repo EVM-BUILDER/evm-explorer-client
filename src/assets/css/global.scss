@@ -5,48 +5,48 @@
 @import './antd.scss';
 
 * {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 *::after,
 *::before {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: #f5f5f5;
+    width: 5px;
+    height: 5px;
+    background-color: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #888;
-  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #888;
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: lightgray;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: lightgray;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-  color: var(--text);
-  font-weight: 400;
-  background-color: var(--background-body);
-  overflow-x: hidden;
+    color: var(--text);
+    font-weight: 400;
+    background-color: var(--background-body);
+    overflow-x: hidden;
 }
 
 /* prettier-ignore */
@@ -70,32 +70,32 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+    margin: 0;
 }
 
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  color: var(--primary);
-  transition: all 0.3s;
-
-  &:hover {
     color: var(--primary);
-  }
+    transition: all 0.3s;
+
+    &:hover {
+        color: var(--primary);
+    }
 }
 
 ul,
 li {
-  list-style: none;
-  // margin: 0;
+    list-style: none;
+    // margin: 0;
 }
 
 img {
-  height: auto;
-  max-width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 /* Change the white to any color */
@@ -103,170 +103,189 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 // Text ///////////////////////////////////////
 .text-primary {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 .text-secondary {
-  color: var(--secondary);
+    color: var(--secondary);
 }
 
 .text-span {
-  color: var(--text-span);
+    color: var(--text-span);
 }
 
 .text-success {
-  color: var(--success);
+    color: var(--success);
 }
 
 .text-danger,
 .text-warning {
-  color: var(--warning);
+    color: var(--warning);
 }
 
 .text-error {
-  color: var(--failure);
+    color: var(--failure);
 }
 
 // Class ///////////////////////////////////////
 .container {
-  width: 100%;
-  max-width: calc(1290px + 30px);
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    width: 100%;
+    max-width: calc(1290px + 30px);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
 
-  @include media-down(xs) {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
+    @include media-down(xs) {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
 }
 
 .hr-alt-01 {
-  width: 100%;
-  border-bottom: 0.5px solid $border-color;
+    width: 100%;
+    border-bottom: 0.5px solid $border-color;
 }
 
 .card {
-  height: 100%;
-  position: relative;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  box-shadow: 0 0.5rem 1.2rem rgb(189, 197, 209, 20%);
+    height: 100%;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1.2rem rgb(189, 197, 209, 20%);
 }
 
 .in {
-  font-weight: 700;
-  font-size: 10px;
-  min-width: 36px;
-  border-radius: 4px;
-  padding: 2px 6px;
-  color: #02977e;
-  background-color: rgba(0, 201, 167, 0.2);
-  display: flex;
-  text-align: center;
-  justify-content: center;
+    font-weight: 700;
+    font-size: 10px;
+    min-width: 36px;
+    border-radius: 4px;
+    padding: 2px 6px;
+    color: #02977e;
+    background-color: rgba(0, 201, 167, 0.2);
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .out {
-  color: $orange;
-  font-weight: 700;
-  font-size: 10px;
-  min-width: 36px;
-  border-radius: 4px;
-  padding: 2px 6px;
-  background: $orange-bg;
-  display: flex;
-  text-align: center;
-  justify-content: center;
+    color: $orange;
+    font-weight: 700;
+    font-size: 10px;
+    min-width: 36px;
+    border-radius: 4px;
+    padding: 2px 6px;
+    background: $orange-bg;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 // modal
 .ReactModal__Overlay {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  margin-top: -50px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    margin-top: -50px;
 }
 
 .ReactModal__Body--open {
-  overflow: hidden;
+    overflow: hidden;
 
-  @media (min-width: 576px) {
-    padding-right: 5px;
-  }
+    @media (min-width: 576px) {
+        padding-right: 5px;
+    }
 }
 
 .ReactModal__Overlay--after-open {
-  opacity: 1;
+    opacity: 1;
 
-  .ReactModal__Content {
-    transition: transform 0.2s ease-out;
-    transform: translateY(50px);
-  }
+    .ReactModal__Content {
+        transition: transform 0.2s ease-out;
+        transform: translateY(50px);
+    }
 }
 
 .ReactModal__Overlay--before-close {
-  opacity: 0;
+    opacity: 0;
 
-  .ReactModal__Content {
-    transition: transform 0.2s ease-out;
-    transform: translateY(0px);
-  }
+    .ReactModal__Content {
+        transition: transform 0.2s ease-out;
+        transform: translateY(0px);
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+.d-flex-center {
+    @extend .d-flex;
+    align-items: center;
+}
+.d-flex-between {
+    @extend .d-flex;
+    justify-content: space-between;
+}
+.d-flex-between-center {
+    @extend .d-flex-between;
+    align-items: center;
+}
+.pointer {
+  cursor: pointer;
 }
 
 .text-center {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 .text-right {
-  text-align: right !important;
+    text-align: right !important;
 }
 
 .dropdown-divider {
-  height: 0;
-  overflow: hidden;
-  border-top: 1px solid #e7eaf3;
+    height: 0;
+    overflow: hidden;
+    border-top: 1px solid #e7eaf3;
 }
 
 .errorMessage {
-  color: red;
-  font-size: 12px;
+    color: red;
+    font-size: 12px;
 }
 
 .hash-tag {
-  max-width: 171px;
-  display: inline-block;
-  vertical-align: bottom;
+    max-width: 171px;
+    display: inline-block;
+    vertical-align: bottom;
 }
 .hash-tag-small {
-  max-width: 120px;
-  display: inline-block;
-  vertical-align: bottom;
+    max-width: 120px;
+    display: inline-block;
+    vertical-align: bottom;
 }
 .hash-tag-large {
-  max-width: 271px;
-  display: inline-block;
-  vertical-align: bottom;
+    max-width: 271px;
+    display: inline-block;
+    vertical-align: bottom;
 }
 .text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 // Sticky
 @supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sticky-top {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
+    .sticky-top {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
 }
