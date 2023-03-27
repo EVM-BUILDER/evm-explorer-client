@@ -28,6 +28,15 @@ const Resource = () => {
     dispatch(getResource())
   }, [dispatch])
 
+  const colorProgress = (percent) => {
+    if(percent > 80) {
+      return "#ff4d4f";
+    } else if (percent > 60) {
+      return "#FFCC00";
+    }
+    return "#1677ff";
+  }
+
   return (
     <WPageAdmin>
       <Breadcrumb listItems={breadcrumb} />
@@ -36,7 +45,7 @@ const Resource = () => {
           <div className='group-resource'>
             <h3>CPU</h3>
             <div class="progressbar-item">
-              <Progress type="circle" percent={Math.round(((resource?.cpu?.used || 0)/(resource?.cpu?.max || 1)) * 100 * 100)/100} />
+              <Progress strokeColor={colorProgress(Math.round(((resource?.cpu?.used || 0)/(resource?.cpu?.max || 1)) * 100 * 100)/100)} type="circle" percent={Math.round(((resource?.cpu?.used || 0)/(resource?.cpu?.max || 1)) * 100).toFixed(0)} />
             </div>
             <p><label>Core number:</label><strong>{resource?.cpu?.core_num || 0}</strong></p>
             <p><label>Max:</label><strong>{resource?.cpu?.max || 0}</strong></p>
@@ -45,7 +54,7 @@ const Resource = () => {
           <div className='group-resource'>
             <h3>Disk</h3>
             <div class="progressbar-item">
-              <Progress type="circle" percent={Math.round(((resource?.disk?.used || 0)/(resource?.disk?.max || 1)) * 100 * 100)/100} />
+              <Progress strokeColor={colorProgress(Math.round(((resource?.disk?.used || 0)/(resource?.disk?.max || 1)) * 100 * 100)/100)} type="circle" percent={Math.round(((resource?.disk?.used || 0)/(resource?.disk?.max || 1)) * 100 ).toFixed(0)} />
             </div>
             <p><label>Max:</label><strong>{resource?.disk?.max || 0}</strong></p>
             <p><label>Used:</label><strong>{resource?.disk?.used || 0}</strong></p>
@@ -53,7 +62,7 @@ const Resource = () => {
           <div className='group-resource'>
             <h3>Ram</h3>
             <div class="progressbar-item">
-              <Progress type="circle" percent={Math.round(((resource?.ram?.used || 0)/(resource?.ram?.max || 1)) * 100 * 100)/100} />
+              <Progress strokeColor={colorProgress(Math.round(((resource?.ram?.used || 0)/(resource?.ram?.max || 1)) * 100 * 100)/100)} type="circle" percent={Math.round(((resource?.ram?.used || 0)/(resource?.ram?.max || 1)) * 100 ).toFixed(0)} />
             </div>
             <p><label>Max:</label><strong>{resource?.ram?.max || 0}</strong></p>
             <p><label>Used:</label><strong>{resource?.ram?.used || 0}</strong></p>
