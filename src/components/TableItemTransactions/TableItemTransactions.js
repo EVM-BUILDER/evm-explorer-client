@@ -51,22 +51,32 @@ const TableItemTransactions = ({ dataItem }) => {
             </span>
             <div>
               <div className="show-content-hide-transactions">
-                <div className="content-text">
-                  {`${(dataItem?.v / 1e18).toLocaleString('en-GB', {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 5,
-                  })} ${settings?.chain?.native?.symbol || ''}`}
-                </div>
+                {
+                  dataItem?.v ? (
+                    <div className="content-text">
+                      {(dataItem?.v > 1e9 ? dataItem?.v / 1e18 : dataItem?.v)?.toLocaleString('en-GB', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 10,
+                      }) || 0}{' '}
+                      {dataItem?.v > 1e9 ? (settings?.chain?.native?.symbol || '') : 'wei'}
+                    </div>
+                  ) : ""
+                }
               </div>
             </div>
           </div>
           <div className="hide-content-transactions">
-            <div className="content-text">
-              {`${(dataItem?.v / 1e18).toLocaleString('en-GB', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 5,
-              })} ${settings?.chain?.native?.symbol || ''}`}
-            </div>
+            {
+              dataItem?.v ? (
+                <div className="content-text">
+                  {(dataItem?.v > 1e9 ? dataItem?.v / 1e18 : dataItem?.v)?.toLocaleString('en-GB', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 10,
+                  }) || 0}{' '}
+                  {dataItem?.v > 1e9 ? (settings?.chain?.native?.symbol || '') : 'wei'}
+                </div>
+              ) : ""
+            }
           </div>
         </div>
       </div>

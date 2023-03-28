@@ -45,6 +45,7 @@ const menuTxn = (
 const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
     const { settings } = useSelector((state) => state.Settings)
     const { userInfo } = useSelector((state) => state.User)
+    const { nativePrice } = useSelector((state) => state.Statistics)
 
     const [collapse, setCollapse] = useState(false)
 
@@ -258,24 +259,25 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                             </div>
                                         </Col>
                                         <Col xs={24} md={16}>
-                                            <Space>
+                                            {transactionDetail?.v && <Space>
                                                 <Dropdown
                                                     className="card-content-item-value"
                                                     overlay={menuTxn}
                                                     placement="topRight"
                                                 >
                                                     <span>
-                                                        <CurrencyFormat
-                                                            value={transactionDetail?.v / 1e18 || 0}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                            renderText={(value) => value}
-                                                        />{' '}
-                                                        {settings?.chain?.native?.symbol || ''}
+                                                        {(transactionDetail?.v > 1e9 ? transactionDetail?.v / 1e18 : transactionDetail?.v)?.toLocaleString('en-GB', {
+                                                            minimumFractionDigits: 2,
+                                                            maximumFractionDigits: 10,
+                                                        }) || 0}{' '}
+                                                        {transactionDetail?.v > 1e9 ? (settings?.chain?.native?.symbol || '') : 'wei'}
                                                     </span>
                                                 </Dropdown>
-                                                <span className="card-content-item-price">(${transactionDetail?.p || 0})</span>
-                                            </Space>
+                                                <span className="card-content-item-price">(${(transactionDetail?.v / 1e18 * roundNumber(nativePrice?.price, { scale: 5 })).toLocaleString('en-GB', {
+                                                    minimumFractionDigits: 2,
+                                                    maximumFractionDigits: 10,
+                                                })})</span>
+                                            </Space>}
                                         </Col>
                                     </Row>
                                 </div>
@@ -298,7 +300,10 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                                     {transactionDetail?.tf / 1e18 || 0} {settings?.chain?.native?.symbol || ''}
                                                 </span>
                                                 <span className="card-content-item-price">
-                                                    (${((transactionDetail?.gp / 1e9) * transactionDetail.gu) / 1e9})
+                                                    (${((((transactionDetail?.gp / 1e9) * transactionDetail.gu) / 1e9) * roundNumber(nativePrice?.price, { scale: 5 })).toLocaleString('en-GB', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 10,
+                                                    })})
                                                 </span>
                                             </Space>
                                         </Col>

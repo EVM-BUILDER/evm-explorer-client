@@ -35,7 +35,7 @@ const VerifyAddress = () => {
                     <Link className="d-flex" href={`/admin/verifyaddress/${record.address}`}>
                         <EyeIcon className="pointer" style={{ marginRight: '6px' }} />
                     </Link>
-                    <a class="content-hasktag" href={`/address/${text}`}>
+                    <a class="content-hasktag" target="_blank" href={`/address/${text}`} rel="noreferrer">
                         {text}
                     </a>
                 </div>
