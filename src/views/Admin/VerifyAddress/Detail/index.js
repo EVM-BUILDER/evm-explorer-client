@@ -32,19 +32,36 @@ const VerifyAddressDetail = () => {
 
     const { contractsVerify, fetchAllVerifyContract } = useFetchVerifyContractDetail(a)
 
-    const parseToArray = ObjectUtils.toArray(contractsVerify)
+    const parseToArray = ObjectUtils.toArray(contractsVerify)?.map((item) => {
+        if (item.key === "_id") {
+            return {
+                key: "ID",
+                value: item?.value?.[0]?.value,
+            }
+        }
+        return {
+            key: item.key.replaceAll(/[_-]/ig, " "),
+            value: item.value,
+        }
+    });
 
     const columns = [
         {
             title: 'Key',
             dataIndex: 'key',
+            className: 'data-key'
         },
         {
             title: 'Value',
             dataIndex: 'value',
-            render: (text) => {
+            render: (text, record) => {
                 if (typeof text === 'object') {
                     return <>{text.map((it) => `${it.key}: ${JSON.stringify(it.value)}`)}</>
+                }
+                if (record?.key === 'address') {
+                    return <a class="content-hasktag" target="_blank" href={`/address/${text}`} rel="noreferrer">
+                        {text}
+                    </a>
                 }
                 return text
             },
@@ -67,7 +84,9 @@ const VerifyAddressDetail = () => {
             <div className="verify-address-wrapper">
                 <h2>Verify Address Detail</h2>
                 <div className="d-flex-between-center" style={{ marginBottom: '12px' }}>
-                    <h3>ID: {a}</h3>
+                    <h3>ID: <a class="content-hasktag" target="_blank" href={`/address/${a}`} rel="noreferrer">
+                        {a}
+                    </a></h3>
                     <Space size="middle">
                         <Popconfirm
                             title="Are you sure to accept verify address?"

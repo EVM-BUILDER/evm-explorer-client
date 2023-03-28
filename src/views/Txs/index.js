@@ -161,15 +161,15 @@ const TransactionsModule = () => {
       title: 'Value',
       dataIndex: 'v',
       with: 120,
-      render: (v) => (
+      render: (v) => v ? (
         <div className="data-value">
-          {(v / 1e18).toLocaleString('en-GB', {
+          {(v > 1e9 ? v / 1e18 : v).toLocaleString('en-GB', {
             minimumFractionDigits: 2,
-            maximumFractionDigits: 5,
+            maximumFractionDigits: 10,
           }) || 0}{' '}
-          {settings?.chain?.native?.symbol || ''}{' '}
+          {v > 1e9 ? (settings?.chain?.native?.symbol || '') : 'wei'}
         </div>
-      ),
+      ) : "",
     },
     {
       title: 'Txn Fee',
@@ -180,7 +180,7 @@ const TransactionsModule = () => {
           <span>
             {((tf * 1) / 1e18).toLocaleString('en-US', {
               minimumFractionDigits: 2,
-              maximumFractionDigits: 5,
+              maximumFractionDigits: 10,
             })}
           </span>
           {/* <img src="/images/icon/lamp-charge.svg" alt="" /> */}
