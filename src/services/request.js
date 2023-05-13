@@ -13,7 +13,7 @@ const baseApiConfig = {
         'content-type': 'application/json',
         'cache-control': 'no-cache, no-store, must-revalidate',
     },
-    timeout: 15000, // 60s
+    timeout: 15000, // 15s
     paramsSerializer: (params) => queryString.stringify(params),
 }
 

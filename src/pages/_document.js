@@ -33,7 +33,6 @@ export default class CustomDocument extends Document {
         return (
             <Html>
                 <Head>
-                    {settings && <link rel="icon" href="/favicon.ico" type="image/png" sizes="16x16" />}
                     <link
                         href={
                             settings?.ggfont ||
