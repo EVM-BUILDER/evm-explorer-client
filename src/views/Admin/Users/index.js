@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import AdminLayout from 'layouts/AdminLayout'
 import Breadcrumb from 'components/Breadcrumb'
 import WPageAdmin from '../WPageAdmin'
@@ -6,7 +6,7 @@ import { Table, Button, Space, Popconfirm } from 'antd'
 import ModalUser from './components/ModalUser'
 import useFetchAllUsers from 'redux/users/hooks/useFetchAllUsers'
 import moment from 'moment-timezone'
-import { updateUser, createUser, deleteUser } from 'redux/users/actions'
+import { updateUser, createUser, deleteUser, updateStatus } from 'redux/users/actions'
 import { useDispatch } from 'react-redux'
 
 const User = () => {
@@ -45,6 +45,7 @@ const User = () => {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+      render: (text) => <span class={text === 'active' ? 'primary-color' : 'danger'}>{text}</span>
     },
     {
       title: 'Subscribe',
@@ -84,23 +85,29 @@ const User = () => {
     },
   ]
 
-  const handleDeleteUser = async (email) => {
-    await dispatch(deleteUser(email));
-    fetchAllUsers();
+  const handleDeleteUser = (email) => {
+    dispatch(deleteUser(email));
+    
   }
 
-  const handleEditUser = async (item) => {
+  const handleEditUser = (item) => {
     if(currentUser !== null) {
-      await dispatch(updateUser(item));
+      dispatch(updateUser(item));
     } else {
-      await dispatch(createUser(item));
+      dispatch(createUser(item));
     }
-    fetchAllUsers();
   }
 
   const handleCloseForm = useCallback(() => {
     setShowForm(false)
   }, [])
+
+  useEffect(() => {
+    if (users.updateSucess) {
+      fetchAllUsers();
+      dispatch(updateStatus());
+    }
+  }, [users.updateSucess])
 
   return (
     <WPageAdmin>
@@ -114,7 +121,7 @@ const User = () => {
           }}>Create</Button>
         </div>
         <ModalUser open={showForm} onClose={handleCloseForm} handleUpdateUser={handleEditUser} currentUser={currentUser} />
-        <Table dataSource={users?.data || []} columns={columns} pagination={{
+        <Table dataSource={users?.data || []} columns={columns} loading={users?.loading || false} pagination={{
           total: users?.total || 0,
           page: users?.page || 1,
           page_size: users?.page_size || 10,

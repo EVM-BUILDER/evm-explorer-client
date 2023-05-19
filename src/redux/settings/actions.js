@@ -49,3 +49,16 @@ export const getListGoogleFontSuccess = (payload) => ({
   type: GET_LIST_GOOLE_FONT_SUCCESS,
   payload,
 })
+
+export const GET_RESOURCE = 'GET_RESOURCE'
+export const GET_RESOURCE_SUCCESS = 'GET_RESOURCE_SUCCESS'
+
+export const getResource = (payload) => ({
+  type: GET_RESOURCE,
+  payload,
+})
+
+export const getResourceSuccess = (payload) => ({
+  type: GET_RESOURCE_SUCCESS,
+  payload,
+})

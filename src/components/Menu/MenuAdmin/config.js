@@ -5,7 +5,7 @@ import {
   FontColorsOutlined,
   BookOutlined,
   UsergroupAddOutlined,
-  MailOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons'
 import Link from 'components/Link/Link'
 

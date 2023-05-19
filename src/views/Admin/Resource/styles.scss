@@ -1,0 +1,23 @@
+.group-resource {
+  padding-left: 15px;
+  margin-bottom: 20px;
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  label {
+    margin-right: 15px;
+  }
+  .progressbar-item {
+    margin: 30px 0;
+    .ant-progress-status-success {
+      .ant-progress-text {
+        color: #ff4d4f;
+      }
+    }
+  }
+}

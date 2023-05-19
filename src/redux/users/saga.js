@@ -58,6 +58,10 @@ function updateUserFromApi({ data }) {
     .fetch(`${siteConfig.apiUrl}/admin/update_user_info`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {
@@ -83,6 +87,10 @@ function createUserFromApi({ data }) {
     .fetch(`${siteConfig.apiUrl}/admin/create-user`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {
@@ -105,12 +113,16 @@ function* createUserRequest({ payload }) {
 
 function deleteUserFromApi({ email }) {
   const data = {
-    email: email,
+    emails: [email],
   }
   return fetchHelper
     .fetch(`${siteConfig.apiUrl}/admin/delete-user`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {
@@ -146,7 +158,7 @@ export function sendMailUsersFromApi(data) {
     .fetch(`${siteConfig.apiUrl}/admin/notify`, {
       method: 'POST',
       body: JSON.stringify(data),
-    })
+    },)
     .then(([data, status]) => {
       return {
         data,

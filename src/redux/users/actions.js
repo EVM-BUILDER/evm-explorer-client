@@ -20,6 +20,8 @@ export const GET_USER_DETAIL_START = 'GET_USER_DETAIL_START'
 export const GET_USER_DETAIL_SUCCESS = 'GET_USER_DETAIL_SUCCESS'
 export const GET_USER_DETAIL_FAILURE = 'GET_USER_DETAIL_FAILURE'
 
+export const UPDATE_STATUS = 'UPDATE_STATUS'
+
 export const getListUsers = (params) => ({
   type: GET_USERS_START,
   payload: { params },
@@ -85,3 +87,6 @@ export const deleteUserFailure = (error) => ({
   payload: error,
 })
 
+export const updateStatus = () => ({
+  type: UPDATE_STATUS,
+})

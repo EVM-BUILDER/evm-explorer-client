@@ -34,6 +34,10 @@ function addAbiFromApi({ data }) {
     .fetch(`${siteConfig.apiUrl}/admin/abi`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {
@@ -59,6 +63,10 @@ function deleteAbiFromApi({ data }) {
     .fetch(`${siteConfig.apiUrl}/admin/delete-abi`, {
       method: 'POST',
       body: JSON.stringify(data),
+    },
+    {
+      isToastSuccess: true,
+      isToastFailed: true,
     })
     .then(([data, status]) => {
       return {

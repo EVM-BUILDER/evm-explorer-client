@@ -4,7 +4,7 @@ import { getListUsers } from '../actions'
 
 function useFetchAllUsers(page, page_size) {
   const dispatch = useDispatch()
-  const { users, page: rPage, total, rPage_size } = useSelector((state) => state.Users)
+  const { users, page: rPage, total, rPage_size, updateSucess, loading } = useSelector((state) => state.Users)
 
   const [paramsAllUsers, setParamsAllUsers] = useState({
     page: page || 1,
@@ -20,7 +20,7 @@ function useFetchAllUsers(page, page_size) {
   }, [fetchAllUsers])
 
   return {
-    users: { data: users, page: rPage, total, page_size: rPage_size },
+    users: { data: users, page: rPage, total, page_size: rPage_size, updateSucess, loading },
     paramsAllUsers,
     setParamsAllUsers,
     fetchAllUsers,

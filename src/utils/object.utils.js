@@ -107,4 +107,40 @@ export class ObjectUtils {
       return ''
     }
   }
+
+  // Function to convert objects containing nested objects and arrays to array pairs similar to Object.entries()
+  static toArray(val) {
+    if(!val) return []
+
+    //By default (val is not object or array, return the original value)
+    var result = val;
+    var arr = [];
+
+    // If object passed the result is the return value of Object.entries()
+    if (typeof val === 'object' && !Array.isArray(val)) {
+        result = Object.entries(val);
+        // If one of the results is an array or object, run this function on them again recursively
+        arr = result.map((attr) => {
+          return {
+                key: attr[0],
+                value: typeof attr[1] === 'object' ? this.toArray(attr[1]) : attr[1]
+            }
+        });
+    }
+
+      //If array passed, run this function on each value in it recursively
+      else if (Array.isArray(val)) {
+          arr = val.map((attr) => {
+              if(typeof attr === 'object') {
+                return this.toArray(attr)
+              }
+              return {
+                  key: attr,
+                  value: attr
+              }
+          });
+      }
+
+    return arr;
+  }
 }

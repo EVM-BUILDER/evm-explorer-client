@@ -42,10 +42,10 @@ const Footer = () => {
                                 <div className="d-flex">
                                     <button
                                         type="button"
-                                        class="btn-add-metamask"
+                                        className="btn-add-metamask"
                                         onClick={() => requestAddNetworkToWallet(settings.addToMetamask)}
                                     >
-                                        <img class="mr-1" width="15" src="/images/metamask.svg" alt="Metamask" /> Add{' '}
+                                        <img className="mr-1" width="15" src="/images/metamask.svg" alt="Metamask" /> Add{' '}
                                         {get(settings, 'chain.native.symbol', '')} Network
                                     </button>
                                 </div>

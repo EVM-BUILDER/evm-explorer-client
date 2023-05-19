@@ -6,6 +6,8 @@ const initState = {
   page: 1,
   page_size: 25,
   total: 0,
+  updateSucess: false,
+  loading: false,
 }
 
 export default function UsersReducer(state = initState, action) {
@@ -50,6 +52,30 @@ export default function UsersReducer(state = initState, action) {
         userDetail: {},
         loading: false,
       }
+
+      case actions.CREATE_USER_SUCCESS:
+        return {
+          ...state,
+          updateSucess: true,
+        }
+
+      case actions.UPDATE_USER_SUCCESS:
+        return {
+          ...state,
+          updateSucess: true,
+        }
+      
+      case actions.DELETE_USER_SUCCESS:
+        return {
+          ...state,
+          updateSucess: true,
+        }
+
+        case actions.UPDATE_STATUS:
+          return {
+            ...state,
+            updateSucess: false,
+          }
 
     default:
       return state

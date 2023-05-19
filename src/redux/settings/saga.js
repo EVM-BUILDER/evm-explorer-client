@@ -81,10 +81,30 @@ function* getListGoogleFont() {
   } catch (error) { }
 }
 
+function getResourceFromApi() {
+  return fetchHelper
+    .fetch(`${siteConfig.apiUrl}/admin/get-resource`, {
+      method: 'GET',
+    })
+    .then(([resp, status]) => ({
+      data: resp,
+      status,
+    }))
+}
+function* getResource() {
+  try {
+    const { data, status } = yield call(getResourceFromApi)
+    if (status === 200) {
+      yield put(actions.getResourceSuccess(data))
+    }
+  } catch (error) { }
+}
+
 export default function* statisticSaga() {
   yield all([
     takeLatest(actions.SET_SETTINGS, updateSettings),
     takeLatest(actions.GET_LIST_GOOLE_FONT, getListGoogleFont),
     takeLatest(actions.GET_ADMIN_SETTINGS, getAdminSettingRequest),
+    takeLatest(actions.GET_RESOURCE, getResource),
   ])
 }
