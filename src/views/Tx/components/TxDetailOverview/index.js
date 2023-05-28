@@ -259,7 +259,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                             </div>
                                         </Col>
                                         <Col xs={24} md={16}>
-                                            {transactionDetail?.v && (
+                                            {transactionDetail?.v ? (
                                                 <Space>
                                                     <span className="card-content-item-value">
                                                         {(transactionDetail?.v > 1e9
@@ -285,6 +285,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                                         )
                                                     </span>
                                                 </Space>
+                                            ) : (
+                                                `0 ${settings?.chain?.native?.symbol || ''}`
                                             )}
                                         </Col>
                                     </Row>
