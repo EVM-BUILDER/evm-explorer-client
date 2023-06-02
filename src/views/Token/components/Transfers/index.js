@@ -48,7 +48,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             dataIndex: 'f',
             render: (f) => (
                 <div className="data-from ">
-                    <Link className="data-from-link hash-tag text-truncate" href={`token/${query.token}?a=${f.a}`}>
+                    <Link className="data-from-link hash-tag text-truncate" href={`/token/${query.token}?a=${f.a}`}>
                         {f?.a}
                     </Link>
                 </div>
@@ -60,7 +60,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             render: (t) => (
                 <div className="data-to">
                     <RoundArrowIcon />
-                    <Link className="data-to-link hash-tag text-truncate" href={`token/${query.token}?a=${t.a}`}>
+                    <Link className="data-to-link hash-tag text-truncate" href={`/token/${query.token}?a=${t.a}`}>
                         {t?.a}
                     </Link>
                 </div>
