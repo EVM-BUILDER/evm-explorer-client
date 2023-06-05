@@ -1,0 +1,105 @@
+@import 'assets/css/variables.scss';
+
+.CardFilterTokenAddressBalance {
+  margin-bottom: 8px;
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 12px;
+
+    .item {
+      &:not(:last-child) {
+        @include media-down(md) {
+
+          border-bottom: 1px solid var(--border-color);
+        }
+      }
+    }
+
+    .label {
+      text-transform: uppercase;
+      color: #1e2022;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .address a {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary);
+    }
+
+    .balance {
+      padding-left: 16px;
+
+      @include media-down(md) {
+
+        padding-left: 0;
+        padding-bottom: 10px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        border-left: 1px solid #e7eaf3;
+        border-right: 0;
+
+        @include media-down(md) {
+
+          display: none;
+        }
+      }
+
+      h6 {
+        text-transform: uppercase;
+        color: #77838f;
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .value {
+      padding-left: 16px;
+
+      @include media-down(md) {
+        padding-left: 0;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        border-left: 1px solid #e7eaf3;
+        border-right: 0;
+
+        @include media-down(md) {
+
+          display: none;
+        }
+      }
+
+      h6 {
+        text-transform: uppercase;
+        color: #77838f;
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+}

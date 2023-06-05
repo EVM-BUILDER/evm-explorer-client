@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
-import { Progress, Modal, Button, Col, Dropdown, Menu, Row, Space, Table, Tabs, message, Input } from 'antd'
-import {
-    ClockCircleOutlined,
-    CopyOutlined,
-    FlagFilled,
-    TagOutlined,
-    TagsFilled,
-    TeamOutlined,
-    SearchOutlined,
-} from '@ant-design/icons'
+import { Dropdown, Input } from 'antd'
 import styled from 'styled-components'
-import { isAddress } from 'utils'
-import Web3Token from 'library/web3/Web3Token'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import CardTabs from 'components/Card/CardTabs'
 import Transfers from './components/Transfers'
 import Holders from './components/Holders'
-import Inventory from './components/Inventory'
-import Info from './components/Info'
 import Contract from './components/Contract'
 import Comments from './components/Comments'
 import TokenHeader from './components/HeaderPage'
 import CardSection from './components/CardSection'
 import DexTrades from './components/DexTrades'
 import HrGray from 'components/LineBorder'
-import useTokenHolders from '../../hooks/useTokenHolders'
 import useAddressDetail from 'hooks/useAddressDetail'
 import useFetchStatistics from 'redux/statistics/hooks/useFetchStatistics'
 import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
 import { useAds } from 'redux/statistics/hooks'
 import { useSettings } from 'redux/settings/hooks'
 import Events from './components/Events'
+import CardFilterTokenAddressBalance from 'components/Token/CardFilterTokenAddressBalance'
+import useAllErc20Balances from 'redux/token/hooks/useAllErc20Balances'
 
 const WrapCardRightSearch = styled.div`
     font-size: 0.7rem;
@@ -75,18 +62,22 @@ export const TABS_VIEW = {
 
 const TokenPage = () => {
     const router = useRouter()
-    const { token } = router.query
+    const { token, a: address } = router.query
 
     const settings = useSettings()
     const { adsText, adsBanner } = useAds()
 
     const { statistics } = useFetchStatistics()
     const { addressDetail } = useAddressDetail(token)
+    const { balancesErc20 } = useAllErc20Balances(address, 1, 50)
     const { txsErc20, paramsTxsErc20, setParamsTxsErc20 } = useFetchTxsErc20(token)
 
     // console.log('statistics', statistics)
     // console.log('addressDetail', addressDetail)
     // console.log('txsErc20', txsErc20)
+    // console.log('balancesErc20', balancesErc20)
+
+    const tokenBalance = balancesErc20?.data?.find((token) => token.a.a === address)
 
     const menuSubHeader = settings?.menu_sub_header
 
@@ -125,6 +116,15 @@ const TokenPage = () => {
                     {/* <img src="/images/address/ad-img.png" alt="" /> */}
                 </div>
 
+                {address && (
+                    <CardFilterTokenAddressBalance
+                        address={address}
+                        token={token}
+                        addressDetail={addressDetail?.data}
+                        tokenBalance={tokenBalance}
+                    />
+                )}
+
                 <div className="token-main-under">
                     <CardTabs
                         // activeKey="5"
@@ -148,6 +148,7 @@ const TokenPage = () => {
                                 title: 'Transfers',
                                 content: (
                                     <Transfers
+                                        token={token}
                                         txsErc20={txsErc20}
                                         paramsTxsErc20={paramsTxsErc20}
                                         setParamsTxsErc20={setParamsTxsErc20}

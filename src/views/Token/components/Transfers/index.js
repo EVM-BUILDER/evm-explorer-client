@@ -8,9 +8,7 @@ import Pagination from 'components/Table/Pagination'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 
-const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
-    const { query } = useRouter()
-
+const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
     const columns = [
         {
             title: 'Txn Hash',
@@ -48,7 +46,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             dataIndex: 'f',
             render: (f) => (
                 <div className="data-from ">
-                    <Link className="data-from-link hash-tag text-truncate" href={`/address/${f.a}`}>
+                    <Link className="data-from-link hash-tag text-truncate" href={`/token/${token}?a=${f.a}`}>
                         {f?.a}
                     </Link>
                 </div>
@@ -60,7 +58,7 @@ const Transfers = ({ txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             render: (t) => (
                 <div className="data-to">
                     <RoundArrowIcon />
-                    <Link className="data-to-link hash-tag text-truncate" href={`/address/${t.a}`}>
+                    <Link className="data-to-link hash-tag text-truncate" href={`/token/${token}?a={${t.a}}`}>
                         {t?.a}
                     </Link>
                 </div>
