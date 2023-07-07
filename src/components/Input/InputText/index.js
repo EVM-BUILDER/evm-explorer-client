@@ -49,7 +49,7 @@ export const InputText = ({ name, onChange,value, onTouched, onBlur, placeholder
                             if (onBlur) onBlur(v)
                         }, 500)
                     }}
-                    value={value || ''}
+                    // value={value || ''}
                     placeholder={placeholder ? placeholder : ''}
                 />
                 {props.suffix}
