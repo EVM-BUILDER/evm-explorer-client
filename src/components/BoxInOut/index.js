@@ -64,7 +64,7 @@ const BoxInOut = ({ address, isContract, type = 'from', f, t, hideInOut, positio
                 ) : (
                     <>
                         {address?.toLowerCase() === t?.a?.toLowerCase() ? (
-                            <span className="text">{t.a}</span>
+                            <span className="text">{t?.a}</span>
                         ) : isContract ? (
                             <>
                                 [Contract &nbsp;

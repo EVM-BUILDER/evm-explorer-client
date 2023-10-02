@@ -97,7 +97,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         <h2>PRICE</h2>
                         <Space className="body-content-text-under">
                             <span className="text-secondary">
-                                ${<FormatAmount value={roundNumber(nativePrice?.price || 0, { scale: 5 })} nullValue="--" />}
+                                ${<FormatAmount value={roundNumber(nativePrice?.price || 0, { scale: 9 })} nullValue="--" />}
                             </span>
                             {nativePrice?.isUp ? (
                                 <span className="text-success">+{nativePrice?.perChange || 0}%</span>
