@@ -110,6 +110,7 @@ const WriteContract = ({ address, writeAbi }) => {
 
       <Space direction="vertical" size={16} style={{ width: '100%' }}>
         {writeAbi?.map((abi, i) => {
+            console.log('abi', abi, i)
           return (
             <CollapseBase
               key={abi.name}

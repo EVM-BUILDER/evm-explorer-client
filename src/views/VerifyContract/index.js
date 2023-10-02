@@ -6,6 +6,7 @@ import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import Checkbox from 'components/AntCheckbox'
 import AntInput from 'components/AntInput'
 import AntSelect from 'components/AntSelect'
+import {TextArea} from 'components/Input';
 import { verifyContract } from 'redux/verifyContract/actions'
 
 const VerifyPage = () => {
@@ -17,18 +18,11 @@ const VerifyPage = () => {
     const [verifyErrorMess, setVerifyErrorMess] = useState('')
 
     const onFinish = (values) => {
-        if (!fileCode) {
-            setVerifyErrorMess('Please choose source file.')
-            return
-        }
-
         setVerifyErrorMess('')
-
         const params = {
-            ...values,
-            sources: fileCode,
+            ...values
         }
-
+        console.log(params)
         dispatch(
             verifyContract(
                 params,
@@ -47,6 +41,7 @@ const VerifyPage = () => {
             console.log(info.file, info.fileList)
         }
         if (info.file.status === 'done') {
+            console.log(info.file)
             setFileCode(info.file)
         } else if (info.file.status === 'error') {
             console.error(`${info.file.name} file upload failed.`)
@@ -133,6 +128,8 @@ const VerifyPage = () => {
                                     placeholder="[please Select]"
                                     options={[
                                         { label: '[Please Select]', value: '' },
+                                        { label: '0.8.19+commit.7dd6d404', value: '0.8.19' },
+                                        { label: 'v0.8.18+commit.87f61d96', value: '0.8.18' },
                                         { label: 'v0.8.17+commit.8df45f5f', value: '0.8.17' },
                                         { label: 'v0.8.16+commit.07a7930e', value: '0.8.16' },
                                         { label: 'v0.8.15+commit.e14f2714', value: '0.8.15' },
@@ -243,22 +240,21 @@ const VerifyPage = () => {
                                     ]}
                                 />
                             </Form.Item>
-
-                            <Row gutter={[{ xs: 12 }, { xs: 12 }]}>
-                                <Col span={12}>
-                                    <div className="form-item-source-file">
-                                        <Upload multiple={false} maxCount={1} onChange={handleUploadFile}>
-                                            <Button>Click to Upload</Button>
-                                        </Upload>
-                                    </div>
-                                </Col>
-                                <Col span={12}>
-                                    <Form.Item name="optimize" valuePropName="checked" style={{ marginBottom: '24px' }}>
-                                        <Checkbox>Optimize</Checkbox>
-                                    </Form.Item>
-                                </Col>
-                            </Row>
-
+                            <Form.Item
+                                name="sources"
+                                label="Please enter the code contract to verify"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Required',
+                                    },
+                                ]}
+                            >
+                                <TextArea placeholder="your contract code" rows="20" onTouched={() => {}}/>
+                            </Form.Item>
+                            <Form.Item name="optimize" valuePropName="checked" style={{ marginBottom: '24px' }}>
+                                <Checkbox>Optimize</Checkbox>
+                            </Form.Item>
                             <Form.Item
                                 name="agreement"
                                 valuePropName="checked"
