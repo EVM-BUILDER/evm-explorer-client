@@ -1,12 +1,9 @@
-import getParameterByName from './getParameterByName'
-
 const { get } = require('lodash')
 
 function getRootStyle(settings = {}) {
-  const fontName = getParameterByName('family', get(settings, 'ggfont', 'Roboto'))
   return `
   * {
-    font-family: "${fontName}";
+    font-family: "${get(settings, 'appearance.typography.fontfamily', 'Roboto')}";
   }
 
   :root{
