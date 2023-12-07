@@ -32,7 +32,7 @@ const Overview = () => {
         </div>
       ) : (
         <div className="card-content-show">
-          <div className="card-content-item ant-menu-horizontal ">
+          <div className="card-content-item  ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -49,7 +49,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -60,7 +60,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -121,7 +121,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -134,7 +134,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -145,7 +145,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -176,7 +176,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -195,7 +195,7 @@ const Overview = () => {
               </Col>
             </Row>
           </div>
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -214,7 +214,7 @@ const Overview = () => {
             </Row>
           </div>
           {blockDetail?.baseFeePerGas && (
-            <div className="card-content-item ant-menu-horizontal">
+            <div className="card-content-item ">
               <Row>
                 <Col xs={{ span: 24 }} md={{ span: 8 }}>
                   <img src="/images/icon/question.svg" alt="" />
@@ -226,7 +226,7 @@ const Overview = () => {
               </Row>
             </div>
           )}
-          <div className="card-content-item ant-menu-horizontal">
+          <div className="card-content-item ">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
                 <img src="/images/icon/question.svg" alt="" />
@@ -243,8 +243,8 @@ const Overview = () => {
             </Row>
           </div>
           {collapse && (
-            <div className="card-content-item_show ant-menu-horizontal">
-              <div className="card-content-item ant-menu-horizontal">
+            <div className="card-content-item_show ">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
@@ -255,7 +255,7 @@ const Overview = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="card-content-item ant-menu-horizontal">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
@@ -269,7 +269,7 @@ const Overview = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="card-content-item ant-menu-horizontal">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
@@ -280,7 +280,7 @@ const Overview = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="card-content-item ant-menu-horizontal">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
@@ -291,7 +291,7 @@ const Overview = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="card-content-item ant-menu-horizontal">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
@@ -302,7 +302,7 @@ const Overview = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="card-content-item ant-menu-horizontal">
+              <div className="card-content-item ">
                 <Row>
                   <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <img src="/images/icon/question.svg" alt="" />
