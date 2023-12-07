@@ -153,11 +153,11 @@ const AddressPage = () => {
                                 //   title: 'Events',
                                 //   content: <Events />,
                                 // },
-                                {
-                                    key: TABS_VIEW.ANALYTICS,
-                                    title: 'Analytics',
-                                    content: <Analytics />,
-                                },
+                                // {
+                                //     key: TABS_VIEW.ANALYTICS,
+                                //     title: 'Analytics',
+                                //     content: <Analytics />,
+                                // },
                                 {
                                     key: TABS_VIEW.COMMENTS,
                                     title: 'Comments',
