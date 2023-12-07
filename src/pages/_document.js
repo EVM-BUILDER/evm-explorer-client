@@ -29,18 +29,19 @@ export default class CustomDocument extends Document {
     render() {
         const settings = this.props.__NEXT_DATA__.props.globalProps?.settings
         const rootScript = settings?.script
-        const googleFontUrl = `https://fonts.googleapis.com/css?family=${get(settings, 'appearance.typography.fontfamily', 'Roboto')}&display=swap`
+        const googleFontUrl = `https://fonts.googleapis.com/css?family=${get(
+            settings,
+            'appearance.typography.fontfamily',
+            'Roboto',
+        )}&display=swap`
         return (
             <Html>
                 <Head>
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
                     {/* <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3&family=Tektur&display=swap" rel="stylesheet" /> */}
-                    <link
-                        href={googleFontUrl}
-                        rel="stylesheet"
-                        async
-                    />
+                    <link href={googleFontUrl} rel="stylesheet" async />
                     {rootScript?.header && (
                         <script
                             dangerouslySetInnerHTML={{

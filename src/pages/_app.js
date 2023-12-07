@@ -31,6 +31,7 @@ import useFetchPulsePrice from 'redux/statistics/hooks/useFetchPulsePrice'
 import { useRouter } from 'next/router'
 import { getProfile } from 'redux/user/actions'
 import { CenterStyle } from 'styles'
+import { ConfigProvider } from 'antd'
 
 TimeAgo.addLocale({
     locale: 'en',
@@ -161,7 +162,15 @@ const MyApp = (props) => {
                             use: [fetchStatusMiddleware],
                         }}
                     >
-                        <App {...props} />
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    fontFamily: 'Roboto',
+                                },
+                            }}
+                        >
+                            <App {...props} />
+                        </ConfigProvider>
                     </SWRConfig>
                 </Provider>
             </Web3ReactProvider>
