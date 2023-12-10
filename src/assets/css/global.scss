@@ -140,9 +140,6 @@ input:-webkit-autofill:active {
     padding-right: 15px;
     margin-right: auto;
     margin-left: auto;
-    @media screen and (max-width: 430px) {
-        height: 317px;
-    }
     @include media-down(xs) {
         padding-left: 6px;
         padding-right: 6px;
