@@ -26,7 +26,8 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                 toolbar: {
                     show: false,
                 },
-                offsetX: -14,
+                offsetX: 0,
+                offsetY: -10,
             },
             xaxis: {
                 offsetX: isMobile ? 26 : 16,
@@ -94,8 +95,8 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         />
                     </div>
                     <div className="body-content">
-                        <h2>PRICE</h2>
-                        <Space className="body-content-text-under">
+                        <h5>PRICE</h5>
+                        <Space style={{ marginTop: 7 }} className="body-content-text-under">
                             <span className="text-secondary">
                                 ${<FormatAmount value={roundNumber(nativePrice?.price || 0, { scale: 9 })} nullValue="--" />}
                             </span>
@@ -113,7 +114,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                     </div>
                 </div>
                 <div className="col-left-1">
-                    <div className="body-img">
+                    <div className="body-img " style={{ minHeight: '53px' }}>
                         <img
                             src={
                                 settings?.statistics?.icon_market_cap
@@ -124,7 +125,7 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         />
                     </div>
                     <div className="body-content">
-                        <h2>MARKET CAP</h2>
+                        <h5>MARKET CAP</h5>
                         <span className="body-content-text-under">
                             <FormatAmount value={Handle.getMarketCap(latestStatistic?.mc)} prefix={`$`} />
                             &nbsp;
@@ -155,13 +156,13 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         </div>
                         <div className="body-content">
                             {/* Is total txh per secon (TPS) */}
-                            <h2>TRANSACTIONS</h2>
+                            <h5>TRANSACTIONS</h5>
                             <a className="body-content-text-under">{totalTxs || '0'}</a>
                         </div>
                     </div>
                     <div className="body-right med-gas-price">
-                        <h2>MED GAS PRICE</h2>
-                        <div className="gas-value">
+                        <h5>MED GAS PRICE</h5>
+                        <div className="gas-value body-content-text-under">
                             <a style={{ marginRight: '4px' }}>{nativePrice?.gasPrice} Gwei</a>
                             {nativePrice && (
                                 <span style={{ whiteSpace: 'nowrap' }}>
@@ -185,18 +186,18 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                         />
                     </div>
                     <div className="body-content">
-                        <h2>LAST FINALIZED BLOCK</h2>
+                        <h5>LAST FINALIZED BLOCK</h5>
                         <a className="body-content-text-under">{latestBlock?.bn}</a>
                     </div>
                 </div>
             </Col>
             <Col xs={24} sm={24} md={24} lg={8} className="col-item">
                 <div className="mixed-chart">
-                    <h2>TRANSACTION HISTORY IN 12 DAYS</h2>
+                    <h5 style={{ marginBottom: 0 }}>TRANSACTION HISTORY IN 12 DAYS</h5>
                     <ApexCharts
                         className="mixed-chart-item"
                         width="100%"
-                        height="180px"
+                        height="150px"
                         type="line"
                         options={chart.options}
                         series={chart.series}

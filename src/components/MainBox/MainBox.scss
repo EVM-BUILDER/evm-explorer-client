@@ -3,7 +3,7 @@
 .row-body {
     width: 100%;
     min-height: 175px;
-    padding: 14px 20px 22px;
+    padding: 14px 20px 10px;
     margin-left: 0 !important;
     margin-right: 0 !important;
 
@@ -42,7 +42,7 @@
             display: flex;
             align-items: center;
             width: 100%;
-            padding: 10px 0 24px;
+            padding: 8px 0 8px;
             border-bottom: 1px solid var(--border-color);
             @include media-down(sm) {
                 padding: 21px 0;
@@ -51,12 +51,12 @@
                 padding: 21px 0;
                 @include media-up(lg) {
                     border-bottom: none;
-                    padding: 24px 0 10px;
+                    padding: 10px 0 10px;
                 }
             }
 
             .body-img {
-                margin-right: 30px;
+                margin-right: 12px;
                 @include media-down(sm) {
                     margin-right: 14px;
                 }
@@ -73,12 +73,13 @@
             .body-content {
                 height: 100%;
 
-                > h2 {
+                > h5 {
+                    font-size: 12px !important;
                     color: var(--text);
                     font-size: 16px;
                     line-height: 21px;
                     font-weight: 400;
-                    margin-bottom: 16px;
+                    margin-bottom: 1px;
                     @include media-down(sm) {
                         margin-bottom: 0;
                     }
@@ -92,7 +93,7 @@
                     flex-flow: row wrap;
 
                     .small-black {
-                        font-size: 12px;
+                        font-size: 12px !important;
                     }
 
                     .text-secondary-11 {
@@ -117,13 +118,16 @@
             }
 
             .body-right {
-                width: 40%;
+                width: 60%;
                 margin: 0;
 
                 &.med-gas-price {
+                    text-align: right;
                     & > .gas-value {
                         display: flex;
                         flex-flow: row wrap;
+                        justify-content: end;
+                        text-align: right;
                         a,
                         span {
                             display: block;
@@ -133,11 +137,11 @@
                     }
                 }
 
-                h2 {
-                    font-size: 16px;
+                h5 {
+                    font-size: 12px !important;
                     line-height: 21px;
                     color: var(--text);
-                    margin-bottom: 16px;
+                    margin-bottom: 8px;
                 }
 
                 a {
@@ -154,12 +158,14 @@
                 }
 
                 @include media-down(sm) {
-                    h2 {
+                    h5 {
+                        font-size: 12px !important;
                         margin-bottom: 10px;
                     }
 
                     &.med-gas-price {
-                        h2 {
+                        h5 {
+                            font-size: 12px !important;
                             margin-bottom: 10px;
                             @include media-down(sm) {
                                 margin-bottom: 0;
@@ -200,8 +206,8 @@
             padding-top: 24px;
             padding-bottom: 24px;
         }
-        h2 {
-            font-size: 16px;
+        h5 {
+            font-size: 12px !important;
             line-height: 21px;
             color: var(--text);
             margin-bottom: 16px;
@@ -209,7 +215,7 @@
 
         .mixed-chart-item {
             width: 100%;
-            min-height: 180px;
+            min-height: 105px;
             margin-bottom: -30px;
 
             .apexcharts-toolbar {

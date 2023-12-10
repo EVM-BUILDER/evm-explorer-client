@@ -173,7 +173,7 @@ export const WTxDetailOverview = styled.div`
             .card-content-item-price {
                 margin-right: 4px;
                 padding: 3px 10px;
-                color: var(--primary);
+                color: var(--text);
                 border-radius: 4px;
                 background: var(--tertiary);
                 font-weight: 400;
@@ -189,7 +189,7 @@ export const WTxDetailOverview = styled.div`
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 16px;
-                color: var(--tertiary);
+                color: var(--text);
 
                 & > span {
                     margin-right: 6px;
