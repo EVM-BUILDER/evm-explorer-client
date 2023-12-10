@@ -74,7 +74,7 @@
         }
 
         a {
-          color: var(--primary);
+          color: var(--text);
           white-space: nowrap;
           margin-left: 18px;
           display: inline-block;
@@ -144,7 +144,7 @@
 
           .content-hasktag {
             margin-left: 4px;
-            color: var(--primary);
+            color: var(--text);
             max-width: 171px;
             display: inline-block;
             vertical-align: bottom;
@@ -155,7 +155,7 @@
 
           a {
             margin-left: 4px;
-            color: var(--primary);
+            color: var(--text);
             max-width: 171px;
             display: inline-block;
             vertical-align: bottom;

@@ -182,12 +182,12 @@
 
             a,
             svg {
-              color: var(--primary);
+              color: var(--text);
             }
             .arrow-right-icon {
               width: 16px;
               fill: transparent;
-              stroke: var(--primary);
+              stroke: var(--text);
               margin-right: 10px;
             }
             .file-address {
@@ -195,7 +195,7 @@
               align-items: center;
               flex-direction: row;
               svg {
-                fill: var(--primary);
+                fill: var(--text);
                 width: 16px;
                 margin-right: 2px;
               }

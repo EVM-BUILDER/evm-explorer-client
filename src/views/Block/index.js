@@ -3,7 +3,6 @@ import { Link } from 'components/Link'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import CardTabs from 'components/Card/CardTabs'
 import Overview from './components/Overview'
-import ConsensusInfo from './components/ConsensusInfo'
 import Comments from './components/Comments'
 
 export const TABS_VIEW = {
