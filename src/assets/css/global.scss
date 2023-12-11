@@ -79,11 +79,11 @@ p {
 }
 
 a {
-    color: var(--primary);
+    color: var(--text);
     transition: all 0.3s;
 
     &:hover {
-        color: var(--primary);
+        color: var(--text);
     }
 }
 
@@ -135,12 +135,11 @@ input:-webkit-autofill:active {
 // Class ///////////////////////////////////////
 .container {
     width: 100%;
-    max-width: calc(1290px + 30px);
+    max-width: 1400px;
     padding-left: 15px;
     padding-right: 15px;
     margin-right: auto;
     margin-left: auto;
-
     @include media-down(xs) {
         padding-left: 6px;
         padding-right: 6px;

@@ -8,12 +8,11 @@
 
     .bg-dark {
         width: 100%;
-        min-height: 270px;
+        max-height: 270px;
         height: 100%;
         background-color: var(--banner-bg-color);
         background-image: var(--banner-bg-image);
         background-repeat: repeat;
-
         .home__body {
             display: flex;
             align-items: flex-start;
