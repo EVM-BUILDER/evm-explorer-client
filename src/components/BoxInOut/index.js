@@ -11,7 +11,7 @@ const BoxInOutStyled = styled.div`
         align-items: center;
         a {
             display: inline-block;
-            color: var(--primary);
+            color: var(--text);
             max-width: 170px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -23,6 +23,7 @@ const BoxInOutStyled = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            color: var(--text);
         }
     }
 `
