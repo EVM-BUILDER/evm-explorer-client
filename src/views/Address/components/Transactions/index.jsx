@@ -15,9 +15,7 @@ import { useSettings } from 'redux/settings/hooks'
 
 const Transactions = ({ address }) => {
     const { chain } = useSettings()
-    const { txsByAddress } = useFetchTxsByAddress(address, 1, 25)
-
-    console.log('txsByAddress', txsByAddress)
+    const data = useFetchTxsByAddress(address, 1, 25)
 
     const columns = [
         {
@@ -120,7 +118,7 @@ const Transactions = ({ address }) => {
                 <span>
                     Latest 25 from a total of{` `}
                     <Link href={`/txs?a=${address}`} className="card-content-text-transactions">
-                        <FormatAmount value={txsByAddress?.total} nullValue="0" />
+                        <FormatAmount value={data?.txsByAddress?.total} nullValue="0" />
                     </Link>
                     {` `}
                     transactions
@@ -190,9 +188,9 @@ const Transactions = ({ address }) => {
             <div className="card-content-table">
                 <TableBase
                     columns={columns}
-                    loading={txsByAddress?.loading}
+                    loading={data?.txsByAddress?.loading}
                     scroll={{ x: 700 }}
-                    dataSource={txsByAddress?.data || []}
+                    dataSource={data?.txsByAddress?.data || []}
                 />
             </div>
             {/* <div className="card-content-footer">
