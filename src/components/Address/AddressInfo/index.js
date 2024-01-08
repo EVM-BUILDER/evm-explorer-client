@@ -48,9 +48,9 @@ const AddressInfo = ({ address, addressType, addressDetail, userInfo }) => {
                                                         'hash-tag': true,
                                                         'text-truncate': true,
                                                     })}
-                                                    href={`/address/${addressDetail?.ca || '#'}`}
+                                                    href={`/address/${addressDetail?.ca?.$binary?.base64 || '#'}`}
                                                 >
-                                                    {addressDetail?.ca || 'Unknown'}
+                                                    {addressDetail?.ca?.$binary?.base64 || 'Unknown'}
                                                 </Link>
                                             )}
                                             {addressDetail?.ch && (
