@@ -9,11 +9,11 @@ function useFetchTxsErc20(address, page, page_size) {
     const [paramsTxsErc20, setParamsTxsErc20] = useState({
         page: page || 1,
         page_size: page_size || 50,
-        ca: '',
+        a: address,
     })
 
     const fetchTxsErc20 = useCallback(() => {
-        if (paramsTxsErc20.ca) {
+        if (paramsTxsErc20.a) {
             dispatch(getTxsErc20(paramsTxsErc20))
         }
     }, [dispatch, paramsTxsErc20])
@@ -24,7 +24,7 @@ function useFetchTxsErc20(address, page, page_size) {
 
     useEffect(() => {
         if (address) {
-            setParamsTxsErc20((prev) => ({ ...prev, ca: address }))
+            setParamsTxsErc20((prev) => ({ ...prev, a: address }))
         }
     }, [address])
 

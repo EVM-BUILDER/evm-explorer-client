@@ -1,373 +1,373 @@
 {
-  "logo": "/logo.png",
-  "logotext": "/logo-text.png",
-  "favicon": "/favicon.ico",
-  "ogimage": "https://logo1.png",
-  "sitename": "PulseScan",
-  "sitedescription": "PulseScan description",
-  "graphicimg": "https://logo1.png",
-  "ggtag": "0X-ABC",
-  "ggfont": "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=optional",
-  "script": {
-    "header": "function Alert1(text){alert(text||'hello')}",
-    "body": "function Alert2(){alert('hello')}",
-    "footer": "function Alert3(){alert('hello')}"
-  },
-  "chain": {
-    "rpc": "rpc",
-    "id": "1244",
-    "name": "PULSE Explorer",
-    "explorer": "https://testnet.pulsescan.io",
-    "native": {
-      "name": "PULSE Token",
-      "symbol": "PULSE",
-      "decimals": 18,
-      "logo": "/logo-text.png"
-    }
-  },
-  "appearance": {
-    "text": "#3c3a3a",
-    "bordercolor": "#c1c1c1",
-    "header": {
-      "textcolor": "#3c3a3a",
-      "fontsize": 16,
-      "fontweight": 400,
-      "text_active_color": "#418143",
-      "bgcolor": "#262525",
-      "subnav_bg_color": "#ffffff",
-      "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
+    "logo": "/logo.png",
+    "logotext": "/logo-text.png",
+    "favicon": "/favicon.ico",
+    "ogimage": "https://logo1.png",
+    "sitename": "PulseScan",
+    "sitedescription": "PulseScan description",
+    "graphicimg": "https://logo1.png",
+    "ggtag": "0X-ABC",
+    "ggfont": "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=optional",
+    "script": {
+        "header": "function Alert1(text){alert(text||'hello')}",
+        "body": "function Alert2(){alert('hello')}",
+        "footer": "function Alert3(){alert('hello')}"
     },
-    "banner": {
-      "bgcolor": "transparent",
-      "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
-    },
-    "homesearch": {
-      "color": "#fff",
-      "bordercolor": "#fff",
-      "bgcolor": "transparent",
-      "bgimage": "#ffffff"
-    },
-    "body": {
-      "bgcolor": "#ffffff"
-    },
-    "footer": {
-      "fontsize": 16,
-      "fontweight": 700,
-      "textcolor": "#eeeeee",
-      "text_active_color": "#418143",
-      "bgcolor": "#3c3a3a",
-      "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
-    },
-    "card": {
-      "bgcolor": "#ffffff",
-      "bordercolor": "#3c3a3a"
-    },
-    "input": {},
-    "color_scheme": {
-      "button": "#418143",
-      "primary": "#418143",
-      "secondary": "#3c3a3a",
-      "tertiary": "#eeeeee"
-    },
-    "typography": {
-      "fontfamily": "roboto",
-      "h1": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 700
-      },
-      "h2": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 600
-      },
-      "h3": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 400
-      },
-      "h4": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 400
-      },
-      "h5": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 400
-      },
-      "h6": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 400
-      },
-      "p": {
-        "fontsize": 24,
-        "color": "#ffffff",
-        "fontweight": 400
-      }
-    }
-  },
-  "ads_banner": [
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
-      "url": "https://link"
-    },
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
-      "url": "https://link"
-    },
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
-      "url": "https://link"
-    }
-  ],
-  "ads_search_banner": [
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
-      "url": "https://link"
-    },
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
-      "url": "https://link"
-    },
-    {
-      "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
-      "url": "https://link"
-    }
-  ],
-  "ads_text": [
-    {
-      "text": "PulseDex Presale Opening!",
-      "url": "https://link"
-    },
-    {
-      "text": "PulseDex Presale Opening!",
-      "url": "https://link"
-    },
-    {
-      "text": "PulseDex Presale Opening!",
-      "url": "https://link"
-    },
-    {
-      "text": "PulseDex Presale Opening!",
-      "url": "https://link"
-    }
-  ],
-  "menu_header": [
-    {
-      "child": [],
-      "target": "",
-      "title": "Home",
-      "url": "/"
-    },
-    {
-      "title": "Blockchain",
-      "child": [
-        {
-          "title": "View Txns",
-          "url": "/txs",
-          "target": "",
-          "showBorder": true,
-          "child": []
-        },
-        {
-          "title": "View Blocks",
-          "url": "/blocks",
-          "target": "",
-          "showBorder": true,
-          "child": []
-        },
-        {
-          "title": "Top Accounts",
-          "target": "",
-          "url": "/accounts",
-          "child": []
-        },
-        {
-          "title": "Verified Contracts",
-          "target": "",
-          "url": "/contractsVerified",
-          "child": []
+    "chain": {
+        "rpc": "rpc",
+        "id": "1244",
+        "name": "PULSE Explorer",
+        "explorer": "https://testnet.pulsescan.io",
+        "native": {
+            "name": "PULSE Token",
+            "symbol": "PULSE",
+            "decimals": 18,
+            "logo": "/logo-text.png"
         }
-      ]
     },
-    {
-      "title": "Tokens",
-      "child": [
-        {
-          "title": "PN20 Top Tokens",
-          "url": "/tokens"
+    "appearance": {
+        "text": "#3c3a3a",
+        "bordercolor": "#c1c1c1",
+        "header": {
+            "textcolor": "#3c3a3a",
+            "fontsize": 16,
+            "fontweight": 400,
+            "text_active_color": "#418143",
+            "bgcolor": "#262525",
+            "subnav_bg_color": "#ffffff",
+            "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
         },
-        {
-          "title": "View PN20 Transfers",
-          "url": "/tokens-transfers",
-          "showBorder": true
+        "banner": {
+            "bgcolor": "transparent",
+            "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
         },
-        {
-          "title": "Top Statistics",
-          "url": "/topstatistics"
+        "homesearch": {
+            "color": "#fff",
+            "bordercolor": "#fff",
+            "bgcolor": "transparent",
+            "bgimage": "#ffffff"
+        },
+        "body": {
+            "bgcolor": "#ffffff"
+        },
+        "footer": {
+            "fontsize": 16,
+            "fontweight": 700,
+            "textcolor": "#eeeeee",
+            "text_active_color": "#418143",
+            "bgcolor": "#3c3a3a",
+            "bgimage": "https://pulsenet-scan-testnet.netlify.app/images/background/banner.svg"
+        },
+        "card": {
+            "bgcolor": "#ffffff",
+            "bordercolor": "#3c3a3a"
+        },
+        "input": {},
+        "color_scheme": {
+            "button": "#418143",
+            "primary": "#418143",
+            "secondary": "#3c3a3a",
+            "tertiary": "#eeeeee"
+        },
+        "typography": {
+            "fontfamily": "roboto",
+            "h1": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 700
+            },
+            "h2": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 600
+            },
+            "h3": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 400
+            },
+            "h4": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 400
+            },
+            "h5": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 400
+            },
+            "h6": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 400
+            },
+            "p": {
+                "fontsize": 24,
+                "color": "#ffffff",
+                "fontweight": 400
+            }
         }
-      ]
     },
-    {
-      "title": "Resources",
-      "child": [
+    "ads_banner": [
         {
-          "title": "Top Statistics",
-          "url": "/topstat"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
+            "url": "https://link"
         },
         {
-          "title": "View Blocks",
-          "url": "/blocks"
-        }
-      ]
-    },
-    {
-      "title": "More",
-      "showBorder": true,
-      "child": [
-        {
-          "title": "Api Documentation",
-          "url": "https://docs.com"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
+            "url": "https://link"
         },
         {
-          "title": "View Blocks",
-          "url": "/blocks"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/banner/banner.png",
+            "url": "https://link"
         }
-      ]
-    }
-  ],
-  "menu_sub_header": [
-    {
-      "child": [],
-      "target": "blank",
-      "title": "Buy",
-      "url": "https://www.dextools.io/app/en/ether/pair-explorer/0x3d1d25257eddb233e0eefb986dded1316c943372"
-    },
-    {
-      "child": [],
-      "target": "blank",
-      "title": "Exchange",
-      "url": "https://www.dextools.io/app/en/ether/pair-explorer/0x3d1d25257eddb233e0eefb986dded1316c943372"
-    },
-    {
-      "child": [],
-      "target": "blank",
-      "title": "Earn",
-      "url": "https://pulsedex.app/"
-    }
-  ],
-  "menu_footer": {
-    "ftlogo": "https://pulsenet-scan-testnet.netlify.app/logo.png",
-    "fttitle": "Powered by PULSENET Chain",
-    "ftdesciption": "PULSESCAN is a Block Explorer and Analytics Platform",
-    "ftcopyright": "PULSESCAN 2022",
-    "ftsocials": [
-      {
-        "title": "Telegram",
-        "image": "/images/icon/telegram.svg",
-        "url": "https://telegram.com",
-        "target": "_blank"
-      },
-      {
-        "title": "Facebook",
-        "image": "/images/icon/facebook.svg",
-        "url": "https://facebook.com",
-        "target": "_blank"
-      },
-      {
-        "title": "Reddit",
-        "image": "/images/icon/reddit.svg",
-        "url": "https://Reddit.com",
-        "target": "_blank"
-      },
-      {
-        "title": "Gmail",
-        "image": "/images/icon/gmail.svg",
-        "url": "https://gmail.com",
-        "target": "_blank"
-      }
     ],
-    "ft01": {
-      "title": "Company",
-      "items": [
+    "ads_search_banner": [
         {
-          "title": "About Us",
-          "url": "#",
-          "target": "blank"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
+            "url": "https://link"
         },
         {
-          "title": "Contact Us",
-          "url": "#",
-          "target": "blank"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
+            "url": "https://link"
         },
         {
-          "title": "Terms of Service",
-          "url": "#",
-          "target": "blank"
+            "image": "https://pulsenet-scan-testnet.netlify.app/images/pulsescan.png",
+            "url": "https://link"
         }
-      ]
+    ],
+    "ads_text": [
+        {
+            "text": "PulseDex Presale Opening!",
+            "url": "https://link"
+        },
+        {
+            "text": "PulseDex Presale Opening!",
+            "url": "https://link"
+        },
+        {
+            "text": "PulseDex Presale Opening!",
+            "url": "https://link"
+        },
+        {
+            "text": "PulseDex Presale Opening!",
+            "url": "https://link"
+        }
+    ],
+    "menu_header": [
+        {
+            "child": [],
+            "target": "",
+            "title": "Home",
+            "url": "/"
+        },
+        {
+            "title": "Blockchain",
+            "child": [
+                {
+                    "title": "View Txns",
+                    "url": "/txs",
+                    "target": "",
+                    "showBorder": true,
+                    "child": []
+                },
+                {
+                    "title": "View Blocks",
+                    "url": "/blocks",
+                    "target": "",
+                    "showBorder": true,
+                    "child": []
+                },
+                {
+                    "title": "Top Accounts",
+                    "target": "",
+                    "url": "/accounts",
+                    "child": []
+                },
+                {
+                    "title": "Verified Contracts",
+                    "target": "",
+                    "url": "/contractsVerified",
+                    "child": []
+                }
+            ]
+        },
+        {
+            "title": "Tokens",
+            "child": [
+                {
+                    "title": "PN20 Top Tokens",
+                    "url": "/tokens"
+                },
+                {
+                    "title": "View PN20 Transfers",
+                    "url": "/tokens-transfers",
+                    "showBorder": true
+                },
+                {
+                    "title": "Top Statistics",
+                    "url": "/topstatistics"
+                }
+            ]
+        },
+        {
+            "title": "Resources",
+            "child": [
+                {
+                    "title": "Top Statistics",
+                    "url": "/topstat"
+                },
+                {
+                    "title": "View Blocks",
+                    "url": "/blocks"
+                }
+            ]
+        },
+        {
+            "title": "More",
+            "showBorder": true,
+            "child": [
+                {
+                    "title": "Api Documentation",
+                    "url": "https://docs.com"
+                },
+                {
+                    "title": "View Blocks",
+                    "url": "/blocks"
+                }
+            ]
+        }
+    ],
+    "menu_sub_header": [
+        {
+            "child": [],
+            "target": "blank",
+            "title": "Buy",
+            "url": "https://www.dextools.io/app/en/ether/pair-explorer/0x3d1d25257eddb233e0eefb986dded1316c943372"
+        },
+        {
+            "child": [],
+            "target": "blank",
+            "title": "Exchange",
+            "url": "https://www.dextools.io/app/en/ether/pair-explorer/0x3d1d25257eddb233e0eefb986dded1316c943372"
+        },
+        {
+            "child": [],
+            "target": "blank",
+            "title": "Earn",
+            "url": "https://pulsedex.app/"
+        }
+    ],
+    "menu_footer": {
+        "ftlogo": "https://pulsenet-scan-testnet.netlify.app/logo.png",
+        "fttitle": "Powered by PULSENET Chain",
+        "ftdesciption": "PULSESCAN is a Block Explorer and Analytics Platform",
+        "ftcopyright": "PULSESCAN 2022",
+        "ftsocials": [
+            {
+                "title": "Telegram",
+                "image": "/images/icon/telegram.svg",
+                "url": "https://telegram.com",
+                "target": "_blank"
+            },
+            {
+                "title": "Facebook",
+                "image": "/images/icon/facebook.svg",
+                "url": "https://facebook.com",
+                "target": "_blank"
+            },
+            {
+                "title": "Reddit",
+                "image": "/images/icon/reddit.svg",
+                "url": "https://Reddit.com",
+                "target": "_blank"
+            },
+            {
+                "title": "Gmail",
+                "image": "/images/icon/gmail.svg",
+                "url": "https://gmail.com",
+                "target": "_blank"
+            }
+        ],
+        "ft01": {
+            "title": "Company",
+            "items": [
+                {
+                    "title": "About Us",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Contact Us",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Terms of Service",
+                    "url": "#",
+                    "target": "blank"
+                }
+            ]
+        },
+        "ft02": {
+            "title": "Resources",
+            "items": [
+                {
+                    "title": "Knowledge Base",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Newsletter",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Network Status",
+                    "url": "#",
+                    "target": "blank"
+                }
+            ]
+        },
+        "ft03": {
+            "title": "Products & Services",
+            "items": [
+                {
+                    "title": "Faucet",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Dex",
+                    "url": "#",
+                    "target": "blank"
+                },
+                {
+                    "title": "Advertise",
+                    "url": "#",
+                    "target": "blank"
+                }
+            ]
+        }
     },
-    "ft02": {
-      "title": "Resources",
-      "items": [
-        {
-          "title": "Knowledge Base",
-          "url": "#",
-          "target": "blank"
+    "system": {
+        "smtp": {
+            "key": "776d34c9c7ecf70fdc38196979c6acfe-2de3d545-6933211b",
+            "from": "noreply@mg.pulsenet.io",
+            "mail": "noreply@mg.pulsenet.io",
+            "host": "smtp.mailgun.org"
         },
-        {
-          "title": "Newsletter",
-          "url": "#",
-          "target": "blank"
-        },
-        {
-          "title": "Network Status",
-          "url": "#",
-          "target": "blank"
+        "token-price": {
+            "source": "mexc",
+            "symbol": "",
+            "circulating_supply": 100000000,
+            "total_supply": 100000000,
+            "token": "0xf648894bc56872ec09ce7f4689efab744c01f2ee",
+            "pair": {
+                "a": "0x3d1d25257eddb233e0eefb986dded1316c943372",
+                "mr": "_reserve1",
+                "bv": "ETHUSDT"
+            }
         }
-      ]
-    },
-    "ft03": {
-      "title": "Products & Services",
-      "items": [
-        {
-          "title": "Faucet",
-          "url": "#",
-          "target": "blank"
-        },
-        {
-          "title": "Dex",
-          "url": "#",
-          "target": "blank"
-        },
-        {
-          "title": "Advertise",
-          "url": "#",
-          "target": "blank"
-        }
-      ]
     }
-  },
-  "system": {
-    "smtp": {
-      "key": "776d34c9c7ecf70fdc38196979c6acfe-2de3d545-6933211b",
-      "from": "noreply@mg.pulsenet.io",
-      "mail": "noreply@mg.pulsenet.io",
-      "host": "smtp.mailgun.org"
-    },
-    "token-price": {
-      "source": "mexc",
-      "symbol": "",
-      "circulating_supply": 100000000,
-      "total_supply": 100000000,
-      "token": "0xf648894bc56872ec09ce7f4689efab744c01f2ee",
-      "pair": {
-        "a": "0x3d1d25257eddb233e0eefb986dded1316c943372",
-        "mr": "_reserve1",
-        "bv": "ETHUSDT"
-      }
-    }
-  }
 }
