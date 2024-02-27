@@ -317,7 +317,7 @@ const AppearanceForm = ({ settings, data, listOptionsFont }) => {
             <Form.Item name="footer_fontweight" label="Font weight">
                 <InputNumber />
             </Form.Item>
-            <Form.Item name="footer_show_addmetamask" label="Font weight">
+            <Form.Item name="footer_show_addmetamask" label="Enable to add to Metamask">
                 <Select
                     options={[
                         { value: true, label: 'Show' },
