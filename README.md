@@ -8,7 +8,7 @@ If you want to contribute, please refer to the create your Pull Request to this 
 
 Setup Backend add ENV to your project
 
-**We are not open backend source code, If you interest in this project, let contact us at xbuildapp@gmail.com ! **
+**We are not open backend source code, If you interest in this project, let contact us at xbuildapp@gmail.com !**
 
 ```sh
 NEXT_PUBLIC_ROOT_API=https://your-backend-domain
