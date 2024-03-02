@@ -19,7 +19,7 @@ const Footer = () => {
     const footer02 = settings?.['menu_footer']?.['ft02']
     const footer03 = settings?.['menu_footer']?.['ft03']
 
-    // console.log(settings)
+    // console.log('2352352', get(settings, 'appearance.footer.show_addmetamask', false))
 
     return (
         <>
