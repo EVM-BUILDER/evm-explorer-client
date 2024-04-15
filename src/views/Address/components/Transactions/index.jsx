@@ -16,7 +16,6 @@ import { useSettings } from 'redux/settings/hooks'
 const Transactions = ({ address }) => {
     const { chain } = useSettings()
     const data = useFetchTxsByAddress(address, 1, 25)
-
     const columns = [
         {
             title: 'Txn Hash',
