@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import FormatAmount from 'components/FormatAmount'
 import { roundNumber } from 'library/helpers/Number'
 import { formatAddress } from 'utils/address'
+import { useTokenContract } from 'hooks/useContract'
 
 const TokenTransferredStyled = styled.div``
 
@@ -22,7 +23,7 @@ const TokenTransferred = ({ tokenTransfer }) => {
                     <span className="hash-tag text-truncate">
                         {fAddress}
                         &nbsp;
-                    </span> 
+                    </span>
                 </a>
             </span>
             <span>

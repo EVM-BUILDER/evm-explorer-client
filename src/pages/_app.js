@@ -204,7 +204,6 @@ MyApp.getInitialProps = async ({ ctx }) => {
     } catch (error) {
         // settings = defaultSettings
     }
-
     if (!settings) {
         // const res = await getDefaultSettings()
         // if (res.data) {
