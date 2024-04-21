@@ -3,7 +3,7 @@ import { getBlockDetail } from 'services/api/blocks'
 
 const handler = async (req, res) => {
     try {
-        const data = await getBlockDetail(req?.query?.block || "")
+        const data = await getBlockDetail(req?.query?.block || '')
         res.status(200).send(JSON.stringify(data))
     } catch (error) {
         res.status(401).send(
