@@ -9,27 +9,27 @@ export const GET_BLOCK_DETAIL_SUCCESS = 'GET_BLOCK_DETAIL_SUCCESS'
 export const GET_BLOCK_DETAIL_FAILURE = 'GET_BLOCK_DETAIL_FAILURE'
 
 export const getListBlocks = (params) => ({
-  type: GET_BLOCKS_START,
-  payload: { params },
+    type: GET_BLOCKS_START,
+    payload: { params },
 })
-export const getListBlocksSuccess = data => ({
-  type: GET_BLOCKS_SUCCESS,
-  payload: data,
+export const getListBlocksSuccess = (data) => ({
+    type: GET_BLOCKS_SUCCESS,
+    payload: data,
 })
-export const getListBlocksFailure = error => ({
-  type: GET_BLOCKS_FAILURE,
-  payload: error,
+export const getListBlocksFailure = (error) => ({
+    type: GET_BLOCKS_FAILURE,
+    payload: error,
 })
 
-export const getBlockDetail = (block) => ({
-  type: GET_BLOCK_DETAIL_START,
-  payload: { block },
+export const getBlockDetail = (block, rpc) => ({
+    type: GET_BLOCK_DETAIL_START,
+    payload: { block, rpc },
 })
-export const getBlockDetailSuccess = data => ({
-  type: GET_BLOCK_DETAIL_SUCCESS,
-  payload: data,
+export const getBlockDetailSuccess = (data) => ({
+    type: GET_BLOCK_DETAIL_SUCCESS,
+    payload: data,
 })
-export const getBlockDetailFailure = error => ({
-  type: GET_BLOCK_DETAIL_FAILURE,
-  payload: error,
+export const getBlockDetailFailure = (error) => ({
+    type: GET_BLOCK_DETAIL_FAILURE,
+    payload: error,
 })
