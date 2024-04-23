@@ -8,13 +8,12 @@ import { formatAddress, numberFormatter } from 'library/helpers/CommonHelper'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import BigNumber from 'bignumber.js'
-
+import CoppyText from 'components/Coppy/CoppyText'
 const Overview = () => {
     const router = useRouter()
 
     const { blockDetail, loading } = useSelector((state) => state.Blocks)
     const { settings } = useSelector((state) => state.Settings)
-    console.log('blockDetail', blockDetail)
     const [collapse, setCollapse] = useState(false)
 
     const collapseToggle = () => {
@@ -97,9 +96,14 @@ const Overview = () => {
                                 <span>Miner:</span>
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                <Link>
-                                    <span className="item-fee-recipient">{blockDetail?.miner}</span>
-                                </Link>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <Link>
+                                        <span className="item-fee-recipient">{blockDetail?.miner}</span>
+                                    </Link>
+                                    <CoppyText value={blockDetail?.miner}>
+                                        <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                                    </CoppyText>
+                                </div>
                             </Col>
                         </Row>
                     </div>
@@ -133,8 +137,10 @@ const Overview = () => {
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                 <div className="item-transaction">
-                                    <Link className="transaction-link" href={`/txs?block=${blockDetail?.number}`}>
-                                        {blockDetail?.transactions?.length || 0} transactions
+                                    <Link href={`/txs?block=${blockDetail?.number}`}>
+                                        <div style={{ color: 'var(--text)' }}>
+                                            {blockDetail?.transactions?.length || 0} transactions
+                                        </div>
                                     </Link>
                                     {/* and
                   <Link className="transaction-link" href={`/txsInternal?block=${blockDetail?.bn}`}>
@@ -185,7 +191,7 @@ const Overview = () => {
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                 <span className="item-total-difficulty">
-                                    {parseInt(blockDetail?.difficulty, 16) || ''} decodings
+                                    {parseInt(blockDetail?.difficulty, 16).toLocaleString() || ''} decodings
                                 </span>
                             </Col>
                         </Row>
@@ -200,7 +206,7 @@ const Overview = () => {
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                 <span className="item-total-difficulty">
-                                    {parseInt(blockDetail?.totalDifficulty, 16) || ''} decodings
+                                    {parseInt(blockDetail?.totalDifficulty, 16).toLocaleString() || ''} decodings
                                 </span>
                             </Col>
                         </Row>
@@ -351,7 +357,14 @@ const Overview = () => {
                                         <span>Hash:</span>
                                     </Col>
                                     <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                        <span className="reward-text">{blockDetail?.hash || ''}</span>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <Link href={`/block/${+parseInt(blockDetail?.number, 16) - 1}`}>
+                                                <span className="reward-text">{blockDetail?.hash || ''}</span>
+                                            </Link>
+                                            <CoppyText value={blockDetail?.hash}>
+                                                <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                                            </CoppyText>
+                                        </div>
                                     </Col>
                                 </Row>
                             </div>
@@ -364,7 +377,14 @@ const Overview = () => {
                                         <span>Parent Hash:</span>
                                     </Col>
                                     <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                        <span className="reward-text"> {blockDetail?.parentHash || ''}</span>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <Link>
+                                                <span className="reward-text"> {blockDetail?.parentHash || ''}</span>
+                                            </Link>
+                                            <CoppyText value={blockDetail?.parentHash}>
+                                                <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                                            </CoppyText>
+                                        </div>
                                     </Col>
                                 </Row>
                             </div>

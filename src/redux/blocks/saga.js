@@ -88,7 +88,11 @@ function* getLatestBlockRequest({ payload }) {
     try {
         const { status, data } = yield call(getLatestBlockFromApi, payload?.block)
         if (status === 200) {
-            yield put(actions.getLatestBlocksSuccess({ data }))
+            if (data.data !== null) {
+                yield put(actions.getLatestBlocksSuccess({ data }))
+            } else {
+                yield put(actions.getLatestBlocks(payload?.block))
+            }
             if (data.data.tt > 0) {
                 yield put(getListTransactions({ page: 1, page_size: 10 }))
             }
