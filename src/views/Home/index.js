@@ -34,12 +34,12 @@ const HomeView = () => {
         dispatch(getListBlocks({ page: 1, page_size: 10 }))
     }, [dispatch])
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            dispatch(getListBlocks({ page: 1, page_size: 10 }))
-        }, 10000)
-        return () => clearInterval(interval)
-    }, [])
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         dispatch(getListBlocks({ page: 1, page_size: 10 }))
+    //     }, 10000)
+    //     return () => clearInterval(interval)
+    // }, [])
 
     return (
         <div className="home">
