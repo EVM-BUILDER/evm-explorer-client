@@ -39,7 +39,6 @@ export default function blocksReducer(state = initState, action) {
                 loading: true,
             }
         case actions.GET_BLOCK_DETAIL_SUCCESS:
-            console.log('action.payload', action.payload)
             return {
                 ...state,
                 blockDetail: action.payload?.data,
@@ -50,6 +49,11 @@ export default function blocksReducer(state = initState, action) {
                 ...state,
                 blockDetail: {},
                 loading: false,
+            }
+        case actions.GET_LATEST_BLOCKS_SUCCESS:
+            return {
+                ...state,
+                blocks: [action.payload?.data?.data, ...state.blocks],
             }
         default:
             return state
