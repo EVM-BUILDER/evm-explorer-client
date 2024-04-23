@@ -3,7 +3,6 @@ import { Spin } from 'antd'
 import TableItemLatest from 'components/TableItemLatest/TableItemLatest'
 
 const TableLatestBlock = ({ blocks }) => {
-    console.log('blocks', blocks)
     return (
         <div className="table-body">
             <div className="table-body-left">
