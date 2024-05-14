@@ -259,7 +259,9 @@ const Overview = () => {
                                     }}
                                     className="reward-text"
                                 >
-                                    {blockDetail.codeword ? hexToBinary(blockDetail.codeword) : '-'}
+                                    {blockDetail.codeword
+                                        ? parseInt(blockDetail.codeword, 16).toString(2).substring(0, 66) + '…'
+                                        : '-'}
                                 </span>
                             </Col>
                         </Row>
