@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Form, Input, InputNumber } from 'antd'
+import { Button, Form, Input, InputNumber, Select } from 'antd'
 import { useDispatch } from 'react-redux'
 import { setSettings } from 'redux/settings/actions'
 
@@ -48,6 +48,7 @@ const ChainForm = ({ settings, data }) => {
                 logo: values?.native_logo || '',
             },
             number_block_to_finalized: values?.number_block_to_finalized || 3,
+            consensus: 'POA',
         }
 
         dispatch(
@@ -72,6 +73,7 @@ const ChainForm = ({ settings, data }) => {
             erc721: data?.erc721 || '',
             erc1155: data?.erc1155 || '',
             number_block_to_finalized: data?.number_block_to_finalized || '',
+            consensus: data?.consensus || 'POA',
         })
     }, [data])
 
@@ -131,6 +133,13 @@ const ChainForm = ({ settings, data }) => {
             </Form.Item>
             <Form.Item name="number_block_to_finalized" label="Number block to finalized">
                 <Input />
+            </Form.Item>
+            <Form.Item name="consensus" label="Consensus">
+                <Select>
+                    <Select.Option value="poa">POA</Select.Option>
+                    <Select.Option value="pow">POW</Select.Option>
+                    <Select.Option value="pos">POS</Select.Option>
+                </Select>
             </Form.Item>
             <Form.Item className="form-actions" {...tailLayout}>
                 <Button type="primary" htmlType="submit">

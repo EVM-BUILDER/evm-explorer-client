@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Space, Row, Col, Spin, Tooltip } from 'antd'
 import { LeftOutlined, RightOutlined, ClockCircleOutlined, ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import ReactTimeAgo from 'react-time-ago'
@@ -9,20 +9,60 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import BigNumber from 'bignumber.js'
 import CoppyText from 'components/Coppy/CoppyText'
+import axios from 'axios'
 const Overview = () => {
     const router = useRouter()
 
     const { blockDetail, loading } = useSelector((state) => state.Blocks)
     const { settings } = useSelector((state) => state.Settings)
     const [collapse, setCollapse] = useState(false)
-
+    const [parentHash, setParentHash] = useState('')
     const collapseToggle = () => {
         setCollapse(!collapse)
     }
+    const onGetBockByHash = async (hash) => {
+        const res = await axios.post(`${settings?.chain?.rpc}/`, {
+            jsonrpc: '2.0',
+            method: 'eth_getBlockByHash',
+            params: [hash, false],
+            id: 1,
+        })
+        if (res.data.result) {
+            setParentHash(res?.data?.result?.number)
+        }
+    }
 
+    useEffect(() => {
+        if (blockDetail?.parentHash) {
+            onGetBockByHash(blockDetail?.parentHash)
+        }
+    }, [blockDetail])
+    console.log('parentHash', parentHash)
     const price = blockDetail?.p || 0
 
     if (!blockDetail) return <></>
+
+    function hexToBinary(hexString) {
+        hexString = hexString.replace(/^0x/, '')
+
+        // Initialize an empty string to store the binary representation
+        let binaryString = ''
+
+        // Iterate over each character in the hexadecimal string
+        for (let i = 0; i < hexString.length; i++) {
+            // Convert the current character to its decimal representation
+            const decimalValue = parseInt(hexString[i], 16)
+
+            // Convert the decimal value to its binary representation with 4 digits
+            // Use padStart to ensure each binary string is 4 characters long
+            const binaryValue = decimalValue.toString(2).padStart(4, '0')
+
+            // Append the binary representation to the result string
+            binaryString += binaryValue
+        }
+
+        return binaryString
+    }
 
     return (
         <div className="card-content">
@@ -87,26 +127,45 @@ const Overview = () => {
                             </Col>
                         </Row>
                     </div>
-                    <div className="card-content-item ">
-                        <Row>
-                            <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                                <Tooltip title="A block producer who successfully included the block onto the blockchain.">
-                                    <img src="/images/icon/question.svg" alt="" />
-                                </Tooltip>
-                                <span>Miner:</span>
-                            </Col>
-                            <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <Link>
-                                        <span className="item-fee-recipient">{blockDetail?.miner}</span>
+                    {settings?.chain?.consensus === 'pow' ? (
+                        <div className="card-content-item ">
+                            <Row>
+                                <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                                    <Tooltip title="A block producer who successfully included the block onto the blockchain.">
+                                        <img src="/images/icon/question.svg" alt="" />
+                                    </Tooltip>
+                                    <span>Miner:</span>
+                                </Col>
+                                <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Link href={`/address/${blockDetail?.miner}`}>
+                                            <span className="item-fee-recipient">{blockDetail?.miner}</span>
+                                        </Link>
+                                        <CoppyText value={blockDetail?.miner}>
+                                            <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
+                                        </CoppyText>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    ) : (
+                        <div className="card-content-item ">
+                            <Row>
+                                <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                                    <Tooltip title="The hash of a block is a unique identifier that is created using the block's data and is used to identify the block in the blockchain.">
+                                        <img src="/images/icon/question.svg" alt="" />
+                                    </Tooltip>
+                                    <span>Fee Recipient:</span>
+                                </Col>
+                                <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                                    <Link href={`/address/${blockDetail?.receiptsRoot || ''}`}>
+                                        <span className="item-fee-recipient">{blockDetail?.receiptsRoot}</span>
                                     </Link>
-                                    <CoppyText value={blockDetail?.miner}>
-                                        <img style={{ marginLeft: '10px' }} src="/images/icon/folder.svg" alt="" />
-                                    </CoppyText>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    )}
+
                     {/* <div className="card-content-item ant-menu-horizontal">
             <Row>
               <Col xs={{ span: 24 }} md={{ span: 8 }}>
@@ -151,7 +210,7 @@ const Overview = () => {
                             </Col>
                         </Row>
                     </div>
-                    <div className="card-content-item ">
+                    {/* <div className="card-content-item ">
                         <Row>
                             <Col xs={{ span: 24 }} md={{ span: 8 }}>
                                 <Tooltip title="The hash of a block is a unique identifier that is created using the block's data and is used to identify the block in the blockchain.">
@@ -165,7 +224,7 @@ const Overview = () => {
                                 </Link>
                             </Col>
                         </Row>
-                    </div>
+                    </div> */}
                     {/* <div className="card-content-item ">
                         <Row>
                             <Col xs={{ span: 24 }} md={{ span: 8 }}>
@@ -184,6 +243,50 @@ const Overview = () => {
                     <div className="card-content-item ">
                         <Row>
                             <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                                <Tooltip title="Validated solution to the cryptopuzzle for this block.">
+                                    <img src="/images/icon/question.svg" alt="" />
+                                </Tooltip>
+                                <span>Codeword:</span>
+                            </Col>
+                            <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                                <span
+                                    style={{
+                                        display: 'inline-block',
+                                        width: '100%',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap',
+                                    }}
+                                    className="reward-text"
+                                >
+                                    {blockDetail.codeword
+                                        ? parseInt(blockDetail.codeword, 16).toString(2).substring(0, 66) + '…'
+                                        : '-'}
+                                </span>
+                            </Col>
+                        </Row>
+                    </div>
+
+                    <div className="card-content-item ">
+                        <Row>
+                            <Col xs={{ span: 24 }} md={{ span: 8 }}>
+                                <Tooltip title="Length of the validated solution.">
+                                    <img src="/images/icon/question.svg" alt="" />
+                                </Tooltip>
+                                <span>Codeword length:</span>
+                            </Col>
+                            <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                                <span className="reward-text">
+                                    {' '}
+                                    {blockDetail?.codelength || ''} | Decimal:{' '}
+                                    {blockDetail?.codelength ? parseInt(blockDetail?.codelength, 16) : '-'}
+                                </span>
+                            </Col>
+                        </Row>
+                    </div>
+                    <div className="card-content-item ">
+                        <Row>
+                            <Col xs={{ span: 24 }} md={{ span: 8 }}>
                                 <Tooltip title="expected number of decodings/operations to hit the right answer.">
                                     <img src="/images/icon/question.svg" alt="" />
                                 </Tooltip>
@@ -191,7 +294,14 @@ const Overview = () => {
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                 <span className="item-total-difficulty">
-                                    {parseInt(blockDetail?.difficulty, 16).toLocaleString() || ''} decodings
+                                    {parseInt(blockDetail?.difficulty, 16).toLocaleString() || ''} decodings /{' '}
+                                    {blockDetail?.difficulty && blockDetail?.codelength
+                                        ? Number(
+                                              parseInt(blockDetail?.difficulty, 16) *
+                                                  (435 * parseInt(blockDetail?.codelength, 16) + 26020),
+                                          ).toLocaleString()
+                                        : '0'}{' '}
+                                    {settings?.chain?.native?.symbol || ''}
                                 </span>
                             </Col>
                         </Row>
@@ -378,7 +488,7 @@ const Overview = () => {
                                     </Col>
                                     <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            <Link>
+                                            <Link href={`/block/${parseInt(parentHash)}`}>
                                                 <span className="reward-text"> {blockDetail?.parentHash || ''}</span>
                                             </Link>
                                             <CoppyText value={blockDetail?.parentHash}>
@@ -388,37 +498,7 @@ const Overview = () => {
                                     </Col>
                                 </Row>
                             </div>
-                            <div className="card-content-item ">
-                                <Row>
-                                    <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                                        <Tooltip title="Validated solution to the cryptopuzzle for this block.">
-                                            <img src="/images/icon/question.svg" alt="" />
-                                        </Tooltip>
-                                        <span>Codeword:</span>
-                                    </Col>
-                                    <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                        <span className="reward-text"> {blockDetail?.codeword || ''}</span>
-                                    </Col>
-                                </Row>
-                            </div>
 
-                            <div className="card-content-item ">
-                                <Row>
-                                    <Col xs={{ span: 24 }} md={{ span: 8 }}>
-                                        <Tooltip title="Length of the validated solution.">
-                                            <img src="/images/icon/question.svg" alt="" />
-                                        </Tooltip>
-                                        <span>Codeword length:</span>
-                                    </Col>
-                                    <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                        <span className="reward-text">
-                                            {' '}
-                                            {blockDetail?.codelength || ''} | Decimal:{' '}
-                                            {blockDetail?.codelength ? parseInt(blockDetail?.codelength, 16) : '-'}
-                                        </span>
-                                    </Col>
-                                </Row>
-                            </div>
                             {/* <div className="card-content-item ">
                                 <Row>
                                     <Col xs={{ span: 24 }} md={{ span: 8 }}>
