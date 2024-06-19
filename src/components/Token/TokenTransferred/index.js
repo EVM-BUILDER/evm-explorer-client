@@ -29,7 +29,7 @@ const TokenTransferred = ({ tokenTransfer }) => {
                 <b>To</b>{' '}
             </span>
             <span className="hash-tag text-truncate ">
-                <a href={`/token/${tokenTransfer.ca.a}?a=${tAddress}`}>
+                <a href={`/token/${tokenTransfer?.ca?.a}?a=${tAddress}`}>
                     <span>{tAddress}</span>
                 </a>
             </span>
