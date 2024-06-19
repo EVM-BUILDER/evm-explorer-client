@@ -22,14 +22,14 @@ const TokenTransferred = ({ tokenTransfer }) => {
                     <span className="hash-tag text-truncate">
                         {fAddress}
                         &nbsp;
-                    </span> 
+                    </span>
                 </a>
             </span>
             <span>
                 <b>To</b>{' '}
             </span>
             <span className="hash-tag text-truncate ">
-                <a href={`/token/${tokenTransfer.ca}?a=${tAddress}`}>
+                <a href={`/token/${tokenTransfer.ca.a}?a=${tAddress}`}>
                     <span>{tAddress}</span>
                 </a>
             </span>
@@ -41,9 +41,9 @@ const TokenTransferred = ({ tokenTransfer }) => {
                 <FormatAmount value={roundNumber(tokenTransfer.v, { decimals: 18, scale: 5 })} nullValue="0" />
             </span>
             <img src="/images/main/empty-token.png" width="15" alt="" />
-            {tokenTransfer?.t?.na && (
+            {tokenTransfer.ca?.pro?.na && (
                 <a className="hash-tag text-truncate" href={`/token/${tAddress}`}>
-                    &nbsp; {tokenTransfer.t?.na} ({tokenTransfer.t?.sym}){' '}
+                    &nbsp; {tokenTransfer.ca?.pro?.na} ({tokenTransfer.ca?.pro?.sym}){' '}
                 </a>
             )}
         </TokenTransferredStyled>
