@@ -4,6 +4,12 @@ This project contains the main features of the application.
 
 If you want to contribute, please refer to the create your Pull Request to this project.
 
+## .ENV
+
+```
+NEXT_PUBLIC_ROOT_API="https://your-backend-domain.com/api/v1"
+```
+
 ## Quick Start
 
 Setup Backend add ENV to your project
