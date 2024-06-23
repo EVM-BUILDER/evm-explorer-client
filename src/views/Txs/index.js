@@ -105,7 +105,7 @@ const TransactionsModule = () => {
             ),
             dataIndex: 'm',
             with: 150,
-            render: (text, row) => <div className="data-method">{text || formatCode(row?.i, 10, 0, '')}</div>,
+            render: (text, row) => <div className="data-method">{text?.split('(')[0] || formatCode(row?.i, 10, 0, '')}</div>,
         },
         {
             title: 'Block',
