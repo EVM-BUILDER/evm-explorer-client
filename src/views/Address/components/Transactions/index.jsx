@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Menu } from 'antd'
-import { ArrowLeftOutlined, ArrowRightOutlined, ContainerOutlined, EyeOutlined } from '@ant-design/icons'
-import { Link } from 'components/Link'
-import DropdownBase from 'components/Dropdown/DropdownBase'
-import TableBase from 'components/Table/TableBase'
-import { LampBlueIcon } from 'widgets/Svg'
-import useFetchTxsByAddress from 'redux/transactions/hooks/useFetchTxsByAddress'
+import { ContainerOutlined, EyeOutlined } from '@ant-design/icons'
+import BoxInOut from 'components/BoxInOut'
 import FormatAmount from 'components/FormatAmount'
 import FormatTimeAgo from 'components/FormatTimeAgo'
+import { Link } from 'components/Link'
+import TableBase from 'components/Table/TableBase'
+import { formatCode } from 'library/helpers/CommonHelper'
 import { roundNumber } from 'library/helpers/Number'
-import BoxInOut from 'components/BoxInOut'
 import { useSettings } from 'redux/settings/hooks'
-
+import useFetchTxsByAddress from 'redux/transactions/hooks/useFetchTxsByAddress'
 const Transactions = ({ address }) => {
     const { chain } = useSettings()
     const data = useFetchTxsByAddress(address, 1, 25)
@@ -32,7 +27,8 @@ const Transactions = ({ address }) => {
         {
             title: 'Method ',
             dataIndex: 'm',
-            render: (text) => (text ? <div className="data-method">{text}</div> : ''),
+            render: (text, row) =>
+                text ? <div className="data-method">{text?.split('(')[0] || formatCode(row?.i, 10, 0, '')}</div> : '',
         },
         {
             title: 'Block',

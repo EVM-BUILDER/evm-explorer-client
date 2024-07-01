@@ -40,7 +40,6 @@ async function getBlockDetailFromApi(block, rpc) {
             params: [`0x${Number(block).toString(16)}`, false],
             id: 1,
         })
-        console.log('res', res.data.result)
         return {
             data: res.data.result,
             status: 200,
