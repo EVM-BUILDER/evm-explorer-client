@@ -30,7 +30,7 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
                 </div>
             ),
             dataIndex: 'm',
-            render: (text) => <div className="data-method">{text}</div>,
+            render: (text, row) => <div className="data-method">{text?.split('(')[0] || formatCode(row?.i, 10, 0, '')}</div>,
         },
         {
             title: <p>Age</p>,
