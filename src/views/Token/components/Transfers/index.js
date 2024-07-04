@@ -67,9 +67,9 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
         {
             title: 'Quantity',
             dataIndex: 'v',
-            render: (v) => (
+            render: (v, record) => (
                 <div className="data-quantity">
-                    <FormatAmount value={roundNumber(v, { decimals: 18, scale: 6 })} />
+                    <FormatAmount value={roundNumber(v, { decimals: record.ca?.pro?.de, scale: 6 })} />
                 </div>
             ),
         },

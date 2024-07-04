@@ -38,7 +38,10 @@ const TokenTransferred = ({ tokenTransfer }) => {
                 <b>For</b>{' '}
             </span>
             <span>
-                <FormatAmount value={roundNumber(tokenTransfer.v, { decimals: 18, scale: 5 })} nullValue="0" />
+                <FormatAmount
+                    value={roundNumber(tokenTransfer.v, { decimals: tokenTransfer?.ca?.pro?.de, scale: 5 })}
+                    nullValue="0"
+                />
             </span>
             <img src="/images/main/empty-token.png" width="15" alt="" />
             {tokenTransfer.ca?.pro?.na && (
