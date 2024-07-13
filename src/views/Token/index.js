@@ -14,7 +14,7 @@ import DexTrades from './components/DexTrades'
 import HrGray from 'components/LineBorder'
 import useAddressDetail from 'hooks/useAddressDetail'
 import useFetchStatistics from 'redux/statistics/hooks/useFetchStatistics'
-import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
+import { useFetchTxsErc20WithCA } from 'redux/token/hooks/useFetchTxsErc20'
 import { useAds } from 'redux/statistics/hooks'
 import { useSettings } from 'redux/settings/hooks'
 import Events from './components/Events'
@@ -70,7 +70,7 @@ const TokenPage = () => {
     const { statistics } = useFetchStatistics()
     const { addressDetail } = useAddressDetail(token)
     const { balancesErc20 } = useAllErc20Balances(address, 1, 50)
-    const { txsErc20, paramsTxsErc20, setParamsTxsErc20 } = useFetchTxsErc20(token)
+    const { txsErc20, paramsTxsErc20, setParamsTxsErc20 } = useFetchTxsErc20WithCA(token)
 
     // console.log('statistics', statistics)
     // console.log('addressDetail', addressDetail)

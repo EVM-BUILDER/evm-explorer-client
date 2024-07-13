@@ -85,7 +85,7 @@ const Transactions = ({ address }) => {
         {
             title: 'Value',
             dataIndex: 'v',
-            render: (text) => (
+            render: (text, record) => (
                 <div className="data-value">
                     <FormatAmount
                         value={roundNumber(text, { decimals: 18, scale: 5 })}
