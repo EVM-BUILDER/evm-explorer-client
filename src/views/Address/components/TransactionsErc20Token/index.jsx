@@ -16,7 +16,7 @@ const Transactions = ({ address }) => {
     const { chain } = useSettings()
 
     const { txsErc20, paramsTxsErc20 } = useFetchTxsErc20(address, 1, 25)
-
+    console.log(txsErc20);
     const columns = [
         {
             title: 'Txn Hash',

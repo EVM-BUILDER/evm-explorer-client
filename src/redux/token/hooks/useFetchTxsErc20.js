@@ -27,7 +27,6 @@ function useFetchTxsErc20(address, page, page_size) {
             setParamsTxsErc20((prev) => ({ ...prev, a: address }))
         }
     }, [address])
-
     return {
         txsErc20: txsErc20[paramsTxsErc20.a],
         paramsTxsErc20,

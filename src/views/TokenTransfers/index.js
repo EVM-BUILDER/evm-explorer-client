@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllTxsErc20 } from 'redux/token/actions'
 import { useAds } from 'redux/statistics/hooks'
 import { useSettings } from 'redux/settings/hooks'
+import { roundNumber } from 'library/helpers/Number'
+import FormatAmount from 'components/FormatAmount'
 
 const DEFAULT_LIMIT = 25
 
@@ -133,12 +135,9 @@ const TokenTransfers = () => {
       title: 'Value',
       dataIndex: 'v',
       with: 120,
-      render: (v) => (
+      render: (v, record) => (
         <div className="data-value">
-          {(v / 1e18).toLocaleString('en-GB', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 5,
-          }) || 0}
+          <FormatAmount value={roundNumber(v, { decimals: record.ca?.pro?.de, scale: 6 })} />
         </div>
       ),
     },
