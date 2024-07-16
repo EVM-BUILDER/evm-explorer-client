@@ -6,7 +6,6 @@ import { formatAddress } from 'library/helpers/CommonHelper'
 
 const TableItem = ({ dataItem, ...props }) => {
     const { settings } = useSelector((state) => state.Settings)
-
     return (
         <div className="row" {...props}>
             <div className="col-sm-4">
@@ -30,7 +29,7 @@ const TableItem = ({ dataItem, ...props }) => {
                     <div className="show-content">
                         <span>
                             <span>Fee Recipient: </span>
-                            <Link href={`/address/${dataItem?.vb?.a}`} className="content-hasktag">
+                            <Link href={`/address/${dataItem?.vb}`} className="content-hasktag">
                                 {formatAddress(dataItem?.vb)}
                             </Link>
                         </span>

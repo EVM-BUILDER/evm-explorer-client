@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Menu, Dropdown, Button, Space, Tabs, Row, Col, message, Spin } from 'antd'
 import { ClockCircleOutlined, ArrowDownOutlined, ArrowUpOutlined, CheckCircleOutlined } from '@ant-design/icons'
@@ -12,6 +12,7 @@ import { WTxDetailOverview } from './styled'
 import ToTokenAddress from 'components/Token/ToTokenAddress'
 import TokenTransferred from 'components/Token/TokenTransferred'
 import { formatAddress } from 'utils/address'
+import Web3 from 'web3'
 
 const menuSuccess = (
     <Menu className="success-modal-container">
@@ -57,7 +58,27 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
     const txErc721 = transactionDetail.erc721?.length > 0 ? transactionDetail.erc721 : null
     const txErc1155 = transactionDetail.erc1155?.length > 0 ? transactionDetail.erc1155 : null
     const tokenTransferred = txErc20 || txErc721 || txErc1155
+    const [inputData, setInputData] = useState(transactionDetail?.i)
+    const [isDecode, setIsDecode] = useState(false)
 
+    const onDecode = () => {
+        const web3 = new Web3()
+        try {
+            const res = web3.eth.abi.decodeParameters(
+                ['address', 'uint256', 'uint256', 'uint256', 'address', 'uint256'],
+                transactionDetail?.i,
+            )
+            console.log('res', res)
+        } catch (e) {
+            console.log('e', e)
+        }
+    }
+
+    useEffect(() => {
+        if (transactionDetail?.i) {
+            setInputData(transactionDetail?.i)
+        }
+    }, [transactionDetail?.i])
     return (
         <WTxDetailOverview>
             {loading ? (
@@ -359,6 +380,23 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                             </Col>
                                         </Row>
                                     </div> */}
+                                    <div className="card-content-item ant-menu-horizontal no-border-bottom">
+                                        <Row gutter={[12, 12]}>
+                                            <Col xs={24} md={8}>
+                                                <div className="tx-left-title">
+                                                    <Space>
+                                                        <img src="/images/icon/question.svg" alt="" />
+                                                    </Space>
+                                                    Method:
+                                                </div>
+                                            </Col>
+                                            <Col xs={24} md={16}>
+                                                <Space wrap>
+                                                    <span className="card-content-item-value">{transactionDetail?.m}</span>
+                                                </Space>
+                                            </Col>
+                                        </Row>
+                                    </div>
                                     <div className="card-content-item ant-menu-horizontal">
                                         <Row gutter={[12, 12]}>
                                             <Col xs={24} md={8}>
@@ -368,14 +406,15 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                                 Input Data:
                                             </Col>
                                             <Col xs={24} md={16}>
-                                                <textarea
-                                                    className="text-area-private"
-                                                    cols="30"
-                                                    rows="2"
-                                                    value={transactionDetail?.i}
-                                                />
+                                                <textarea className="text-area-private" cols="30" rows="2" value={inputData} />
                                             </Col>
                                         </Row>
+                                        {/* <Row gutter={[12, 12]}>
+                                            <Col xs={24} md={8}></Col>
+                                            <Col>
+                                                <Button onClick={onDecode}>{isDecode ? 'Encode' : 'Decode'}</Button>
+                                            </Col>
+                                        </Row> */}
                                     </div>
                                     <div className="card-content-item ant-menu-horizontal">
                                         <Row gutter={[12, 12]}>
