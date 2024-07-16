@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTxsErc20 } from 'redux/token/actions'
 
-function useFetchTxsErc20(address, page, page_size) {
+export function useFetchTxsErc20(address, page, page_size) {
     const dispatch = useDispatch()
     const { txsErc20 } = useSelector((state) => state.Token)
-
+    console.log('txsErc20', txsErc20)
     const [paramsTxsErc20, setParamsTxsErc20] = useState({
         page: page || 1,
         page_size: page_size || 50,
@@ -35,18 +35,19 @@ function useFetchTxsErc20(address, page, page_size) {
     }
 }
 
-export const useFetchTxsErc20WithCA = (address, page, page_size) => {
+export const useFetchTxsErc20WithCA = (address, contractAddress, page, page_size) => {
     const dispatch = useDispatch()
     const { txsErc20 } = useSelector((state) => state.Token)
 
     const [paramsTxsErc20, setParamsTxsErc20] = useState({
         page: page || 1,
         page_size: page_size || 50,
-        ca: address,
+        a: address,
+        ca: contractAddress,
     })
 
     const fetchTxsErc20 = useCallback(() => {
-        if (paramsTxsErc20.ca) {
+        if (paramsTxsErc20.ca && paramsTxsErc20.a) {
             dispatch(getTxsErc20(paramsTxsErc20))
         }
     }, [dispatch, paramsTxsErc20])
@@ -56,10 +57,10 @@ export const useFetchTxsErc20WithCA = (address, page, page_size) => {
     }, [fetchTxsErc20])
 
     useEffect(() => {
-        if (address) {
-            setParamsTxsErc20((prev) => ({ ...prev, ca: address }))
+        if (address && contractAddress) {
+            setParamsTxsErc20((prev) => ({ ...prev, ca: contractAddress, a: address }))
         }
-    }, [address])
+    }, [address, contractAddress])
 
     return {
         txsErc20: txsErc20[paramsTxsErc20.ca],
@@ -68,5 +69,3 @@ export const useFetchTxsErc20WithCA = (address, page, page_size) => {
         fetchTxsErc20,
     }
 }
-
-export default useFetchTxsErc20

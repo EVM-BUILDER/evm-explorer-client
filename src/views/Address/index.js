@@ -158,11 +158,11 @@ const AddressPage = () => {
                                 //     title: 'Analytics',
                                 //     content: <Analytics />,
                                 // },
-                                {
-                                    key: TABS_VIEW.COMMENTS,
-                                    title: 'Comments',
-                                    content: <Comments />,
-                                },
+                                // {
+                                //     key: TABS_VIEW.COMMENTS,
+                                //     title: 'Comments',
+                                //     content: <Comments />,
+                                // },
                             ].filter((o) => o)}
                         />
                     )}

@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminLayout from 'layouts/AdminLayout'
-import AdminSystemSettingsView from 'views/Admin/Settings/systemsettings'
+import AdminSystemSettingsView from 'views/Admin/Settings/token-price'
 
 export default function AdminSystemSettings() {
     return <AdminSystemSettingsView />
