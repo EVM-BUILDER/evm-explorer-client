@@ -4,6 +4,8 @@ import { LeftOutlined, RightOutlined, ClockCircleOutlined, ArrowDownOutlined, Ar
 import ReactTimeAgo from 'react-time-ago'
 import CurrencyFormat from 'react-currency-format'
 import { Link } from 'components/Link'
+import siteConfig from 'config/site.config'
+import fetchHelper from 'library/helpers/FetchHelper'
 import { formatAddress, numberFormatter } from 'library/helpers/CommonHelper'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
@@ -17,6 +19,26 @@ const Overview = () => {
     const { settings } = useSelector((state) => state.Settings)
     const [collapse, setCollapse] = useState(false)
     const [parentHash, setParentHash] = useState('')
+    const [currentBlock, setCurrentBlock] = useState(0)
+
+    const onGetBlockViaApi = async () => {
+        fetchHelper
+            .fetch(`${siteConfig.apiUrl}/block/${parseInt(blockDetail?.number, 16)}`, {
+                method: 'GET',
+            })
+            .then(([data, status]) => {
+                setCurrentBlock(data.data)
+            })
+    }
+
+    useEffect(() => {
+        if (blockDetail?.number) {
+            onGetBlockViaApi()
+        }
+    }, [blockDetail?.number])
+
+    console.log('currentBlock', currentBlock)
+
     const collapseToggle = () => {
         setCollapse(!collapse)
     }
@@ -29,6 +51,7 @@ const Overview = () => {
         })
         if (res.data.result) {
             setParentHash(res?.data?.result?.number)
+            setCurrentBlock(res?.data?.result)
         }
     }
 
@@ -37,7 +60,7 @@ const Overview = () => {
             onGetBockByHash(blockDetail?.parentHash)
         }
     }, [blockDetail])
-    console.log('parentHash', parentHash)
+
     const price = blockDetail?.p || 0
 
     if (!blockDetail) return <></>
@@ -158,8 +181,8 @@ const Overview = () => {
                                     <span>Fee Recipient:</span>
                                 </Col>
                                 <Col xs={{ span: 24 }} md={{ span: 16 }}>
-                                    <Link href={`/address/${blockDetail?.receiptsRoot || ''}`}>
-                                        <span className="item-fee-recipient">{blockDetail?.receiptsRoot}</span>
+                                    <Link href={`/address/${currentBlock?.vb?.a || ''}`}>
+                                        <span className="item-fee-recipient">{currentBlock?.vb?.a}</span>
                                     </Link>
                                 </Col>
                             </Row>

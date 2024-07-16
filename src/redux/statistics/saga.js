@@ -40,6 +40,7 @@ function* getListStatisticsRequest({ payload }) {
     try {
         const { status, data } = yield call(getListStatisticsFromApi, payload)
         if (status === 200) {
+            console.log('data==========', data)
             yield put(actions.getListStatisticsSuccess(data))
         } else {
             let error = new Error(response.statusText)
@@ -56,6 +57,7 @@ function* getPulsePrice({ params }) {
         const { status, data } = yield call(getListStatisticsFromApi, params)
         if (status === 200) {
             yield put(actions.getPulsePriceSuccess({ data }))
+            yield put(actions.getListStatisticsSuccess(data))
         } else {
             yield put(actions.getPulsePriceSuccess({ data }))
         }

@@ -23,7 +23,6 @@ const BoxInOutStyled = styled.div`
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            color: var(--primary);
         }
     }
 `

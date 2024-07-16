@@ -50,6 +50,7 @@ function getTxsErc20FromApi(payload) {
 function* getTxsErc20({ params }) {
     try {
         const { status, data } = yield call(getTxsErc20FromApi, params)
+        console.log('status, data', status, data)
         if (status === 200) {
             yield put(actions.getTxsErc20Success(params, data))
         } else {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { EyeOutlined } from '@ant-design/icons'
 import { Link } from 'components/Link'
-import useFetchTxsErc20 from 'redux/token/hooks/useFetchTxsErc20'
+import { useFetchTxsErc20 } from 'redux/token/hooks/useFetchTxsErc20'
 import TableBase from 'components/Table/TableBase'
 import { BaseButton } from 'components/Button'
 import FormatTimeAgo from 'components/FormatTimeAgo'
@@ -16,7 +16,6 @@ const Transactions = ({ address }) => {
     const { chain } = useSettings()
 
     const { txsErc20, paramsTxsErc20 } = useFetchTxsErc20(address, 1, 25)
-    console.log(txsErc20);
     const columns = [
         {
             title: 'Txn Hash',
