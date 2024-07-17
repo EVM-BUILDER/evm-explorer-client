@@ -47,7 +47,7 @@ export const useFetchTxsErc20WithCA = (address, contractAddress, page, page_size
     })
 
     const fetchTxsErc20 = useCallback(() => {
-        if (paramsTxsErc20.ca && paramsTxsErc20.a) {
+        if (paramsTxsErc20.ca || paramsTxsErc20.a) {
             dispatch(getTxsErc20(paramsTxsErc20))
         }
     }, [dispatch, paramsTxsErc20])
