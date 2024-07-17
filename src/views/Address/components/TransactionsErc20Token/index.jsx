@@ -41,12 +41,12 @@ const Transactions = ({ address }) => {
         {
             title: 'From',
             dataIndex: 'f',
-            render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} hideInOut />,
+            render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} />,
         },
         {
             title: 'To',
             dataIndex: 'f',
-            render: (text, record) => <BoxInOut type="to" address={address} f={record.f} t={record.t} />,
+            render: (text, record) => <BoxInOut type="to" address={address} f={record.f} t={record.t} hideInOut />,
         },
         {
             title: 'Value',
