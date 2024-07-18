@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { EyeOutlined } from '@ant-design/icons'
 import { Link } from 'components/Link'
 import { useFetchTxsErc20 } from 'redux/token/hooks/useFetchTxsErc20'
@@ -11,11 +11,12 @@ import { useRouter } from 'next/router'
 import BoxInOut from 'components/BoxInOut'
 import { useSettings } from 'redux/settings/hooks'
 
-const Transactions = ({ address }) => {
+const Transactions = ({ address, type }) => {
     const router = useRouter()
     const { chain } = useSettings()
 
-    const { txsErc20, paramsTxsErc20 } = useFetchTxsErc20(address, 1, 25)
+    const { txsErc20, paramsTxsErc20, setParamsTxsErc20 } = useFetchTxsErc20(address, 1, 25, type)
+
     const columns = [
         {
             title: 'Txn Hash',
