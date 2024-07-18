@@ -13,6 +13,7 @@ const initState = {
         loading: true,
         error: null,
     },
+    totalSupply: {},
     page: 1,
     page_size: 25,
     total: 0,
@@ -93,6 +94,11 @@ export default function accountsReducer(state = initState, action) {
                     loading: false,
                     error: action.payload,
                 },
+            }
+        case actions.GET_TOTAL_SUPPLY_SUCCESS:
+            return {
+                ...state,
+                totalSupply: action.payload,
             }
         default:
             return state

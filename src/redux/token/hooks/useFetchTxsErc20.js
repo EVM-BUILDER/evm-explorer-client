@@ -2,18 +2,16 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTxsErc20 } from 'redux/token/actions'
 
-export function useFetchTxsErc20(address, page, page_size) {
+export function useFetchTxsErc20(address, page, page_size, type) {
     const dispatch = useDispatch()
     const { txsErc20 } = useSelector((state) => state.Token)
-    console.log('txsErc20', txsErc20)
     const [paramsTxsErc20, setParamsTxsErc20] = useState({
         page: page || 1,
         page_size: page_size || 50,
-        a: address,
     })
-
+    console.log('type', type)
     const fetchTxsErc20 = useCallback(() => {
-        if (paramsTxsErc20.a) {
+        if (paramsTxsErc20.a || paramsTxsErc20.ca) {
             dispatch(getTxsErc20(paramsTxsErc20))
         }
     }, [dispatch, paramsTxsErc20])
@@ -24,9 +22,14 @@ export function useFetchTxsErc20(address, page, page_size) {
 
     useEffect(() => {
         if (address) {
-            setParamsTxsErc20((prev) => ({ ...prev, a: address }))
+            if (type === 'contract') {
+                setParamsTxsErc20((prev) => ({ page: page || 1, page_size: page_size || 50, ca: address }))
+            } else {
+                setParamsTxsErc20((prev) => ({ page: page || 1, page_size: page_size || 50, a: address }))
+            }
         }
-    }, [address])
+    }, [address, page, page_size, type])
+
     return {
         txsErc20: txsErc20[paramsTxsErc20.a],
         paramsTxsErc20,

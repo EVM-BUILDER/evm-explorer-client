@@ -85,10 +85,39 @@ function* submitInfoToken({ payload, cbs, cbe }) {
         cbe?.(error)
     }
 }
+
+function getTotalSupplyFromApi(payload) {
+    const str = qs.stringify(payload || {})
+    return fetchHelper
+        .fetch(`${siteConfig.apiUrl}/total-supply`, {
+            method: 'GET',
+        })
+        .then(([data, status]) => {
+            return {
+                data,
+                status,
+            }
+        })
+}
+function* getTotalSupply({ payload }) {
+    try {
+        const { status, data } = yield call(getTotalSupplyFromApi, payload)
+        if (status === 200) {
+            yield put(actions.getTotalSupplySuccess(data.data))
+        } else {
+            yield put(actions.getTotalSupplyError(data))
+        }
+    } catch (error) {
+        console.error('getTotalSupply', error)
+        yield put(actions.getTotalSupplyError(error))
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         takeLatest(actions.GET_TOP_ACCOUNT, getTopAccounts),
         takeLatest(actions.GET_LIST_ADDRESS_VERIFY, getListAddressVerify),
         takeLatest(actions.SUBMIT_INFO_TOKEN, submitInfoToken),
+        takeLatest(actions.GET_TOTAL_SUPPLY, getTotalSupply),
     ])
 }
