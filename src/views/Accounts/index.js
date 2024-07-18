@@ -7,7 +7,7 @@ import { Link } from 'components/Link'
 import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import { formatCode, numberFormatter, removeEmpty } from 'library/helpers/CommonHelper'
 
-import { getTopAccounts } from 'redux/accounts/actions'
+import { getTopAccounts, getTotalSupply } from 'redux/accounts/actions'
 import { getListStatistics } from 'redux/statistics/actions'
 import { roundNumber } from 'library/helpers/Number'
 import FormatAmount from 'components/FormatAmount'
@@ -18,7 +18,7 @@ import { useAds } from 'redux/statistics/hooks'
 const AccountModule = () => {
     const dispatch = useDispatch()
     const { query } = useRouter()
-    const { topAccounts } = useSelector((state) => state.Accounts)
+    const { topAccounts, totalSupply } = useSelector((state) => state.Accounts)
     const { settings } = useSelector((state) => state.Settings)
 
     const { adsText } = useAds()
@@ -47,6 +47,7 @@ const AccountModule = () => {
     // get Statistic
     useEffect(() => {
         dispatch(getListStatistics({ page: 1, page_size: 1 }))
+        dispatch(getTotalSupply())
     }, [dispatch])
 
     const columns = [
@@ -79,7 +80,8 @@ const AccountModule = () => {
         {
             title: 'Percentage',
             dataIndex: 'p',
-            render: (text) => (text ? text : 0),
+            render: (text, record) =>
+                `${((roundNumber(record.v, { decimals: 18 }) / totalSupply?.totalSupply) * 100).toFixed(2)}%`,
         },
         {
             title: 'Txn Count',
