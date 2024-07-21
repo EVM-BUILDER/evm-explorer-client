@@ -9,9 +9,8 @@ export function useFetchTxsErc20(address, page, page_size, type) {
         page: page || 1,
         page_size: page_size || 50,
     })
-    console.log('type', type)
     const fetchTxsErc20 = useCallback(() => {
-        if (paramsTxsErc20.a || paramsTxsErc20.ca) {
+        if (paramsTxsErc20.a) {
             dispatch(getTxsErc20(paramsTxsErc20))
         }
     }, [dispatch, paramsTxsErc20])
@@ -22,11 +21,7 @@ export function useFetchTxsErc20(address, page, page_size, type) {
 
     useEffect(() => {
         if (address) {
-            if (type === 'contract') {
-                setParamsTxsErc20((prev) => ({ page: page || 1, page_size: page_size || 50, ca: address }))
-            } else {
-                setParamsTxsErc20((prev) => ({ page: page || 1, page_size: page_size || 50, a: address }))
-            }
+            setParamsTxsErc20((prev) => ({ page: page || 1, page_size: page_size || 50, a: address }))
         }
     }, [address, page, page_size, type])
 
