@@ -29,7 +29,7 @@ const TableItem = ({ dataItem, ...props }) => {
                     <div className="show-content">
                         <span>
                             <span>Fee Recipient: </span>
-                            <Link href={`/address/${dataItem?.vb}`} className="content-hasktag">
+                            <Link href={`/address/${dataItem?.vb.a}`} className="content-hasktag">
                                 {formatAddress(dataItem?.vb)}
                             </Link>
                         </span>
