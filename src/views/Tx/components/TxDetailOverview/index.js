@@ -261,7 +261,7 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                         </Col>
                                         <Col xs={24} md={16}>
                                             {tokenTransferred.map((item) => {
-                                                return <TokenTransferred key={item.ca} tokenTransfer={item} />
+                                                return <TokenTransferred key={item.a} tokenTransfer={item} />
                                             })}
                                         </Col>
                                     </Row>
