@@ -30,7 +30,7 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
                 </div>
             ),
             dataIndex: 'm',
-            render: (text) => <div className="data-method">{text}</div>,
+            render: (text, row) => <div className="data-method">{text?.split('(')[0] || formatCode(row?.i, 10, 0, '')}</div>,
         },
         {
             title: <p>Age</p>,
@@ -46,7 +46,7 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             dataIndex: 'f',
             render: (f) => (
                 <div className="data-from ">
-                    <Link className="data-from-link hash-tag text-truncate" href={`/token/${token}?a=${f.a}`}>
+                    <Link className="data-from-link hash-tag text-truncate" href={`/address/${f.a}`}>
                         {f?.a}
                     </Link>
                 </div>
@@ -58,7 +58,7 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
             render: (t) => (
                 <div className="data-to">
                     <RoundArrowIcon />
-                    <Link className="data-to-link hash-tag text-truncate" href={`/token/${token}?a={${t.a}}`}>
+                    <Link className="data-to-link hash-tag text-truncate" href={`/address/${t.a}`}>
                         {t?.a}
                     </Link>
                 </div>
@@ -67,9 +67,9 @@ const Transfers = ({ token, txsErc20, paramsTxsErc20, setParamsTxsErc20 }) => {
         {
             title: 'Quantity',
             dataIndex: 'v',
-            render: (v) => (
+            render: (v, record) => (
                 <div className="data-quantity">
-                    <FormatAmount value={roundNumber(v, { decimals: 18, scale: 6 })} />
+                    <FormatAmount value={roundNumber(v, { decimals: record.ca?.pro?.de, scale: 6 })} />
                 </div>
             ),
         },

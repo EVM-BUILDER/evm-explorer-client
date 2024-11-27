@@ -39,11 +39,14 @@ const TokenTransferred = ({ tokenTransfer }) => {
                 <b>For</b>{' '}
             </span>
             <span>
-                <FormatAmount value={roundNumber(tokenTransfer.v, { decimals: 18, scale: 5 })} nullValue="0" />
+                <FormatAmount
+                    value={roundNumber(tokenTransfer.v, { decimals: tokenTransfer?.ca?.pro?.de, scale: 5 })}
+                    nullValue="0"
+                />
             </span>
             <img src="/images/main/empty-token.png" width="15" alt="" />
             {tokenTransfer.ca?.pro?.na && (
-                <a className="hash-tag text-truncate" href={`/token/${tAddress}`}>
+                <a className="hash-tag text-truncate" href={`/token/${tokenTransfer?.ca?.a}`}>
                     &nbsp; {tokenTransfer.ca?.pro?.na} ({tokenTransfer.ca?.pro?.sym}){' '}
                 </a>
             )}

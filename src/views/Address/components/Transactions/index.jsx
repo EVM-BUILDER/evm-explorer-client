@@ -1,129 +1,125 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Menu } from 'antd'
-import { ArrowLeftOutlined, ArrowRightOutlined, ContainerOutlined, EyeOutlined } from '@ant-design/icons'
-import { Link } from 'components/Link'
-import DropdownBase from 'components/Dropdown/DropdownBase'
-import TableBase from 'components/Table/TableBase'
-import { LampBlueIcon } from 'widgets/Svg'
-import useFetchTxsByAddress from 'redux/transactions/hooks/useFetchTxsByAddress'
+import { ContainerOutlined, EyeOutlined } from '@ant-design/icons'
+import BoxInOut from 'components/BoxInOut'
 import FormatAmount from 'components/FormatAmount'
 import FormatTimeAgo from 'components/FormatTimeAgo'
+import { Link } from 'components/Link'
+import TableBase from 'components/Table/TableBase'
+import { formatCode } from 'library/helpers/CommonHelper'
 import { roundNumber } from 'library/helpers/Number'
-import BoxInOut from 'components/BoxInOut'
 import { useSettings } from 'redux/settings/hooks'
-
+import useFetchTxsByAddress from 'redux/transactions/hooks/useFetchTxsByAddress'
 const Transactions = ({ address }) => {
-    const { chain } = useSettings()
-    const data = useFetchTxsByAddress(address, 1, 25)
-    const columns = [
-        {
-            title: 'Txn Hash',
-            dataIndex: 'h',
-            render: (hash) => (
-                <div className="data-txnHash">
-                    <div>
-                        <EyeOutlined />
-                    </div>
-                    <Link href={`/tx/${hash}`}>{hash}</Link>
-                </div>
-            ),
-        },
-        {
-            title: 'Method ',
-            dataIndex: 'm',
-            render: (text) => (text ? <div className="data-method">{text}</div> : ''),
-        },
-        {
-            title: 'Block',
-            dataIndex: 'bn',
-            render: (text) => (
-                <Link href={`/block/${text}`} className="data-block">
-                    {text}
-                </Link>
-            ),
-        },
-        {
-            title: 'Age',
-            dataIndex: 'ti',
-            render: (text) => (
-                <div className="data-age">
-                    <FormatTimeAgo value={text * 1000} />
-                </div>
-            ),
-        },
-        {
-            title: 'From',
-            dataIndex: 'f',
-            filters: [],
-            filterSearch: true,
-            onFilter: (value, record) => record.address.indexOf(value) === 0,
-            render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} />,
-        },
-        {
-            title: 'To',
-            dataIndex: 't',
-            filters: [],
-            onFilter: (value, record) => record.address.indexOf(value) === 0,
-            render: (_, record) => {
-                if (record?.ca) {
-                    return (
-                        <div className="data-to">
-                            <div>
-                                <ContainerOutlined />
-                            </div>
-                            <BoxInOut type="to" isContract address={address} f={record.f} t={record.ca} hideInOut />
-                        </div>
-                    )
-                }
-                if (record?.t) {
-                    return (
-                        <div className="data-to">
-                            <BoxInOut type="to" address={address} f={record.f} t={record.t} hideInOut />
-                        </div>
-                    )
-                }
-                return ''
-            },
-        },
-        {
-            title: 'Value',
-            dataIndex: 'v',
-            render: (text) => (
-                <div className="data-value">
-                    <FormatAmount
-                        value={roundNumber(text, { decimals: 18, scale: 5 })}
-                        suffix={` ${chain?.native?.symbol || ''}`}
-                        nullValue="0"
-                    />
-                </div>
-            ),
-        },
-        {
-            title: '[Txn Fee]',
-            dataIndex: 'tf',
-            render: (text) => (
-                <div className="data-txnfee">
-                    <Link className="data-txnfee-link">{(text / 1e18)?.toFixed(5)} </Link>
-                    {/* <LampBlueIcon /> */}
-                </div>
-            ),
-        },
-    ]
+  const { chain } = useSettings()
+  const data = useFetchTxsByAddress(address, 1, 25)
+  const columns = [
+    {
+      title: 'Txn Hash',
+      dataIndex: 'h',
+      render: (hash) => (
+        <div className="data-txnHash">
+          <div>
+            <EyeOutlined />
+          </div>
+          <Link href={`/tx/${hash}`}>{hash}</Link>
+        </div>
+      ),
+    },
+    {
+      title: 'Method ',
+      dataIndex: 'm',
+      render: (text, row) =>
+        text ? <div className="data-method">{text?.split('(')[0] || formatCode(row?.i, 10, 0, '')}</div> : <div className="data-method">0x</div>, // TODO : move to component
+    },
+    {
+      title: 'Block',
+      dataIndex: 'bn',
+      render: (text) => (
+        <Link href={`/block/${text}`} className="data-block">
+          {text}
+        </Link>
+      ),
+    },
+    {
+      title: 'Age',
+      dataIndex: 'ti',
+      render: (text) => (
+        <div className="data-age">
+          <FormatTimeAgo value={text * 1000} />
+        </div>
+      ),
+    },
+    {
+      title: 'From',
+      dataIndex: 'f',
+      filters: [],
+      filterSearch: true,
+      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      render: (text, record) => <BoxInOut type="from" address={address} f={record.f} t={record.t} />,
+    },
+    {
+      title: 'To',
+      dataIndex: 't',
+      filters: [],
+      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      render: (_, record) => {
+        if (record?.ca) {
+          return (
+            <div className="data-to">
+              <div>
+                <ContainerOutlined />
+              </div>
+              <BoxInOut type="to" isContract address={address} f={record.f} t={record.ca} hideInOut />
+            </div>
+          )
+        }
+        if (record?.t) {
+          return (
+            <div className="data-to">
+              <BoxInOut type="to" address={address} f={record.f} t={record.t} hideInOut />
+            </div>
+          )
+        }
+        return ''
+      },
+    },
+    {
+      title: 'Value',
+      dataIndex: 'v',
+      render: (text, record) => (
+        <div className="data-value">
+          <FormatAmount
+            value={roundNumber(text, { decimals: 18, scale: 5 })}
+            suffix={` ${chain?.native?.symbol || ''}`}
+            nullValue="0"
+          />
+        </div>
+      ),
+    },
+    {
+      title: '[Txn Fee]',
+      dataIndex: 'tf',
+      render: (text) => (
+        <div className="data-txnfee">
+          <Link className="data-txnfee-link">{(text / 1e18)?.toFixed(5)} </Link>
+          {/* <LampBlueIcon /> */}
+        </div>
+      ),
+    },
+  ]
 
-    return (
-        <div className="accounts_txs">
-            <div className="card-content-text">
-                <span>
-                    Latest 25 from a total of{` `}
-                    <Link href={`/txs?a=${address}`} className="card-content-text-transactions">
-                        <FormatAmount value={data?.txsByAddress?.total} nullValue="0" />
-                    </Link>
-                    {` `}
-                    transactions
-                </span>
-                <div className="card-content-right">
-                    {/* <DropdownBase
+  return (
+    <div className="accounts_txs">
+      <div className="card-content-text">
+        <span>
+          Latest 25 from a total of{` `}
+          <Link href={`/txs?a=${address}`} className="card-content-text-transactions">
+            <FormatAmount value={data?.txsByAddress?.total} nullValue="0" />
+          </Link>
+          {` `}
+          transactions
+        </span>
+        <div className="card-content-right">
+          {/* <DropdownBase
             trigger={['click']}
             overlay={
               <Menu className="accounts_dropdown_txs_menu">
@@ -182,17 +178,17 @@ const Transactions = ({ address }) => {
               </svg>
             </div>
           </DropdownBase> */}
-                </div>
-            </div>
-            <div className="card-content-table">
-                <TableBase
-                    columns={columns}
-                    loading={data?.txsByAddress?.loading}
-                    scroll={{ x: 700 }}
-                    dataSource={data?.txsByAddress?.data || []}
-                />
-            </div>
-            {/* <div className="card-content-footer">
+        </div>
+      </div>
+      <div className="card-content-table">
+        <TableBase
+          columns={columns}
+          loading={data?.txsByAddress?.loading}
+          scroll={{ x: 700 }}
+          dataSource={data?.txsByAddress?.data || []}
+        />
+      </div>
+      {/* <div className="card-content-footer">
         <div className="content-footer-text">
           <span className="content-footer-text-right">
             [ Download
@@ -205,8 +201,8 @@ const Transactions = ({ address }) => {
           </span>
         </div>
       </div> */}
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Transactions

@@ -21,6 +21,7 @@ export default function statisticsReducer(state = initState, action) {
                 totalSupply: data,
             }
         case actions.GET_STATISTICS_SUCCESS:
+            console.log('action.payload', action.payload)
             return {
                 ...state,
                 statistics: action.payload?.data || [],

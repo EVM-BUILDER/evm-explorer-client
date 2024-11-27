@@ -131,7 +131,7 @@ const AddressPage = () => {
                                 {
                                     key: TABS_VIEW.TX_ERC20,
                                     title: `${chain?.erc20 || ''} Token Txns`,
-                                    content: <TransactionsErc20Token address={address} />,
+                                    content: <TransactionsErc20Token type={addressType} address={address} />,
                                 },
                                 // addressType === ADDRESS_TYPE.tokenErc20 && {
                                 //   key: TABS_VIEW.TX_ERC721,
@@ -158,11 +158,11 @@ const AddressPage = () => {
                                 //     title: 'Analytics',
                                 //     content: <Analytics />,
                                 // },
-                                {
-                                    key: TABS_VIEW.COMMENTS,
-                                    title: 'Comments',
-                                    content: <Comments />,
-                                },
+                                // {
+                                //     key: TABS_VIEW.COMMENTS,
+                                //     title: 'Comments',
+                                //     content: <Comments />,
+                                // },
                             ].filter((o) => o)}
                         />
                     )}
