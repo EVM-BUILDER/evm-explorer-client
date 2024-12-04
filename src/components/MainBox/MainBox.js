@@ -163,7 +163,9 @@ const MainBox = ({ latestBlock, totalTxs, statistics }) => {
                     <div className="body-right med-gas-price">
                         <h5>MED GAS PRICE</h5>
                         <div className="gas-value body-content-text-under">
-                            <a style={{ marginRight: '4px' }}>{nativePrice?.gasPrice} Gwei</a>
+                            <a style={{ marginRight: '4px' }}>
+                                {nativePrice?.gasPrice} {settings?.chain?.unit || 'Gwei'}
+                            </a>
                             {nativePrice && (
                                 <span style={{ whiteSpace: 'nowrap' }}>
                                     (

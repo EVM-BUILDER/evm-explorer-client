@@ -68,48 +68,55 @@ const Footer = () => {
                             </ul>
                             <p className="copyright">{ftCopyright}</p>
                         </Col>
-                        <Col xs={24} sm={12} md={5} className="footer-link">
-                            <h2 className="link-title">{footer01?.title}</h2>
-                            <ul className="list-link">
-                                {footer01?.items?.map((item) => {
-                                    return (
-                                        <li key={item.title}>
-                                            <a href={item.url} target={item.target}>
-                                                {item.title}
-                                            </a>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </Col>
-                        <Col xs={24} sm={12} md={5} className="footer-link">
-                            <h2 className="link-title">{footer02?.title}</h2>
-                            <ul className="list-link">
-                                {footer02?.items?.map((item) => {
-                                    return (
-                                        <li key={item.title}>
-                                            <a href={item.url} target={item.target}>
-                                                {item.title}
-                                            </a>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </Col>
-                        <Col xs={24} sm={12} md={5} className="footer-link">
-                            <h2 className="link-title">{footer03?.title}</h2>
-                            <ul className="list-link">
-                                {footer03?.items?.map((item) => {
-                                    return (
-                                        <li key={item.title}>
-                                            <a href={item.url} target={item.target}>
-                                                {item.title}
-                                            </a>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </Col>
+
+                        {footer01?.items.length > 0 && (
+                            <Col xs={24} sm={12} md={5} className="footer-link">
+                                <h2 className="link-title">{footer01?.title}</h2>
+                                <ul className="list-link">
+                                    {footer01?.items?.map((item) => {
+                                        return (
+                                            <li key={item.title}>
+                                                <a href={item.url} target={item.target}>
+                                                    {item.title}
+                                                </a>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </Col>
+                        )}
+                        {footer02?.items.length > 0 && (
+                            <Col xs={24} sm={12} md={5} className="footer-link">
+                                <h2 className="link-title">{footer02?.title}</h2>
+                                <ul className="list-link">
+                                    {footer02?.items?.map((item) => {
+                                        return (
+                                            <li key={item.title}>
+                                                <a href={item.url} target={item.target}>
+                                                    {item.title}
+                                                </a>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </Col>
+                        )}
+                        {footer03?.items.length > 0 && (
+                            <Col xs={24} sm={12} md={5} className="footer-link">
+                                <h2 className="link-title">{footer03?.title}</h2>
+                                <ul className="list-link">
+                                    {footer03?.items?.map((item) => {
+                                        return (
+                                            <li key={item.title}>
+                                                <a href={item.url} target={item.target}>
+                                                    {item.title}
+                                                </a>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </Col>
+                        )}
                     </Row>
                 </div>
             </footer>

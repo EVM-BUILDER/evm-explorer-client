@@ -49,6 +49,7 @@ const ChainForm = ({ settings, data }) => {
             },
             number_block_to_finalized: values?.number_block_to_finalized || 3,
             consensus: 'POA',
+            unit: values.unit,
         }
 
         dispatch(
@@ -74,6 +75,7 @@ const ChainForm = ({ settings, data }) => {
             erc1155: data?.erc1155 || '',
             number_block_to_finalized: data?.number_block_to_finalized || '',
             consensus: data?.consensus || 'POA',
+            unit: data?.unit || 'Gwei',
         })
     }, [data])
 
@@ -106,6 +108,9 @@ const ChainForm = ({ settings, data }) => {
                 <Input />
             </Form.Item>
             <Form.Item name="erc1155" label="ERC1155">
+                <Input />
+            </Form.Item>
+            <Form.Item name="unit" label="Unit">
                 <Input />
             </Form.Item>
             <h3 className="block-title">Native</h3>
