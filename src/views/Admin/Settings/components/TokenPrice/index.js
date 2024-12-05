@@ -30,7 +30,6 @@ const validateMessages = {
 
 const TokenPriceSettingForm = ({ settings, data }) => {
     const dispatch = useDispatch()
-    console.log(settings)
     const [form] = Form.useForm()
 
     const onFinish = (values) => {
@@ -131,6 +130,16 @@ const TokenPriceSettingForm = ({ settings, data }) => {
             <Form.Item name="token_pair_bv" label="Pair BV">
                 <Input />
             </Form.Item>
+            <Form.Item name="token_pair_bv" label="Pair BV">
+                <Input />
+            </Form.Item>
+            <h3 className="block-title">Setting default price</h3>
+            <Form.Item name="default_token_price" label="Price">
+                <Input />
+            </Form.Item>
+            {/* <Form.Item name="price" label="Marketcap">
+                <Input />
+            </Form.Item> */}
             <Form.Item className="form-actions" {...tailLayout}>
                 <Button type="primary" htmlType="submit">
                     Save

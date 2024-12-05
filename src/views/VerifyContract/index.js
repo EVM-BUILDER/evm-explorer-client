@@ -6,8 +6,9 @@ import PublicLayoutBlock from 'layouts/PublicLayoutBlock'
 import Checkbox from 'components/AntCheckbox'
 import AntInput from 'components/AntInput'
 import AntSelect from 'components/AntSelect'
-import {TextArea} from 'components/Input';
+import { TextArea } from 'components/Input'
 import { verifyContract } from 'redux/verifyContract/actions'
+import { useSelector } from 'react-redux'
 
 const VerifyPage = () => {
     const dispatch = useDispatch()
@@ -16,11 +17,12 @@ const VerifyPage = () => {
     const [form] = Form.useForm()
     const [fileCode, setFileCode] = useState('')
     const [verifyErrorMess, setVerifyErrorMess] = useState('')
+    const { settings } = useSelector((state) => state.Settings)
 
     const onFinish = (values) => {
         setVerifyErrorMess('')
         const params = {
-            ...values
+            ...values,
         }
         console.log(params)
         dispatch(
@@ -54,6 +56,8 @@ const VerifyPage = () => {
         }
     }, [form, address])
 
+    console.log('settings', settings)
+
     return (
         <div className="verify container">
             <div className="verify_top">
@@ -68,10 +72,10 @@ const VerifyPage = () => {
                     <div className="text-verify">
                         <p>
                             Source code verification provides <span className="bold">transparency</span> for users interacting
-                            with smart contracts. By uploading the source code, Etherscan will match the compiled code with that
-                            on the blockchain. Just like contracts, a "smart contract" should provide end users with more
-                            information on what they are "digitally signing" for and give users an opportunity to audit the code
-                            to independently verify that it actually does what it is supposed to do.
+                            with smart contracts. By uploading the source code, {settings?.chain?.name} will match the compiled
+                            code with that on the blockchain. Just like contracts, a "smart contract" should provide end users
+                            with more information on what they are "digitally signing" for and give users an opportunity to audit
+                            the code to independently verify that it actually does what it is supposed to do.
                         </p>
                         <p>
                             Please be informed that advanced settings (e.g. bytecodeHash: "none" or viaIR: "true") can be accessed
@@ -250,7 +254,7 @@ const VerifyPage = () => {
                                     },
                                 ]}
                             >
-                                <TextArea placeholder="your contract code" rows="20" onTouched={() => {}}/>
+                                <TextArea placeholder="your contract code" rows="20" onTouched={() => {}} />
                             </Form.Item>
                             <Form.Item name="optimize" valuePropName="checked" style={{ marginBottom: '24px' }}>
                                 <Checkbox>Optimize</Checkbox>

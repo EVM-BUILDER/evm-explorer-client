@@ -361,7 +361,8 @@ const TxDetailOverview = ({ loading, transactionDetail, blocks }) => {
                                             <Col xs={24} md={16}>
                                                 {roundNumber(transactionDetail?.gp, { scale: false, decimals: 18 })}{' '}
                                                 {settings?.chain?.native?.symbol || ''} (
-                                                {roundNumber(transactionDetail?.gp, { decimals: 9, scale: 3 })} Gwei)
+                                                {roundNumber(transactionDetail?.gp, { decimals: 9, scale: 3 })}{' '}
+                                                {settings?.chain?.unit || 'Gwei'})
                                             </Col>
                                         </Row>
                                     </div>

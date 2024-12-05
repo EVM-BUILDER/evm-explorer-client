@@ -46,7 +46,7 @@ const TokenTransferred = ({ tokenTransfer }) => {
             </span>
             <img src="/images/main/empty-token.png" width="15" alt="" />
             {tokenTransfer.ca?.pro?.na && (
-                <a className="hash-tag text-truncate" href={`/token/${tAddress}`}>
+                <a className="hash-tag text-truncate" href={`/token/${tokenTransfer?.ca?.a}`}>
                     &nbsp; {tokenTransfer.ca?.pro?.na} ({tokenTransfer.ca?.pro?.sym}){' '}
                 </a>
             )}
