@@ -60,7 +60,7 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
                             <span className="text-warning">{nativePrice?.perChange || 0}%</span>
                         )}
                         )
-                        <img src="/images/icon/gas.svg" alt="" /> {nativePrice?.gasPrice || 0} Gwei
+                        <img src="/images/icon/gas.svg" alt="" /> {nativePrice?.gasPrice || 0} {settings?.chain?.unit || 'Gwei'}
                     </div>
                     <div className="nav-bottom-right">
                         <ul className="nav-ul">
@@ -78,7 +78,7 @@ const HeaderBlock = ({ showMenu, toggleMenu }) => {
                                                 </span>
                                             </Link>
                                             <ul className="subnav fadeIn">
-                                                {entry.child.map(({showBorder, ...subMenu}, subIndex) => {
+                                                {entry.child.map(({ showBorder, ...subMenu }, subIndex) => {
                                                     const isSubItemActive = activeSubMenuItem?.url === subMenu.url
                                                     return (
                                                         <React.Fragment key={`${subMenu.title}-${subIndex}`}>
