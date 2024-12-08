@@ -422,7 +422,8 @@ const Overview = () => {
                             </Col>
                             <Col xs={{ span: 24 }} md={{ span: 16 }}>
                                 <span className="reward-text">
-                                    {Number(parseInt(blockDetail.baseFeePerGas || 0, 16) / 1e9).toFixed(9)} wei
+                                    {Number(parseInt(blockDetail.baseFeePerGas || 0, 16) / 1e9).toFixed(9)}{' '}
+                                    {settings?.chain?.unit || 'wei'}
                                 </span>
                             </Col>
                         </Row>
